@@ -7,13 +7,17 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Add scroll class for sticky transparent header transition
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Handle scroll to add dynamic shadow or subtle styles
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      if (window.scrollY > 10) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -23,243 +27,325 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menus on path change
+  // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-    setDropdownOpen(false);
   }, [pathname]);
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-  ];
+  const cleanPath = pathname ? pathname.toLowerCase().replace(/\/$/, "") : "";
 
-  const serviceSubLinks = [
-    { name: "Web Security & Dev", path: "/services/web-development" },
-    { name: "Digital Solutions", path: "/services/digital-marketing" },
-    { name: "Mobile Security & Dev", path: "/services/mobile-app-development" },
-  ];
+  const isTopOffsetPage =
+    cleanPath === "" ||
+    cleanPath === "/services" ||
+    cleanPath.startsWith("/services/") ||
+    cleanPath === "/bpo" ||
+    cleanPath === "/portfolio";
 
-  const isLinkActive = (path) => pathname === path;
-  const isServicesActive = () => pathname.startsWith("/services");
+  const getDesktopLinkClass = (path) => {
+    const cleanLinkPath = path.toLowerCase().replace(/\/$/, "");
+    const isActive = cleanPath === cleanLinkPath;
+    const isDarkBg = cleanPath === "/portfolio" && !scrolled;
+
+    return `text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${isActive
+        ? isDarkBg
+          ? "text-white border-white font-bold"
+          : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
+        : isDarkBg
+          ? "text-white/85 hover:text-white font-medium border-transparent"
+          : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
+      }`;
+  };
+
+  const getMobileLinkClass = (path) => {
+    const cleanLinkPath = path.toLowerCase().replace(/\/$/, "");
+    const isActive = cleanPath === cleanLinkPath;
+
+    return `block px-3 py-2.5 rounded-lg text-base font-semibold transition-colors ${isActive
+        ? "bg-gradient-to-r from-blue-50 to-[#3E66F3]/10 text-blue-600 font-bold"
+        : "text-slate-800 hover:bg-slate-50"
+      }`;
+  };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-slate-950/85 backdrop-blur-md border-b border-slate-800 shadow-lg"
-          : "bg-transparent border-b border-transparent"
-      }`}
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${isTopOffsetPage && !scrolled ? "lg:top-4 top-0" : "top-0"
+        } ${scrolled
+          ? "bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-md text-slate-800"
+          : isTopOffsetPage
+            ? "bg-white lg:bg-transparent border-b border-slate-100 lg:border-transparent shadow-sm lg:shadow-none text-slate-800"
+            : "bg-white border-b border-slate-100 shadow-sm text-slate-800"
+        }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1530px] mx-auto px-4 md:px-8 lg:px-20">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <svg
-              className="h-8 w-8 text-cyan-400 transition-transform duration-300 group-hover:rotate-12"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-              />
-            </svg>
-            <span className="text-xl font-bold tracking-wider bg-gradient-to-r from-white via-slate-200 to-cyan-400 bg-clip-text text-transparent">
-              SECUR<span className="text-cyan-400">XPERT</span>
-            </span>
+
+          {/* Original logo image */}
+          <Link href="/" className="flex items-center group flex-shrink-0 mr-8">
+            <img
+              src="/SX original logo.png"
+              alt="SecurXpert Logo"
+              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${
+                cleanPath === "/portfolio" && !scrolled ? "brightness-0 invert" : ""
+              }`}
+            />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-cyan-400 ${
-                  isLinkActive(link.path) ? "text-cyan-400" : "text-slate-300"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+          {/* Desktop Navigation with MacBook Air-optimized spacing */}
+          <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4 2xl:space-x-8 mx-auto">
+            {/* Home */}
+            <Link
+              href="/"
+              className={getDesktopLinkClass("/")}
+            >
+              Home
+            </Link>
 
-            {/* Services Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                onMouseEnter={() => setDropdownOpen(true)}
-                className={`flex items-center space-x-1 text-sm font-medium transition-colors duration-200 hover:text-cyan-400 ${
-                  isServicesActive() ? "text-cyan-400" : "text-slate-300"
-                }`}
+            {/* Services with Hover Dropdown */}
+            <div className="relative group py-2">
+              <Link
+                href="/services"
+                className={`text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/")
+                    ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
+                    : cleanPath === "/portfolio" && !scrolled
+                      ? "text-white/85 hover:text-white font-medium border-transparent"
+                      : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
+                  }`}
               >
-                <span>Services</span>
+                Services
                 <svg
-                  className={`h-4 w-4 transition-transform duration-200 ${
-                    dropdownOpen ? "rotate-180" : ""
+                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${
+                    cleanPath === "/portfolio" && !scrolled ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
                   }`}
                   fill="none"
                   stroke="currentColor"
+                  strokeWidth="2.5"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
-              </button>
+              </Link>
 
-              {/* Dropdown Menu */}
-              {dropdownOpen && (
-                <div
-                  onMouseLeave={() => setDropdownOpen(false)}
-                  className="absolute left-0 mt-2 w-56 rounded-md shadow-2xl bg-slate-900 border border-slate-800 py-2 focus:outline-none transition-all duration-300 animate-fadeIn"
+              {/* Dropdown Menu - Sleek glassmorphism style */}
+              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                <Link
+                  href="/services"
+                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
                 >
-                  <Link
-                    href="/services"
-                    className="block px-4 py-2 text-xs font-semibold text-cyan-500 hover:bg-slate-800 uppercase tracking-wider border-b border-slate-800/50"
-                  >
-                    All Services Overview
-                  </Link>
-                  {serviceSubLinks.map((subLink) => (
-                    <Link
-                      key={subLink.path}
-                      href={subLink.path}
-                      className={`block px-4 py-2.5 text-sm transition-colors duration-150 hover:bg-slate-800 hover:text-cyan-400 ${
-                        isLinkActive(subLink.path)
-                          ? "text-cyan-400 bg-slate-800/30"
-                          : "text-slate-300"
-                      }`}
-                    >
-                      {subLink.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+                  Software Development
+                </Link>
+                <Link
+                  href="/services"
+                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                >
+                  Digital Marketing
+                </Link>
+                <Link
+                  href="/services"
+                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                >
+                  UI/UX
+                </Link>
+              </div>
             </div>
 
+            {/* Products */}
+            <Link
+              href="/products"
+              className={getDesktopLinkClass("/products")}
+            >
+              Products
+            </Link>
+
+            {/* BPO */}
+            <Link
+              href="/BPO"
+              className={getDesktopLinkClass("/BPO")}
+            >
+              BPO
+            </Link>
+
+            {/* Insights / Blogs */}
+            <Link
+              href="/blogs"
+              className={getDesktopLinkClass("/blogs")}
+            >
+              Blogs
+            </Link>
+
+            {/* About Us */}
+            <Link
+              href="/about"
+              className={getDesktopLinkClass("/about")}
+            >
+              About Us
+            </Link>
+
+            {/* Careers */}
+            <Link
+              href="/careers"
+              className={getDesktopLinkClass("/careers")}
+            >
+              Careers
+            </Link>
+
+            {/* Portfolio */}
+            <Link
+              href="/portfolio"
+              className={getDesktopLinkClass("/portfolio")}
+            >
+              Portfolio
+            </Link>
+
+            {/* Contact */}
             <Link
               href="/contact"
-              className={`text-sm font-medium transition-colors duration-200 hover:text-cyan-400 ${
-                isLinkActive("/contact") ? "text-cyan-400" : "text-slate-300"
-              }`}
+              className={getDesktopLinkClass("/contact")}
             >
-              Contact Us
+              Contact
             </Link>
           </nav>
 
-          {/* Call to Action Button */}
-          <div className="hidden md:flex items-center">
+          {/* Book Consultation Button (Pill Gradient style) with responsive horizontal scaling */}
+          <div className="hidden lg:flex items-center lg:-translate-x-6 xl:-translate-x-4 2xl:translate-x-0">
             <Link
               href="/contact"
-              className="cyber-glow-btn bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-5 py-2.5 rounded-md text-sm transition-all shadow-[0_0_15px_rgba(6,182,212,0.45)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)]"
+              className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 hover:from-blue-700 hover:to-violet-800 text-white font-semibold px-6 py-2.5 rounded-full text-[14px] transition-all shadow-md hover:shadow-lg active:scale-95"
             >
-              Request Free Audit
+              Book Consultation
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
+          {/* Mobile Menu Button */}
+          <div className="flex lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-900 focus:outline-none"
+              className={`inline-flex items-center justify-center p-2 rounded-lg focus:outline-none transition-colors ${
+                cleanPath === "/portfolio" && !scrolled
+                  ? "text-white hover:text-white/80 hover:bg-white/10"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              }`}
             >
               <span className="sr-only">Open main menu</span>
               {mobileMenuOpen ? (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
             </button>
           </div>
+
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-950/95 border-b border-slate-800 animate-slideDown">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className={`block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-900 hover:text-cyan-400 ${
-                  isLinkActive(link.path) ? "text-cyan-400" : "text-slate-300"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+        <div className="absolute top-full left-0 right-0 lg:hidden bg-white border-b border-slate-200 shadow-xl max-h-[85vh] overflow-y-auto z-[9999]">
+          <div className="px-4 pt-3 pb-6 space-y-2.5">
+            <Link
+              href="/"
+              className={getMobileLinkClass("/")}
+            >
+              Home
+            </Link>
 
-            {/* Services inside mobile menu */}
-            <div className="border-t border-slate-900 my-2 pt-2">
+            {/* Services with Mobile Sub-options */}
+            <div className="flex flex-col">
               <Link
                 href="/services"
-                className={`block px-3 py-2 rounded-md text-base font-semibold text-cyan-400 uppercase tracking-wider`}
+                className={getMobileLinkClass("/services")}
               >
                 Services
               </Link>
-              {serviceSubLinks.map((subLink) => (
+              <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
                 <Link
-                  key={subLink.path}
-                  href={subLink.path}
-                  className={`block pl-6 pr-3 py-2 rounded-md text-base font-medium hover:bg-slate-900 hover:text-cyan-400 ${
-                    isLinkActive(subLink.path) ? "text-cyan-400" : "text-slate-400"
-                  }`}
+                  href="/services"
+                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
-                  {subLink.name}
+                  Software Development
                 </Link>
-              ))}
+                <Link
+                  href="/services"
+                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                >
+                  Digital Marketing
+                </Link>
+                <Link
+                  href="/services"
+                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                >
+                  UI/UX
+                </Link>
+              </div>
             </div>
 
+            {/* Products */}
             <Link
-              href="/contact"
-              className={`block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-900 hover:text-cyan-400 ${
-                isLinkActive("/contact") ? "text-cyan-400" : "text-slate-300"
-              }`}
+              href="#"
+              className="block px-3 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
             >
-              Contact Us
+              Products
             </Link>
 
-            <div className="pt-4 pb-2 px-3">
+            {/* BPO */}
+            <Link
+              href="/BPO"
+              className={getMobileLinkClass("/BPO")}
+            >
+              BPO
+            </Link>
+
+            {/* Insights */}
+            <Link
+              href="#"
+              className="block px-3 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
+            >
+              Insights
+            </Link>
+
+            {/* About Us */}
+            <Link
+              href="/about"
+              className={getMobileLinkClass("/about")}
+            >
+              About Us
+            </Link>
+
+            {/* Careers */}
+            <Link
+              href="#"
+              className="block px-3 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
+            >
+              Careers
+            </Link>
+
+            {/* Portfolio */}
+            <Link
+              href="#"
+              className="block px-3 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
+            >
+              Portfolio
+            </Link>
+
+            {/* Contact */}
+            <Link
+              href="/contact"
+              className={getMobileLinkClass("/contact")}
+            >
+              Contact
+            </Link>
+
+            {/* Book Consultation in Mobile Drawer */}
+            <div className="pt-4 pb-2">
               <Link
                 href="/contact"
-                className="w-full text-center block bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-4 py-2.5 rounded-md text-sm transition-all"
+                className="w-full text-center block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 text-white font-semibold px-4 py-3 rounded-full text-sm shadow-md transition-all active:scale-95"
               >
-                Request Free Audit
+                Book Consultation
               </Link>
             </div>
           </div>
