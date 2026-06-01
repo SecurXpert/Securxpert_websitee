@@ -45,7 +45,7 @@ export default function BPOHero() {
                     <img
                         src="/Services/hero-bg.png"
                         alt="BPO Hero Curved Background"
-                        className="hidden lg:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-6 lg:mt-8"
+                        className="hidden lg:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-2 lg:mt-3"
                     />
 
                     {/* Subtle glow layer overlay */}

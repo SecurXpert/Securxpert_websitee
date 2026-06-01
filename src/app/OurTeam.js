@@ -88,7 +88,12 @@ const teamData = [
 
 export default function OurTeam() {
     return (
-        <section className="relative w-full overflow-hidden bg-gradient-to-b from-white to-[#F8FAFC]  pb-10  text-[#1E1B4B] select-none">
+        <section 
+            className="relative w-full overflow-hidden pt-16 pb-20 text-[#1E1B4B] select-none"
+            style={{
+                background: "linear-gradient(258.45deg, rgba(60, 95, 226, 0.2) 16.97%, rgba(45, 45, 134, 0.2) 51.95%, rgba(61, 99, 234, 0.2) 87.66%)"
+            }}
+        >
             {/* Ambient subtle light accents */}
             <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-500/5 blur-[150px] rounded-full pointer-events-none z-0" />
             <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-500/5 blur-[150px] rounded-full pointer-events-none z-0" />
@@ -154,6 +159,13 @@ export default function OurTeam() {
                             />
                         </div>
                     ))}
+                </div>
+
+                {/* Centered View All Members Button */}
+                <div className="flex justify-center mt-10">
+                    <button className="bg-[#364CC1] hover:bg-slate-900 text-white font-bold text-xs sm:text-sm py-3.5 px-11 rounded-full flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.12)]">
+                        View All Members
+                    </button>
                 </div>
             </div>
         </section>

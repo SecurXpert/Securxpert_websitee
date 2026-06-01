@@ -32,6 +32,14 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   allowedDevOrigins: getLocalNetworkIPs(),
+  async rewrites() {
+    return [
+      {
+        source: '/blogs',
+        destination: '/Blogs',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

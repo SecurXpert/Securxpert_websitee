@@ -191,7 +191,7 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM COPYRIGHT & LEGAL BAR */}
-        <div className="mt-12 pt-8 border-t border-slate-200/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[14px]">
+        <div className="mt-2 pt-2 border-t border-slate-200/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[14px]">
           <p className="text-[#4f5b76] text-center md:text-left">
             © {new Date().getFullYear()} SecurXpert Technologies Pvt. Ltd. All rights reserved.
           </p>

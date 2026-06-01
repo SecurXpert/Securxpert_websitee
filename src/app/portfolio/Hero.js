@@ -49,7 +49,7 @@ export default function Hero() {
 
     return (
         <section
-            className="relative min-h-[108vh] w-full overflow-hidden bg-cover bg-center flex items-center pt-24 pb-12 lg:py-0"
+            className="relative min-h-[95vh] lg:min-h-[108vh] w-full overflow-hidden bg-cover bg-center flex items-center pt-24 pb-4 lg:py-0"
             style={{ backgroundImage: "url('/Portfolio/Hero/hero-bg.png')" }}
         >
 
@@ -61,10 +61,11 @@ export default function Hero() {
                     return (
                         <div
                             key={index}
-                            className={`absolute inset-x-0 w-full px-6 md:px-12 lg:px-20 transition-all duration-1000 ease-in-out min-h-[70vh] lg:min-h-[92vh] flex items-center justify-center ${isActive
-                                    ? "opacity-100 translate-x-0 pointer-events-auto z-20"
-                                    : "opacity-0 translate-x-12 pointer-events-none z-10"
-                                }`}
+                            className={`inset-x-0 w-full px-6 md:px-12 lg:px-20 transition-all duration-1000 ease-in-out min-h-[70vh] lg:min-h-[92vh] flex items-center justify-center ${
+                                isActive
+                                    ? "relative lg:absolute opacity-100 translate-x-0 pointer-events-auto z-20"
+                                    : "absolute opacity-0 translate-x-12 pointer-events-none z-10"
+                            }`}
                         >
 
                             {/* DESKTOP ABSOLUTE RIGHT IMAGE */}
@@ -82,20 +83,20 @@ export default function Hero() {
                             </div>
 
                             {/* CENTERED COPY COLUMN */}
-                            <div className="w-full max-w-[850px] mx-auto flex flex-col items-center text-center text-white z-20 px-4 lg:-translate-x-12 lg:translate-y-2 xl:-translate-x-20 xl:translate-y-4 transition-all duration-300">
+                            <div className="w-full max-w-[850px] mx-auto flex flex-col items-center text-center text-white z-20 px-4 pt-8 sm:pt-10 lg:pt-0 lg:-translate-x-12 lg:translate-y-2 xl:-translate-x-20 xl:translate-y-4 transition-all duration-300">
 
                                 {/* Active Subheading */}
                                 <p
                                     className={`text-[#EBEBEB] font-semibold uppercase tracking-widest text-[12px] sm:text-[25px] mb-3 transition-all duration-1000 ${isActive ? "opacity-100 translate-y-0 delay-100" : "opacity-0 -translate-y-4"
                                         }`}
                                     style={{ textShadow: "3px 0px 55px #FFFFFF9E" }}
-                                >
+                                > 
                                     {slide.subheading}
                                 </p>
 
                                 {/* Big Heading with White Glow drop shadow */}
                                 <h3
-                                    className={`text-4xl sm:text-6xl md:text-7xl lg:text-[84px] xl:text-[96px] font-semibold leading-[1.25] tracking-wide text-white mb-8 uppercase transition-all duration-1000 ${isActive ? "opacity-100 translate-y-0 delay-300" : "opacity-0 -translate-y-4"
+                                    className={`text-3xl sm:text-6xl md:text-7xl lg:text-[84px] xl:text-[96px] font-semibold leading-[1.25] tracking-wide text-white mb-8 uppercase transition-all duration-1000 ${isActive ? "opacity-100 translate-y-0 delay-300" : "opacity-0 -translate-y-4"
                                         }`}
                                     style={{ textShadow: "0 0 32px rgba(255, 255, 255, 0.35)" }}
                                 >
@@ -136,6 +137,29 @@ export default function Hero() {
                                     />
                                 </div>
 
+                                {/* MOBILE ONLY PLAY BUTTON & COMPETENCIES (BOTTOM CENTER STACKED) */}
+                                <div className="lg:hidden flex flex-col items-center gap-4 mt-8 w-full z-30">
+                                    <div className="flex items-center gap-3">
+                                        <div className="relative flex items-center justify-center shrink-0">
+                                            <div className="absolute w-10 h-10 rounded-full bg-red-600 animate-ping opacity-75"></div>
+                                            <div className="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center text-white cursor-pointer relative z-10 shadow-md">
+                                                <svg className="w-4 h-4 fill-current text-white translate-x-[1px]" viewBox="0 0 24 24">
+                                                    <path d="M8 5v14l11-7z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span className="text-[#A5B4FC] text-[18px] font-semibold tracking-widest uppercase">{slide.playSub}</span>
+                                    </div>
+                                    <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1">
+                                        {slide.playItems.map((item, i) => (
+                                            <React.Fragment key={i}>
+                                                {i > 0 && <span className="w-1 h-1 rounded-full bg-white/40"></span>}
+                                                <span className="text-white/80 text-[10px] font-medium uppercase tracking-wider">{item}</span>
+                                            </React.Fragment>
+                                        ))}
+                                    </div>
+                                </div>
+
                             </div>
 
                             {/* ABSOLUTE BOTTOM-LEFT PLAY BUTTON & COMPETENCIES (DESKTOP) */}
@@ -164,32 +188,6 @@ export default function Hero() {
                                             </React.Fragment>
                                         ))}
                                     </div>
-                                </div>
-                            </div>
-
-                            {/* MOBILE ONLY PLAY BUTTON & COMPETENCIES (BOTTOM CENTER STACKED) */}
-                            <div
-                                className={`lg:hidden flex flex-col items-center gap-4 mt-8 w-full z-30 transition-all duration-1000 ${isActive ? "opacity-100 translate-y-0 delay-700" : "opacity-0 -translate-y-4"
-                                    }`}
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="relative flex items-center justify-center shrink-0">
-                                        <div className="absolute w-10 h-10 rounded-full bg-red-600 animate-ping opacity-75"></div>
-                                        <div className="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center text-white cursor-pointer relative z-10 shadow-md">
-                                            <svg className="w-4 h-4 fill-current text-white translate-x-[1px]" viewBox="0 0 24 24">
-                                                <path d="M8 5v14l11-7z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <span className="text-[#A5B4FC] text-[20px] font-semibold tracking-widest uppercase">{slide.playSub}</span>
-                                </div>
-                                <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1">
-                                    {slide.playItems.map((item, i) => (
-                                        <React.Fragment key={i}>
-                                            {i > 0 && <span className="w-1 h-1 rounded-full bg-white/40"></span>}
-                                            <span className="text-white/80 text-[10px] font-medium uppercase tracking-wider">{item}</span>
-                                        </React.Fragment>
-                                    ))}
                                 </div>
                             </div>
 

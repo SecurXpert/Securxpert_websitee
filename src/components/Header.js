@@ -39,20 +39,22 @@ export default function Header() {
     cleanPath === "/services" ||
     cleanPath.startsWith("/services/") ||
     cleanPath === "/bpo" ||
-    cleanPath === "/portfolio";
+    cleanPath === "/portfolio" ||
+    cleanPath === "/contact" ||
+    cleanPath === "/blogs";
 
   const getDesktopLinkClass = (path) => {
     const cleanLinkPath = path.toLowerCase().replace(/\/$/, "");
     const isActive = cleanPath === cleanLinkPath;
-    const isDarkBg = cleanPath === "/portfolio" && !scrolled;
+    const isDarkBg = (cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled;
 
     return `text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${isActive
-        ? isDarkBg
-          ? "text-white border-white font-bold"
-          : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
-        : isDarkBg
-          ? "text-white/85 hover:text-white font-medium border-transparent"
-          : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
+      ? isDarkBg
+        ? "text-white border-white font-bold"
+        : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
+      : isDarkBg
+        ? "text-white/85 hover:text-white font-medium border-transparent"
+        : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
       }`;
   };
 
@@ -61,8 +63,8 @@ export default function Header() {
     const isActive = cleanPath === cleanLinkPath;
 
     return `block px-3 py-2.5 rounded-lg text-base font-semibold transition-colors ${isActive
-        ? "bg-gradient-to-r from-blue-50 to-[#3E66F3]/10 text-blue-600 font-bold"
-        : "text-slate-800 hover:bg-slate-50"
+      ? "bg-gradient-to-r from-blue-50 to-[#3E66F3]/10 text-blue-600 font-bold"
+      : "text-slate-800 hover:bg-slate-50"
       }`;
   };
 
@@ -72,7 +74,9 @@ export default function Header() {
         } ${scrolled
           ? "bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-md text-slate-800"
           : isTopOffsetPage
-            ? "bg-white lg:bg-transparent border-b border-slate-100 lg:border-transparent shadow-sm lg:shadow-none text-slate-800"
+            ? mobileMenuOpen
+              ? "bg-white border-b border-slate-100 text-slate-800"
+              : "bg-transparent lg:bg-transparent border-transparent lg:border-transparent shadow-none lg:shadow-none text-white lg:text-white"
             : "bg-white border-b border-slate-100 shadow-sm text-slate-800"
         }`}
     >
@@ -84,9 +88,8 @@ export default function Header() {
             <img
               src="/SX original logo.png"
               alt="SecurXpert Logo"
-              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${
-                cleanPath === "/portfolio" && !scrolled ? "brightness-0 invert" : ""
-              }`}
+              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled && !mobileMenuOpen ? "brightness-0 invert" : ""
+                }`}
             />
           </Link>
 
@@ -105,17 +108,16 @@ export default function Header() {
               <Link
                 href="/services"
                 className={`text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/")
-                    ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
-                    : cleanPath === "/portfolio" && !scrolled
-                      ? "text-white/85 hover:text-white font-medium border-transparent"
-                      : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
+                  ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
+                  : (cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled
+                    ? "text-white/85 hover:text-white font-medium border-transparent"
+                    : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
                   }`}
               >
                 Services
                 <svg
-                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${
-                    cleanPath === "/portfolio" && !scrolled ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
-                  }`}
+                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${(cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
@@ -129,7 +131,7 @@ export default function Header() {
               {/* Dropdown Menu - Sleek glassmorphism style */}
               <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
                 <Link
-                  href="/services"
+                  href="services/web-development"
                   className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
                 >
                   Software Development
@@ -220,11 +222,10 @@ export default function Header() {
           <div className="flex lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`inline-flex items-center justify-center p-2 rounded-lg focus:outline-none transition-colors ${
-                cleanPath === "/portfolio" && !scrolled
-                  ? "text-white hover:text-white/80 hover:bg-white/10"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-              }`}
+              className={`inline-flex items-center justify-center p-2 rounded-lg focus:outline-none transition-colors ${(cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled && !mobileMenuOpen
+                ? "text-white hover:text-white/80 hover:bg-white/10"
+                : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                }`}
             >
               <span className="sr-only">Open main menu</span>
               {mobileMenuOpen ? (
@@ -325,8 +326,8 @@ export default function Header() {
 
             {/* Portfolio */}
             <Link
-              href="#"
-              className="block px-3 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
+              href="/portfolio"
+              className={getMobileLinkClass("/portfolio")}
             >
               Portfolio
             </Link>
