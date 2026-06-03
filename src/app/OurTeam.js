@@ -163,8 +163,8 @@ export default function OurTeam() {
 
                 {/* Centered View All Members Button */}
                 <div className="flex justify-center mt-10">
-                    <button className="bg-[#364CC1] hover:bg-slate-900 text-white font-bold text-xs sm:text-sm py-3.5 px-11 rounded-full flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.12)]">
-                        View All Members
+                    <button className="bg-[#364CC1] hover:bg-slate-900 text-white font-bold text-md py-3.5 px-11 rounded-full flex items-center justify-center gap-2 cursor-pointer  tracking-wide transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.12)]">
+                        View All Team Members
                     </button>
                 </div>
             </div>

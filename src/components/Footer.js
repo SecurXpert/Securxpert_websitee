@@ -81,7 +81,7 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col items-start gap-3.5">
               <li>
-                <Link href="/about" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
+                <Link href="/AboutUs" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
                   About Us
                 </Link>
               </li>
@@ -96,7 +96,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
+                <Link href="/Carrers" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
                   Careers
                 </Link>
               </li>

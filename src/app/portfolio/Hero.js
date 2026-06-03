@@ -111,7 +111,7 @@ export default function Hero() {
                                         }`}
                                 >
                                     <Link
-                                        href="/about"
+                                        href="/AboutUs"
                                         className="bg-white text-[#3734A9] font-bold px-8 py-3.5 sm:px-10 sm:py-4 text-xs sm:text-[13px] hover:bg-white/95 transition-all select-none"
                                     >
                                         {slide.btn1Text}

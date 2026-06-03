@@ -19,6 +19,11 @@
   --color-accent-blue: var(--accent-blue);
   --color-accent-purple: var(--accent-purple);
   --font-Playfair-Display: var(--font-Playfair-Display);
+  --font-inter: var(--font-inter);
+  --font-space-grotesk: var(--font-space-grotesk);
+  --font-plus-jakarta: var(--font-plus-jakarta-sans);
+  --font-Raleway: var(--font-raleway);
+  --font-raleway: var(--font-raleway);
 }
 
 body {
@@ -30,8 +35,12 @@ body {
 
 h1,
 h2,
+h3,
+h4,
+h5,
+h6,
 .font-title {
-  font-family: var(--font-Playfair-Display), serif !important;
+  font-family: var(--font-inter), sans-serif !important;
 }
 
 /* Custom cyber background gradient grid */
@@ -173,4 +182,8 @@ h2,
   .stroke-text {
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.40);
   }
+}
+
+.font-space-grotesk {
+  font-family: var(--font-space-grotesk), sans-serif !important;
 }

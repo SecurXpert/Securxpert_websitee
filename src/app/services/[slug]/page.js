@@ -1,21 +1,52 @@
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import webDevelopment from "@/utils/services/web-development";
+import { LuChevronLeft } from "react-icons/lu";
+import softwareDevelopment from "@/utils/services/software-development";
 import digitalMarketing from "@/utils/services/digital-marketing";
 import mobileAppDevelopment from "@/utils/services/mobile-app-development";
+import uiUx from "@/utils/services/ui-ux";
 
 const servicesData = {
-  "web-development": webDevelopment,
+  "software-development": softwareDevelopment,
   "digital-marketing": digitalMarketing,
   "mobile-app-development": mobileAppDevelopment,
+  "ui-ux": uiUx,
+};
+
+const heroMetadata = {
+  "software-development": {
+    category: "01 — SOFTWARE DEVELOPMENT",
+    title: "Build the Future with Custom Software",
+    desc: "From MVPs to enterprise-grade applications, we deliver scalable software solutions that drive business growth.",
+    illustration: "/Services/services.png"
+  },
+  "digital-marketing": {
+    category: "02 — DIGITAL MARKETING",
+    title: "Grow Your Brand with Digital Marketing",
+    desc: "Maximize online visibility, attract targeted traffic, and boost conversions with high-impact marketing campaigns.",
+    illustration: "/Services/OurServices/services4.png"
+  },
+  "mobile-app-development": {
+    category: "03 — MOBILE APP DEVELOPMENT",
+    title: "Craft Powerful Mobile Experiences",
+    desc: "Secure, responsive native and hybrid mobile apps tailored to keep users connected and engaged.",
+    illustration: "/Services/OurServices/services2.png"
+  },
+  "ui-ux": {
+    category: "04 — UI/UX DESIGN",
+    title: "Design the Future with Intuitive Interfaces",
+    desc: "User-centered wireframes, modern design systems, and high-fidelity interactive prototypes that convert.",
+    illustration: "/Services/OurServices/services5.png"
+  }
 };
 
 export async function generateStaticParams() {
   return [
     { slug: "web-development" },
     { slug: "digital-marketing" },
-    { slug: "mobile-app-development" }
+    { slug: "mobile-app-development" },
+    { slug: "ui-ux" }
   ];
 }
 
@@ -28,156 +59,196 @@ export default async function ServicePage({ params }) {
     notFound();
   }
 
+  const meta = heroMetadata[slug] || {
+    category: `05 — ${service.subtitle || "SERVICE"}`,
+    title: service.title,
+    desc: service.description,
+    illustration: "/Services/services.png"
+  };
+
+  const capabilities = service.capabilities || [];
+  const processHeading = service.processHeading || "Our Process";
+  const processSteps = service.process || [];
+  const techStack = service.techStack || [];
+
   return (
     <div className="relative min-h-screen bg-slate-50 text-slate-800">
-      
+
       {/* Dynamic Service Hero with White/Blue Curved Background */}
-      <div className="w-full bg-white overflow-hidden text-slate-800">
-        <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto mt-20 2xl:mt-0 pt-0 pb-10 lg:pb-14">
+      <div className="w-full bg-gradient-to-r from-[#172E9D] to-[#2541C5] md:bg-none md:bg-white overflow-hidden text-slate-800">
+        <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto pt-0 pb-0 overflow-visible">
 
           {/* Soft Background Blue Glow Effect */}
           <div className="absolute left-0 top-0 w-[500px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full pointer-events-none" />
 
-          <div className="relative px-6 md:px-20 pt-28 sm:pt-36 lg:pt-20 xl:pt-24 pb-0 flex flex-col items-center overflow-visible bg-transparent w-full">
+          <div className="relative px-6 md:px-20 pt-18 sm:pt-24 md:pt-28 lg:pt-20 xl:pt-24 pb-0 flex flex-col items-center justify-between overflow-visible bg-transparent w-full min-h-[500px] lg:min-h-[700px] xl:min-h-[800px] max-h-[500px] lg:max-h-[700px] xl:max-h-[800px]">
 
             {/* High-Performance Clipped Background Image Tag */}
             <img
               src="/Services/hero-bg.png"
               alt="Services Hero Curved Background"
-              className="hidden lg:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-2"
+              className="hidden lg:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-2 lg:mt-3"
             />
 
             {/* Subtle glow layer overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.04),transparent_60%)] pointer-events-none z-0" />
 
-            {/* Breadcrumb Navigation inside Hero curve for clean styling */}
-            <nav className="relative z-10 w-full max-w-5xl mx-auto mb-6">
-              <ol className="flex items-center justify-center space-x-2 text-xs text-blue-200/80 lg:text-blue-100/90 font-medium">
-                <li>
-                  <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                </li>
-                <li>
-                  <span>/</span>
-                </li>
-                <li>
-                  <Link href="/services" className="hover:text-white transition-colors">Services</Link>
-                </li>
-                <li>
-                  <span>/</span>
-                </li>
-                <li className="text-white capitalize font-semibold">{slug.replace(/-/g, " ")}</li>
-              </ol>
-            </nav>
+            {/* Content Container (Coded from user mockup screen) */}
+            <div className="relative z-10 w-full max-w-4xl flex flex-col items-center text-center space-y-4 pt-2">
 
-            {/* Category Pill Button */}
-            <div className="relative z-10 flex justify-center mb-3 pt-2">
-              <span className="px-4 py-1 rounded-lg text-sm lg:text-base font-medium tracking-tight text-[#29257B] bg-[#D9D9D9] border border-slate-200 shadow-sm uppercase">
-                {service.subtitle}
-              </span>
+              {/* Back Button */}
+              <div className="hidden md:flex w-full justify-start mb-1 mt-15 -ml-4 md:-ml-8 lg:-ml-110">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-1.5 text-white/80 hover:text-white font-semibold text-lg sm:text-xl lg:text-[22px] transition-all duration-150"
+                >
+                  <LuChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" /> Back
+                </Link>
+              </div>
+
+              {/* Category Pill Tag */}
+              <div className="inline-block bg-[#D9D9D9] text-[#29257B] px-4 sm:px-8 py-1.5 rounded-lg text-sm sm:text-lg font-bold tracking-wide uppercase shadow-sm whitespace-nowrap">
+                {meta.category}
+              </div>
+
+              {/* Main Title */}
+              <h3 className="text-white text-3xl sm:text-4xl lg:text-[44px] xl:text-[65px] font-semibold leading-tight max-w-3xl mx-auto px-4 font-inter">
+                {meta.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-blue-100/90 text-xs sm:text-sm lg:text-[19px] whitespace-nowrap leading-relaxed max-w-full mx-auto px-4 font-normal opacity-90">
+                {meta.desc}
+              </p>
+
             </div>
 
-            {/* Title */}
-            <h1 className="relative z-10 text-center text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-semibold leading-tight text-white tracking-normal max-w-4xl mx-auto px-6 font-inter capitalize">
-              {service.title}
-            </h1>
-
-            {/* Description */}
-            <p className="relative z-10 text-center mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-relaxed text-[#FFFFFF] max-w-3xl mx-auto px-6 font-normal opacity-90">
-              {service.description}
-            </p>
-
-            {/* Primary Action Button */}
-            <div className="relative z-10 flex justify-center mt-8 mb-6">
-              <Link
-                href="/contact"
-                className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3.5 rounded-full text-base shadow-md transition-all active:scale-95 duration-150"
-              >
-                Get Started Now
-              </Link>
+            {/* Centered Illustration (Anchored to bottom curve) */}
+            <div className="relative z-10 w-full flex justify-center items-end mt-auto h-[180px] sm:h-[260px] lg:h-[280px] xl:h-[320px] overflow-visible">
+              <img
+                src={meta.illustration}
+                alt={meta.title}
+                className="w-auto h-full max-w-[360px] sm:max-w-[420px] lg:max-w-[440px] xl:max-w-[460px] object-contain object-bottom select-none"
+              />
             </div>
 
           </div>
         </section>
       </div>
 
-      {/* Main Content Details Grid Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16 lg:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      {/* Our Capabilities Section (Coded from user mockup screenshot) */}
+      <section className="bg-white py-16 sm:py-24 relative z-10 border-b border-slate-100">
+        <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
+              Our Capabilities
+            </h2>
+          </div>
           
-          {/* Left Block: Offerings and Features */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold text-[#1E1B4B] tracking-tight">What We Offer</h2>
-              <p className="text-slate-600 text-base leading-relaxed">
-                Discover our specialized capabilities and solutions built to scale your business operations, boost security, and streamline workflows.
-              </p>
-            </div>
-
-            <div className="space-y-6 pt-2">
-              {service.offerings.map((off, idx) => (
-                <div key={idx} className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 space-y-3">
-                  <h3 className="text-lg sm:text-xl font-bold text-[#1E1B4B] flex items-center space-x-3">
-                    <span
-                      className={`w-2.5 h-2.5 rounded-full ${
-                        service.accentColor === "cyan"
-                          ? "bg-cyan-500"
-                          : service.accentColor === "blue"
-                          ? "bg-blue-600"
-                          : "bg-purple-500"
-                      }`}
-                    />
-                    <span>{off.title}</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
+            {capabilities.map((cap, idx) => {
+              const IconComponent = cap.icon;
+              return (
+                <div 
+                  key={idx} 
+                  className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/60 shadow-[0_4px_25px_rgba(0,0,0,0.015)] flex flex-col items-start space-y-5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 group"
+                >
+                  <div className="text-[#4F46E5] group-hover:scale-110 transition-transform duration-300">
+                    {IconComponent && <IconComponent className="w-10 h-10" />}
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#1E293B] group-hover:text-blue-600 transition-colors duration-200">
+                    {cap.title}
                   </h3>
-                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed pl-5.5">
-                    {off.desc}
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    {cap.desc}
                   </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Process Section (Coded from user mockup screenshot) */}
+      {processSteps.length > 0 && (
+        <section className="bg-slate-50/50 py-16 sm:py-24 relative z-10 border-b border-slate-100/80">
+          <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
+                {processHeading}
+              </h2>
+            </div>
+            
+            <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5">
+              {processSteps.map((step, idx) => (
+                <div 
+                  key={idx} 
+                  className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/50 shadow-[0_4px_25px_rgba(0,0,0,0.01)] flex items-center space-x-6 sm:space-x-8 hover:shadow-[0_12px_30px_rgba(0,0,0,0.025)] hover:-translate-y-0.5 transition-all duration-300 group"
+                >
+                  <div className="text-2xl sm:text-[32px] font-bold text-[#4F46E5] w-10 sm:w-14 flex-shrink-0 font-inter">
+                    {step.id}
+                  </div>
+                  <div className="flex-1 space-y-1">
+                    <h3 className="text-base sm:text-lg font-bold text-[#1E293B] group-hover:text-blue-600 transition-colors duration-200">
+                      {step.title}
+                    </h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Right Sidebar CTA card */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28">
-            <div className="bg-gradient-to-br from-slate-900 to-slate-950 p-8 rounded-3xl border border-slate-800 relative overflow-hidden space-y-6 shadow-xl text-white">
-              <div
-                className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl ${
-                  service.accentColor === "cyan"
-                    ? "bg-cyan-400/5"
-                    : service.accentColor === "blue"
-                    ? "bg-blue-400/5"
-                    : "bg-purple-400/5"
-                }`}
-              />
-              
-              <h3 className="text-2xl font-bold text-white tracking-tight">Why Choose SecurXpert?</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Whether you need a consultation, a custom feature design, or a security audit of your current stack, our engineering team is here to assist.
-              </p>
-              
-              <div className="border-t border-slate-800 my-4" />
-
-              <ul className="space-y-3.5 text-sm text-slate-200">
-                {service.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-center space-x-3">
-                    <svg className="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="pt-4">
-                <Link
-                  href="/contact"
-                  className="w-full text-center block font-bold py-4 rounded-xl text-base transition-all bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 hover:from-blue-700 hover:to-violet-800 text-white shadow-lg active:scale-95 duration-150"
+        </section>
+      )}
+      {/* Technology Stack Section (Coded from user mockup screenshot) */}
+      {techStack.length > 0 && (
+        <section className="bg-white py-16 sm:py-14 relative z-10 border-b border-slate-100/80">
+          <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
+            <div className="text-center mb-12 sm:mb-16">
+              <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
+                Technology Stack
+              </h3>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-7xl mx-auto">
+              {techStack.map((tech, idx) => (
+                <span 
+                  key={idx} 
+                  className="text-white text-sm sm:text-base font-medium px-5 py-2 rounded-full hover:scale-105 transition-all duration-200 select-none shadow-[0_4px_15px_rgba(59,48,219,0.15)] cursor-default"
+                  style={{ background: 'linear-gradient(90deg, #4F46E5 0%, #4E42E1 7.14%, #4D3EDC 14.29%, #4B3BD8 21.43%, #4A37D3 28.57%, #4933CF 35.71%, #482ECA 42.86%, #462AC6 50%, #4526C2 57.14%, #4421BD 64.29%, #421CB9 71.43%, #4117B5 78.57%, #4010B1 85.71%, #3E08AC 92.86%, #3D00A8 100%)' }}
                 >
-                  Consult Our Team
-                </Link>
-              </div>
+                  {tech}
+                </span>
+              ))}
             </div>
           </div>
+        </section>
+      )}
 
+      {/* Ready to Build Something Amazing CTA Section (Coded from user mockup screenshot) */}
+      <section 
+        className="w-full text-center select-none py-20 px-6 md:px-12 flex items-center justify-center relative z-10"
+        style={{
+          background: "linear-gradient(135deg, #4F46E5 0%, #4E42E1 7.14%, #4D3EDC 14.29%, #4B3BD8 21.43%, #4A37D3 28.57%, #4933CF 35.71%, #482ECA 42.86%, #462AC6 50%, #4526C2 57.14%, #4421BD 64.29%, #421CB9 71.43%, #4117B5 78.57%, #4010B1 85.71%, #3E08AC 92.86%, #3D00A8 100%)"
+        }}
+      >
+        <div className="max-w-4xl mx-auto flex flex-col items-center justify-center space-y-6">
+          <h2 className="text-3xl sm:text-4xl md:text-[44px] text-white font-semibold tracking-tight font-space-grotesk">
+            Ready to Build Something Amazing?
+          </h2>
+          <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
+            Let's turn your vision into reality with our expert development team.
+          </p>
+          <div className="pt-4">
+            <Link 
+              href="/contact" 
+              className="inline-block bg-white hover:bg-white/90 text-[#4F46E5] font-semibold px-8 py-3 rounded-full text-base sm:text-lg shadow-lg shadow-black/10 transition-all hover:scale-[1.02] active:scale-95 duration-150"
+            >
+              Get in Touch
+            </Link>
+          </div>
         </div>
       </section>
 

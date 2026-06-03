@@ -1,0 +1,84 @@
+import { LuUsers, LuLayers } from "react-icons/lu";
+
+const uiUx = {
+  title: "UI/UX Design & Interactive Prototyping",
+  subtitle: "Core Service",
+  description: "Deliver exceptional, user-centered digital products. Our design team focuses on deeply understanding user behaviors, performing accessibility (WCAG) reviews, creating intuitive wireframes, and building state-of-the-art interactive prototypes to elevate user satisfaction and conversion rates.",
+  accentColor: "purple",
+  bgClass: "bg-purple-500/10",
+  borderClass: "border-purple-500/20",
+  textColor: "text-purple-400",
+  buttonBg: "bg-purple-600 hover:bg-purple-500 text-white",
+  offerings: [
+    {
+      title: "User Research & Persona Mapping",
+      desc: "Conduct detailed user interviews, run usability tests, and map comprehensive journey maps to ground every product design decision in verified user needs."
+    },
+    {
+      title: "High-Fidelity Wireframing & Prototyping",
+      desc: "Develop advanced interactive prototypes in Figma, giving you complete visualization of screen transitions, animations, and flows before a single line of frontend code is written."
+    },
+    {
+      title: "Design System Engineering & WCAG Audits",
+      desc: "Build highly scalable, tokenized design systems to keep user interfaces uniform across mobile and web platforms, alongside complete WCAG accessibility audits."
+    }
+  ],
+  benefits: [
+    "User-First Interface Engineering",
+    "Figma High-Fidelity Interactive Assets",
+    "Unified Modular Design Systems"
+  ],
+  capabilities: [
+    {
+      title: "User Research",
+      desc: "Target audience personas, journey mapping, and competitive audits",
+      icon: LuUsers
+    },
+    {
+      title: "Wireframing",
+      desc: "Low-fidelity layouts to map out page logic and structure",
+      icon: LuLayers
+    },
+    {
+      title: "Design Systems",
+      desc: "Consistent, reusable UI components for scalable development",
+      icon: LuLayers
+    },
+    {
+      title: "High-Fi Prototypes",
+      desc: "Figma interactive layouts to test flow and get approvals",
+      icon: LuLayers
+    }
+  ],
+  processHeading: "Our Development Process",
+  process: [
+    {
+      id: "01",
+      title: "User Research",
+      desc: "Interviews, surveys, user persona mapping, and heuristic reviews"
+    },
+    {
+      id: "02",
+      title: "Wireframing",
+      desc: "Low-fidelity layouts to map structure and content hierarchy"
+    },
+    {
+      id: "03",
+      title: "Design System",
+      desc: "Creating UI components, color palettes, and typography rules"
+    },
+    {
+      id: "04",
+      title: "Prototyping",
+      desc: "Developing interactive high-fidelity clickable Figma designs"
+    },
+    {
+      id: "05",
+      title: "Usability Testing",
+      desc: "Validating user flows, animations, and preparing developer handoff"
+    }
+  ],
+  techStack: ["Figma", "Adobe XD", "Sketch", "InVision", "Miro", "Zeplin", "Illustrator"]
+};
+
+export default uiUx;
