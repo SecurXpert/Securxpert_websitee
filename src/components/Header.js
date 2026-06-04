@@ -52,7 +52,7 @@ export default function Header() {
     const cleanLinkPath = path.toLowerCase().replace(/\/$/, "");
     const isActive = cleanPath === cleanLinkPath;
 
-    return `text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${isActive
+    return `text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${isActive
       ? isDarkBg
         ? "text-white border-white font-bold"
         : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
@@ -66,7 +66,7 @@ export default function Header() {
     const cleanLinkPath = path.toLowerCase().replace(/\/$/, "");
     const isActive = cleanPath === cleanLinkPath;
 
-    return `block px-3 py-2.5 rounded-lg text-base font-semibold transition-colors ${isActive
+    return `block px-3 py-2.5 rounded-lg text-[15px] font-semibold transition-colors ${isActive
       ? "bg-gradient-to-r from-blue-50 to-[#3E66F3]/10 text-blue-600 font-bold"
       : "text-slate-800 hover:bg-slate-50"
       }`;
@@ -111,7 +111,7 @@ export default function Header() {
             <div className="relative group py-2">
               <Link
                 href="/services"
-                className={`text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/")
+                className={`text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/")
                   ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
                   : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
@@ -134,24 +134,14 @@ export default function Header() {
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
               <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                <Link
-                  href="/services/software-development"
-                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
-                >
-                  Software Development
-                </Link>
-                <Link
-                  href="/services/digital-marketing"
-                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
-                >
-                  Digital Marketing
-                </Link>
-                <Link
-                  href="/services/ui-ux"
-                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
-                >
-                  UI/UX
-                </Link>
+                <Link href="/services/software-development" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Software Development</Link>
+                <Link href="/services/it-support" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">IT Support</Link>
+                <Link href="/services/cloud-services" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Cloud Services</Link>
+                <Link href="/services/bpo-services" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">BPO Services</Link>
+                <Link href="/services/ai-chatbots" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">AI Chatbots</Link>
+                <Link href="/services/digital-marketing" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Digital Marketing</Link>
+                <Link href="/services/ui-ux-design" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">UI/UX Design</Link>
+                <Link href="/services/cybersecurity" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Cybersecurity</Link>
               </div>
             </div>
 
@@ -159,7 +149,7 @@ export default function Header() {
             <div className="relative group py-2">
               <Link
                 href="/products"
-                className={`text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/products" || cleanPath.startsWith("/products/")
+                className={`text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/products" || cleanPath.startsWith("/products/")
                   ? isDarkBg
                     ? "text-white border-white font-bold"
                     : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
@@ -186,25 +176,25 @@ export default function Header() {
               <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
                 <Link
                   href="/products/grabjobz"
-                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
                 >
                   GrabJobz
                 </Link>
                 <Link
                   href="/products/lens-light"
-                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
                 >
                   Lens & Light Media
                 </Link>
                 <Link
                   href="/products/devtalent"
-                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
                 >
                   DevTalent
                 </Link>
                 <Link
                   href="/products/vishan"
-                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
                 >
                   Vishan
                 </Link>
@@ -231,7 +221,7 @@ export default function Header() {
             <div className="relative group py-2">
               <Link
                 href="/AboutUs"
-                className={`text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/aboutus" || cleanPath.startsWith("/aboutus/")
+                className={`text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/aboutus" || cleanPath.startsWith("/aboutus/")
                   ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
                   : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
@@ -256,13 +246,13 @@ export default function Header() {
               <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-48 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
                 <Link
                   href="/AboutUs/team"
-                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
                 >
                   Our Team
                 </Link>
                 <Link
                   href="/AboutUs/founders"
-                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
                 >
                   Founders
                 </Link>
@@ -298,7 +288,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center lg:-translate-x-6 xl:-translate-x-4 2xl:translate-x-0">
             <Link
               href="/contact"
-              className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 hover:from-blue-700 hover:to-violet-800 text-white font-semibold px-6 py-2.5 rounded-full text-[14px] transition-all shadow-md hover:shadow-lg active:scale-95"
+              className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 hover:from-blue-700 hover:to-violet-800 text-white font-semibold px-6 py-2.5 rounded-full text-[13px] transition-all shadow-md hover:shadow-lg active:scale-95"
             >
               Book Consultation
             </Link>
@@ -349,24 +339,14 @@ export default function Header() {
                 Services
               </Link>
               <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
-                <Link
-                  href="/services/web-development"
-                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  Software Development
-                </Link>
-                <Link
-                  href="/services/digital-marketing"
-                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  Digital Marketing
-                </Link>
-                <Link
-                  href="/services/ui-ux"
-                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  UI/UX
-                </Link>
+                <Link href="/services/software-development" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Software Development</Link>
+                <Link href="/services/it-support" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">IT Support</Link>
+                <Link href="/services/cloud-services" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Cloud Services</Link>
+                <Link href="/services/bpo-services" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">BPO Services</Link>
+                <Link href="/services/ai-chatbots" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">AI Chatbots</Link>
+                <Link href="/services/digital-marketing" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Digital Marketing</Link>
+                <Link href="/services/ui-ux-design" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">UI/UX Design</Link>
+                <Link href="/services/cybersecurity" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Cybersecurity</Link>
               </div>
             </div>
 
@@ -381,25 +361,25 @@ export default function Header() {
               <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
                 <Link
                   href="/products/grabjobz"
-                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
                   GrabJobz
                 </Link>
                 <Link
                   href="/products/lens-light"
-                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
                   Lens & Light Media
                 </Link>
                 <Link
                   href="/products/devtalent"
-                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
                   DevTalent
                 </Link>
                 <Link
                   href="/products/vishan"
-                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
                   Vishan
                 </Link>
@@ -417,7 +397,7 @@ export default function Header() {
             {/* Insights */}
             <Link
               href="#"
-              className="block px-3 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-[15px] font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
             >
               Insights
             </Link>
@@ -433,13 +413,13 @@ export default function Header() {
               <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
                 <Link
                   href="/AboutUs/team"
-                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
                   Our Team
                 </Link>
                 <Link
                   href="/AboutUs/founders"
-                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
                   Founders
                 </Link>
@@ -474,7 +454,7 @@ export default function Header() {
             <div className="pt-4 pb-2">
               <Link
                 href="/contact"
-                className="w-full text-center block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 text-white font-semibold px-4 py-3 rounded-full text-sm shadow-md transition-all active:scale-95"
+                className="w-full text-center block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 text-white font-semibold px-4 py-3 rounded-full text-[13px] shadow-md transition-all active:scale-95"
               >
                 Book Consultation
               </Link>

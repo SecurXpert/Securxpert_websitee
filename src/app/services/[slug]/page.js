@@ -6,12 +6,22 @@ import softwareDevelopment from "@/utils/services/software-development";
 import digitalMarketing from "@/utils/services/digital-marketing";
 import mobileAppDevelopment from "@/utils/services/mobile-app-development";
 import uiUx from "@/utils/services/ui-ux";
+import itSupport from "@/utils/services/it-support";
+import cloudServices from "@/utils/services/cloud-services";
+import bpoServices from "@/utils/services/bpo-services";
+import aiChatbots from "@/utils/services/ai-chatbots";
+import cybersecurity from "@/utils/services/cybersecurity";
 
 const servicesData = {
   "software-development": softwareDevelopment,
   "digital-marketing": digitalMarketing,
   "mobile-app-development": mobileAppDevelopment,
-  "ui-ux": uiUx,
+  "ui-ux-design": uiUx,
+  "it-support": itSupport,
+  "cloud-services": cloudServices,
+  "bpo-services": bpoServices,
+  "ai-chatbots": aiChatbots,
+  "cybersecurity": cybersecurity
 };
 
 const heroMetadata = {
@@ -21,32 +31,60 @@ const heroMetadata = {
     desc: "From MVPs to enterprise-grade applications, we deliver scalable software solutions that drive business growth.",
     illustration: "/Services/services.png"
   },
+  "it-support": {
+    category: "02 — IT SUPPORT",
+    title: "Reliable IT Support & Managed Services",
+    desc: "Comprehensive IT support solutions to ensure your business operations run smoothly and securely 24/7.",
+    illustration: "/Services/OurServices/services3.png"
+  },
+  "cloud-services": {
+    category: "03 — CLOUD SERVICES",
+    title: "Scale with Cloud Infrastructure",
+    desc: "Scalable, secure, and reliable cloud solutions to accelerate your digital transformation and reduce infrastructure costs.",
+    illustration: "/Services/OurServices/services1.png"
+  },
+  "bpo-services": {
+    category: "04 — BPO SERVICES",
+    title: "Optimize Operations with BPO",
+    desc: "Streamline your operations with our dedicated BPO services, offering scalable teams for customer support and back-office tasks.",
+    illustration: "/Services/OurServices/services6.png"
+  },
+  "ai-chatbots": {
+    category: "05 — AI CHATBOTS",
+    title: "Automate with Smart AI Chatbots",
+    desc: "Intelligent AI-driven chatbots and virtual assistants that automate customer service and enhance user engagement.",
+    illustration: "/Services/services.png"
+  },
   "digital-marketing": {
-    category: "02 — DIGITAL MARKETING",
+    category: "06 — DIGITAL MARKETING",
     title: "Grow Your Brand with Digital Marketing",
     desc: "Maximize online visibility, attract targeted traffic, and boost conversions with high-impact marketing campaigns.",
     illustration: "/Services/OurServices/services4.png"
   },
-  "mobile-app-development": {
-    category: "03 — MOBILE APP DEVELOPMENT",
-    title: "Craft Powerful Mobile Experiences",
-    desc: "Secure, responsive native and hybrid mobile apps tailored to keep users connected and engaged.",
-    illustration: "/Services/OurServices/services2.png"
-  },
-  "ui-ux": {
-    category: "04 — UI/UX DESIGN",
+  "ui-ux-design": {
+    category: "07 — UI/UX DESIGN",
     title: "Design the Future with Intuitive Interfaces",
     desc: "User-centered wireframes, modern design systems, and high-fidelity interactive prototypes that convert.",
     illustration: "/Services/OurServices/services5.png"
+  },
+  "cybersecurity": {
+    category: "08 — CYBERSECURITY",
+    title: "Secure Your Enterprise Assets",
+    desc: "Robust cybersecurity solutions to protect your digital assets, ensure compliance, and defend against advanced threats.",
+    illustration: "/Services/OurServices/services2.png"
   }
 };
 
 export async function generateStaticParams() {
   return [
-    { slug: "web-development" },
+    { slug: "software-development" },
+    { slug: "it-support" },
+    { slug: "cloud-services" },
+    { slug: "bpo-services" },
+    { slug: "ai-chatbots" },
     { slug: "digital-marketing" },
-    { slug: "mobile-app-development" },
-    { slug: "ui-ux" }
+    { slug: "ui-ux-design" },
+    { slug: "cybersecurity" }
   ];
 }
 

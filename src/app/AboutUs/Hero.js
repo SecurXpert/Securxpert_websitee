@@ -12,7 +12,7 @@ export default function Hero() {
       {/* Top Content Grid */}
       <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:pl-10 md:pr-20">
         <div className="flex flex-col lg:flex-row items-stretch justify-between gap-8 lg:gap-4 relative">
-          
+
           {/* Left Column: Heading */}
           <div className="w-full lg:w-[38%] flex flex-col items-start justify-center space-y-6  z-20 text-left">
             {/* Category Tag */}
@@ -82,14 +82,14 @@ export default function Hero() {
 
       {/* Bottom Banner with Rounded/Curved Frame */}
       <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto mt-16 sm:mt-24 lg:mt-10 px-0 relative z-10">
-        <div 
+        <div
           className="w-full rounded-[30px] overflow-hidden relative border border-white/40 bg-cover bg-center py-16 sm:py-20 lg:py-24 px-6 sm:px-12 md:px-16"
           style={{
             backgroundImage: "linear-gradient(to right, rgba(15, 23, 42, 0.54) 30%, rgba(30, 41, 59, 0.82) 100%), url('/AboutUs/Aboutus2.jpg')"
           }}
         >
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-            
+
             {/* Left Side: Services & Contact Info */}
             <div className="flex flex-col items-start gap-6 w-full lg:w-auto">
               {/* Checkmark List */}

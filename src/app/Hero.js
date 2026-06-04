@@ -113,7 +113,7 @@ const HeroSection = () => {
                                 />
                             </div>
 
-                            <p className="pl-4 text-blue-100 md:text-slate-700 lg:text-blue-100 font-semibold text-sm xl:text-[15px] 2xl:text-lg tracking-tight whitespace-nowrap">
+                            <p className=" text-blue-100 md:text-slate-700 lg:text-blue-100 font-semibold text-sm xl:text-[15px] 2xl:text-lg tracking-tight whitespace-nowrap transform -translate-x-6 lg:-translate-x-6">
                                 Over 999+ Users Across the world
                             </p>
                         </div>

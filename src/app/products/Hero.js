@@ -93,7 +93,7 @@ export default function Hero() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden select-none">
-      
+
       {/* Dynamic inline styles for entry animations */}
       <style>{`
         @keyframes slideUpEnter {
@@ -158,32 +158,31 @@ export default function Hero() {
       `}</style>
 
       {/* Main Single-slide Container with smooth background transition */}
-      <div 
+      <div
         className="w-full h-full flex items-center justify-center relative px-6 md:px-20 lg:px-28 transition-all duration-700 ease-in-out"
         style={{ background: activeSlide.bgGradient }}
       >
         {/* Subtle radial light layout overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.06),transparent_60%)] pointer-events-none" />
 
-        <div className="w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 z-10 pt-20">
-          
+        <div className="w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 z-10 pt-20">
+
           {/* Left Column: Text & CTA (Keyed by index to force animation restart) */}
-          <div 
+          <div
             key={`text-${currentIndex}`}
-            className={`flex-1 text-left space-y-6 lg:space-y-8 max-w-2xl ${
-              direction === "next" ? "anim-text-next" : "anim-text-prev"
-            }`}
+            className={`w-full lg:w-[50%] text-left space-y-6 lg:space-y-8 max-w-7xl ${direction === "next" ? "anim-text-next" : "anim-text-prev"
+              }`}
           >
-            <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight font-Plus Jakarta Sans max-w-[650px] ${activeSlide.titleColor}`}>
+            <h1 className={`text-4xl sm:text-5xl md:text-5xl font-semibold max-w-full leading-tight font-Plus Jakarta Sans ${activeSlide.titleColor}`}>
               {activeSlide.title}
             </h1>
-            <p className={`text-sm sm:text-base md:text-lg leading-relaxed max-w-xl font-medium ${activeSlide.descColor}`}>
+            <p className={`text-sm sm:text-base md:text-xl leading-relaxed max-w-lg font-medium ${activeSlide.descColor}`}>
               {activeSlide.desc}
             </p>
             <div className="pt-2">
               <Link
                 href={`/products/${activeSlide.slug}`}
-                className={`inline-block px-8 py-3.5 rounded-full font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 transform hover:scale-[1.04] active:scale-[0.98] shadow-lg shadow-black/10 ${activeSlide.btnBg}`}
+                className={`inline-block px-8 py-3.5 rounded-full font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 transform hover:scale-[1.04] active:scale-[0.98]   ${activeSlide.btnBg}`}
               >
                 Learn More
               </Link>
@@ -191,8 +190,8 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Masked/Cutoff Logo Container with Arrows */}
-          <div className="relative flex items-center justify-center w-full lg:w-[48%] h-[280px] sm:h-[350px] md:h-[420px] lg:h-[480px]">
-            
+          <div className="relative flex items-center justify-center w-full lg:w-[44%] h-[280px] sm:h-[350px] md:h-[420px] lg:h-[480px]">
+
             {/* Left Arrow Button */}
             <button
               onClick={handlePrev}
@@ -212,20 +211,17 @@ export default function Hero() {
             </button>
 
             {/* Image Wrapper confining animations (Image moves only inside this space, cut off at edges) */}
-            <div className="w-[90%] h-full overflow-hidden relative flex items-center justify-center">
-              
+            <div className="w-[96%] h-full overflow-hidden relative flex items-center justify-center">
+
               {/* Product Logo / Graphic (Keyed by index to animate entry) */}
               <img
                 key={`img-${currentIndex}`}
                 src={activeSlide.image}
                 alt={activeSlide.title}
-                className={`w-auto h-[85%] sm:h-[95%] max-w-[95%] object-contain select-none pointer-events-none hover:scale-[1.03] transition-transform duration-500 ease-out z-10 ${
-                  direction === "next" ? "anim-image-next" : "anim-image-prev"
-                }`}
+                className={`w-auto h-[90%] sm:h-full max-w-full object-contain select-none pointer-events-none hover:scale-[1.03] transition-transform duration-500 ease-out z-10 ${direction === "next" ? "anim-image-next" : "anim-image-prev"
+                  }`}
               />
 
-              {/* Simulated shadow overlay underneath logo for 3D depth */}
-              <div className="absolute bottom-6 sm:bottom-10 w-[60%] h-[15px] sm:h-[22px] bg-black/20 blur-[12px] sm:blur-[18px] rounded-full pointer-events-none z-0 animate-pulse" />
             </div>
 
           </div>
@@ -244,9 +240,8 @@ export default function Hero() {
               setDirection(idx > currentIndex ? "next" : "prev");
               setCurrentIndex(idx);
             }}
-            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              currentIndex === idx ? "w-8 bg-white" : "w-2.5 bg-white/50 hover:bg-white/80"
-            }`}
+            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === idx ? "w-8 bg-white" : "w-2.5 bg-white/50 hover:bg-white/80"
+              }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
         ))}
