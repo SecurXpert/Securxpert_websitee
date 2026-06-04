@@ -38,16 +38,19 @@ export default function Header() {
     cleanPath === "" ||
     cleanPath === "/services" ||
     cleanPath.startsWith("/services/") ||
+    cleanPath === "/products" ||
+    cleanPath.startsWith("/products/") ||
     cleanPath === "/bpo" ||
     cleanPath === "/portfolio" ||
     cleanPath === "/contact" ||
     cleanPath === "/blogs" ||
     cleanPath === "/carrers";
 
+  const isDarkBg = (cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/")) && !scrolled;
+
   const getDesktopLinkClass = (path) => {
     const cleanLinkPath = path.toLowerCase().replace(/\/$/, "");
     const isActive = cleanPath === cleanLinkPath;
-    const isDarkBg = (cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled;
 
     return `text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${isActive
       ? isDarkBg
@@ -89,7 +92,7 @@ export default function Header() {
             <img
               src="/SX original logo.png"
               alt="SecurXpert Logo"
-              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled && !mobileMenuOpen ? "brightness-0 invert" : ""
+              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/")) && !scrolled && !mobileMenuOpen ? "brightness-0 invert" : ""
                 }`}
             />
           </Link>
@@ -110,14 +113,14 @@ export default function Header() {
                 href="/services"
                 className={`text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/")
                   ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
-                  : (cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled
+                  : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
                     : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
                   }`}
               >
                 Services
                 <svg
-                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${(cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
+                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${isDarkBg ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
                     }`}
                   fill="none"
                   stroke="currentColor"
@@ -152,13 +155,61 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Products */}
-            <Link
-              href="/products"
-              className={getDesktopLinkClass("/products")}
-            >
-              Products
-            </Link>
+            {/* Products with Hover Dropdown */}
+            <div className="relative group py-2">
+              <Link
+                href="/products"
+                className={`text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/products" || cleanPath.startsWith("/products/")
+                  ? isDarkBg
+                    ? "text-white border-white font-bold"
+                    : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
+                  : isDarkBg
+                    ? "text-white/85 hover:text-white font-medium border-transparent"
+                    : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
+                  }`}
+              >
+                Products
+                <svg
+                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${isDarkBg ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
+                    }`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </Link>
+
+              {/* Dropdown Menu - Sleek glassmorphism style */}
+              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                <Link
+                  href="/products/grabjobz"
+                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                >
+                  GrabJobz
+                </Link>
+                <Link
+                  href="/products/lens-light"
+                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                >
+                  Lens & Light Media
+                </Link>
+                <Link
+                  href="/products/devtalent"
+                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                >
+                  DevTalent
+                </Link>
+                <Link
+                  href="/products/vishan"
+                  className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
+                >
+                  Vishan
+                </Link>
+              </div>
+            </div>
 
             {/* BPO */}
             <Link
@@ -182,14 +233,14 @@ export default function Header() {
                 href="/AboutUs"
                 className={`text-[15px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/aboutus" || cleanPath.startsWith("/aboutus/")
                   ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
-                  : (cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled
+                  : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
                     : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
                   }`}
               >
                 About Us
                 <svg
-                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${(cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
+                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${isDarkBg ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
                     }`}
                   fill="none"
                   stroke="currentColor"
@@ -319,13 +370,41 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Products */}
-            <Link
-              href="#"
-              className="block px-3 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
-            >
-              Products
-            </Link>
+            {/* Products with Mobile Sub-options */}
+            <div className="flex flex-col">
+              <Link
+                href="/products"
+                className={getMobileLinkClass("/products")}
+              >
+                Products
+              </Link>
+              <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
+                <Link
+                  href="/products/grabjobz"
+                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                >
+                  GrabJobz
+                </Link>
+                <Link
+                  href="/products/lens-light"
+                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                >
+                  Lens & Light Media
+                </Link>
+                <Link
+                  href="/products/devtalent"
+                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                >
+                  DevTalent
+                </Link>
+                <Link
+                  href="/products/vishan"
+                  className="block py-2 text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                >
+                  Vishan
+                </Link>
+              </div>
+            </div>
 
             {/* BPO */}
             <Link

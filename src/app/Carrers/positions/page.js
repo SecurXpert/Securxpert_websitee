@@ -2,157 +2,134 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { positionsData, slugify } from "./[slug]/positionsData";
 
-const JOBS_DATA = [
-  {
-    id: 1,
-    title: "Senior Full Stack Engineer",
-    category: "Development",
-    location: "Bangalore, India",
-    type: "Full-Time",
-    experience: "5+ Years",
-    description: "Lead the development of secure enterprise-grade SaaS platforms, cloud integrations, and core backend API architectures."
-  },
-  {
-    id: 2,
-    title: "Cybersecurity Threat Analyst",
-    category: "Security",
-    location: "Bangalore, India / Remote",
-    type: "Full-Time",
-    experience: "3+ Years",
-    description: "Monitor and analyze network logs, perform penetration tests, identify vulnerabilities, and design robust defensive measures."
-  },
-  {
-    id: 3,
-    title: "Lead UI/UX Designer",
-    category: "Design",
-    location: "Bangalore, India",
-    type: "Full-Time",
-    experience: "4+ Years",
-    description: "Own the creation of user journeys, modern layouts, high-fidelity prototypes, and our unified design system across digital products."
-  },
-  {
-    id: 4,
-    title: "Digital Marketing Specialist",
-    category: "Marketing",
-    location: "Remote",
-    type: "Contract",
-    experience: "2+ Years",
-    description: "Manage SEO campaigns, lead paid advertising campaigns, and develop social growth strategies for digital client portfolios."
-  }
+const categories = [
+  { name: "All", count: 17 },
+  { name: "Engineering", count: 7 },
+  { name: "Product", count: 3 },
+  { name: "Design", count: 1 },
+  { name: "Operation", count: 4 },
+  { name: "Marketing", count: 2 },
 ];
 
 export default function Positions() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [visibleCount, setVisibleCount] = useState(5);
 
-  const categories = ["All", "Development", "Security", "Design", "Marketing"];
+  const filteredPositions = activeCategory === "All"
+    ? positionsData
+    : positionsData.filter((pos) => pos.category === activeCategory);
 
-  const filteredJobs = JOBS_DATA.filter((job) => {
-    const matchesCategory = activeCategory === "All" || job.category === activeCategory;
-    const matchesSearch = job.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          job.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const displayedPositions = filteredPositions.slice(0, visibleCount);
 
   return (
-    <section id="positions" className="bg-slate-50 py-16 sm:py-24 relative z-10 border-t border-b border-slate-100">
-      <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
+    <section className="relative w-full py-24 bg-[#F8FAFC] text-slate-800 border-t border-slate-100">
+      <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20 pt-16">
         
-        {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="space-y-4 max-w-xl">
-            <div className="inline-block bg-[#3B30DB]/10 text-[#3B30DB] px-4 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider">
-              Careers Portal
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-slate-900 tracking-tight font-space-grotesk">
-              Explore Open Positions
-            </h2>
-            <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
-              Join a team of expert engineers, creative designers, and marketing strategists building the future of secure digital solutions.
-            </p>
-          </div>
-
-          {/* Search Input */}
-          <div className="w-full md:w-72">
-            <input
-              type="text"
-              placeholder="Search positions..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white text-slate-800 border border-slate-200 rounded-full px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#3B30DB] focus:border-transparent transition-all shadow-sm"
-            />
-          </div>
+        {/* Main Section Header */}
+        <div className="text-center mb-16 max-w-4xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-regular text-[#100D35] tracking-tight leading-tight font-sans">
+            We have 17 open positions now!
+          </h2>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 mb-8">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                activeCategory === cat
-                  ? "bg-[#3B30DB] text-white shadow-md shadow-[#3B30DB]/15"
-                  : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Jobs Grid */}
-        {filteredJobs.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xl:gap-8">
-            {filteredJobs.map((job) => (
-              <div
-                key={job.id}
-                className="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-[0_4px_25px_rgba(0,0,0,0.015)] flex flex-col justify-between space-y-6 hover:shadow-[0_12px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 group"
-              >
-                <div className="space-y-4">
-                  {/* Job Metadata tags */}
-                  <div className="flex items-center gap-2">
-                    <span className="bg-[#3B30DB]/5 text-[#3B30DB] text-xs font-bold px-3 py-1 rounded-md uppercase">
-                      {job.category}
-                    </span>
-                    <span className="bg-slate-100 text-slate-500 text-xs font-medium px-3 py-1 rounded-md">
-                      {job.type}
-                    </span>
-                  </div>
-
-                  {/* Job Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">
-                    {job.title}
-                  </h3>
-
-                  {/* Short Description */}
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    {job.description}
-                  </p>
-                </div>
-
-                {/* Footer Details */}
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                  <div className="flex flex-col text-xs text-slate-400">
-                    <span className="font-medium text-slate-500">{job.location}</span>
-                    <span>Exp: {job.experience}</span>
-                  </div>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-1.5 text-[#3B30DB] group-hover:text-blue-600 font-bold text-sm transition-all duration-200"
+        {/* Content Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
+          
+          {/* LEFT SIDEBAR: Categories & LinkedIn */}
+          <div className="lg:col-span-1 flex flex-col gap-8 lg:sticky lg:top-8">
+            <div className="flex flex-col gap-4">
+              {categories.map((cat, idx) => {
+                const isActive = activeCategory === cat.name;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setActiveCategory(cat.name);
+                      setVisibleCount(5); // Reset visible count on filter change
+                    }}
+                    className={`text-left text-[15px] py-1.5 transition-all duration-300 ${
+                      isActive
+                        ? "border-l-[3px] border-[#2B47FC] pl-4 font-semibold text-[#2B47FC]"
+                        : "border-l-[3px] border-transparent pl-4 text-slate-500 hover:text-[#2B47FC] hover:border-slate-300"
+                    }`}
                   >
-                    Apply Now &rarr;
-                  </Link>
+                    {cat.name} ({cat.count})
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* LinkedIn callout box */}
+            <div className="border-t border-slate-200/60 pt-8 flex flex-col gap-4">
+              <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                We are always seeking talented people. In case you cannot find your desired position here, please send us your LinkedIn profile and give us your contact information. We will be in touch.
+              </p>
+              <button className="w-full sm:w-auto self-start border border-slate-900 rounded-full px-5 py-2.5 text-xs font-semibold text-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300">
+                Share your LinkedIn profile
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Positions List */}
+          <div className="lg:col-span-3 flex flex-col gap-6">
+            <div className="flex flex-col gap-6">
+              {displayedPositions.map((pos) => (
+                <div
+                  key={pos.id}
+                  className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-6 md:p-8 rounded-[16px] border border-slate-100/85 shadow-sm hover:shadow-md transition-all duration-300"
+                >
+                  <div className="flex-1">
+                    <h3 className="text-xl md:text-[22px] font-semibold text-[#2B47FC] mb-3 leading-snug font-sans">
+                      {pos.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {pos.tags.map((tag, idx) => (
+                        <span
+                          key={idx}
+                          className="text-[11px] px-3 py-1.5 rounded-full border border-blue-200/50 text-[#2B47FC] font-semibold bg-blue-50/15"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-slate-600 text-[14px] md:text-[15px] leading-relaxed max-w-3xl">
+                      {pos.description}
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 self-end md:self-center">
+                    <Link
+                      href={`/Carrers/positions/${slugify(pos.title)}`}
+                      className="bg-[#2B47FC] hover:bg-blue-700 text-white text-xs md:text-sm font-semibold px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300"
+                    >
+                      See positions <span className="text-[14px]">→</span>
+                    </Link>
+                  </div>
                 </div>
+              ))}
+
+              {filteredPositions.length === 0 && (
+                <div className="text-center py-12 bg-white rounded-[16px] border border-slate-100 text-slate-500">
+                  No open positions found in this category.
+                </div>
+              )}
+            </div>
+
+            {/* Show More Button */}
+            {filteredPositions.length > visibleCount && (
+              <div className="flex justify-center mt-6">
+                <button
+                  onClick={() => setVisibleCount((prev) => prev + 5)}
+                  className="border border-slate-900 rounded-full px-8 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300"
+                >
+                  Show more...
+                </button>
               </div>
-            ))}
+            )}
           </div>
-        ) : (
-          <div className="text-center py-16 bg-white rounded-3xl border border-slate-200/50 shadow-[0_4px_25px_rgba(0,0,0,0.01)]">
-            <p className="text-slate-400 font-medium">No open positions matching your search filters.</p>
-          </div>
-        )}
+
+        </div>
 
       </div>
     </section>
