@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { LuArrowUpRight, LuArrowLeft, LuArrowRight } from "react-icons/lu";
 
 const allPostsData = [
     {
         id: 1,
+        slug: "bill-walsh-leadership-lessons",
         image: "/Blogs/AllPosts/Image (5).png",
         author: "Alec Whitten",
         date: "1 Jan 2023",
@@ -18,6 +20,7 @@ const allPostsData = [
     },
     {
         id: 2,
+        slug: "pm-mental-models",
         image: "/Blogs/AllPosts/Image (6).png",
         author: "Demi Wilkinson",
         date: "1 Jan 2023",
@@ -31,6 +34,7 @@ const allPostsData = [
     },
     {
         id: 3,
+        slug: "what-is-wireframing",
         image: "/Blogs/AllPosts/Image (7).png",
         author: "Candice Wu",
         date: "1 Jan 2023",
@@ -43,6 +47,7 @@ const allPostsData = [
     },
     {
         id: 4,
+        slug: "how-collaboration-makes-us-better-designers",
         image: "/Blogs/AllPosts/Image (8).png",
         author: "Natali Craig",
         date: "1 Jan 2023",
@@ -55,6 +60,7 @@ const allPostsData = [
     },
     {
         id: 5,
+        slug: "our-top-10-javascript-frameworks",
         image: "/Blogs/AllPosts/Image (9).png",
         author: "Drew Cano",
         date: "1 Jan 2023",
@@ -68,6 +74,7 @@ const allPostsData = [
     },
     {
         id: 6,
+        slug: "podcast-creating-a-better-cx-community",
         image: "/Blogs/AllPosts/Image (10).png",
         author: "Orlando Diggs",
         date: "1 Jan 2023",
@@ -95,7 +102,7 @@ export default function AllPosts() {
                 {/* 3-Column Grid Container */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                     {allPostsData.map((post) => (
-                        <div key={post.id} className="flex flex-col group cursor-pointer">
+                        <Link href={`/Blogs/${post.slug}`} key={post.id} className="flex flex-col group cursor-pointer">
                             
                             {/* Image Container */}
                             <div className="relative w-full aspect-[16/10] overflow-hidden ">
@@ -136,7 +143,7 @@ export default function AllPosts() {
                                 ))}
                             </div>
 
-                        </div>
+                        </Link>
                     ))}
                 </div>
 

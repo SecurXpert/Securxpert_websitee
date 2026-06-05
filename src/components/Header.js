@@ -44,6 +44,7 @@ export default function Header() {
     cleanPath === "/portfolio" ||
     cleanPath === "/contact" ||
     cleanPath === "/blogs" ||
+    cleanPath.startsWith("/blogs/") ||
     cleanPath === "/carrers";
 
   const isDarkBg = (cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/")) && !scrolled;

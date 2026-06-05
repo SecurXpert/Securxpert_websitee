@@ -14,7 +14,7 @@ function AnimatedCounter({ target, suffix = "", duration = 1600 }) {
             if (!startTime) startTime = timestamp;
             const progress = timestamp - startTime;
             const percentage = Math.min(progress / duration, 1);
-            
+
             setCount(Math.floor(percentage * target));
 
             if (percentage < 1) {
@@ -173,7 +173,7 @@ export default function Hero() {
 
                                 {/* Row 1: Name & Email */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                    
+
                                     {/* Name */}
                                     <div className="space-y-1 text-left">
                                         <label className="text-[14px] font-bold text-[#5D5D5D] tracking-wide font-sans">Name</label>
@@ -206,7 +206,7 @@ export default function Hero() {
 
                                 {/* Row 2: Purpose & Phone */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                    
+
                                     {/* Purpose Dropdown Select */}
                                     <div className="space-y-1 text-left">
                                         <label className="text-[14px] font-bold text-[#5D5D5D] tracking-wide font-sans">Purpose *</label>
@@ -284,7 +284,7 @@ export default function Hero() {
 
                         {/* Stat 1 */}
                         <div className="space-y-1 transform hover:scale-105 transition-transform duration-300 cursor-default">
-                            <p 
+                            <p
                                 className="text-3xl sm:text-[40px] font-semibold leading-none tracking-tight bg-clip-text text-transparent"
                                 style={{ backgroundImage: "linear-gradient(90deg, #210A4A 0%, #3E66F3 100%)" }}
                             >
@@ -295,7 +295,7 @@ export default function Hero() {
 
                         {/* Stat 2 */}
                         <div className="space-y-1 transform hover:scale-105 transition-transform duration-300 cursor-default">
-                            <p 
+                            <p
                                 className="text-3xl sm:text-[40px] font-semibold leading-none tracking-tight bg-clip-text text-transparent"
                                 style={{ backgroundImage: "linear-gradient(90deg, #210A4A 0%, #3E66F3 100%)" }}
                             >
@@ -306,7 +306,7 @@ export default function Hero() {
 
                         {/* Stat 3 */}
                         <div className="space-y-1 transform hover:scale-105 transition-transform duration-300 cursor-default">
-                            <p 
+                            <p
                                 className="text-3xl sm:text-[40px] font-semibold leading-none tracking-tight bg-clip-text text-transparent"
                                 style={{ backgroundImage: "linear-gradient(90deg, #210A4A 0%, #3E66F3 100%)" }}
                             >
@@ -317,7 +317,7 @@ export default function Hero() {
 
                         {/* Stat 4 */}
                         <div className="space-y-1 transform hover:scale-105 transition-transform duration-300 cursor-default">
-                            <p 
+                            <p
                                 className="text-3xl sm:text-[40px] font-semibold leading-none tracking-tight bg-clip-text text-transparent"
                                 style={{ backgroundImage: "linear-gradient(90deg, #210A4A 0%, #3E66F3 100%)" }}
                             >
