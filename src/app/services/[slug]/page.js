@@ -240,28 +240,59 @@ export default async function ServicePage({ params }) {
           </div>
         </section>
       )}
-      {/* Technology Stack Section (Coded from user mockup screenshot) */}
+      {/* Technologies We Master Section (Infinite Marquee) */}
       {techStack.length > 0 && (
-        <section className="bg-white py-16 sm:py-14 relative z-10 border-b border-slate-100/80">
-          <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
-            <div className="text-center mb-12 sm:mb-8">
-              <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
-                Technology Stack
+        <section className="bg-white py-20 sm:py-24 relative z-10 border-b border-slate-100/80 overflow-hidden">
+          <div className="w-full mx-auto px-4 md:px-0">
+            {/* Header */}
+            <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto px-6">
+              <h3 className="text-[#100D35] text-3xl sm:text-4xl lg:text-[45px] font-bold tracking-[-1px] mb-4 font-inter">
+                Technologies We Master
               </h3>
+              <p className="text-slate-500 text-base sm:text-lg">
+                Building enterprise solutions with cutting-edge technologies and industry-leading frameworks
+              </p>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-7xl mx-auto">
-              {techStack.map((tech, idx) => (
-                <span 
-                  key={idx} 
-                  className="text-white text-sm sm:text-base font-medium px-5 py-2 rounded-full hover:scale-105 transition-all duration-200 select-none shadow-[0_4px_15px_rgba(59,48,219,0.15)] cursor-default"
-                  style={{ background: 'linear-gradient(90deg, #4F46E5 0%, #4E42E1 7.14%, #4D3EDC 14.29%, #4B3BD8 21.43%, #4A37D3 28.57%, #4933CF 35.71%, #482ECA 42.86%, #462AC6 50%, #4526C2 57.14%, #4421BD 64.29%, #421CB9 71.43%, #4117B5 78.57%, #4010B1 85.71%, #3E08AC 92.86%, #3D00A8 100%)' }}
-                >
-                  {tech}
-                </span>
-              ))}
+            {/* Infinite Marquee Track */}
+            <div className="relative w-full overflow-hidden flex flex-col py-4">
+              
+              {/* Left/Right Fade Overlays */}
+              <div className="absolute top-0 left-0 w-16 sm:w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-16 sm:w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+              {/* Marquee Inner Track */}
+              <div className="flex w-max items-center gap-4 sm:gap-6 pl-4" style={{ animation: "marquee 30s linear infinite" }}>
+                {[...techStack, ...techStack, ...techStack].map((tech, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex items-center gap-4 bg-white rounded-2xl px-6 py-4 sm:px-8 sm:py-5 shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-slate-100 hover:shadow-[0_15px_40px_rgba(37,99,235,0.12)] transition-shadow duration-300 select-none group cursor-pointer"
+                  >
+                    {/* Placeholder Brand Logo Graphic */}
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm text-white"
+                         style={{ background: `linear-gradient(135deg, hsl(${(idx * 45) % 360}, 70%, 60%), hsl(${(idx * 45 + 30) % 360}, 80%, 50%))` }}>
+                        {tech.charAt(0)}
+                    </div>
+                    <span className="text-slate-800 font-bold text-base sm:text-lg group-hover:text-blue-600 transition-colors">
+                      {tech}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer text */}
+            <div className="text-center mt-10">
+                <p className="text-slate-400 text-sm font-medium">And many more technologies to bring your vision to life</p>
             </div>
           </div>
+          
+          <style dangerouslySetInnerHTML={{__html: `
+            @keyframes marquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-33.3333%); }
+            }
+          `}} />
         </section>
       )}
 

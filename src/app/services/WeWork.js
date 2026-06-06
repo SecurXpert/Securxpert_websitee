@@ -83,17 +83,17 @@ export default function WeWork() {
             </div>
 
             {/* Desktop Circular Process Layout */}
-            <div className="hidden lg:block relative w-full max-w-[1400px] h-[880px] mx-auto overflow-visible">
-                {/* 800px Dashed Circular Track */}
+            <div className="hidden lg:block relative w-full max-w-[1400px] h-[680px] mx-auto overflow-visible">
+                {/* 640px Dashed Circular Track */}
                 <div 
-                    className="absolute w-[800px] h-[800px] rounded-full border-1 border-dotted border-slate-600 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
+                    className="absolute w-[640px] h-[640px] rounded-full border-1 border-dotted border-slate-600 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
                     style={{
                         borderStyle: "dotted",
                     }}
                 />
 
-                {/* Central 3D Illustration Graphic centered inside the 800px track */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[570px] h-auto z-10 flex items-center justify-center pointer-events-none">
+                {/* Central 3D Illustration Graphic centered inside the track */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-auto z-10 flex items-center justify-center pointer-events-none">
                     <img
                         src="/Services/wework.png"
                         alt="3D Process Illustration"
@@ -101,10 +101,10 @@ export default function WeWork() {
                     />
                 </div>
 
-                {/* Step Cards Mathematically Positioned on the Circumference of the 800px Circle */}
+                {/* Step Cards Mathematically Positioned on the Circumference of the circle */}
                 {stepsData.map((step) => {
-                    // Radius is exactly half of the 800px circle diameter
-                    const R = 400; 
+                    // Radius is exactly half of the 640px circle diameter
+                    const R = 320; 
                     const angleDeg = stepAngles[step.id];
                     const angleRad = (angleDeg * Math.PI) / 180;
                     
@@ -120,11 +120,11 @@ export default function WeWork() {
                                 top: `calc(50% + ${y}px)`,
                                 transform: "translate(-50%, -50%)"
                             }}
-                            className="absolute w-[240px] bg-white rounded-2xl p-4 border border-slate-100/90 shadow-[0_8px_30px_rgb(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.08)] hover:border-blue-200/50 transition-all duration-300 group z-20"
+                            className="absolute w-[190px] bg-white rounded-xl p-3 border border-slate-100/90 shadow-[0_8px_30px_rgb(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.08)] hover:border-blue-200/50 transition-all duration-300 group z-20"
                         >
                             {/* Top Badge Icon */}
                             <div 
-                                className="w-12 h-12 rounded-lg text-white flex items-center justify-center transition-all duration-300 shadow-sm"
+                                className="w-10 h-10 rounded-lg text-white flex items-center justify-center transition-all duration-300 shadow-sm"
                                 style={{ background: "linear-gradient(135deg, #230E51 0%, #3D62EC 100%)" }}
                             >
                                 {step.icon}
@@ -132,7 +132,7 @@ export default function WeWork() {
 
                             {/* Step Number with Gradient Fade progress line */}
                             <div className="flex items-center gap-2 mt-2">
-                                <span className="text-[#2563EB] font-bold text-lg font-mono tracking-tight">
+                                <span className="text-[#2563EB] font-bold text-base font-mono tracking-tight">
                                     {step.number}
                                 </span>
                                 <div 
@@ -142,7 +142,7 @@ export default function WeWork() {
                             </div>
 
                             {/* Title & Description */}
-                            <h3 className="font-semibold text-[#2F2F2F] text-lg mt-2 group-hover:text-[#2563EB] transition-colors duration-200">
+                            <h3 className="font-semibold text-[#2F2F2F] text-base mt-2 group-hover:text-[#2563EB] transition-colors duration-200">
                                 {step.title}
                             </h3>
                             <p className="text-slate-500 text-xs mt-1.5 leading-relaxed">
