@@ -50,7 +50,7 @@ const steps = [
 
 export default function Howtobecame() {
   return (
-    <section className="relative w-full py-16 md:py-24 bg-white overflow-hidden text-slate-800">
+    <section className="relative w-full py-16 md:py-14 bg-white overflow-hidden text-slate-800">
 
       {/* Decorative background gradients */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-50/20 via-transparent to-transparent pointer-events-none" />

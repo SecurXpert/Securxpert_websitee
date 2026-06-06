@@ -45,7 +45,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="relative w-full bg-gradient-to-r from-[#172E9D] to-[#2541C5] py-20 text-white overflow-hidden select-none">
+    <section className="relative w-full bg-gradient-to-r from-[#172E9D] to-[#2541C5] py-14 text-white overflow-hidden select-none">
       
       {/* Background Graphic Lines / Accent Image */}
       <img

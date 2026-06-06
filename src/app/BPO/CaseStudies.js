@@ -59,7 +59,7 @@ export default function CaseStudies() {
   ];
 
   return (
-    <section className="relative w-full bg-white overflow-hidden py-14 text-slate-800">
+    <section className="relative w-full bg-[#F7F9FA] overflow-hidden py-14 text-slate-800">
       
       {/* BACKGROUND ACCENT GRAPHICS */}
       {/* Top Left Swirl Graphic */}

@@ -12,7 +12,7 @@ export default function TeamMembers() {
   ];
 
   return (
-    <section className="relative w-full bg-white overflow-hidden py-10 text-slate-800 select-none">
+    <section className="relative w-full bg-white overflow-hidden py-14 text-slate-800 select-none">
       
       {/* BACKGROUND ACCENT GRAPHICS */}
       {/* Bottom Left Stripe Accent */}

@@ -6,7 +6,7 @@ export default function Whatgoes() {
   return (
     <section
       style={{ background: "linear-gradient(180deg, #2B2A84 0%, #374FC7 100%)" }}
-      className="relative w-full py-16 md:py-24 overflow-hidden text-white"
+      className="relative w-full py-16 md:py-14 overflow-hidden text-white"
     >
       {/* Decorative background glows */}
       <div className="absolute top-10 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl pointer-events-none" />

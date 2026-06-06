@@ -4,7 +4,7 @@ import React from "react";
 
 export default function FollowUs() {
   return (
-    <section className="relative w-full py-16 md:py-24 bg-white text-slate-800 overflow-hidden">
+    <section className="relative w-full py-16 md:py-14 bg-white text-slate-800 overflow-hidden">
       <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-4 md:px-20">
         
         {/* Responsive 12-Column Grid Container */}

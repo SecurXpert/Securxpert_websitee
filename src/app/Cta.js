@@ -5,7 +5,7 @@ import React from "react";
 export default function Cta() {
     return (
         <section 
-            className="w-full text-center select-none py-20 px-6 md:px-12 flex items-center justify-center"
+            className="w-full text-center select-none py-14 px-6 md:px-12 flex items-center justify-center"
             style={{
                 background: "linear-gradient(135deg, #4F46E5 0%, #4D3EDC 7.14%, #4A37D3 14.29%, #482ECA 21.43%, #4526C2 28.57%, #421CB9 35.71%, #4010B1 42.86%, #3D00A8 50%, #3D18B4 57.14%, #3D28C0 64.29%, #3B35CD 71.43%, #3941D9 78.57%, #354DE6 85.71%, #2F58F2 92.86%, #2563FF 100%)"
             }}
@@ -18,7 +18,7 @@ export default function Cta() {
 
                 {/* Subtitle / Description */}
                 <p className="text-white/90 text-md font-normal max-w-3xl mb-10 leading-relaxed">
-                    Join 500+ enterprises worldwide who trust SecurXpert for their digital transformation journey.
+                   Join 500+ enterprises worldwide who trust SecurXpert for their digital transformation journey.
                 </p>
 
                 {/* Interactive Action Buttons */}

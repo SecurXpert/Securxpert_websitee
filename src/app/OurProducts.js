@@ -6,7 +6,7 @@ const productsData = [
     {
         id: 0,
         name: "Grab JobZ",
-        description: "Lorem ipsum dolor sit amet consectetur. Imperdiet vitae lectus ultrices elit ultricies pharetra iaculis. Commodo nulla quis elit diam. Molestie felis in consectetur odio euismod.  ",
+        description: "AI-powered recruitment platform with smart hiring, candidate matching, and automated outreach for faster hiring worldwide.",
         bgImage: "/Home/OurProducts/Grabjobz.png",
         logoImage: "/Home/OurProducts/Grabjobz2.png",
         logoBg: "bg-white",
@@ -15,8 +15,8 @@ const productsData = [
     },
     {
         id: 1,
-        name: "L&L Media",
-        description: "Lorem ipsum dolor sit amet consectetur. Imperdiet vitae lectus ultrices elit ultricies pharetra iaculis. Commodo nulla quis elit diam. Molestie felis in consectetur odio euismod.",
+        name: "Lens & Light Media",
+        description: "Creative digital marketing agency specializing in branding, video production, SEO, AI content, and growth solutions.",
         bgImage: "/Home/OurProducts/llmedia.png",
         logoImage: "/Home/OurProducts/llmedia (2).png",
         logoBg: "bg-black",
@@ -26,7 +26,7 @@ const productsData = [
     {
         id: 2,
         name: "Vishan",
-        description: "Lorem ipsum dolor sit amet consectetur. Imperdiet vitae lectus ultrices elit ultricies pharetra iaculis. Commodo nulla quis elit diam. Molestie felis in consectetur odio euismod.",
+        description: "Professional online assessment platform for skill evaluation, live exams, analytics, and course certifications.",
         bgImage: "/Home/OurProducts/Vishan.png",
         logoImage: "/Home/OurProducts/Vishan2 (2).png",
         logoBg: "bg-white",
@@ -36,7 +36,7 @@ const productsData = [
     {
         id: 3,
         name: "Dev Talent",
-        description: "Lorem ipsum dolor sit amet consectetur. Imperdiet vitae lectus ultrices elit ultricies pharetra iaculis. Commodo nulla quis elit diam. Molestie felis in consectetur odio euismod.",
+        description: "Professional online assessment platform for skill evaluation, live exams, analytics, and course certifications.",
         bgImage: "/Home/OurProducts/Devtalent.png",
         logoImage: "/Home/OurProducts/Devtalent2 (2).png",
         logoBg: "bg-white",
@@ -79,11 +79,11 @@ export default function OurProducts() {
         }
     };
 
-    // Auto-scroll slideshow: transition every 3 seconds (resets timer if user manually clicks)
+    // Auto-scroll slideshow: transition every 5 seconds (resets timer if user manually clicks)
     useEffect(() => {
         const timer = setTimeout(() => {
             setActiveIndex((prevIndex) => (prevIndex + 1) % productsData.length);
-        }, 3000);
+        }, 5000);
 
         return () => clearTimeout(timer);
     }, [activeIndex]);
@@ -95,7 +95,7 @@ export default function OurProducts() {
                 {productsData.map((product, idx) => (
                     <div
                         key={product.id}
-                        className={`absolute inset-x-0 top-0 h-[660px] lg:h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${idx === activeIndex ? "opacity-100" : "opacity-0"
+                        className={`absolute inset-x-0 top-0 h-[660px] lg:h-full bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out ${idx === activeIndex ? "opacity-100" : "opacity-0"
                             }`}
                         style={{ backgroundImage: `url(${product.bgImage})` }}
                     />
@@ -104,11 +104,11 @@ export default function OurProducts() {
 
             {/* TOP HEADER: Centered Section Header */}
             <div className="relative z-10 text-center mb-6 md:mb-0">
-                <h1 className="text-[28px] md:text-[55px] font-playfair font-semibold text-white mb-2 leading-none">
+                <h2 className="text-[28px] md:text-[55px] font-playfair font-semibold text-white mb-2 leading-none">
                     Our Products
-                </h1>
+                </h2>
                 <p className="text-white/80 text-md md:text-md font-medium tracking-wide">
-                    End-to-end IT solutions tailored for enterprise success
+                    Innovative Digital Products Built for Modern Business Success
                 </p>
             </div>
 
@@ -118,7 +118,9 @@ export default function OurProducts() {
                 {/* LEFT CONTENT (Product Title, Paragraph, Button) */}
                 {/* Kept your precise desktop translate transforms completely intact */}
                 <div className="lg:col-span-6 flex flex-col items-start text-left max-w-xl transition-all duration-700 ease-out lg:-translate-x-12 lg:-translate-y-20 w-full">
-                    <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 font-playfair tracking-tight animate-fade-in">
+                    <h2
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight animate-fade-in ![font-family:var(--font-Playfair-Display),serif]"
+                    >
                         {activeProduct.name}
                     </h2>
                     <p className="text-white/80 text-base md:text-lg mb-8 leading-relaxed font-light max-w-lg min-h-[80px]">
@@ -141,29 +143,37 @@ export default function OurProducts() {
                         className="relative w-[280px] sm:w-[400px] md:w-[500px] h-[260px] sm:h-[320px] md:h-[440px] flex items-center justify-start transform lg:scale-[0.75] xl:scale-[0.85] 2xl:scale-100 origin-center lg:origin-right transition-transform duration-700 touch-pan-y"
                     >
 
-                        {/* Active Main Product Card (Left in stack) */}
-                        {/* Adjusted absolute size classes responsively (e.g., w-56 on mobile, w-80 on tab, sm:w-95 on laptop) */}
-                        <div
-                            className={`absolute left-0 w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-[480px] ${activeProduct.logoBg} rounded-[24px] sm:rounded-[32px] p-0 flex items-center justify-center shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)] border border-white/10 transition-all duration-700 z-20 transform hover:scale-[1.03] -translate-x-8 sm:translate-x-[-70px]`}
-                        >
-                            <img
-                                src={activeProduct.logoImage}
-                                alt={`${activeProduct.name} Logo`}
-                                className="w-full h-full object-contain pointer-events-none"
-                            />
-                        </div>
+                        {/* Dynamically Mapped Cards for Smooth Size/Position Transition */}
+                        {productsData.map((product, index) => {
+                            const isActive = index === activeIndex;
+                            const isNext = index === (activeIndex + 1) % productsData.length;
+                            const isPrev = index === (activeIndex - 1 + productsData.length) % productsData.length;
 
-                        {/* Next Stack Card (Offset to the right and tucked behind) */}
-                        <div
-                            onClick={handleNextClick}
-                            className={`absolute right-0 w-36 h-36 sm:w-48 sm:h-48 md:w-63 md:h-80 ${nextProduct.logoBg} rounded-[18px] sm:rounded-[24px] p-0.5 flex items-center justify-center shadow-[0_20px_40px_-10px_rgba(0,0,0,0.9)] drop-shadow-[0_10px_20px_rgba(0,0,0,0.85)] border border-white/10 opacity-100 hover:opacity-100 hover:scale-[1.02] cursor-pointer transition-all duration-700 z-10 transform translate-x-8 sm:translate-x-16 md:translate-x-32`}
-                        >
-                            <img
-                                src={nextProduct.logoImage}
-                                alt={`${nextProduct.name} Logo`}
-                                className="w-full h-full object-contain pointer-events-none"
-                            />
-                        </div>
+                            let stateClasses = "";
+                            if (isActive) {
+                                stateClasses = "left-0 w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-[480px] rounded-[24px] sm:rounded-[32px]  z-20 hover:scale-[1.03] -translate-x-8 sm:translate-x-[-70px] opacity-100";
+                            } else if (isNext) {
+                                stateClasses = "left-[40%] sm:left-[50%] md:left-[55%] w-36 h-36 sm:w-48 sm:h-48 md:w-63 md:h-80 rounded-[18px] sm:rounded-[24px]  z-10 hover:scale-[1.02] cursor-pointer translate-x-4 sm:translate-x-10 md:translate-x-32 opacity-100";
+                            } else if (isPrev) {
+                                stateClasses = "left-[-50%] w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-[480px] rounded-[24px] sm:rounded-[32px] z-0 -translate-x-[150px] opacity-0 scale-75";
+                            } else {
+                                stateClasses = "left-[100%] w-36 h-36 sm:w-48 sm:h-48 md:w-63 md:h-80 rounded-[18px] sm:rounded-[24px] z-0 opacity-0 translate-x-[100px] scale-75";
+                            }
+
+                            return (
+                                <div
+                                    key={product.id}
+                                    onClick={isNext ? handleNextClick : undefined}
+                                    className={`absolute ${product.logoBg} p-0 flex items-center justify-center border border-white/10 transition-all duration-[2000ms] ease-in-out transform ${stateClasses}`}
+                                >
+                                    <img
+                                        src={product.logoImage}
+                                        alt={`${product.name} Logo`}
+                                        className="w-full h-full object-contain pointer-events-none"
+                                    />
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

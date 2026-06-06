@@ -23,11 +23,11 @@ export default function Whychoose() {
           </p>
 
           {/* Main Heading */}
-          <h1 className="text-3xl sm:text-4xl lg:text-[26px] xl:text-[28px] 2xl:text-[42px] font-bold leading-tight text-[#000000] max-w-2xl tracking-tight">
-            Specialist aiding clients
-            <br />
-            on financial challenges
-          </h1>
+          <h2 className="text-3xl sm:text-4xl lg:text-[26px] xl:text-[28px] 2xl:text-[42px] font-bold leading-tight text-[#000000] max-w-2xl tracking-tight">
+           Specialist Support for Financial Challenges
+      
+            
+          </h2>
 
           {/* Description */}
           <p className="text-[#6E6E96]/90 text-sm sm:text-base lg:text-[13px] xl:text-[14px] 2xl:text-lg leading-relaxed mt-3 lg:mt-4 max-w-xl font-normal">
@@ -46,11 +46,11 @@ export default function Whychoose() {
 
               <div>
                 <h3 className="text-lg sm:text-xl lg:text-sm xl:text-base 2xl:text-xl font-bold text-[#1E1E2F] tracking-tight">
-                  First Working Process
+                  End-to-End Payment Solutions
                 </h3>
                 <p className="text-[#6E6E96] text-xs sm:text-sm lg:text-[12px] xl:text-[13px] 2xl:text-[15px] leading-relaxed mt-1.5 max-w-lg">
-                  End-to-end payments and financial management in a
-                  single solution. Meet the right platform to help realize.
+                 We provide a complete financial management system that handles payments, transactions, and reporting in one powerful platform.
+
                 </p>
               </div>
             </div>
@@ -63,11 +63,10 @@ export default function Whychoose() {
 
               <div>
                 <h3 className="text-lg sm:text-xl lg:text-sm xl:text-base 2xl:text-xl font-bold text-[#1E1E2F] tracking-tight">
-                  Dedicated Team
+                  Streamlined Working Process
                 </h3>
                 <p className="text-[#6E6E96] text-xs sm:text-sm lg:text-[12px] xl:text-[13px] 2xl:text-[15px] leading-relaxed mt-1.5 max-w-lg">
-                  End-to-end payments and financial management in a
-                  single solution. Meet the right platform to help realize.
+                 Our structured and efficient workflow ensures faster execution, reduced errors, and smooth financial operations from start to finish.
                 </p>
               </div>
             </div>
@@ -83,8 +82,7 @@ export default function Whychoose() {
                   24/7 Hours Support
                 </h3>
                 <p className="text-[#6E6E96] text-xs sm:text-sm lg:text-[12px] xl:text-[13px] 2xl:text-[15px] leading-relaxed mt-1.5 max-w-lg">
-                  End-to-end payments and financial management in a
-                  single solution. Meet the right platform to help realize.
+                 We are always available to assist you anytime, ensuring uninterrupted service and quick resolution of your queries.
                 </p>
               </div>
             </div>

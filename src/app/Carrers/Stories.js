@@ -47,7 +47,7 @@ export default function Stories() {
   return (
     <section 
       style={{ background: "linear-gradient(180deg, #374EC4 0%, #2C2D8A 100%)" }}
-      className="relative w-full py-20 text-white overflow-hidden"
+      className="relative w-full py-14 text-white overflow-hidden"
     >
       <div className="relative w-full max-w-[95%] 2xl:max-w-[1550px] mx-auto px-4 md:px-12">
         

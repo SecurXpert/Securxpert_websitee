@@ -116,9 +116,9 @@ export default function Partners() {
             <span className="block text-sm font-bold uppercase tracking-wide text-[#210A4A] mb-3">
                 Trusted By
             </span>
-            <h1 className="text-3xl sm:text-5xl text-[#050816] mb-12 font-semibold  tracking-tight">
+            <h2 className="text-3xl sm:text-5xl text-[#050816] mb-12 font-semibold  tracking-tight">
                 Global Partners
-            </h1>
+            </h2>
 
             {/* Infinite Scroll Container */}
             <div className="relative w-full overflow-hidden flex items-center before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-24 after:bg-gradient-to-l after:from-white after:to-transparent hover:pause">

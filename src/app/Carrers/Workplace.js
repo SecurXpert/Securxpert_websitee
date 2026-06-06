@@ -31,7 +31,7 @@ export default function Workplace() {
   ];
 
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-visible bg-[#F8FAFC] text-slate-600">
+    <section className="relative w-full py-16 md:py-14 overflow-visible bg-[#F8FAFC] text-slate-600">
       {/* Background Accent Glows */}
       <div className="absolute top-1/4 right-0 w-90 h-72 bg-blue-100/30 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-72 h-72 bg-indigo-100/30 rounded-full blur-3xl pointer-events-none" />

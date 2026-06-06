@@ -94,7 +94,7 @@ export default function AboutUs() {
   return (
     <section 
       style={{ background: "linear-gradient(180deg, #EBEFFF 1.48%, #FFFFFF 98.59%)" }}
-      className="relative w-full overflow-hidden py-12 sm:py-16 px-6 sm:px-12 lg:px-24"
+      className="relative w-full overflow-hidden py-12 sm:py-14 px-6 sm:px-12 lg:px-24"
     >
       {/* Background Subtle Ambience */}
       <div className="absolute inset-0 pointer-events-none opacity-20">

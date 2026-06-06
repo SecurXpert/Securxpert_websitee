@@ -27,7 +27,7 @@ export default function Process() {
     ];
 
     return (
-        <section className="relative w-full bg-white overflow-hidden py-16 sm:py-24 px-4 sm:px-12 lg:px-24">
+        <section className="relative w-full bg-white overflow-hidden py-16 sm:py-14 px-4 sm:px-12 lg:px-24">
             <div className="relative z-10 max-w-[1240px] mx-auto w-full select-none text-left">
                 
                 {/* Header Section */}

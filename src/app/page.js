@@ -9,8 +9,31 @@ import Whychoose from "./Whychoose";
 import OurTeam from "./OurTeam";
 import Cta from "./Cta";
 
-export default function Home() {
+export const metadata = {
+  title: " IT Services & Software Development Company in Hyderabad",
+  description: "SecurXpert is a leading IT services & software development company in Hyderabad offering AI automation, cloud, cybersecurity & managed IT solutions.",
+  keywords: [
+    "IT Services Company in Hyderabad",
+    "Software Development Company in Hyderabad",
+    "Custom Software Development",
+    "AI Automation Services",
+    "Cloud & DevOps Services",
+    "Cybersecurity Services",
+    "Managed IT Services",
+    "Digital Transformation Solutions",
+    "IT Staffing Services",
+    "Digital Marketing Services",
+    "Mobile App Development Company",
+    "Web Application Development",
+    "Enterprise Software Development",
+    "Business Process Outsourcing (BPO) Services",
+    "Technology Solutions Company Hyderabad"
+  ]
+};
+
+export default function Home() { 
   return (
+    
     <div className="relative min-h-screen bg-white overflow-hidden pt-0">
       {/* Background Cyber Grid */}
       <div className="absolute inset-0 cyber-grid opacity-30 pointer-events-none" />

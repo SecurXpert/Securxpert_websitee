@@ -175,7 +175,7 @@ export default async function ServicePage({ params }) {
       </div>
 
       {/* Our Capabilities Section (Coded from user mockup screenshot) */}
-      <section className="bg-white py-16 sm:py-24 relative z-10 border-b border-slate-100">
+      <section className="bg-white py-16 sm:py-14 relative z-10 border-b border-slate-100">
         <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
@@ -209,7 +209,7 @@ export default async function ServicePage({ params }) {
 
       {/* Our Process Section (Coded from user mockup screenshot) */}
       {processSteps.length > 0 && (
-        <section className="bg-slate-50/50 py-16 sm:py-24 relative z-10 border-b border-slate-100/80">
+        <section className="bg-slate-50/50 py-16 sm:py-14 relative z-10 border-b border-slate-100/80">
           <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
@@ -244,7 +244,7 @@ export default async function ServicePage({ params }) {
       {techStack.length > 0 && (
         <section className="bg-white py-16 sm:py-14 relative z-10 border-b border-slate-100/80">
           <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
-            <div className="text-center mb-12 sm:mb-16">
+            <div className="text-center mb-12 sm:mb-8">
               <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
                 Technology Stack
               </h3>

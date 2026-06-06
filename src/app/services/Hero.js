@@ -30,14 +30,14 @@ export default function ServicesHero() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="relative z-10 text-center text-4xl sm:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-semibold leading-tight text-white tracking-normal max-w-5xl mx-auto px-6 font-inter">
-                        Expert Technology Services <br className="hidden sm:inline" />
-                        for a secure <span className="text-[#1CA1F2]">Future.</span>
-                    </h3>
+                    <h1 className="relative z-10 text-center text-4xl sm:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-semibold leading-tight text-white tracking-normal max-w-5xl mx-auto px-6 font-inter">
+                        Technology Expertise <br className="hidden sm:inline" />
+                        for a Secure Digital <span className="text-[#1CA1F2]">Future.</span>
+                    </h1>
 
                     {/* Description */}
-                    <p className="relative z-10 text-center mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-tight text-[#FFFFFF] max-w-4xl mx-auto px-6 font-normal opacity-90">
-                        Your strategic partner for Software Development, Cybersecurity, AI Automation, and more. Secure, scale, and innovate with our tailored technology solutions.
+                    <p className="relative z-10 text-center mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-tight text-[#FFFFFF] max-w-5xl mx-auto px-6 font-normal opacity-90">
+                        SecurXpert provides end-to-end digital transformation services, including software development, AI automation, and cybersecurity, to help businesses scale securely and efficiently
                     </p>
 
                     {/* CTA Button, Avatars, and Subtext - Balanced Columns */}

@@ -25,12 +25,12 @@ const servicesData = [
     },
     {
         id: 5,
-        title: "Ai Chatbot Development Service",
+        title: "AI Chatbots Development",
         image: "/Services/OurServices/services5.png",
     },
     {
         id: 6,
-        title: "Digital Marketing Service",
+        title: "Digital Marketing Solutions",
         image: "/Services/OurServices/services6.png",
     },
     {
@@ -57,7 +57,7 @@ export default function OurServices() {
                 <div className="flex flex-col items-center justify-center text-center mb-16 lg:mb-8">
 
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 font-sans">
-                        Our Services
+                        Core Services
                     </h2>
 
                     {/* Symmetrical Tech Pill Button with SVG Background Design overlay */}

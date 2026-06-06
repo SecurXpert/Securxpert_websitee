@@ -79,7 +79,7 @@ export default function Benifits() {
   ];
  
   return (
-    <section className="relative w-full py-16 md:py-24 bg-white overflow-hidden text-slate-800">
+    <section className="relative w-full py-16 md:py-14 bg-white overflow-hidden text-slate-800">
       <div className="relative w-full max-w-[95%] 2xl:max-w-[1620px] mx-auto px-4 md:px-10">
         {/* Section Header */}
         <div className="text-center mb-16 max-w-4xl mx-auto">

@@ -7,7 +7,7 @@ const stepsData = [
         id: 1,
         number: "01",
         title: "Design",
-        description: "Collaborate with our elite architects to map out specifications, user flows, and technical parameters.",
+        description: " Understanding client requirements and creating UI/UX wireframes",
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -18,7 +18,7 @@ const stepsData = [
         id: 2,
         number: "02",
         title: "Build",
-        description: "Translate visual wireframes and architectural blueprints into high-performance, secure code.",
+        description: "Developing secure, scalable, and high-performance solutions",
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
@@ -28,8 +28,8 @@ const stepsData = [
     {
         id: 3,
         number: "03",
-        title: "Deploy",
-        description: "Configure scalable cloud infrastructure and deploy containerized builds with CI/CD automation.",
+        title: "Test",
+        description: " Checking functionality, fixing bugs, and ensuring quality",
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
@@ -39,8 +39,8 @@ const stepsData = [
     {
         id: 4,
         number: "04",
-        title: "Support",
-        description: "Provide round-the-clock application monitoring, security patches, and performance tuning.",
+        title: "Deploying",
+        description: "the project with optimized performance",
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -50,8 +50,8 @@ const stepsData = [
     {
         id: 5,
         number: "05",
-        title: "Launch",
-        description: "Go live in the production environment with smooth traffic cutover and final integration checks.",
+        title: "Support",
+        description: "Providing continuous updates, monitoring, and maintenance",
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -71,14 +71,14 @@ const stepAngles = {
 
 export default function WeWork() {
     return (
-        <section className="relative w-full bg-white py-4 sm:py-24 overflow-hidden text-slate-800 border-t border-slate-100">
+        <section className="relative w-full bg-white py-4 sm:py-14 overflow-hidden text-slate-800 border-t border-slate-100">
             {/* Header Block */}
             <div className="flex flex-col items-center justify-center text-center px-6 mb-2 sm:mb-16">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 font-sans">
                     How We work 
                 </h2>
                 <p className="text-slate-500 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">
-                    Mobile banking differs from mobile payments, which involves the use of a mobile device
+                   We have a structured and transparent development process to ensure quality delivery: 
                 </p>
             </div>
 

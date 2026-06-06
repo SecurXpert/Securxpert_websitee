@@ -4,7 +4,7 @@ import React from "react";
 
 export default function WhyChooseUs() {
     return (
-        <section className="relative w-full bg-white overflow-hidden py-24 px-6 sm:px-12 lg:px-24">
+        <section className="relative w-full bg-white overflow-hidden py-14 px-6 sm:px-12 lg:px-24">
             <div className="relative z-10 max-w-[1140px] mx-auto w-full">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start w-full">
 

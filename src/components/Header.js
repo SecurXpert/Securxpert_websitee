@@ -289,7 +289,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center lg:-translate-x-6 xl:-translate-x-4 2xl:translate-x-0">
             <Link
               href="/contact"
-              className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 hover:from-blue-700 hover:to-violet-800 text-white font-semibold px-6 py-2.5 rounded-full text-[13px] transition-all shadow-md hover:shadow-lg active:scale-95"
+              className="bg-[#3E66F3] text-white font-semibold px-6 py-2.5 rounded-full text-[13px] transition-all shadow-md hover:shadow-lg active:scale-95"
             >
               Book Consultation
             </Link>
@@ -457,7 +457,7 @@ export default function Header() {
                 href="/contact"
                 className="w-full text-center block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 text-white font-semibold px-4 py-3 rounded-full text-[13px] shadow-md transition-all active:scale-95"
               >
-                Book Consultation
+                INDIA
               </Link>
             </div>
           </div>

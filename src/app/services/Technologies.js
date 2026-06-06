@@ -4,12 +4,12 @@ import React from "react";
 
 const techCategories = [
     {
-        title: "Languages & Frameworks",
-        techs: ["HTML5", "CSS3", "JavaScript", "React", "Angular", "Node.js"]
+        title: "Frontend Technologies",
+        techs: ["HTML5", "CSS3", "JavaScript", "React", "Angular"]
     },
     {
         title: "Backend Technologies",
-        techs: ["PHP", "Python", "Express.js", "Laravel"]
+        techs: ["PHP", "Python", "Express.js", "Laravel", "Node.js"]
     },
     {
         title: "Databases",
@@ -38,6 +38,9 @@ export default function Technologies() {
                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-wide text-white font-sans">
                     Our Technology Stack
                 </h3>
+                <p className="mt-6 text-lg sm:text-xl text-white/90 leading-relaxed">
+                    We use modern technologies to build powerful solutions:
+                </p>    
             </div>
 
             {/* Responsive Columns Grid (5 columns on desktop, responsive breakdown on tablet/mobile) */}

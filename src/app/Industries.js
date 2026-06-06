@@ -152,20 +152,15 @@ export default function Industries() {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-0 lg:gap-10 w-full">
 
           {/* LEFT CONTENT */}
-          <div className="text-white z-10 flex flex-col items-start text-left pb-0 lg:pb-24 lg:col-span-5">
+          <div className="text-white z-10 flex flex-col items-start text-left pb-12 pt-16 lg:pb-0 lg:pt-12 lg:col-span-5">
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl leading-[1.15] font-playfair font-medium max-w-3xl tracking-wide">
-              Custom Outsourcing for
-              <br />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-[1.2]  font-medium max-w-5xl tracking-tight">
+              Custom Outsourcing solutions for
               Multiple Industries
-            </h1>
+            </h2>
 
-            <p className="mt-8 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-blue-100/80 max-w-xl font-normal">
-              After working for and with Big Box BPOs, we
-              decided there has to be a better way. We
-              effectively implement individualized services
-              using proven technologies to suit your exact
-              needs and improve cost efficiency.
+            <p className="mt-8 text-base sm:text-lg md:text-xl lg:text-xl leading-relaxed text-blue-100/80 max-w-4xl font-normal">
+              With experience working alongside leading BPO organizations, we realized there is a better and more efficient way to deliver outsourcing services. We focus on providing tailored, technology-driven solutions designed specifically to meet your business needs, improve operational efficiency, and significantly reduce costs.
             </p>
 
             {/* STATS */}
@@ -176,7 +171,7 @@ export default function Industries() {
                   <CountUp end={500} suffix="+" />
                 </h3>
 
-                <p className="mt-2 text-sm text-[#FFFFFF] font-medium">
+                <p className="mt-2 text-sm text-[#FFFFFF] font-normal">
                   Projects Delivered
                 </p>
               </div>
@@ -186,7 +181,7 @@ export default function Industries() {
                   <CountUp end={12} suffix="+" />
                 </h3>
 
-                <p className="mt-2 text-sm text-[#FFFFFF] font-medium">
+                <p className="mt-2 text-sm text-[#FFFFFF] font-normal">
                   Countries Served
                 </p>
               </div>
@@ -196,7 +191,7 @@ export default function Industries() {
                   <CountUp end={10} suffix="" />
                 </h3>
 
-                <p className="mt-2 text-sm text-[#FFFFFF] font-medium">
+                <p className="mt-2 text-sm text-[#FFFFFF] font-normal">
                   Products Built
                 </p>
               </div>
@@ -206,7 +201,7 @@ export default function Industries() {
                   <CountUp end={98} suffix="%" />
                 </h3>
 
-                <p className="mt-2 text-sm text-[#FFFFFF] font-medium">
+                <p className="mt-2 text-sm text-[#FFFFFF] font-normal">
                   Client Retention
                 </p>
               </div>

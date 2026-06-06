@@ -66,18 +66,15 @@ const HeroSection = () => {
                     <div className="max-w-2xl z-10 flex flex-col items-center text-center lg:items-start lg:text-left mb-6 lg:mb-30">
 
                         {/* Title */}
-                        <h3 className="text-3xl sm:text-5xl lg:text-5xl xl:text-[46px] 2xl:text-5xl font-semibold leading-[1.20] text-white md:text-[#1E1B4B] lg:text-white tracking-tight">
+                        <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-[46px] 2xl:text-5xl font-semibold leading-[1.20] text-white md:text-[#1E1B4B] lg:text-white tracking-tight">
                             IT Services & Software <br className="hidden sm:inline" />
                             Development Company in <br className="hidden sm:inline" />
                             Hyderabad
-                        </h3>
+                        </h1>
 
                         {/* Description */}
-                        <p className="mt-6 text-lg sm:text-xl md:text-xl lg:text-blue-100 xl:text-[18px] 2xl:text-2xl leading-relaxed text-blue-100 md:text-slate-600 max-w-xl font-normal opacity-90">
-                            Custom software development, AI automation,
-                            cloud & DevOps, cybersecurity, UI/UX design,
-                            digital marketing, managed IT, staffing, and
-                            BPO solutions for modern businesses.
+                        <p className="mt-6 text-lg sm:text-xl md:text-xl lg:text-blue-100 xl:text-[18px] 2xl:text-xl leading-relaxed text-blue-100 md:text-slate-600 max-w-xl font-normal opacity-90">
+                            Custom software development, AI automation, cloud & DevOps, cybersecurity, UI/UX design, digital marketing, managed IT, staffing, and BPO solutions for modern businesses.
                         </p>
 
                         {/* Rounded Button Capsule in Translucent White positioned absolutely above the avatars */}

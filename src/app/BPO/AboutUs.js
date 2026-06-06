@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AboutUs() {
   return (
-    <section className="relative w-full bg-white overflow-hidden py-14 lg:py-20 text-slate-800">
+    <section className="relative w-full bg-[#F7F9FA] overflow-hidden py-14 lg:py-14 text-slate-800">
 
       {/* Far Left Wave Shape */}
       <img

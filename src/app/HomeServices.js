@@ -6,49 +6,49 @@ export default function HomeServices() {
     const services = [
         {
             title: "Software Development",
-            desc: "Custom web, mobile & enterprise solutions",
+            desc: "Scalable Software Solutions for Business Growth",
             img: "/Home/OurServices/Services.1.png",
             gridClass: "md:col-span-7 aspect-[16/9.5] w-full",
         },
         {
             title: "AI Automation",
-            desc: "Custom web, mobile & enterprise solutions",
+            desc: "Smart Automation for Business Efficiency",
             img: "/Home/OurServices/Services.2.png",
             gridClass: "md:col-span-5 aspect-[16/13.3] w-full",
         },
         {
             title: "Cloud & Devops",
-            desc: "Custom web, mobile & enterprise solutions",
+            desc: "Secure Cloud & DevOps Services",
             img: "/Home/OurServices/Services.3.png",
             gridClass: "md:col-span-5 aspect-[16/11.5] w-full",
         },
         {
             title: "CyberSecurity",
-            desc: "Custom web, mobile & enterprise solutions",
+            desc: "Advanced Protection for Modern Businesses",
             img: "/Home/OurServices/Services.4.png",
             gridClass: "md:col-span-4 aspect-[16/14.5] w-full",
         },
         {
-            title: "Managed IT",
-            desc: "Custom web, mobile & enterprise solutions",
+            title: "Managed IT Services",
+            desc: "Reliable IT Support & Management",
             img: "/Home/OurServices/Services.5.png",
             gridClass: "md:col-span-3 aspect-[16/19.5] w-full",
         },
         {
             title: "UI/UX Design",
-            desc: "Custom web, mobile & enterprise solutions",
+            desc: "Modern Designs for Better User Experience",
             img: "/Home/OurServices/Services.6.png",
             gridClass: "md:col-span-4 aspect-[16/14.5] w-full",
         },
         {
             title: "IT Staffing",
-            desc: "Custom web, mobile & enterprise solutions",
+            desc: "Skilled IT Talent for Your Business",
             img: "/Home/OurServices/Services.7.png",
             gridClass: "md:col-span-8 aspect-[16/7.2] w-full",
         },
         {
             title: "Digital Marketting",
-            desc: "Custom web, mobile & enterprise solutions",
+            desc: "Digital Strategies That Drive Growth",
             img: "/Home/OurServices/Services.8.png",
             gridClass: "md:col-span-12 aspect-[16/4.2] w-full",
         },
@@ -74,11 +74,11 @@ export default function HomeServices() {
                 <span className="text-[24px] font-medium text-[#3E66F3] tracking-wide ">
                     What We Do
                 </span>
-                <h1 className="text-5xl font-playfair font-semibold mt-4 text-[#313131] tracking-tight">
+                <h2 className="text-5xl font-playfair font-semibold mt-4 text-[#313131] tracking-tight">
                     Our Services
-                </h1>
-                <p className="text-[#4A5565] mt-4 text-lg font-medium max-w-xl mx-auto opacity-80 leading-relaxed">
-                    End-to-end IT solutions tailored for enterprise success
+                </h2>
+                <p className="text-[#4A5565] mt-4 text-lg font-medium max-w-5xl mx-auto opacity-80 leading-relaxed">
+                    Driving Digital Transformation with Smart, Scalable & Secure Technology Solutions
                 </p>
             </div>
 

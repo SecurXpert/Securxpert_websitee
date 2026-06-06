@@ -74,18 +74,13 @@ export default function Hero() {
                     </div>
 
                     {/* Infinite Scrolling Category Slider Row */}
-                    <div className="w-full max-w-[1240px] mx-auto mt-24 md:mt-26 relative z-10 px-4 select-none group">
+                    <div className="w-full max-w-[1340px] mx-auto mt-24 md:mt-26 relative z-10 px-4 select-none group">
 
-                        {/* Floating Left Arrow Button */}
-                        <button className="absolute left-0 top-1/2 -translate-y-1/2 w-11 h-11 bg-white hover:bg-slate-50 border border-slate-100 rounded-full flex items-center justify-center text-slate-600 shadow-md transition-all active:scale-90 z-20">
-                            <svg className="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
+                       
 
                         {/* Scrolling Viewport Container */}
-                        <div className="w-full overflow-hidden">
-                            <div className="flex gap-6 animate-marquee hover:[animation-play-state:paused] transition-all duration-300 w-max">
+                        <div className="w-full overflow-hidden hover:pause">
+                            <div className="flex gap-6 animate-marquee transition-all duration-300 w-max">
                                 {marqueeItems.map((item, index) => (
                                     <div
                                         key={`${item.id}-${index}`}
@@ -102,7 +97,7 @@ export default function Hero() {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
                                         {/* Category Name Pill inside Glass container */}
-                                        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-[3px] border border-white/50 px-5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-black text-slate-800 tracking-[0.12em] shadow-sm select-none">
+                                        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/90  px-5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-black text-slate-800 tracking-[0.12em] shadow-sm select-none">
                                             {item.label}
                                         </div>
                                     </div>
@@ -110,12 +105,7 @@ export default function Hero() {
                             </div>
                         </div>
 
-                        {/* Floating Right Arrow Button */}
-                        <button className="absolute right-0 top-1/2 -translate-y-1/2 w-11 h-11 bg-white hover:bg-slate-50 border border-slate-100 rounded-full flex items-center justify-center text-slate-600 shadow-md transition-all active:scale-90 z-20">
-                            <svg className="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
+                        
 
                     </div>
 

@@ -37,7 +37,7 @@ export default function LatestBlogs() {
   ];
 
   return (
-    <section className="relative w-full bg-white overflow-hidden py-20 text-slate-800">
+    <section className="relative w-full bg-white overflow-hidden py-14 text-slate-800">
       
       {/* BACKGROUND GRAPHIC ACCENTS */}
       {/* Top Right Curved lines */}
@@ -53,7 +53,7 @@ export default function LatestBlogs() {
         className="absolute bottom-6 left-0 w-[80px] sm:w-[100px] h-auto select-none pointer-events-none opacity-85 z-0"
       />
 
-      <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-2xl mx-auto mb-16 flex flex-col items-center">

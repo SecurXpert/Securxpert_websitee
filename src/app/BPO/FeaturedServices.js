@@ -25,7 +25,7 @@ export default function FeaturedServices() {
     ];
 
     return (
-        <section className="relative w-full bg-white overflow-hidden py-18 text-slate-800">
+        <section className="relative w-full bg-white overflow-hidden py-20 text-slate-800">
 
             {/* RIGHT SIDE SVG SHAPE */}
             <img
@@ -40,7 +40,7 @@ export default function FeaturedServices() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
                     {/* LEFT CONTENT */}
-                    <div className="lg:col-span-5 lg:pl-20">
+                    <div className="lg:col-span-4 lg:pl-10">
 
                         {/* SMALL LABEL */}
                         <div className="relative inline-flex items-center mb-6 pt-5">
@@ -72,7 +72,7 @@ export default function FeaturedServices() {
                             {services.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-5 min-h-[155px] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-[#F1EEEE] hover:border-transparent hover:bg-[#3D62EB] group z-10"
+                                    className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-4 aspect-square transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-[#F1EEEE] hover:border-transparent hover:bg-[#3D62EB] group z-10"
                                 >
                                     {/* Hover Background Image Overlay */}
                                     <img
@@ -82,7 +82,7 @@ export default function FeaturedServices() {
                                     />
 
                                     {/* Card Content Container */}
-                                    <div className="relative z-10 flex flex-col justify-between h-full min-h-[145px]">
+                                    <div className="relative z-10 flex flex-col justify-between h-full">
                                         {/* ICON */}
                                         <div className="mb-3">
                                             <img
@@ -100,7 +100,7 @@ export default function FeaturedServices() {
                                             </h3>
 
                                             {/* DESCRIPTION */}
-                                            <p className="text-[#414651] text-sm leading-relaxed font-normal group-hover:text-white/85 transition-colors">
+                                            <p className="text-[#414651] text-[12px] leading-relaxed font-normal group-hover:text-white/85 transition-colors">
                                                 {item.desc}
                                             </p>
                                         </div>

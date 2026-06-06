@@ -38,7 +38,7 @@ export default function Achievements() {
         backgroundPosition: "center",
         backgroundAttachment: "scroll"
       }}
-      className="relative w-full overflow-hidden py-18 px-6 sm:px-12 lg:px-24"
+      className="relative w-full overflow-hidden py-14 px-6 sm:px-12 lg:px-24"
     >
       {/* Dark Premium Radial Overlay for Contrast */}
       <div 

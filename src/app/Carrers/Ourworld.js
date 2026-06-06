@@ -72,7 +72,7 @@ export default function Ourworld() {
   };
  
   return (
-    <section className="relative w-full py-20 md:py-28 bg-[#F7F9FC] text-slate-800 overflow-hidden select-none">
+    <section className="relative w-full py-20 md:py-14 bg-[#F7F9FC] text-slate-800 overflow-hidden select-none">
       <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-4 md:px-20">
        
         {/* Section Header */}

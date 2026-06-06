@@ -61,7 +61,7 @@ export default function Faq() {
     const [activeRight, setActiveRight] = useState(0);
 
     return (
-        <section className="relative w-full bg-white overflow-hidden py-20 px-6 sm:px-12 lg:px-24">
+        <section className="relative w-full bg-white overflow-hidden py-14 px-6 sm:px-12 lg:px-24">
             <div className="relative z-10 max-w-[1240px] mx-auto w-full select-none text-left">
                 
                 {/* FAQ'S Tag Header Row with Divider */}
