@@ -83,7 +83,7 @@ export default function OurProducts() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setActiveIndex((prevIndex) => (prevIndex + 1) % productsData.length);
-        }, 5000);
+        }, 3000);
 
         return () => clearTimeout(timer);
     }, [activeIndex]);

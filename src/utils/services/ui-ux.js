@@ -1,6 +1,12 @@
 import { LuUsers, LuLayers } from "react-icons/lu";
 
 const uiUx = {
+  category: "07 — UI/UX DESIGN",
+  metaTitle: "UI/UX Design Services in Hyderabad | User-First Design",
+  metaDescription: "Professional UI/UX design services in Hyderabad. Web & mobile app design, wireframing, prototyping & user research. 500+ projects delivered. Get a free consultation.",
+  heroTitle: "UI/UX Design Services That Turn Users Into Loyal Customers",
+  heroDesc: "Trusted by 500+ businesses to design intuitive, conversion-focused digital experiences for web apps, mobile apps, and SaaS products that users love and businesses grow with.",
+  illustration: "/services-media/OurServices/services5.png",
   title: "UI/UX Design & Interactive Prototyping",
   subtitle: "Core Service",
   description: "Deliver exceptional, user-centered digital products. Our design team focuses on deeply understanding user behaviors, performing accessibility (WCAG) reviews, creating intuitive wireframes, and building state-of-the-art interactive prototypes to elevate user satisfaction and conversion rates.",
@@ -78,7 +84,39 @@ const uiUx = {
       desc: "Validating user flows, animations, and preparing developer handoff"
     }
   ],
-  techStack: ["Figma", "Adobe XD", "Sketch", "InVision", "Miro", "Zeplin", "Illustrator"]
+  techStack: ["Figma", "Adobe XD", "Sketch", "InVision", "Miro", "Zeplin", "Illustrator"],
+  faqs: [
+    {
+      id: 1,
+      qNumber: "Q1.",
+      question: "What is the difference between UI and UX design?",
+      answer: "UX (User Experience) focuses on the overall feel, functionality, and user journey of a product. UI (User Interface) is about the visual elements like colors, typography, and buttons."
+    },
+    {
+      id: 2,
+      qNumber: "Q2.",
+      question: "Do you redesign existing websites or apps?",
+      answer: "Yes, we specialize in revamping outdated digital products. We conduct UX audits to identify pain points and create modernized, high-converting interfaces."
+    },
+    {
+      id: 3,
+      qNumber: "Q3.",
+      question: "What tools do you use for design and prototyping?",
+      answer: "Our primary tool is Figma for collaborative wireframing, UI design, and interactive prototyping. We also use Adobe Creative Suite when necessary."
+    },
+    {
+      id: 4,
+      qNumber: "Q4.",
+      question: "Can you provide assets for our development team?",
+      answer: "Absolutely. We provide comprehensive design systems, style guides, and fully annotated Figma files to ensure smooth handoff to your developers."
+    }
+  ],
+  cta: {
+    heading: "Ready to Design a Product Your Users Will Actually Love?",
+    description: "Share your product brief; we'll design an experience that's intuitive, conversion-focused, and built to scale with your business.",
+    buttonText: "Get a Free Demo",
+    buttonLink: "/contact"
+  }
 };
 
 export default uiUx;

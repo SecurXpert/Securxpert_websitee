@@ -1,0 +1,35 @@
+{
+  "hosting": {
+    "public": "out",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": true,
+    "redirects": [
+      {
+        "source": "/blogs/:slug*",
+        "destination": "/Blogs/:slug*",
+        "type": 301
+      },
+      {
+        "source": "/Services/:slug*",
+        "destination": "/services/:slug*",
+        "type": 301
+      },
+      {
+        "source": "/Services",
+        "destination": "/services",
+        "type": 301
+      },
+      {
+        "source": "/Portfolio",
+        "destination": "/portfolio",
+        "type": 301
+      }
+    ]
+  }
+}
+ 

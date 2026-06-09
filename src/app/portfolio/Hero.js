@@ -13,7 +13,7 @@ export default function Hero() {
             headingLine2: "CONSULTING",
             btn1Text: "About Company",
             btn2Text: "Our Services",
-            image: "/Portfolio/Hero/hero1.png",
+            image: "/portfolio-media/Hero/hero1.png",
             playSub: "LET'S START",
             playItems: ["AI AUTOMATION", "ENTERPRISE SOLUTIONS", "DIGITAL GROWTH", "TECH CONSULTING"]
         },
@@ -23,7 +23,7 @@ export default function Hero() {
             headingLine2: "TRANSFORMATION",
             btn1Text: "Explore Products",
             btn2Text: "EXPLORE Services",
-            image: "/Portfolio/Hero/hero2.png",
+            image: "/portfolio-media/Hero/hero2.png",
             playSub: "INNOVATING THE FUTURE OF TECHNOLOGY",
             playItems: ["PAYMENT", "FINANCE", "DRIBBLLE", "DESIGN"]
         },
@@ -33,7 +33,7 @@ export default function Hero() {
             headingLine2: "SOLUTIONS",
             btn1Text: "GET STARTED",
             btn2Text: "VIEW CASE STUDIES",
-            image: "/Portfolio/Hero/hero3.png",
+            image: "/portfolio-media/Hero/hero3.png",
             playSub: "LET'S START",
             playItems: ["AI AUTOMATION", "SOFTWARE ENGINEERING", "CLOUD INFRASTRUCTURE", "DIGITAL STRATEGY"]
         }
@@ -50,7 +50,7 @@ export default function Hero() {
     return (
         <section
             className="relative min-h-[95vh] lg:min-h-[108vh] w-full overflow-hidden bg-cover bg-center flex items-center pt-24 pb-4 lg:py-0"
-            style={{ backgroundImage: "url('/Portfolio/Hero/hero-bg.png')" }}
+            style={{ backgroundImage: "url('/portfolio-media/Hero/hero-bg.png')" }}
         >
 
 
@@ -61,11 +61,10 @@ export default function Hero() {
                     return (
                         <div
                             key={index}
-                            className={`inset-x-0 w-full px-6 md:px-12 lg:px-20 transition-all duration-1000 ease-in-out min-h-[70vh] lg:min-h-[92vh] flex items-center justify-center ${
-                                isActive
+                            className={`inset-x-0 w-full px-6 md:px-12 lg:px-20 transition-all duration-1000 ease-in-out min-h-[70vh] lg:min-h-[92vh] flex items-center justify-center ${isActive
                                     ? "relative lg:absolute opacity-100 translate-x-0 pointer-events-auto z-20"
                                     : "absolute opacity-0 translate-x-12 pointer-events-none z-10"
-                            }`}
+                                }`}
                         >
 
                             {/* DESKTOP ABSOLUTE RIGHT IMAGE */}
@@ -90,7 +89,7 @@ export default function Hero() {
                                     className={`text-[#EBEBEB] font-semibold uppercase tracking-widest text-[12px] sm:text-[25px] mb-3 transition-all duration-1000 ${isActive ? "opacity-100 translate-y-0 delay-100" : "opacity-0 -translate-y-4"
                                         }`}
                                     style={{ textShadow: "3px 0px 55px #FFFFFF9E" }}
-                                > 
+                                >
                                     {slide.subheading}
                                 </p>
 

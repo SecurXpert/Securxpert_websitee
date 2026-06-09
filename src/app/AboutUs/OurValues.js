@@ -51,7 +51,7 @@ export default function OurValues() {
         {/* Wavy line pattern background with title */}
         <div className="relative flex justify-center items-center mb-16 sm:mb-20 py-8">
           <img 
-            src="/Services/OurServices/line pattern.svg" 
+            src="/services-media/OurServices/line pattern.svg" 
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] pointer-events-none select-none opacity-90 h-auto" 
             alt="" 
           />

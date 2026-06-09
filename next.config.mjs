@@ -32,13 +32,10 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   allowedDevOrigins: getLocalNetworkIPs(),
-  async rewrites() {
-    return [
-      {
-        source: '/blogs',
-        destination: '/Blogs',
-      },
-    ];
+  output: "export",
+  trailingSlash: process.env.NODE_ENV === "production",
+  images: {
+    unoptimized: true,
   },
 };
 

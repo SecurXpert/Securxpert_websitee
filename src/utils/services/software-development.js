@@ -1,6 +1,12 @@
 import { LuGlobe, LuSmartphone, LuDatabase, LuCode } from "react-icons/lu";
 
 const webDevelopment = {
+  category: "01 — SOFTWARE DEVELOPMENT",
+  metaTitle: "Custom Software Development Company | Web & Mobile",
+  metaDescription: "Leading custom software development company serving clients worldwide. We build scalable web, mobile & enterprise apps. Free consultation, no commitment.",
+  heroTitle: "Custom Software Development — Built for Scale, Designed for Growth",
+  heroDesc: "Trusted by 50+ startups and enterprises worldwide to build scalable web, mobile, and cloud software solutions on time, on budget, every time.",
+  illustration: "/services-media/services.png",
   title: "Web Security & Development",
   subtitle: "Core Service",
   description: "We design and code enterprise web applications that integrate advanced backend security measures. We believe you shouldn't have to choose between rich user experiences and ironclad protection.",
@@ -78,7 +84,63 @@ const webDevelopment = {
       desc: "Launch and ongoing maintenance"
     }
   ],
-  techStack: ["React", "Node.js", "Python", "Java", "Swift", "Kotlin", "PostgreSQL", "MongoDB", "AWS", "Docker"]
+  techStack: ["React", "Node.js", "Python", "Java", "Swift", "Kotlin", "PostgreSQL", "MongoDB", "AWS", "Docker","Next.js"],
+  faqs: [
+    {
+      id: 1,
+      qNumber: "Q1.",
+      question: "What Is the Cost of Custom Software Development?",
+      answer: "It depends on features, complexity, and team size. We offer a free discovery call to provide a fixed-scope quote with no surprises and no commitment."
+    },
+    {
+      id: 2,
+      qNumber: "Q2.",
+      question: "How long does it take to develop custom software?",
+      answer: "Basic app: 6-12 weeks. Mid-size products: 3 to 6 months Enterprise Solutions: 6-12 months. The timeline is always on time, agreed upon before development begins."
+    },
+    {
+      id: 3,
+      qNumber: "Q3.",
+      question: "Before discussing our project, do you sign NDAs?",
+      answer: "Yes. NDA signed before any conversation. You own all IP upon delivery. No sharing rights, no exceptions."
+    },
+    {
+      id: 4,
+      qNumber: "Q4.",
+      question: "Do you work with startups only or with enterprises?",
+      answer: "Both. From early-stage startups to large enterprises, we scale to fit your stage, goal, and budget."
+    },
+    {
+      id: 5,
+      qNumber: "Q5.",
+      question: "What type of tech do you work with?",
+      answer: "Modern, battle-tested, long-term supported: React, Next.js, Node.js, Python, Java, Swift, Kotlin, PostgreSQL, MongoDB, AWS, Docker."
+    },
+    {
+      id: 6,
+      qNumber: "Q6.",
+      question: "Do you have clients worldwide?",
+      answer: "Absolutely. We work with businesses across India, the US, the UK, the Middle East, and beyond. Remote-first, timezone-flexible, 24/7 communication."
+    },
+    {
+      id: 7,
+      qNumber: "Q7.",
+      question: "Do you provide post-launch support?",
+      answer: "Yes. Maintenance, bug fixes, and SLA-backed support after go-live. A dedicated team handles enhancements and monitoring; we don't disappear."
+    },
+    {
+      id: 8,
+      qNumber: "Q8.",
+      question: "How do we get started?",
+      answer: "Book a free discovery call. We understand your requirements, scope the project, and deliver a fixed quote with no obligation and no pressure."
+    }
+  ],
+  cta: {
+    heading: "Ready to build your next software product?",
+    description: "Tell us about your idea; we'll scope it, architect it, and ship it. No fluff, no lock-ins.",
+    buttonText: "Get in touch",
+    buttonLink: "/contact"
+  }
 };
 
-export default webDevelopment;
+export default webDevelopment; 

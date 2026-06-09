@@ -130,7 +130,7 @@ export default function Faq() {
                     <div className="lg:col-span-4 flex justify-center w-full">
                         <div className="w-full max-w-[340px] aspect-[1/1.4] rounded-[24px] overflow-hidden shadow-lg border border-slate-100 shadow-slate-100">
                             <img 
-                                src="/Portfolio/FAQ.jpg" 
+                                src="/portfolio-media/FAQ.jpg" 
                                 alt="FAQ workspace collaboration" 
                                 className="w-full h-full object-cover select-none pointer-events-none"
                             />

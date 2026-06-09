@@ -1,47 +1,55 @@
 "use client";
 
-import React from "react";
+import Link from "next/link";
 
 const servicesData = [
     {
         id: 1,
         title: "Customer Software development",
-        image: "/Services/OurServices/services1.png",
+        image: "/services-media/OurServices/services1.png",
+        slug: "software-development",
     },
     {
         id: 2,
         title: "It support & Managed services",
-        image: "/Services/OurServices/services2.png",
+        image: "/services-media/OurServices/services2.png",
+        slug: "it-support",
     },
     {
         id: 3,
         title: "Cloud & Infrastructure Services",
-        image: "/Services/OurServices/services3.png",
+        image: "/services-media/OurServices/services3.png",
+        slug: "cloud-services",
     },
     {
         id: 4,
         title: "Business Process Outsourcing (BPO)",
-        image: "/Services/OurServices/services4.png",
+        image: "/services-media/OurServices/services4.png",
+        slug: "bpo-services",
     },
     {
         id: 5,
         title: "AI Chatbots Development",
-        image: "/Services/OurServices/services5.png",
+        image: "/services-media/OurServices/services5.png",
+        slug: "ai-chatbots",
     },
     {
         id: 6,
         title: "Digital Marketing Solutions",
-        image: "/Services/OurServices/services6.png",
+        image: "/services-media/OurServices/services6.png",
+        slug: "digital-marketing",
     },
     {
         id: 7,
         title: "UI/UX Design Services",
-        image: "/Services/OurServices/services7.png",
+        image: "/services-media/OurServices/services7.png",
+        slug: "ui-ux-design",
     },
     {
         id: 8,
         title: "Cybersecurity Services",
-        image: "/Services/OurServices/services8.png",
+        image: "/services-media/OurServices/services8.png",
+        slug: "cybersecurity",
     },
 ];
 
@@ -65,7 +73,7 @@ export default function OurServices() {
                         {/* Waves SVG Background loaded as an image asset */}
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-visible">
                             <img
-                                src="/Services/OurServices/line pattern.svg"
+                                src="/services-media/OurServices/line pattern.svg"
                                 alt="Waves Background Pattern"
                                 className="w-full max-w-[1517px] h-auto opacity-70 object-contain select-none"
                             />
@@ -85,7 +93,8 @@ export default function OurServices() {
                 {/* Services Grid (3 Columns on Large, 2 Columns on Medium, 1 Column on Mobile) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 sm:gap-y-16">
                     {servicesData.map((service) => (
-                        <div
+                        <Link
+                            href={`/services/${service.slug}`}
                             key={service.id}
                             className="group relative flex flex-col cursor-pointer transition-all duration-300"
                         >
@@ -124,7 +133,7 @@ export default function OurServices() {
                             <h3 className="text-left font-semibold text-[#2F2F2F] text-xl  mt-3 px-2 group-hover:text-[#2563EB] transition-colors duration-250 font-sans tracking-tight">
                                 {service.title}
                             </h3>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 

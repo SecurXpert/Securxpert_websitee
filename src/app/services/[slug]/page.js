@@ -11,6 +11,8 @@ import cloudServices from "@/utils/services/cloud-services";
 import bpoServices from "@/utils/services/bpo-services";
 import aiChatbots from "@/utils/services/ai-chatbots";
 import cybersecurity from "@/utils/services/cybersecurity";
+import Faq from "./Faq";
+import TechShowcase from "./TechShowcase";
 
 const servicesData = {
   "software-development": softwareDevelopment,
@@ -24,56 +26,7 @@ const servicesData = {
   "cybersecurity": cybersecurity
 };
 
-const heroMetadata = {
-  "software-development": {
-    category: "01 — SOFTWARE DEVELOPMENT",
-    title: "Build the Future with Custom Software",
-    desc: "From MVPs to enterprise-grade applications, we deliver scalable software solutions that drive business growth.",
-    illustration: "/Services/services.png"
-  },
-  "it-support": {
-    category: "02 — IT SUPPORT",
-    title: "Reliable IT Support & Managed Services",
-    desc: "Comprehensive IT support solutions to ensure your business operations run smoothly and securely 24/7.",
-    illustration: "/Services/OurServices/services3.png"
-  },
-  "cloud-services": {
-    category: "03 — CLOUD SERVICES",
-    title: "Scale with Cloud Infrastructure",
-    desc: "Scalable, secure, and reliable cloud solutions to accelerate your digital transformation and reduce infrastructure costs.",
-    illustration: "/Services/OurServices/services1.png"
-  },
-  "bpo-services": {
-    category: "04 — BPO SERVICES",
-    title: "Optimize Operations with BPO",
-    desc: "Streamline your operations with our dedicated BPO services, offering scalable teams for customer support and back-office tasks.",
-    illustration: "/Services/OurServices/services6.png"
-  },
-  "ai-chatbots": {
-    category: "05 — AI CHATBOTS",
-    title: "Automate with Smart AI Chatbots",
-    desc: "Intelligent AI-driven chatbots and virtual assistants that automate customer service and enhance user engagement.",
-    illustration: "/Services/services.png"
-  },
-  "digital-marketing": {
-    category: "06 — DIGITAL MARKETING",
-    title: "Grow Your Brand with Digital Marketing",
-    desc: "Maximize online visibility, attract targeted traffic, and boost conversions with high-impact marketing campaigns.",
-    illustration: "/Services/OurServices/services4.png"
-  },
-  "ui-ux-design": {
-    category: "07 — UI/UX DESIGN",
-    title: "Design the Future with Intuitive Interfaces",
-    desc: "User-centered wireframes, modern design systems, and high-fidelity interactive prototypes that convert.",
-    illustration: "/Services/OurServices/services5.png"
-  },
-  "cybersecurity": {
-    category: "08 — CYBERSECURITY",
-    title: "Secure Your Enterprise Assets",
-    desc: "Robust cybersecurity solutions to protect your digital assets, ensure compliance, and defend against advanced threats.",
-    illustration: "/Services/OurServices/services2.png"
-  }
-};
+
 
 export async function generateStaticParams() {
   return [
@@ -84,8 +37,26 @@ export async function generateStaticParams() {
     { slug: "ai-chatbots" },
     { slug: "digital-marketing" },
     { slug: "ui-ux-design" },
-    { slug: "cybersecurity" }
+    { slug: "cybersecurity" },
+    { slug: "mobile-app-development" }
   ];
+}
+
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+  const service = servicesData[slug];
+
+  if (!service) {
+    return {
+      title: "Service Not Found",
+    };
+  }
+
+  return {
+    title: service.metaTitle || `${service.title} | SecurXpert`,
+    description: service.metaDescription || service.heroDesc || service.description,
+  };
 }
 
 export default async function ServicePage({ params }) {
@@ -97,11 +68,11 @@ export default async function ServicePage({ params }) {
     notFound();
   }
 
-  const meta = heroMetadata[slug] || {
-    category: `05 — ${service.subtitle || "SERVICE"}`,
-    title: service.title,
-    desc: service.description,
-    illustration: "/Services/services.png"
+  const meta = {
+    category: service.category || `05 — ${service.subtitle || "SERVICE"}`,
+    title: service.heroTitle || service.title,
+    desc: service.heroDesc || service.description,
+    illustration: service.illustration || "/services-media/services.png"
   };
 
   const capabilities = service.capabilities || [];
@@ -119,11 +90,11 @@ export default async function ServicePage({ params }) {
           {/* Soft Background Blue Glow Effect */}
           <div className="absolute left-0 top-0 w-[500px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full pointer-events-none" />
 
-          <div className="relative px-6 md:px-20 pt-18 sm:pt-24 md:pt-28 lg:pt-20 xl:pt-24 pb-0 flex flex-col items-center justify-between overflow-visible bg-transparent w-full min-h-[500px] lg:min-h-[700px] xl:min-h-[800px] max-h-[500px] lg:max-h-[700px] xl:max-h-[800px]">
+          <div className="relative px-6 md:px-20 pt-18 sm:pt-24 md:pt-28 lg:pt-20 xl:pt-14 pb-0 flex flex-col items-center justify-between overflow-visible bg-transparent w-full min-h-[500px] lg:min-h-[700px] xl:min-h-[800px] max-h-[500px] lg:max-h-[700px] xl:max-h-[800px]">
 
             {/* High-Performance Clipped Background Image Tag */}
             <img
-              src="/Services/hero-bg.png"
+              src="/services-media/hero-bg.png"
               alt="Services Hero Curved Background"
               className="hidden lg:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-2 lg:mt-3"
             />
@@ -150,12 +121,12 @@ export default async function ServicePage({ params }) {
               </div>
 
               {/* Main Title */}
-              <h3 className="text-white text-3xl sm:text-4xl lg:text-[44px] xl:text-[65px] font-semibold leading-tight max-w-3xl mx-auto px-4 font-inter">
+              <h1 className="text-white text-3xl sm:text-4xl lg:text-[44px] xl:text-[50px] font-semibold leading-tight max-w-4xl mx-auto px-4 font-inter">
                 {meta.title}
-              </h3>
+              </h1>
 
               {/* Description */}
-              <p className="text-blue-100/90 text-xs sm:text-sm lg:text-[19px] whitespace-nowrap leading-relaxed max-w-full mx-auto px-4 font-normal opacity-90">
+              <p className="text-blue-100/90 text-xs sm:text-sm lg:text-[19px]  leading-relaxed max-w-4xl mx-auto px-4 font-normal opacity-90">
                 {meta.desc}
               </p>
 
@@ -209,7 +180,20 @@ export default async function ServicePage({ params }) {
 
       {/* Our Process Section (Coded from user mockup screenshot) */}
       {processSteps.length > 0 && (
-        <section className="bg-slate-50/50 py-16 sm:py-14 relative z-10 border-b border-slate-100/80">
+        <section 
+          className="py-16 sm:py-14 relative z-10 border-b border-slate-100/80"
+          style={{ background: "linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%)" }}
+        >
+          <img
+              src="/BPO/AboutUs/aboutus2.svg"
+              alt="Backdrop Radial Rays"
+              className="absolute top-[0px] left-[-110px] w-[30%] h-[60%] pointer-events-none select-none z-0"
+            />
+             <img
+                src="/BPO/FeauturedServices/shape.svg"
+                alt="Background Shape"
+                className="absolute right-[-14rem] bottom-[-8rem] h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block select-none opacity-90"
+            />
           <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
@@ -240,83 +224,47 @@ export default async function ServicePage({ params }) {
           </div>
         </section>
       )}
-      {/* Technologies We Master Section (Infinite Marquee) */}
+      {/* Technologies We Master Section */}
       {techStack.length > 0 && (
-        <section className="bg-white py-20 sm:py-24 relative z-10 border-b border-slate-100/80 overflow-hidden">
-          <div className="w-full mx-auto px-4 md:px-0">
-            {/* Header */}
-            <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto px-6">
-              <h3 className="text-[#100D35] text-3xl sm:text-4xl lg:text-[45px] font-bold tracking-[-1px] mb-4 font-inter">
-                Technologies We Master
-              </h3>
-              <p className="text-slate-500 text-base sm:text-lg">
-                Building enterprise solutions with cutting-edge technologies and industry-leading frameworks
-              </p>
-            </div>
-            
-            {/* Infinite Marquee Track */}
-            <div className="relative w-full overflow-hidden flex flex-col py-4">
-              
-              {/* Left/Right Fade Overlays */}
-              <div className="absolute top-0 left-0 w-16 sm:w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-              <div className="absolute top-0 right-0 w-16 sm:w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
-              {/* Marquee Inner Track */}
-              <div className="flex w-max items-center gap-4 sm:gap-6 pl-4" style={{ animation: "marquee 30s linear infinite" }}>
-                {[...techStack, ...techStack, ...techStack].map((tech, idx) => (
-                  <div 
-                    key={idx} 
-                    className="flex items-center gap-4 bg-white rounded-2xl px-6 py-4 sm:px-8 sm:py-5 shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-slate-100 hover:shadow-[0_15px_40px_rgba(37,99,235,0.12)] transition-shadow duration-300 select-none group cursor-pointer"
-                  >
-                    {/* Placeholder Brand Logo Graphic */}
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm text-white"
-                         style={{ background: `linear-gradient(135deg, hsl(${(idx * 45) % 360}, 70%, 60%), hsl(${(idx * 45 + 30) % 360}, 80%, 50%))` }}>
-                        {tech.charAt(0)}
-                    </div>
-                    <span className="text-slate-800 font-bold text-base sm:text-lg group-hover:text-blue-600 transition-colors">
-                      {tech}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Footer text */}
-            <div className="text-center mt-10">
-                <p className="text-slate-400 text-sm font-medium">And many more technologies to bring your vision to life</p>
-            </div>
-          </div>
-          
-          <style dangerouslySetInnerHTML={{__html: `
-            @keyframes marquee {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-33.3333%); }
-            }
-          `}} />
-        </section>
+        <TechShowcase 
+          title={service.techStackTitle || "Technology stack"}
+          description={service.techStackDesc || "We work with modern, battle-tested technologies chosen for reliability, scalability, and long-term support."}
+          techList={techStack}
+        />
       )}
 
-      {/* Ready to Build Something Amazing CTA Section (Coded from user mockup screenshot) */}
+      {/* FAQ Section */}
+      <Faq faqs={service.faqs} />
+
+      {/* Dynamic CTA Section */}
       <section 
-        className="w-full text-center select-none py-20 px-6 md:px-12 flex items-center justify-center relative z-10"
-        style={{
-          background: "linear-gradient(135deg, #4F46E5 0%, #4E42E1 7.14%, #4D3EDC 14.29%, #4B3BD8 21.43%, #4A37D3 28.57%, #4933CF 35.71%, #482ECA 42.86%, #462AC6 50%, #4526C2 57.14%, #4421BD 64.29%, #421CB9 71.43%, #4117B5 78.57%, #4010B1 85.71%, #3E08AC 92.86%, #3D00A8 100%)"
+        className={`w-full text-center select-none py-20 px-6 md:px-12 flex items-center justify-center relative z-10 ${service.cta?.bgClass || ""}`}
+        style={service.cta?.bgClass ? {} : {
+          background: service.cta?.gradient || "linear-gradient(135deg, #4F46E5 0%, #4E42E1 7.14%, #4D3EDC 14.29%, #4B3BD8 21.43%, #4A37D3 28.57%, #4933CF 35.71%, #482ECA 42.86%, #462AC6 50%, #4526C2 57.14%, #4421BD 64.29%, #421CB9 71.43%, #4117B5 78.57%, #4010B1 85.71%, #3E08AC 92.86%, #3D00A8 100%)"
         }}
       >
         <div className="max-w-4xl mx-auto flex flex-col items-center justify-center space-y-6">
           <h2 className="text-3xl sm:text-4xl md:text-[44px] text-white font-semibold tracking-tight font-space-grotesk">
-            Ready to Build Something Amazing?
+            {service.cta?.heading || "Ready to Build Something Amazing?"}
           </h2>
           <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
-            Let's turn your vision into reality with our expert development team.
+            {service.cta?.description || "Let's turn your vision into reality with our expert development team."}
           </p>
-          <div className="pt-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link 
-              href="/contact" 
-              className="inline-block bg-white hover:bg-white/90 text-[#4F46E5] font-semibold px-8 py-3 rounded-full text-base sm:text-lg shadow-lg shadow-black/10 transition-all hover:scale-[1.02] active:scale-95 duration-150"
+              href={service.cta?.buttonLink || "/contact"} 
+              className={`inline-block bg-white hover:bg-white/90 font-semibold px-8 py-3 rounded-full text-base sm:text-lg shadow-lg shadow-black/10 transition-all hover:scale-[1.02] active:scale-95 duration-150 ${service.cta?.buttonTextColor || "text-[#4F46E5]"}`}
             >
-              Get in Touch
+              {service.cta?.buttonText || "Get in Touch"}
             </Link>
+            {service.cta?.secondaryButtonText && (
+              <Link 
+                href={service.cta?.secondaryButtonLink || "/contact"} 
+                className={`inline-block bg-transparent border-2 border-white hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-full text-base sm:text-lg transition-all hover:scale-[1.02] active:scale-95 duration-150`}
+              >
+                {service.cta.secondaryButtonText}
+              </Link>
+            )}
           </div>
         </div>
       </section>

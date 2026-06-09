@@ -43,7 +43,7 @@ export default function BPOHero() {
 
                     {/* High-Performance Clipped Background Image Tag */}
                     <img
-                        src="/Services/hero-bg.png"
+                        src="/services-media/hero-bg.png"
                         alt="BPO Hero Curved Background"
                         className="hidden lg:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-2 lg:mt-3"
                     />

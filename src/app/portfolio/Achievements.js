@@ -33,7 +33,7 @@ export default function Achievements() {
   return (
     <section 
       style={{ 
-        backgroundImage: "url('/Portfolio/achievementbg.jpg')", 
+        backgroundImage: "url('/portfolio-media/achievementbg.jpg')", 
         backgroundSize: "cover", 
         backgroundPosition: "center",
         backgroundAttachment: "scroll"

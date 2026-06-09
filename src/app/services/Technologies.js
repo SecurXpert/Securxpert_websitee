@@ -1,71 +1,172 @@
 "use client";
 
-import React from "react";
+import React, { useState } from 'react';
 
-const techCategories = [
-    {
-        title: "Frontend Technologies",
-        techs: ["HTML5", "CSS3", "JavaScript", "React", "Angular"]
-    },
-    {
-        title: "Backend Technologies",
-        techs: ["PHP", "Python", "Express.js", "Laravel", "Node.js"]
-    },
-    {
-        title: "Databases",
-        techs: ["MongoDB", "MySQL", "PostgreSQL"]
-    },
-    {
-        title: "CMS Platforms",
-        techs: ["WordPress", "Drupal", "Strapi", "Shopify"]
-    },
-    {
-        title: "Cloud & Hosting",
-        techs: ["AWS", "Azure", "Google Cloud", "DigitalOcean"]
-    }
+const technologies = [
+  { name: 'React', color: 'from-cyan-400 to-blue-500', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { name: 'Next.js', color: 'from-black to-gray-800', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+  { name: 'Angular', color: 'from-red-600 to-red-700', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg' },
+  { name: 'Vue.js', color: 'from-emerald-500 to-teal-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+  { name: 'Node.js', color: 'from-green-600 to-green-700', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'Express', color: 'from-gray-700 to-gray-900', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+  { name: 'Python', color: 'from-blue-500 to-yellow-500', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { name: 'Django', color: 'from-green-700 to-green-900', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
+  { name: 'Flask', color: 'from-black to-gray-700', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' },
+  { name: 'PHP', color: 'from-indigo-600 to-purple-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+  { name: 'Laravel', color: 'from-red-500 to-orange-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg' },
+  { name: 'Java', color: 'from-orange-600 to-red-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+  { name: 'Spring Boot', color: 'from-green-600 to-emerald-700', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+  { name: '.NET', color: 'from-purple-600 to-indigo-700', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg' },
+  { name: 'C#', color: 'from-purple-700 to-violet-800', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg' },
+  { name: 'MySQL', color: 'from-blue-600 to-blue-800', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  { name: 'PostgreSQL', color: 'from-blue-700 to-indigo-800', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  { name: 'MongoDB', color: 'from-green-600 to-green-800', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  { name: 'Redis', color: 'from-red-600 to-red-800', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+  { name: 'AWS', color: 'from-orange-500 to-amber-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
+  { name: 'Azure', color: 'from-blue-500 to-blue-700', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' },
+  { name: 'Docker', color: 'from-blue-500 to-cyan-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+  { name: 'Kubernetes', color: 'from-blue-600 to-indigo-700', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
+  { name: 'GraphQL', color: 'from-pink-600 to-purple-700', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
+  { name: 'TypeScript', color: 'from-blue-600 to-blue-800', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'Tailwind CSS', color: 'from-cyan-500 to-blue-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+  { name: 'Figma', color: 'from-purple-500 to-pink-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+  { name: 'Shopify', color: 'from-green-600 to-emerald-700', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/shopify/shopify-original.svg' },
+  { name: 'WordPress', color: 'from-blue-700 to-indigo-800', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg' },
+  { name: 'Flutter', color: 'from-blue-500 to-cyan-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
+  { name: 'React Native', color: 'from-cyan-500 to-blue-600', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
 ];
 
 export default function Technologies() {
-    return (
-        <section 
-            className="relative w-full py-14 px-6 sm:px-12 lg:px-20 overflow-hidden select-none"
-            style={{
-                background: "linear-gradient(180deg, #24145C 0%, #364BC2 81.41%, #3A58D9 100%)"
-            }}
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div className="w-full overflow-hidden relative bg-slate-50">
+      {/* Background gradient orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl -translate-y-1/2"></div>
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl -translate-y-1/2"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 bg-clip-text text-transparent mb-4">
+            Technologies We Master
+          </h2>
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            Building enterprise solutions with cutting-edge technologies and industry-leading frameworks
+          </p>
+        </div>
+
+        {/* Scrolling container */}
+        <div
+          className="relative"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-            {/* Header Block */}
-            <div className="flex flex-col items-center justify-center text-center mb-16 sm:mb-20">
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-wide text-white font-sans">
-                    Our Technology Stack
-                </h3>
-                <p className="mt-6 text-lg sm:text-xl text-white/90 leading-relaxed">
-                    We use modern technologies to build powerful solutions:
-                </p>    
-            </div>
+          {/* Gradient overlays for smooth edge fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 via-slate-50/50 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 via-slate-50/50 to-transparent z-10 pointer-events-none"></div>
 
-            {/* Responsive Columns Grid (5 columns on desktop, responsive breakdown on tablet/mobile) */}
-            <div className="relative max-w-[1380px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12">
-                {techCategories.map((category, index) => (
-                    <div key={index} className="flex flex-col">
-                        {/* Title - min-h-[48px] forces perfect horizontal alignment across columns on large viewports */}
-                        <h3 className="text-white/90 text-center font-semibold text-base sm:text-lg mb-6 tracking-wide min-h-[48px] flex items-center justify-center font-sans">
-                            {category.title}
-                        </h3>
-
-                        {/* List of capsule shape pills */}
-                        <div className="flex flex-col space-y-4">
-                            {category.techs.map((tech, techIdx) => (
-                                <div
-                                    key={techIdx}
-                                    className="w-full bg-[#F7F9FFCC] text-[#271D6D] text-base font-semibold rounded-2xl py-3.5 px-4 text-center shadow-[0_4px_15px_rgba(0,0,0,0.12)] hover:scale-105 hover:bg-[#C5D5FA] hover:shadow-[0_8px_25px_rgba(0,0,0,0.2)] active:scale-98 transition-all duration-300 select-none cursor-pointer flex items-center justify-center min-h-[56px] font-sans tracking-wide"
-                                >
-                                    {tech}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
+          <div className="overflow-hidden py-8">
+            <div
+              className={`flex gap-6 ${isHovered ? 'animate-pause' : 'animate-scroll'}`}
+              style={{
+                width: 'max-content',
+              }}
+            >
+              {/* First set */}
+              {technologies.map((tech, index) => (
+                <TechPill key={`tech-1-${index}`} tech={tech} />
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {technologies.map((tech, index) => (
+                <TechPill key={`tech-2-${index}`} tech={tech} />
+              ))}
+              {/* Third set for extra smoothness */}
+              {technologies.map((tech, index) => (
+                <TechPill key={`tech-3-${index}`} tech={tech} />
+              ))}
             </div>
-        </section>
-    );
+          </div>
+        </div>
+
+        <div className="text-center mt-12">
+          <p className="text-sm text-slate-500">
+            And many more technologies to bring your vision to life
+          </p>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-100% / 3));
+          }
+        }
+
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%) skewX(-12deg);
+          }
+          100% {
+            transform: translateX(200%) skewX(-12deg);
+          }
+        }
+
+        .animate-scroll {
+          animation: scroll 60s linear infinite;
+        }
+
+        .animate-pause {
+          animation-play-state: paused;
+        }
+
+        .animate-shimmer {
+          animation: shimmer 2s ease-in-out infinite;
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function TechPill({ tech }) {
+  return (
+    <div
+      className="group relative flex-shrink-0 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+    >
+      {/* Glassmorphism pill */}
+      <div className="relative backdrop-blur-md bg-white border border-slate-200 rounded-2xl px-6 py-4 shadow-sm hover:shadow-lg transition-all duration-300">
+        {/* Subtle gradient overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}></div>
+
+        {/* Content */}
+        <div className="relative flex items-center gap-3">
+          {/* Logo */}
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 p-2">
+            <img
+              src={tech.logo}
+              alt={`${tech.name} logo`}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          {/* Name */}
+          <span className="font-semibold text-slate-800 whitespace-nowrap text-base">
+            {tech.name}
+          </span>
+        </div>
+
+        {/* Shimmer effect on hover */}
+        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-shimmer"></div>
+        </div>
+      </div>
+
+      {/* Glow effect */}
+      <div className={`absolute -inset-1 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-20 blur-xl rounded-2xl transition-opacity duration-300 -z-10`}></div>
+    </div>
+  );
 }

@@ -1,6 +1,12 @@
 import { LuSearch, LuShare2, LuTrendingUp } from "react-icons/lu";
 
 const digitalMarketing = {
+  category: "06 — DIGITAL MARKETING",
+  metaTitle: "Digital Marketing Services in Hyderabad | Grow Fast",
+  metaDescription: "Digital Marketing Services Hyderabad Result-Oriented Digital Marketing Agency. SEO, PPC, social media, content, and email marketing. 500+ companies scaled. Book a free strategy call today.",
+  heroTitle: "Real Business Growth through Digital Marketing Services",
+  heroDesc: "Data-driven strategies to grow organic traffic, generate quality leads, and build brand authority trusted by 500+ businesses across industries.",
+  illustration: "/services-media/OurServices/services4.png",
   title: "Digital Audits & Search Optimization",
   subtitle: "Core Service",
   description: "Gain full control over your digital assets. We perform thorough threat assessments, network vulnerability scans, cloud IAM reviews, and search engine optimization (SEO) audits to protect and scale your online presence.",
@@ -78,7 +84,39 @@ const digitalMarketing = {
       desc: "Providing transparent dashboards and growth consultations"
     }
   ],
-  techStack: ["Google Analytics", "Google Ads", "Meta Ads", "SEMrush", "Ahrefs", "HubSpot", "Mailchimp", "Hotjar"]
+  techStack: ["Google Analytics", "Google Ads", "Meta Ads", "SEMrush", "Ahrefs", "HubSpot", "Mailchimp", "Hotjar"],
+  faqs: [
+    {
+      id: 1,
+      qNumber: "Q1.",
+      question: "What digital marketing services do you provide?",
+      answer: "We offer comprehensive services including SEO (Search Engine Optimization), PPC (Pay-Per-Click) advertising, Social Media Marketing, Content Marketing, and Email Marketing."
+    },
+    {
+      id: 2,
+      qNumber: "Q2.",
+      question: "How long does it take to see results from SEO?",
+      answer: "SEO is a long-term strategy. While initial improvements can be seen in the first few months, substantial traffic and ranking growth typically take 4 to 6 months."
+    },
+    {
+      id: 3,
+      qNumber: "Q3.",
+      question: "Do you provide regular performance reports?",
+      answer: "Yes, we provide detailed monthly reports that track key metrics like website traffic, lead generation, conversion rates, and overall ROI."
+    },
+    {
+      id: 4,
+      qNumber: "Q4.",
+      question: "How do you determine the best marketing channels for my business?",
+      answer: "We start with a thorough analysis of your industry, target audience, and competitors to develop a customized strategy focusing on the most profitable channels."
+    }
+  ],
+  cta: {
+    heading: "Want to Grow Your Business with Digital Marketing That Works?",
+    description: "Tell us your goals, and we’ll create a strategy to drive traffic, generate leads, and increase your revenue from day one.",
+    buttonText: "Get a Free Demo",
+    buttonLink: "/contact"
+  }
 };
 
 export default digitalMarketing;

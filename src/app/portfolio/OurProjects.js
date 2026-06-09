@@ -8,28 +8,28 @@ const projectsData = [
         brand: "STUDIO",
         title: "Fashion Brand",
         badge: "MID-LEVEL ADS",
-        image: "/Portfolio/Projects/projects1.jpg",
+        image: "/portfolio-media/Projects/projects1.jpg",
     },
     {
         id: 2,
         brand: "HYNDHAV",
         title: "Astrology App",
         badge: "MID-LEVEL ADS",
-        image: "/Portfolio/Projects/projects2.jpg",
+        image: "/portfolio-media/Projects/projects2.jpg",
     },
     {
         id: 3,
         brand: "MANYAVAR",
         title: "Jewellery App",
         badge: "MID-LEVEL ADS",
-        image: "/Portfolio/Projects/projects3.jpg",
+        image: "/portfolio-media/Projects/projects3.jpg",
     },
     {
         id: 4,
         brand: "SHOOT ORDER",
         title: "Digital Marketing App",
         badge: "MID-LEVEL ADS",
-        image: "/Portfolio/Projects/projects4.jpg",
+        image: "/portfolio-media/Projects/projects4.jpg",
     },
 ];
 

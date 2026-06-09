@@ -71,7 +71,7 @@ export default function WhyChooseUs() {
                         {/* Bottom Image Showcase */}
                         <div className="w-full aspect-[16/8] rounded-[20px] overflow-hidden shadow-lg shadow-slate-100 border border-slate-100">
                             <img
-                                src="/Portfolio/WhyChooseUs.jpg"
+                                src="/portfolio-media/WhyChooseUs.jpg"
                                 alt="Our Collaborative Workspace"
                                 className="w-full h-full object-cover"
                                 loading="lazy"

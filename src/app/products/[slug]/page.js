@@ -3,71 +3,50 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LuChevronLeft, LuCircleCheck } from "react-icons/lu";
 
+import grabjobz from "@/utils/products/grabjobz";
+import lensLight from "@/utils/products/lens-light";
+import devtalent from "@/utils/products/devtalent";
+import vishan from "@/utils/products/vishan";
+import arogyaNarayan from "@/utils/products/arogya-narayan";
+import hisphere from "@/utils/products/hisphere";
+import lauratek from "@/utils/products/lauratek";
+import lauratek2 from "@/utils/products/lauratek-2-0";
+import logsphere from "@/utils/products/logsphere";
+import onestepMedi from "@/utils/products/onestep-medi";
+import shrava360 from "@/utils/products/shrava360";
+
+import BPOServices from "@/app/BPO/services";
+import ProductFAQ from "@/app/products/ProductFAQ";
+import Appointment from "@/app/BPO/Appointment";
+
 const productsData = {
-  "grabjobz": {
-    title: "GrabJobz",
-    headline: "AI-Powered Recruitment Intelligence Hub",
-    desc: "A state-of-the-art recruitment platform designed to automate outreach, intelligently match candidates, and streamline candidate screening using cutting-edge AI.",
-    bg: "linear-gradient(135deg, #1E40AF 0%, #111827 100%)",
-    image: "/products/home/hero1.png",
-    accent: "#3B82F6",
-    features: [
-      "Smart Matchmaking AI - Automatically ranks applicant profiles based on precise skill tags and job descriptions.",
-      "Automated Outreach - Email, SMS, and messaging sequences designed to nurture candidate pools.",
-      "Custom Candidate Portals - A seamless interview scheduling and dashboard experience.",
-      "Intelligent Screening - Machine learning-backed insights into candidate technical skills and experience levels."
-    ]
-  },
-  "lens-light": {
-    title: "Lens & Light Media",
-    headline: "Creative Digital Marketing & Media Agency",
-    desc: "A comprehensive digital marketing and video production solution designed to raise brand awareness, write premium AI content, and deliver growth campaigns.",
-    bg: "linear-gradient(135deg, #1F2937 0%, #030712 100%)",
-    image: "/products/home/hero2.png",
-    accent: "#D9A05B",
-    features: [
-      "High-Fidelity Video Production - Professional shooting, drone capture, and video editing for product commercials.",
-      "Branding & Logo Identity - Cohesive design guidelines, color schemes, and media kits.",
-      "AI-Optimized Copywriting - High SEO rank articles, social posts, and blog marketing campaigns.",
-      "PPC & Growth Solutions - Google Ads, Meta Ads, and LinkedIn campaign management."
-    ]
-  },
-  "devtalent": {
-    title: "DevTalent",
-    headline: "Advanced Talent Assessment Platform Hub",
-    desc: "A secure, robust online test builder and talent assessment platform tailored for technical recruiting, coding tests, and live exam analytics.",
-    bg: "linear-gradient(135deg, #6D28D9 0%, #111827 100%)",
-    image: "/products/home/hero3.png",
-    accent: "#8B5CF6",
-    features: [
-      "Interactive Code Sandboxes - Tests developers in real-time on languages like JavaScript, Go, Python, and SQL.",
-      "Anti-Cheating Guardrails - Camera monitoring, browser tab locking, and plagiarism checkers.",
-      "Detailed Performance Analytics - Deep grading reports indicating memory usage, execution speed, and edge case coverage.",
-      "Course Certifications - Automated PDF certificates sent out upon test completion."
-    ]
-  },
-  "vishan": {
-    title: "Vishan",
-    headline: "Smart School Management System Platform",
-    desc: "An all-in-one school administration and ERP platform. Built to connect teachers, students, parents, and administrative staffs.",
-    bg: "linear-gradient(135deg, #EA580C 0%, #111827 100%)",
-    image: "/products/home/hero4.png",
-    accent: "#F97316",
-    features: [
-      "Comprehensive Student Records - Track transcripts, medical histories, attendance, and exam grades.",
-      "Automated Fee Collection - Safe integration with payment processors for recurring tuition collection.",
-      "Teacher & Class Scheduling - Interactive calendar planner designed to assign classes, exams, and grading.",
-      "Parent Dashboard portal - Instant grade reports, attendance alerts, and direct contact with school staff."
-    ]
-  }
+  "grabjobz": grabjobz,
+  "lens-light": lensLight,
+  "devtalent": devtalent,
+  "vishan": vishan,
+  "arogya-narayan": arogyaNarayan,
+  "hisphere": hisphere,
+  "lauratek": lauratek,
+  "lauratek-2-0": lauratek2,
+  "logsphere": logsphere,
+  "onestep-medi": onestepMedi,
+  "shrava360": shrava360
 };
+
 
 export async function generateStaticParams() {
   return [
     { slug: "grabjobz" },
     { slug: "lens-light" },
     { slug: "devtalent" },
-    { slug: "vishan" }
+    { slug: "vishan" },
+    { slug: "arogya-narayan" },
+    { slug: "hisphere" },
+    { slug: "lauratek" },
+    { slug: "lauratek-2-0" },
+    { slug: "logsphere" },
+    { slug: "onestep-medi" },
+    { slug: "shrava360" }
   ];
 }
 
@@ -81,72 +60,158 @@ export default async function ProductDetailPage({ params }) {
   }
 
   return (
-    <main 
-      className="relative min-h-screen text-white select-none pb-24 pt-28"
-      style={{ background: product.bg }}
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none" />
-
-      <div className="relative max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 z-10">
+    <main className="relative min-h-screen bg-white text-slate-900 select-none pt-0">
+      
+      {/* Top Blue Section */}
+      <section 
+        className="relative w-full pt-32 pb-48 lg:pb-64 overflow-hidden"
+        style={{ background: product.bg }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none" />
         
-        {/* Back button */}
-        <div className="mb-10">
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-1.5 text-white/80 hover:text-white font-semibold text-lg transition-all duration-150"
-          >
-            <LuChevronLeft className="w-5 h-5" /> Back to Products
-          </Link>
-        </div>
-
-        {/* Dynamic Details Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative max-w-[1300px] mx-auto px-6 md:px-12 lg:px-20 z-10">
           
-          {/* Details Content Left */}
-          <div className="space-y-6">
-            <div 
-              className="inline-block px-4 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-black bg-white"
-              style={{ color: '#111827' }}
-            >
-              Featured Product
+          {/* Header Row: Logo + Title + Back Button */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="flex items-center gap-6">
+              {/* Product Logo Box */}
+              <div className="w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-2xl shadow-lg flex items-center justify-center p-3 shrink-0">
+                <img src={product.logo} alt={`${product.title} Logo`} className="w-full h-full object-contain drop-shadow-sm" />
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white font-sans">
+                {product.title}
+              </h1>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-Plus Jakarta Sans">
-              {product.title}
-            </h1>
-            <h3 className="text-xl sm:text-2xl font-semibold opacity-90 leading-snug">
-              {product.headline}
-            </h3>
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-              {product.desc}
-            </p>
+            
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center gap-1.5 bg-white text-blue-700 hover:text-blue-800 hover:bg-slate-50 font-semibold px-6 py-2.5 rounded-full shadow-md transition-all duration-200 active:scale-95"
+            >
+              <LuChevronLeft className="w-5 h-5" /> Back
+            </Link>
+          </div>
 
-            {/* Feature List */}
-            <div className="space-y-4 pt-4">
-              <h4 className="text-lg font-bold">Key Capabilities:</h4>
-              <div className="grid grid-cols-1 gap-3">
-                {product.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <LuCircleCheck className="w-5 h-5 shrink-0 mt-0.5" style={{ color: product.accent }} />
-                    <p className="text-slate-300 text-sm sm:text-base">{feat}</p>
-                  </div>
-                ))}
+          {/* Metadata Row */}
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-white/90">
+            <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
+              <span className="text-xs font-medium uppercase tracking-wider opacity-80">Type Of Industries</span>
+              <span className="text-sm sm:text-base font-semibold">{product.industry}</span>
+            </div>
+            <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
+              <span className="text-xs font-medium uppercase tracking-wider opacity-80">Services</span>
+              <span className="text-sm sm:text-base font-semibold">{product.services}</span>
+            </div>
+            <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
+              <span className="text-xs font-medium uppercase tracking-wider opacity-80">Project Date</span>
+              <span className="text-sm sm:text-base font-semibold">{product.date}</span>
+            </div>
+            <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
+              <span className="text-xs font-medium uppercase tracking-wider opacity-80">Live Link</span>
+              <div className="mt-1">
+                <a href="#" className="inline-flex items-center gap-2 px-4 py-1.5 border border-white/30 rounded-full text-xs font-semibold hover:bg-white/20 transition-colors">
+                  See live <span className="text-[10px]">↗</span>
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Graphic Side Right */}
-          <div className="relative flex flex-col items-center justify-center h-[300px] sm:h-[400px] lg:h-[500px]">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-auto h-3/4 max-w-[80%] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] animate-float-card-1"
-            />
-            <div className="absolute bottom-6 w-[60%] h-[20px] bg-black/30 blur-[15px] rounded-full" />
-          </div>
+        </div>
+      </section>
 
+      {/* Overlapping Mockup Section */}
+      <section className="relative w-full max-w-[1300px] mx-auto px-6 md:px-12 lg:px-20 z-20 -mt-32 lg:-mt-48">
+        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[16/7] rounded-2xl sm:rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.2)] overflow-hidden bg-slate-100 flex items-center justify-center border-[6px] border-white">
+          <img 
+            src={product.image} 
+            alt={`${product.title} Dashboard`} 
+            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+          />
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="relative w-full max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 py-16 sm:py-24">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-8 font-sans">
+            Introduction
+          </h2>
+          <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">
+            {product.desc}
+          </p>
+        </div>
+      </section>
+
+      {/* Product Video Section */}
+      <section className="relative w-full pt-20">
+        
+        {/* Blue Background Top Half */}
+        <div 
+          className="absolute inset-x-0 top-0 h-[70%] sm:h-[75%]"
+          style={{ background: product.bg }}
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none" />
+          {/* Decorative dots pattern left */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-48 opacity-20 pointer-events-none hidden md:block">
+            <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle, #fff 2px, transparent 2.5px)', backgroundSize: '16px 16px' }} />
+          </div>
         </div>
 
-      </div>
+        {/* White Background Bottom Half */}
+        <div className="absolute inset-x-0 bottom-0 h-[30%] sm:h-[25%] bg-white" />
+
+        <div className="relative max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 text-center z-10 pb-8 sm:pb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-12 font-sans">
+            Product Video
+          </h2>
+          
+          {/* Video Container */}
+          <div className="relative w-full max-w-4xl mx-auto aspect-[16/10] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden bg-slate-100 border-[2px] sm:border-[4px] border-[#111827]">
+            {product.videoUrl ? (
+              product.videoUrl.includes("youtube.com") || product.videoUrl.includes("youtu.be") ? (
+                <iframe
+                  src={product.videoUrl}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <video 
+                  src={product.videoUrl} 
+                  controls 
+                  className="w-full h-full object-cover outline-none"
+                  poster={product.image}
+                />
+              )
+            ) : (
+              <div className="w-full h-full group cursor-pointer">
+                <img 
+                  src={product.image} 
+                  alt={`${product.title} Video Thumbnail`} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300" />
+                
+                {/* Play Button */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-28 sm:h-28 bg-white rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                  <div 
+                    className="w-0 h-0 border-y-[12px] sm:border-y-[16px] border-y-transparent border-l-[20px] sm:border-l-[28px] ml-2 sm:ml-3" 
+                    style={{ borderLeftColor: product.accent || '#1E40AF' }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Services Continuation */}
+      <BPOServices />
+
+      {/* FAQ Continuation */}
+      <ProductFAQ />
+      <Appointment/>
+
     </main>
   );
 }

@@ -38,16 +38,18 @@ export default function Header() {
     cleanPath === "" ||
     cleanPath === "/services" ||
     cleanPath.startsWith("/services/") ||
+    cleanPath.startsWith("/services-media/") ||
     cleanPath === "/products" ||
     cleanPath.startsWith("/products/") ||
     cleanPath === "/bpo" ||
     cleanPath === "/portfolio" ||
     cleanPath === "/contact" ||
-    cleanPath === "/blogs" ||
-    cleanPath.startsWith("/blogs/") ||
-    cleanPath === "/carrers";
+    cleanPath === "/blogs" || cleanPath === "/Blogs" ||
+    cleanPath.startsWith("/blogs/") || cleanPath.startsWith("/Blogs/") ||
+    cleanPath === "/carrers" ||
+    cleanPath.startsWith("/carrers/");
 
-  const isDarkBg = (cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/")) && !scrolled;
+  const isDarkBg = (cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/") || cleanPath.startsWith("/carrers/")) && !scrolled;
 
   const getDesktopLinkClass = (path) => {
     const cleanLinkPath = path.toLowerCase().replace(/\/$/, "");
@@ -93,7 +95,7 @@ export default function Header() {
             <img
               src="/SX original logo.png"
               alt="SecurXpert Logo"
-              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/")) && !scrolled && !mobileMenuOpen ? "brightness-0 invert" : ""
+              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/") || cleanPath.startsWith("/carrers/")) && !scrolled && !mobileMenuOpen ? "brightness-0 invert" : ""
                 }`}
             />
           </Link>
@@ -199,6 +201,13 @@ export default function Header() {
                 >
                   Vishan
                 </Link>
+                <Link href="/products/arogya-narayan" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Arogya Narayan</Link>
+                <Link href="/products/hisphere" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">HiSphere</Link>
+                <Link href="/products/lauratek" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Lauratek</Link>
+                <Link href="/products/lauratek-2-0" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Lauratek 2.0</Link>
+                <Link href="/products/logsphere" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">LogSphere</Link>
+                <Link href="/products/onestep-medi" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Onestep Medi</Link>
+                <Link href="/products/shrava360" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">shrava360</Link>
               </div>
             </div>
 
@@ -212,8 +221,8 @@ export default function Header() {
 
             {/* Insights / Blogs */}
             <Link
-              href="/blogs"
-              className={getDesktopLinkClass("/blogs")}
+              href="/Blogs"
+              className={getDesktopLinkClass("/Blogs")}
             >
               Blogs
             </Link>
@@ -263,7 +272,14 @@ export default function Header() {
             {/* Careers */}
             <Link
               href="/Carrers"
-              className={getDesktopLinkClass("/Carrers")}
+              className={`text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/carrers" || cleanPath.startsWith("/carrers/")
+                ? isDarkBg
+                  ? "text-white border-white font-bold"
+                  : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
+                : isDarkBg
+                  ? "text-white/85 hover:text-white border-transparent font-medium"
+                  : "text-slate-800 hover:text-blue-600 border-transparent font-semibold"
+                }`}
             >
               Careers
             </Link>
@@ -384,6 +400,13 @@ export default function Header() {
                 >
                   Vishan
                 </Link>
+                <Link href="/products/arogya-narayan" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Arogya Narayan</Link>
+                <Link href="/products/hisphere" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">HiSphere</Link>
+                <Link href="/products/lauratek" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Lauratek</Link>
+                <Link href="/products/lauratek-2-0" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Lauratek 2.0</Link>
+                <Link href="/products/logsphere" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">LogSphere</Link>
+                <Link href="/products/onestep-medi" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Onestep Medi</Link>
+                <Link href="/products/shrava360" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">shrava360</Link>
               </div>
             </div>
 

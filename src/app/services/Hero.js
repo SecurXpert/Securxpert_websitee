@@ -14,7 +14,7 @@ export default function ServicesHero() {
 
                     {/* High-Performance Clipped Background Image Tag */}
                     <img
-                        src="/Services/hero-bg.png"
+                        src="/services-media/hero-bg.png"
                         alt="Services Hero Curved Background"
                         className="hidden lg:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-2 lg:mt-3"
                     />
@@ -111,7 +111,7 @@ export default function ServicesHero() {
                         <div className="p-2 sm:p-3 lg:p-4 rounded-t-3xl border-t border-x border-white/20 bg-white/10 backdrop-blur-md shadow-2xl h-full overflow-hidden">
 
                             <img
-                                src="/Services/hero.png.png"
+                                src="/services-media/hero.png.png"
                                 alt="Our Services Dashboard Layout"
                                 className="w-full h-auto rounded-t-3xl"
                             />

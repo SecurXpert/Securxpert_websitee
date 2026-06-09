@@ -95,7 +95,7 @@ export default function WeWork() {
                 {/* Central 3D Illustration Graphic centered inside the track */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-auto z-10 flex items-center justify-center pointer-events-none">
                     <img
-                        src="/Services/wework.png"
+                        src="/services-media/wework.png"
                         alt="3D Process Illustration"
                         className="w-full h-auto object-contain select-none"
                     />
@@ -158,7 +158,7 @@ export default function WeWork() {
                 {/* Center Image displayed on top for mobile */}
                 <div className="w-[240px] sm:w-[320px] h-auto mb-2 flex justify-center pointer-events-none">
                     <img
-                        src="/Services/wework.png"
+                        src="/services-media/wework.png"
                         alt="3D Process Illustration"
                         className="w-full h-auto object-contain select-none"
                     />

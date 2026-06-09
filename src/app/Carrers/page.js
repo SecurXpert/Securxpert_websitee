@@ -4,7 +4,7 @@
 import CareersHero from "./Hero";
 import Workplace from "./Workplace";
 import Benifits from "./Benifits";
-import Positions from "./positions/page";
+import Positions from "./Positions";
 import Whatgoes from "./Whatgoes";
 import Ourworld from "./Ourworld";
 import Howtobecame from "./Howtobecame";
@@ -18,7 +18,7 @@ export default function CareersPage() {
       <CareersHero />
       <Workplace />
       <Benifits />
-      <Positions />
+      <Positions/>
       <Whatgoes />
       <Ourworld />
       <Howtobecame />

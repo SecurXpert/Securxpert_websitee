@@ -78,7 +78,33 @@ const mobileAppDevelopment = {
       desc: "Submitting to App Store & Google Play with post-launch support"
     }
   ],
-  techStack: ["Swift", "Kotlin", "React Native", "Flutter", "Firebase", "SQLite", "App Store", "Google Play"]
+  techStack: ["Swift", "Kotlin", "React Native", "Flutter", "Firebase", "SQLite", "App Store", "Google Play"],
+  faqs: [
+    {
+      id: 1,
+      qNumber: "Q1.",
+      question: "Do you build apps for both iOS and Android?",
+      answer: "Yes, we develop native apps for iOS (Swift) and Android (Kotlin), as well as cross-platform apps using frameworks like React Native or Flutter to save time and costs."
+    },
+    {
+      id: 2,
+      qNumber: "Q2.",
+      question: "Will you help us upload the app to the App Store and Google Play?",
+      answer: "Yes, our team handles the entire submission process, ensuring your app meets all the guidelines and requirements for both the Apple App Store and Google Play Store."
+    },
+    {
+      id: 3,
+      qNumber: "Q3.",
+      question: "How do you ensure the app is secure?",
+      answer: "We implement industry best practices for mobile security, including data encryption, secure authentication, code obfuscation, and regular security audits."
+    },
+    {
+      id: 4,
+      qNumber: "Q4.",
+      question: "Can you integrate the app with our existing systems?",
+      answer: "Certainly. We can build secure APIs and connect your mobile app seamlessly with your existing CRM, ERP, or custom backend databases."
+    }
+  ]
 };
 
 export default mobileAppDevelopment;

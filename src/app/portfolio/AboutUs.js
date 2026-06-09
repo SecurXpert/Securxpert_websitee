@@ -120,7 +120,7 @@ export default function AboutUs() {
           {/* Image 1: Left (Tilted slightly left, shifted down) */}
           <div className="relative w-[220px] sm:w-[260px] md:w-[260px] aspect-[4/5] rounded-[5px] overflow-hidden shadow-2xl shadow-indigo-950/15 transform rotate-[15deg] translate-y-[20px] sm:translate-y-[-20px] hover:rotate-0 hover:scale-105 hover:z-20 transition-all duration-500">
             <img
-              src="/Portfolio/AboutUs/aboutus1.jpg"
+              src="/portfolio-media/AboutUs/aboutus1.jpg"
               alt="Design Process"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -130,7 +130,7 @@ export default function AboutUs() {
           {/* Image 2: Middle (Tilted slightly right, overlapping, shifted up, black-and-white) */}
           <div className="relative w-[220px] sm:w-[260px] md:w-[260px] aspect-[4/5] rounded-[5px] overflow-hidden shadow-2xl shadow-indigo-950/20 transform rotate-[-25deg] translate-y-[-10px] sm:translate-y-[10px] hover:rotate-0 hover:scale-105 hover:z-35 transition-all duration-500 z-10 grayscale">
             <img
-              src="/Portfolio/AboutUs/aboutus2.jpg"
+              src="/portfolio-media/AboutUs/aboutus2.jpg"
               alt="Strategic Planning"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -140,7 +140,7 @@ export default function AboutUs() {
           {/* Image 3: Right (Tilted slightly right, overlapping, shifted slightly down) */}
           <div className="relative w-[220px] sm:w-[260px] md:w-[260px] aspect-[4/5] rounded-[5px] overflow-hidden shadow-2xl shadow-indigo-950/15 transform rotate-[0deg] translate-y-[-20px] sm:translate-y-[15px] hover:rotate-0 hover:scale-105 hover:z-20 transition-all duration-500">
             <img
-              src="/Portfolio/AboutUs/aboutus3.jpg"
+              src="/portfolio-media/AboutUs/aboutus3.jpg"
               alt="Team Collaboration"
               className="w-full h-full object-cover"
               loading="lazy"

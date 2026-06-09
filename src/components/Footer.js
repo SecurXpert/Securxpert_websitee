@@ -115,12 +115,12 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col items-start gap-3.5">
               <li>
-                <Link href="/services/web-development" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
+                <Link href="/services/software-development" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
                   Software Development
                 </Link>
               </li>
               <li>
-                <Link href="/services/digital-marketing" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
+                <Link href="/services/cybersecurity" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
                   Cybersecurity
                 </Link>
               </li>
@@ -130,7 +130,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
+                <Link href="/Blogs" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
                   AI & Automation
                 </Link>
               </li>
