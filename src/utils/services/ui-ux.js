@@ -6,7 +6,7 @@ const uiUx = {
   metaDescription: "Professional UI/UX design services in Hyderabad. Web & mobile app design, wireframing, prototyping & user research. 500+ projects delivered. Get a free consultation.",
   heroTitle: "UI/UX Design Services That Turn Users Into Loyal Customers",
   heroDesc: "Trusted by 500+ businesses to design intuitive, conversion-focused digital experiences for web apps, mobile apps, and SaaS products that users love and businesses grow with.",
-  illustration: "/services-media/OurServices/services5.png",
+  illustration: "/services-media/UIUX Design Services.png",
   title: "UI/UX Design & Interactive Prototyping",
   subtitle: "Core Service",
   description: "Deliver exceptional, user-centered digital products. Our design team focuses on deeply understanding user behaviors, performing accessibility (WCAG) reviews, creating intuitive wireframes, and building state-of-the-art interactive prototypes to elevate user satisfaction and conversion rates.",

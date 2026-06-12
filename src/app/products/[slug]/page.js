@@ -18,6 +18,7 @@ import shrava360 from "@/utils/products/shrava360";
 import BPOServices from "@/app/BPO/services";
 import ProductFAQ from "@/app/products/ProductFAQ";
 import Appointment from "@/app/BPO/Appointment";
+import VideoPlayer from "../VideoPlayer";
 
 const productsData = {
   "grabjobz": grabjobz,
@@ -119,12 +120,12 @@ export default async function ProductDetailPage({ params }) {
       </section>
 
       {/* Overlapping Mockup Section */}
-      <section className="relative w-full max-w-[1300px] mx-auto px-6 md:px-12 lg:px-20 z-20 -mt-32 lg:-mt-48">
-        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[16/7] rounded-2xl sm:rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.2)] overflow-hidden bg-slate-100 flex items-center justify-center border-[6px] border-white">
+      <section className="relative w-full max-w-[1350px] mx-auto px-6 md:px-12 lg:px-20 z-20 -mt-32 lg:-mt-48">
+        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[16/7] rounded-2xl sm:rounded-3xl  overflow-hidden flex items-center justify-center border-[4px] border-white">
           <img 
-            src={product.image} 
+            src={product.bannerImage || product.image} 
             alt={`${product.title} Dashboard`} 
-            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            className="w-full h-full object-container transition-transform duration-700 hover:scale-102"
           />
         </div>
       </section>
@@ -165,42 +166,8 @@ export default async function ProductDetailPage({ params }) {
           </h2>
           
           {/* Video Container */}
-          <div className="relative w-full max-w-4xl mx-auto aspect-[16/10] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden bg-slate-100 border-[2px] sm:border-[4px] border-[#111827]">
-            {product.videoUrl ? (
-              product.videoUrl.includes("youtube.com") || product.videoUrl.includes("youtu.be") ? (
-                <iframe
-                  src={product.videoUrl}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              ) : (
-                <video 
-                  src={product.videoUrl} 
-                  controls 
-                  className="w-full h-full object-cover outline-none"
-                  poster={product.image}
-                />
-              )
-            ) : (
-              <div className="w-full h-full group cursor-pointer">
-                <img 
-                  src={product.image} 
-                  alt={`${product.title} Video Thumbnail`} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300" />
-                
-                {/* Play Button */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-28 sm:h-28 bg-white rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
-                  <div 
-                    className="w-0 h-0 border-y-[12px] sm:border-y-[16px] border-y-transparent border-l-[20px] sm:border-l-[28px] ml-2 sm:ml-3" 
-                    style={{ borderLeftColor: product.accent || '#1E40AF' }}
-                  />
-                </div>
-              </div>
-            )}
+          <div className="relative w-full max-w-4xl mx-auto aspect-[16/10] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-100 border-[2px] sm:border-[4px] border-[#111827]">
+            <VideoPlayer product={product} />
           </div>
         </div>
       </section>

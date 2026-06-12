@@ -4,6 +4,8 @@ const lauratek = {
   desc: "A highly customizable business management platform helping mid-to-large scale enterprises track performance, handle procurement, and automate HR tasks efficiently.",
   bg: "linear-gradient(135deg, #4338CA 0%, #171717 100%)",
   image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
+  bannerImage: "/products/banners/LauraTekbanner.png",
+  videoUrl: "/products/banners/lauratekupdated_video.mp4",
   logo: "/products/images/Lauratek.png", 
   industry: "Corporate Management & ERP",
   services: "Business Intelligence, Automation",

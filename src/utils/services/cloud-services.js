@@ -6,7 +6,7 @@ const cloudServices = {
   metaDescription: "Certified Cloud Infrastructure Services Multi-Cloud Migration Server Management DevOps Automation & Cost Optimization Flat Pricing, Global Delivery on Time",
   heroTitle: "Cloud & Infrastructure Services Secure, Scalable & Cost-Optimised",
   heroDesc: "We move your business to AWS, Azure, or GCP with zero downtime — then manage, secure, and optimize your cloud environment for maximum reliability and minimum cost.",
-  illustration: "/services-media/OurServices/services1.png",
+  illustration: "/services-media/Cloud & Infrastructure Services.png",
   title: "Cloud Infrastructure & Services",
   subtitle: "Cloud Solutions",
   description: "Delivering on time, every time, end-to-end cloud migration, management and optimization for businesses worldwide by certified multi-cloud experts.",

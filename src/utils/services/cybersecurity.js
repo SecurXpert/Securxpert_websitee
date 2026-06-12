@@ -6,7 +6,7 @@ const cybersecurity = {
   metaDescription: "Trusted cybersecurity services in Hyderabad. Penetration testing, SOC, cloud security, endpoint protection & compliance. 500+ businesses secured. Get a free audit today.",
   heroTitle: "Proactive Cybersecurity Services to Defend, Detect & Respond ",
   heroDesc: "Trusted by 500+ businesses to protect critical data, secure digital infrastructure, and stay compliant with proactive cybersecurity solutions built for today's threat landscape.",
-  illustration: "/services-media/OurServices/services2.png",
+  illustration: "/services-media/Cybersecurity Services.png",
   title: "Enterprise Cybersecurity",
   subtitle: "Security Service",
   description: "Robust cybersecurity solutions to protect your digital assets, ensure compliance, and defend against advanced threats.",

@@ -55,6 +55,30 @@ const projectsData = [
   },
   {
     id: 6,
+    title: "hi-sphere",
+    tags: "DESIGN WOK, APP DESIGN",
+    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    image: "/products/Projects/hisphere.png",
+    category: "All",
+  },
+  {
+    id: 7,
+    title: "shrava 360",
+    tags: "DESIGN WOK, APP DESIGN",
+    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    image: "/products/Projects/shrava360.png",
+    category: "All",
+  },
+  {
+    id: 8,
+    title: "onestepmedi",
+    tags: "DESIGN WOK, APP DESIGN",
+    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    image: "/products/Projects/onestepmedi.png",
+    category: "All",
+  },
+  {
+    id: 9,
     title: "Dev Talent",
     tags: "DESIGN WOK, APP DESIGN",
     desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
@@ -62,7 +86,7 @@ const projectsData = [
     category: "Examination platform",
   },
   {
-    id: 7,
+    id: 10,
     title: "Web Design",
     tags: "DESIGN WOK, ILLUSUTRATION",
     desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
@@ -70,7 +94,7 @@ const projectsData = [
     category: "All",
   },
   {
-    id: 8,
+    id: 11,
     title: "Landing Page Design",
     tags: "DESIGN WOK, BRANDING",
     desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
@@ -78,7 +102,7 @@ const projectsData = [
     category: "All",
   },
   {
-    id: 9,
+    id: 12,
     title: "Mobile Design",
     tags: "DESIGN WOK, APP DESIGN",
     desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",

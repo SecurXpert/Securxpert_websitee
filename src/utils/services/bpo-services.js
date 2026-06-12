@@ -6,7 +6,7 @@ const bpoServices = {
   metaDescription: "Trusted business process outsourcing company in India. Customer support, data entry, back office, and finance & HR outsourcing. Flat pricing. Trusted by 500+ businesses. Get a free quote.",
   heroTitle: "Business Process Outsourcing Services Efficient, Reliable & Cost-Effective",
   heroDesc: "Trusted by 500+ businesses across India to handle back-office operations, customer support, data management, and more so your team focuses only on growth.",
-  illustration: "/services-media/OurServices/services6.png",
+  illustration: "/services-media/Business Process Outsourcing (BPO).png",
   title: "Business Process Outsourcing",
   subtitle: "Operations Service",
   description: "Streamline your operations with our dedicated BPO services, offering scalable teams for customer support, data entry, and back-office tasks.",

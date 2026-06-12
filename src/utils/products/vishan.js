@@ -3,6 +3,8 @@ const vishan = {
   headline: "Smart School Management System Platform",
   desc: "An all-in-one school administration and ERP platform. Built to connect teachers, students, parents, and administrative staffs. Posuere nibh vestibulum, velit pulvinar interdum sed in. Magnis netus magna urna, in tempor magna. Tortor vel vitae vel mi. Leo pellentesque eget pellentesque magnis. Pellentesque molestie sem massa nibh suspendisse ante eget.",
   bg: "linear-gradient(135deg, #EA580C 0%, #111827 100%)",
+  bannerImage: "/products/banners/vishanbanner.png",
+  videoUrl: "/products/banners/vishan_video.mp4",
   image: "/products/home/hero4.png",
   logo: "/products/images/VISHAN (SAMS).png",
   industry: "Education & Administration",

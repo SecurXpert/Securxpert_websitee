@@ -6,7 +6,7 @@ const itSupport = {
   metaDescription: "Trusted IT support & managed services company serving businesses worldwide. 24/7 monitoring,cybersecurity & cloud management. 50+ businesses served.",
   heroTitle: "IT Support & Managed Services — Reliable, Proactive & Always On",
   heroDesc: "24/7 IT support and managed services for businesses worldwide: no in-house team needed, no surprise costs, and no downtime.",
-  illustration: "/services-media/OurServices/services3.png",
+  illustration: "/services-media/IT Support and Managed Services.png",
   title: "IT Support & Managed Services",
   subtitle: "Infrastructure Service",
   description: "Comprehensive IT support solutions to ensure your business operations run smoothly and securely 24/7.",

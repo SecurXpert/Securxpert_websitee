@@ -18,6 +18,9 @@
   --color-accent-cyan: var(--accent-cyan);
   --color-accent-blue: var(--accent-blue);
   --color-accent-purple: var(--accent-purple);
+  --color-brand-blue: #5A73FF;
+  --color-brand-light: #E8E5F5;
+  --color-brand-dark: #1A1A2E;
   --font-Playfair-Display: var(--font-Playfair-Display);
   --font-inter: var(--font-inter);
   --font-space-grotesk: var(--font-space-grotesk);

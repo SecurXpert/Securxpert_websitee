@@ -6,7 +6,7 @@ const digitalMarketing = {
   metaDescription: "Digital Marketing Services Hyderabad Result-Oriented Digital Marketing Agency. SEO, PPC, social media, content, and email marketing. 500+ companies scaled. Book a free strategy call today.",
   heroTitle: "Real Business Growth through Digital Marketing Services",
   heroDesc: "Data-driven strategies to grow organic traffic, generate quality leads, and build brand authority trusted by 500+ businesses across industries.",
-  illustration: "/services-media/OurServices/services4.png",
+  illustration: "/services-media/Digital Marketing Solutions.png",
   title: "Digital Audits & Search Optimization",
   subtitle: "Core Service",
   description: "Gain full control over your digital assets. We perform thorough threat assessments, network vulnerability scans, cloud IAM reviews, and search engine optimization (SEO) audits to protect and scale your online presence.",

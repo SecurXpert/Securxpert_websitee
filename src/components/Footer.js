@@ -2,14 +2,19 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname === "/Carrers/create") return null;
+
   return (
     <footer className="bg-gradient-to-tr from-[#eceeff] to-[#fbfbfe] text-[#4f5b76] py-16 px-6 md:px-20 lg:px-40 select-none border-t border-slate-100/50">
       <div className="max-w-[1530px] mx-auto w-full">
         {/* TOP CONTENT GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-12">
-          
+
           {/* COLUMN 1: Logo, Description & Social Icons */}
           <div className="lg:col-span-4 flex flex-col items-start gap-6">
             <Link href="/" className="flex items-center group">
@@ -22,7 +27,7 @@ export default function Footer() {
             <p className="text-[15px] leading-relaxed text-[#4f5b76] max-w-sm">
               Empowering enterprises with AI-powered cybersecurity, innovative software solutions, and world-class technology services.
             </p>
-            
+
             {/* Social Media Link Icons */}
             <div className="flex items-center gap-6 pt-2">
               {/* LinkedIn */}
@@ -147,7 +152,7 @@ export default function Footer() {
             <h3 className="text-[#1a1f36] font-bold text-[16px] tracking-wide">
               Contact Info
             </h3>
-            
+
             <div className="flex flex-col items-start gap-4">
               {/* Map Address */}
               <div className="flex items-start gap-3.5">

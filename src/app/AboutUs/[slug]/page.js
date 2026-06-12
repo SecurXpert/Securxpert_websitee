@@ -239,11 +239,18 @@ export default async function AboutUsSubPage({ params }) {
                                 {/* The Person Image (absolutely positioned to break out) */}
                                 {/* Using employee image from data, but ensuring it sits perfectly on the bottom bar */}
                                 {member.employee && (
-                                    <img
-                                        src={member.employee}
-                                        alt={`${member.firstName} ${member.lastName}`}
-                                        className={`absolute object-contain object-bottom transition-transform duration-500 ease-out group-hover:scale-105 pointer-events-none drop-shadow-2xl z-10 ${member.imgpos || "bottom-[66px] left-1/2 -translate-x-1/2 w-[140%] h-[360px]"}`}
-                                    />
+                                    <>
+                                        <img
+                                            src={member.employee}
+                                            alt={`${member.firstName} ${member.lastName}`}
+                                            className={`absolute object-contain object-bottom transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105 pointer-events-none drop-shadow-2xl z-10 ${member.imgpos || "bottom-[66px] left-1/2 -translate-x-1/2 w-[140%] h-[360px]"}`}
+                                        />
+                                        <img
+                                            src="/Home/OurTeam/hoverimage.png"
+                                            alt={`${member.firstName} ${member.lastName} hover`}
+                                            className={`absolute object-contain object-bottom opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-105 pointer-events-none drop-shadow-2xl z-10 ${member.imgpos || "bottom-[66px] left-1/2 -translate-x-1/2 w-[140%] h-[360px]"}`}
+                                        />
+                                    </>
                                 )}
 
                                 {/* The Bottom Text Box */}

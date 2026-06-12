@@ -14,6 +14,8 @@ export default function Header() {
     setMounted(true);
   }, []);
 
+  if (pathname === "/Carrers/create") return null;
+
   // Handle scroll to add dynamic shadow or subtle styles
   useEffect(() => {
     const handleScroll = () => {
@@ -74,6 +76,10 @@ export default function Header() {
       : "text-slate-800 hover:bg-slate-50"
       }`;
   };
+
+  if (cleanPath.includes("/blogs/create") || cleanPath.includes("/blogs/edit")) {
+    return null;
+  }
 
   return (
     <header

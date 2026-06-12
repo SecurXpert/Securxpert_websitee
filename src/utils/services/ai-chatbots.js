@@ -6,7 +6,7 @@ const aiChatbots = {
   metaDescription: "Custom AI chatbot development Hyderabad for support, lead generation & WhatsApp. Scalable, CRM-connected & GPT-enabled. Over 500 businesses trust us. Request a free demo.",
   heroTitle: "Build Smarter Conversations with Custom AI Chatbots",
   heroDesc: " We build custom AI chatbots that handle real conversations, qualify leads, resolve support queries, and automate workflows so your team spends zero time on repetitive interactions.",
-  illustration: "/services-media/services.png",
+  illustration: "/services-media/AI Chatbots Development.png",
   title: "AI & Smart Chatbots",
   subtitle: "Automation Service",
   description: "Intelligent AI-driven chatbots and virtual assistants that automate customer service and enhance user engagement.",

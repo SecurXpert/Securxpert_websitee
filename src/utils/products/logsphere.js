@@ -3,6 +3,8 @@ const logsphere = {
   headline: "Intelligent Logistics & Supply Chain Hub",
   desc: "A centralized platform for tracking shipments, optimizing delivery routes, and managing warehouse inventory through advanced data analytics and IoT integration.",
   bg: "linear-gradient(135deg, #047857 0%, #064E3B 100%)",
+  bannerImage: "/products/banners/Logspherebanner.png",
+  videoUrl: "/products/banners/logsphere_video.mp4",
   image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000",
   logo: "/products/images/LOGSPERE.png", 
   industry: "Logistics & Supply Chain",

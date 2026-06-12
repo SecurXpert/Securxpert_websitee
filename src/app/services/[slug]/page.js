@@ -72,7 +72,8 @@ export default async function ServicePage({ params }) {
     category: service.category || `05 — ${service.subtitle || "SERVICE"}`,
     title: service.heroTitle || service.title,
     desc: service.heroDesc || service.description,
-    illustration: service.illustration || "/services-media/services.png"
+    illustration: service.illustration !== undefined ? service.illustration : "/services-media/services.png",
+    bgIllustration: service.bgIllustration || "/services-media/hero-bg.png"
   };
 
   const capabilities = service.capabilities || [];
@@ -94,7 +95,7 @@ export default async function ServicePage({ params }) {
 
             {/* High-Performance Clipped Background Image Tag */}
             <img
-              src="/services-media/hero-bg.png"
+              src={meta.bgIllustration}
               alt="Services Hero Curved Background"
               className="hidden lg:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-2 lg:mt-3"
             />
@@ -133,13 +134,15 @@ export default async function ServicePage({ params }) {
             </div>
 
             {/* Centered Illustration (Anchored to bottom curve) */}
-            <div className="relative z-10 w-full flex justify-center items-end mt-auto h-[180px] sm:h-[260px] lg:h-[280px] xl:h-[320px] overflow-visible">
-              <img
-                src={meta.illustration}
-                alt={meta.title}
-                className="w-auto h-full max-w-[360px] sm:max-w-[420px] lg:max-w-[440px] xl:max-w-[460px] object-contain object-bottom select-none"
-              />
-            </div>
+            {meta.illustration && (
+              <div className="relative z-10 w-full flex justify-center items-end mt-auto h-[100px] sm:h-[200px] lg:h-[240px] xl:h-[320px] max-w-full overflow-visible">
+                <img
+                  src={meta.illustration}
+                  alt={meta.title}
+                  className="w-auto h-auto max-h-[140%] sm:max-h-[150%] max-w-[95%] sm:max-w-[85%] lg:max-w-[600px] xl:max-w-[600px] object-contain object-bottom select-none -translate-y-4 sm:-translate-y-8 lg:-translate-y-12"
+                />
+              </div>
+            )}
 
           </div>
         </section>
