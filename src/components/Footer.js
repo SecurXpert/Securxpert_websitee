@@ -10,8 +10,10 @@ export default function Footer() {
   if (pathname === "/Carrers/create") return null;
 
   return (
-    <footer className="bg-gradient-to-tr from-[#eceeff] to-[#fbfbfe] text-[#4f5b76] py-16 px-6 md:px-20 lg:px-40 select-none border-t border-slate-100/50">
-      <div className="max-w-[1530px] mx-auto w-full">
+    <footer
+      className="bg-[#F2F3FD] text-[#4f5b76] py-16 px-6 md:px-12 lg:px-16 xl:px-20 select-none border-t border-slate-100/50"
+    >
+      <div className="max-w-full w-full">
         {/* TOP CONTENT GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-12">
 
@@ -19,7 +21,7 @@ export default function Footer() {
           <div className="lg:col-span-4 flex flex-col items-start gap-6">
             <Link href="/" className="flex items-center group">
               <img
-                src="/SX original logo.png"
+                src="/securxpertslogo.png"
                 alt="SecurXpert Logo"
                 className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
               />

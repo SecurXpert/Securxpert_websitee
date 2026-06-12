@@ -67,14 +67,14 @@ export default function FeaturedServices() {
                     {/* RIGHT CARDS */}
                     <div className="lg:col-span-6 lg:col-start-6 lg:translate-y-10">
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> 
 
                             {services.map((item, index) => (
                                 <div
                                     key={index}
                                     className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-4 aspect-square transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-[#F1EEEE] hover:border-transparent hover:bg-[#3D62EB] group z-10"
                                 >
-                                    {/* Hover Background Image Overlay */}
+                                    {/* Hover Background Image Overlay */} 
                                     <img
                                         src={item.bgImage}
                                         alt="Hover Background"

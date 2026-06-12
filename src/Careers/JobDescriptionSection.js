@@ -1,7 +1,15 @@
-import React from "react";
-import { ChevronDown, ChevronUp, Eye, Bold, Italic, Link2, List, ListOrdered, Type } from "lucide-react";
+import React, { useState } from "react";
+import { ChevronDown, ChevronUp, Eye, Bold, Italic, Link2, List, ListOrdered, Type, CheckCircle2 } from "lucide-react";
 
 export default function JobDescriptionSection({ isExpanded, onToggle }) {
+  const [description, setDescription] = useState("");
+  const [isSaved, setIsSaved] = useState(false);
+
+  const isFormValid = description.trim() !== "";
+
+  const handleSave = () => {
+    if (isFormValid) setIsSaved(true);
+  };
   return (
     <div className="bg-white rounded-2xl border border-indigo-50 shadow-sm overflow-hidden">
       <div 
@@ -9,7 +17,10 @@ export default function JobDescriptionSection({ isExpanded, onToggle }) {
         onClick={onToggle}
       >
         <div className="flex flex-col gap-1">
-          <h2 className="text-[18px] font-semibold text-slate-800">Job Description</h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-[18px] font-semibold text-slate-800">Job Description</h2>
+            {isSaved && <CheckCircle2 className="w-4 h-4 text-emerald-500" />}
+          </div>
           <span className="text-[14px] font-semibold text-[#475569]">Detailed description of the role</span>
         </div>
         <button className="text-slate-400 p-1 hover:bg-slate-100 rounded-full transition-colors">
@@ -46,8 +57,34 @@ export default function JobDescriptionSection({ isExpanded, onToggle }) {
             <textarea
               className="w-full min-h-[280px] p-4 text-[14px] text-slate-800 placeholder-slate-400 focus:outline-none resize-y font-mono sm:font-sans"
               placeholder="Write your content here... Use markdown for formatting."
+              value={description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+                setIsSaved(false);
+              }}
             ></textarea>
             
+          </div>
+
+          <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
+            <button 
+              onClick={handleSave}
+              disabled={!isFormValid}
+              className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 ${
+                isFormValid 
+                  ? "bg-[#5A73FF] text-white hover:bg-blue-600" 
+                  : "bg-slate-100 text-slate-400 cursor-not-allowed"
+              }`}
+            >
+              {isSaved ? (
+                <>
+                  <CheckCircle2 className="w-4 h-4" />
+                  Saved
+                </>
+              ) : (
+                "Save Section"
+              )}
+            </button>
           </div>
         </div>
       )}

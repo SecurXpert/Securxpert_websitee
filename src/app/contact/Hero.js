@@ -86,10 +86,10 @@ export default function Hero() {
             />
 
             {/* 2. MAIN LAYOUT CONTAINER */}
-            <div className="max-w-[1280px] mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 pt-8 pb-4 lg:pt-12 lg:pb-8 flex-grow">
+            <div className="max-w-[1280px] lg:max-w-[1000px] xl:max-w-[1100px] 2xl:max-w-[1280px] mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 pt-8 pb-4 lg:pt-12 lg:pb-8 flex-grow">
 
                 {/* LEFT COLUMN: BRANDING & CONTACT INFO */}
-                <div className="lg:col-span-6 space-y-8 select-none relative">
+                <div className="lg:col-span-6 space-y-8 select-none relative"> 
 
 
 

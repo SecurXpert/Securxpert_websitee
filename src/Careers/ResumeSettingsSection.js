@@ -14,11 +14,19 @@ export default function ResumeSettingsSection({ isExpanded, onToggle }) {
   const [selectedFormats, setSelectedFormats] = useState(["pdf", "doc", "docx"]);
   const [maxSize, setMaxSize] = useState("5");
   const [isMandatory, setIsMandatory] = useState(true);
+  const [isSaved, setIsSaved] = useState(false);
+
+  const isFormValid = selectedFormats.length > 0 && Number(maxSize) > 0;
+
+  const handleSave = () => {
+    if (isFormValid) setIsSaved(true);
+  };
 
   const toggleFormat = (id) => {
     setSelectedFormats(prev => 
       prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id]
     );
+    setIsSaved(false);
   };
 
   return (
@@ -32,7 +40,10 @@ export default function ResumeSettingsSection({ isExpanded, onToggle }) {
             <CheckCircle2 className="w-4 h-4 text-emerald-500" />
           </div>
           <div className="flex flex-col gap-0.5">
-            <h2 className="text-[18px] font-semibold text-slate-800">Resume Settings</h2>
+            <div className="flex items-center gap-2">
+              <h2 className="text-[18px] font-semibold text-slate-800">Resume Settings</h2>
+              {isSaved && <CheckCircle2 className="w-4 h-4 text-emerald-500" />}
+            </div>
             <span className="text-[14px] font-medium text-slate-500">Configure resume upload requirements</span>
           </div>
         </div>
@@ -92,7 +103,10 @@ export default function ResumeSettingsSection({ isExpanded, onToggle }) {
             <input
               type="number"
               value={maxSize}
-              onChange={(e) => setMaxSize(e.target.value)}
+              onChange={(e) => {
+                setMaxSize(e.target.value);
+                setIsSaved(false);
+              }}
               className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-[14px] text-slate-800 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-sans"
             />
             <p className="text-[12px] text-slate-400 mt-1">Recommended: 5MB or less for optimal upload performance</p>
@@ -110,6 +124,27 @@ export default function ResumeSettingsSection({ isExpanded, onToggle }) {
               <span className="text-[14px] font-medium text-slate-700">Resume Upload Mandatory</span>
               <span className="text-[13px] text-slate-500">When enabled, candidates must upload a resume to submit their application</span>
             </div>
+          </div>
+
+          <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
+            <button 
+              onClick={handleSave}
+              disabled={!isFormValid}
+              className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 ${
+                isFormValid 
+                  ? "bg-[#5A73FF] text-white hover:bg-blue-600" 
+                  : "bg-slate-100 text-slate-400 cursor-not-allowed"
+              }`}
+            >
+              {isSaved ? (
+                <>
+                  <CheckCircle2 className="w-4 h-4" />
+                  Saved
+                </>
+              ) : (
+                "Save Section"
+              )}
+            </button>
           </div>
 
         </div>

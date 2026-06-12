@@ -85,7 +85,7 @@ export default function Header() {
     <header
       className={`fixed left-0 right-0 z-50 transition-all duration-300 ${isTopOffsetPage && !scrolled ? "lg:top-4 top-0" : "top-0"
         } ${scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-md text-slate-800"
+          ? "bg-white backdrop-blur-md border-b border-slate-100 shadow-md text-slate-800"
           : isTopOffsetPage
             ? mobileMenuOpen
               ? "bg-white border-b border-slate-100 text-slate-800"
@@ -99,7 +99,7 @@ export default function Header() {
           {/* Original logo image */}
           <Link href="/" className="flex items-center group flex-shrink-0 mr-8">
             <img
-              src="/SX original logo.png"
+              src="/securxpertslogo.png"
               alt="SecurXpert Logo"
               className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/") || cleanPath.startsWith("/carrers/")) && !scrolled && !mobileMenuOpen ? "brightness-0 invert" : ""
                 }`}

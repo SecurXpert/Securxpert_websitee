@@ -45,7 +45,7 @@ export default function TeamMembers() {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 max-w-[1100px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 xl:gap-10 mb-12 max-w-[1100px] lg:max-w-[950px] xl:max-w-[1000px] 2xl:max-w-[1100px] mx-auto">
           {members.map((member) => (
             <div
               key={member.id}

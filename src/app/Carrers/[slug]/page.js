@@ -5,13 +5,9 @@ import { positionsData, slugify } from "@/utils/careers/Positionsdata";
 
 // Generate static routes for the export build
 export async function generateStaticParams() {
-  return [
-    { slug: "full-stack-developers" },
-    { slug: "application-developer-react-native" },
-    { slug: "senior-product-designer" },
-    { slug: "product-manager" },
-    { slug: "product-owner" },
-  ];
+  return positionsData.map((job) => ({
+    slug: slugify(job.title),
+  }));
 }
 
 export default async function PositionDetail({ params }) {

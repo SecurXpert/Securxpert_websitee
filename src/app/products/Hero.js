@@ -85,7 +85,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
-    }, 7000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [currentIndex]);
 

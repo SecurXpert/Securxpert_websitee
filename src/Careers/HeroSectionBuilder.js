@@ -11,10 +11,15 @@ export default function HeroSectionBuilder({ isExpanded, onToggle }) {
     location: true,
     openings: true
   });
+  const [isSaved, setIsSaved] = useState(false);
+  const [heroTitle, setHeroTitle] = useState("");
 
   const handleToggle = (key) => {
     setToggles(prev => ({ ...prev, [key]: !prev[key] }));
+    setIsSaved(false);
   };
+
+  const handleSave = () => setIsSaved(true);
 
   return (
     <div className="bg-white rounded-2xl border border-indigo-50 shadow-sm overflow-hidden">
@@ -27,7 +32,10 @@ export default function HeroSectionBuilder({ isExpanded, onToggle }) {
             <CheckCircle2 className="w-4 h-4 text-emerald-500" />
           </div>
           <div className="flex flex-col gap-0.5">
-            <h2 className="text-[16px] font-semibold text-slate-800">Hero Section Builder</h2>
+            <div className="flex items-center gap-2">
+              <h2 className="text-[16px] font-semibold text-slate-800">Hero Section Builder</h2>
+              {isSaved && <CheckCircle2 className="w-4 h-4 text-emerald-500" />}
+            </div>
             <span className="text-[14px] font-semibold text-[#64748B]">Customize the top section of your job page</span>
           </div>
         </div>
@@ -38,7 +46,15 @@ export default function HeroSectionBuilder({ isExpanded, onToggle }) {
       
       {isExpanded && (
         <div className="p-6 space-y-6 bg-white">
-          <FormInput label="Hero Title" placeholder="Custom hero section title (leave empty for job title)" />
+          <FormInput 
+            label="Hero Title" 
+            placeholder="Custom hero section title (leave empty for job title)" 
+            value={heroTitle}
+            onChange={(e) => {
+              setHeroTitle(e.target.value);
+              setIsSaved(false);
+            }}
+          />
           
           <div className="flex items-center gap-3 py-2 border-b border-slate-100 pb-6">
             <div className={`w-11 h-6 rounded-full relative transition-colors duration-300 cursor-pointer ${toggles.showBackButton ? 'bg-[#5A73FF]' : 'bg-[#CBD5E1]'}`} onClick={() => handleToggle('showBackButton')}>
@@ -87,6 +103,21 @@ export default function HeroSectionBuilder({ isExpanded, onToggle }) {
                 );
               })}
             </div>
+          </div>
+          <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
+            <button 
+              onClick={handleSave}
+              className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 bg-[#5A73FF] text-white hover:bg-blue-600`}
+            >
+              {isSaved ? (
+                <>
+                  <CheckCircle2 className="w-4 h-4" />
+                  Saved
+                </>
+              ) : (
+                "Save Section"
+              )}
+            </button>
           </div>
         </div>
       )}

@@ -17,14 +17,19 @@ const defaultFields = [
 
 export default function ApplicationFormBuilderSection({ isExpanded, onToggle }) {
   const [fields, setFields] = useState(defaultFields);
+  const [isSaved, setIsSaved] = useState(false);
 
   const toggleRequired = (id) => {
     setFields(fields.map(f => f.id === id ? { ...f, required: !f.required } : f));
+    setIsSaved(false);
   };
 
   const removeField = (id) => {
     setFields(fields.filter(f => f.id !== id));
+    setIsSaved(false);
   };
+
+  const handleSave = () => setIsSaved(true);
 
   return (
     <div className="bg-white rounded-2xl border border-indigo-50 shadow-sm overflow-hidden mb-8">
@@ -37,7 +42,10 @@ export default function ApplicationFormBuilderSection({ isExpanded, onToggle }) 
             <CheckCircle2 className="w-4 h-4 text-emerald-500" />
           </div>
           <div className="flex flex-col gap-0.5">
-            <h2 className="text-[16px] font-semibold text-slate-800">Application Form Builder</h2>
+            <div className="flex items-center gap-2">
+              <h2 className="text-[16px] font-semibold text-slate-800">Application Form Builder</h2>
+              {isSaved && <CheckCircle2 className="w-4 h-4 text-emerald-500" />}
+            </div>
             <span className="text-[14px] font-medium text-slate-500">Configure the candidate application form</span>
           </div>
         </div>
@@ -90,6 +98,22 @@ export default function ApplicationFormBuilderSection({ isExpanded, onToggle }) 
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
+            <button 
+              onClick={handleSave}
+              className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 bg-[#5A73FF] text-white hover:bg-blue-600`}
+            >
+              {isSaved ? (
+                <>
+                  <CheckCircle2 className="w-4 h-4" />
+                  Saved
+                </>
+              ) : (
+                "Save Section"
+              )}
+            </button>
           </div>
         </div>
       )}

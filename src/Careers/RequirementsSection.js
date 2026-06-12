@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp, Plus } from "lucide-react";
+import { ChevronDown, ChevronUp, Plus, CheckCircle2 } from "lucide-react";
 
 export default function RequirementsSection({ isExpanded, onToggle }) {
   const [techSkill, setTechSkill] = useState("");
   const [softSkill, setSoftSkill] = useState("");
   const [isQualificationsExpanded, setIsQualificationsExpanded] = useState(true);
+  const [isSaved, setIsSaved] = useState(false);
+
+  const isFormValid = techSkill.trim() !== "" || softSkill.trim() !== "";
+
+  const handleSave = () => {
+    if (isFormValid) setIsSaved(true);
+  };
 
   return (
     <>
@@ -15,7 +22,10 @@ export default function RequirementsSection({ isExpanded, onToggle }) {
           onClick={onToggle}
         >
           <div className="flex flex-col gap-1">
-            <h2 className="text-[16px] font-semibold text-slate-800">Requirements</h2>
+            <div className="flex items-center gap-2">
+              <h2 className="text-[16px] font-semibold text-slate-800">Requirements</h2>
+              {isSaved && <CheckCircle2 className="w-4 h-4 text-emerald-500" />}
+            </div>
             <span className="text-[14px] font-semibold text-slate-500">Technical and soft skills required</span>
           </div>
           <button className="text-slate-400 p-1 hover:bg-slate-100 rounded-full transition-colors">
@@ -61,6 +71,27 @@ export default function RequirementsSection({ isExpanded, onToggle }) {
                   Add
                 </button>
               </div>
+            </div>
+
+            <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
+              <button 
+                onClick={handleSave}
+                disabled={!isFormValid}
+                className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 ${
+                  isFormValid 
+                    ? "bg-[#5A73FF] text-white hover:bg-blue-600" 
+                    : "bg-slate-100 text-slate-400 cursor-not-allowed"
+                }`}
+              >
+                {isSaved ? (
+                  <>
+                    <CheckCircle2 className="w-4 h-4" />
+                    Saved
+                  </>
+                ) : (
+                  "Save Section"
+                )}
+              </button>
             </div>
           </div>
         )}
