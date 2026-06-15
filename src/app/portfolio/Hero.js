@@ -163,14 +163,14 @@ export default function Hero() {
 
                             {/* ABSOLUTE BOTTOM-LEFT PLAY BUTTON & COMPETENCIES (DESKTOP) */}
                             <div
-                                className={`hidden lg:flex absolute left-6 bottom-8 xl:left-20 xl:bottom-12 items-center gap-4 z-30 transition-all duration-1000 ${isActive ? "opacity-100 translate-y-0 delay-700" : "opacity-0 -translate-y-4"
+                                className={`hidden lg:flex absolute left-10 bottom-8 xl:left-20 xl:bottom-12 items-center gap-4 z-30 transition-all duration-1000 ${isActive ? "opacity-100 translate-y-0 delay-700" : "opacity-0 -translate-y-4"
                                     }`}
                             >
                                 {/* Red Pulsing Play Button */}
                                 <div className="relative flex items-center justify-center shrink-0">
                                     <div className="absolute w-12 h-12 rounded-full bg-red-600 animate-ping opacity-75"></div>
                                     <div className="w-12 h-12 rounded-full bg-[#FF0000] flex items-center justify-center text-white cursor-pointer relative z-10 shadow-lg hover:scale-105 transition-transform duration-300">
-                                        <svg className="w-5 h-5 fill-current text-white translate-x-[2px]" viewBox="0 0 24 24">
+                                        <svg className="w-6 h-6 fill-current text-white translate-x-[1px]" viewBox="0 0 24 24">
                                             <path d="M8 5v14l11-7z" />
                                         </svg>
                                     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Monitor, Tablet, Smartphone, Eye } from 'lucide-react';
-import { cn } from '../lib/utils';
+
 
 export function LivePreview({ blogData }) {
   const [device, setDevice] = useState('desktop');

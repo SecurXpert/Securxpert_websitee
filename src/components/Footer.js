@@ -36,7 +36,7 @@ export default function Footer() {
               {/* LinkedIn */}
               <a
                 href="#"
-                className="text-[#4f5b76] hover:text-[#3B82F6] transition-colors duration-200"
+                className="text-[#0077B5] hover:opacity-80 transition-opacity duration-200"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -47,7 +47,7 @@ export default function Footer() {
               {/* Twitter / X */}
               <a
                 href="#"
-                className="text-[#4f5b76] hover:text-[#3B82F6] transition-colors duration-200"
+                className="text-black hover:opacity-80 transition-opacity duration-200"
                 aria-label="Twitter"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ export default function Footer() {
               {/* Dribbble / Product Hunt */}
               <a
                 href="#"
-                className="text-[#4f5b76] hover:text-[#3B82F6] transition-colors duration-200"
+                className="text-[#EA4C89] hover:opacity-80 transition-opacity duration-200"
                 aria-label="Community"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
@@ -70,7 +70,7 @@ export default function Footer() {
               {/* Instagram */}
               <a
                 href="#"
-                className="text-[#4f5b76] hover:text-[#3B82F6] transition-colors duration-200"
+                className="text-[#E4405F] hover:opacity-80 transition-opacity duration-200"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">

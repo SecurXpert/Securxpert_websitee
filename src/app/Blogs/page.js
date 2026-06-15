@@ -8,7 +8,6 @@ export default function Blogs() {
     return (
         <div>
             <Hero />
-            <Posts />
             <AllPosts />
         </div>
     );

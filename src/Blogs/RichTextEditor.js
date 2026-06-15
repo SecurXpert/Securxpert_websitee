@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Bold, Italic, Link, List, ListOrdered, Heading1, Heading2, Eye } from 'lucide-react';
-import { cn } from '../lib/utils';
+
 
 export function RichTextEditor({ value, onChange, label }) {
   const [preview, setPreview] = useState(false);

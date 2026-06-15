@@ -7,12 +7,12 @@ export default function Hero() {
 
     // Blog Categories based on the C:\Users\chekuri vamsikrishna\Downloads\Securxpert_websitee\public\Blogs\hero assets
     const categories = [
-        { id: 1, label: "HEALTH", image: "/Blogs/hero/hero1.jpg" },
-        { id: 2, label: "TECH", image: "/Blogs/hero/hero2.jpg" },
-        { id: 3, label: "BUSSINESS", image: "/Blogs/hero/hero3.jpg" },
-        { id: 4, label: "DESIGN", image: "/Blogs/hero/hero4.jpg" },
-        { id: 5, label: "TECHNOLOGY", image: "/Blogs/hero/hero5.jpg" },
-        { id: 6, label: "TRAVEL", image: "/Blogs/hero/hero6.jpg" },
+        { id: 1, label: "HEALTH", image: "/Blogs/hero/hero1.png" },
+        { id: 2, label: "TECH", image: "/Blogs/hero/hero2.png" },
+        { id: 3, label: "BUSINESS", image: "/Blogs/hero/hero3.png" },
+        { id: 4, label: "DESIGN", image: "/Blogs/hero/hero4.png" },
+        { id: 5, label: "TECHNOLOGY", image: "/Blogs/hero/hero5.png" },
+        { id: 6, label: "TRAVEL", image: "/Blogs/hero/hero6.png" },
     ];
 
     // Double the array for seamless infinite looping
@@ -38,14 +38,12 @@ export default function Hero() {
 
                     {/* Clipped Background Image Graphic */}
                     <img
-                        src="/Blogs/hero/blogs-herobg.png"
+                        src="/Blogs/hero/blogs-herobg.png" 
                         alt="Curved Blog Hero Background"
                         className="hidden md:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-6 md:mt-6 rounded-[24px]"
                     />
 
-                    {/* Subtle Overlay Grid Pattern */}
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none z-0" />
-
+                
                     {/* Centered Contents */}
                     <div className="w-full max-w-4xl mx-auto text-center z-10 flex flex-col items-center relative transform translate-y-4 sm:translate-y-6">
 
@@ -84,20 +82,16 @@ export default function Hero() {
                                 {marqueeItems.map((item, index) => (
                                     <div
                                         key={`${item.id}-${index}`}
-                                        className="relative w-[230px] h-[145px] sm:w-[260px] sm:h-[165px] rounded-[24px] overflow-hidden flex-shrink-0 cursor-pointer group/card transition-transform duration-300 hover:scale-[1.03] border border-white/10"
+                                        className="relative w-[230px] h-[145px] sm:w-[260px] sm:h-[165px] rounded-[24px] overflow-hidden cursor-pointer group/card transition-transform duration-300 hover:scale-[1.03] border border-white/10"
                                     >
                                         {/* Image */}
                                         <img
                                             src={item.image}
                                             alt={item.label}
-                                            className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
+                                            className="w-full h-full object-cover "
                                         />
-
-                                        {/* Overlay Shadow */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
                                         {/* Category Name Pill inside Glass container */}
-                                        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/90  px-5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-black text-slate-800 tracking-[0.12em] shadow-sm select-none">
+                                        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/80  px-5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-black text-slate-800 tracking-[0.12em] shadow-sm select-none">
                                             {item.label}
                                         </div>
                                     </div>
