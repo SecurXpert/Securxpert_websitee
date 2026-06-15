@@ -111,7 +111,7 @@ export default function Hero() {
                             <svg className="w-5 h-5 text-cyan-300 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            <span className="font-semibold hover:underline cursor-pointer">ops@securxpert.com</span>
+                            <a href="mailto:info@SecurXperts.com" className="font-semibold hover:underline cursor-pointer">info@SecurXperts.com</a>
                         </div>
 
                         {/* Threat Desk Hotline */}
@@ -119,7 +119,7 @@ export default function Hero() {
                             <svg className="w-5 h-5 text-cyan-300 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
-                            <span className="font-semibold">+91 (80) 555-SECURE</span>
+                            <a href="tel:+917993256679" className="font-semibold hover:underline cursor-pointer">+91 7993256679</a>
                         </div>
 
                         {/* Address */}
@@ -129,7 +129,7 @@ export default function Hero() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                             <span className="text-xs sm:text-sm text-white/85 leading-relaxed">
-                                Cyber Tower, Level 4, Tech Innovation Hub, Bangalore, Karnataka 560103
+                                Third Floor, PR R One Towers, Plot No 59, DLF Rd, near Radisson Hotel, Jayabheri Enclave, Gachibowli, Hyderabad, Telangana 500032
                             </span>
                         </div>
 

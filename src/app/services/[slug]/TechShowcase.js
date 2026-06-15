@@ -120,7 +120,7 @@ function TechPill({ tech }) {
       className="group relative flex-shrink-0 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
     >
       {/* Glassmorphism pill */}
-      <div className="relative backdrop-blur-md bg-white/60 border border-slate-200 rounded-2xl px-6 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300">
+      <div className="relative backdrop-blur-md bg-white/60 border border-slate-200 rounded-2xl px-6 py-4 transition-all duration-300">
         {/* Subtle gradient overlay */}
         <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}></div>
 
@@ -148,26 +148,22 @@ function TechPill({ tech }) {
           </span>
         </div>
 
-        {/* Shimmer effect on hover */}
-        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-shimmer"></div>
-        </div>
+
       </div>
 
-      {/* Glow effect */}
-      <div className={`absolute -inset-1 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-20 blur-xl rounded-2xl transition-opacity duration-300 -z-10`}></div>
+
     </div>
   );
 }
 
-export default function TechShowcase({ 
-  title = "Technologies We Master", 
+export default function TechShowcase({
+  title = "Technologies We Master",
   description = "Building enterprise solutions with cutting-edge technologies and industry-leading frameworks",
-  techList = null 
+  techList = null
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const displayTechs = techList && techList.length > 0 
+  const displayTechs = techList && techList.length > 0
     ? technologies.filter(t => techList.includes(t.name))
     : technologies;
 
@@ -197,9 +193,6 @@ export default function TechShowcase({
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Gradient overlays for smooth edge fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
 
           <div className="overflow-hidden py-8">
             <div

@@ -8,12 +8,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.13",
     "firebase": "^12.14.0",
+    "leaflet": "^1.9.4",
     "lucide-react": "^1.16.0",
     "next": "16.2.6",
     "react": "19.2.4",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "19.2.4",
-    "react-icons": "^5.6.0"
+    "react-icons": "^5.6.0",
+    "react-leaflet": "^5.0.0",
+    "sonner": "^2.0.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "./Hero";
+import OurOffices from "./OurOffices";
 
 export const metadata = {
   title: "Contact | SecurXpert Technologies",
@@ -7,5 +8,10 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <OurOffices />
+    </>
+  );
 }

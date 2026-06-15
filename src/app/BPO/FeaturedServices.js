@@ -95,7 +95,7 @@ export default function FeaturedServices() {
                                         {/* TEXT DETAILS */}
                                         <div>
                                             {/* TITLE */}
-                                            <h3 className="text-[#0D121E] text-[20px] leading-tight font-semibold mb-1 font-inter group-hover:text-white transition-colors">
+                                            <h3 className="text-[#0D121E] text-[18px] leading-tight  font-semibold whitespace-nowrap mb-1 font-inter group-hover:text-white transition-colors">
                                                 {item.title}
                                             </h3>
 

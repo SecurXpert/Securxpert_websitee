@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LuChevronRight } from "react-icons/lu";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -86,30 +87,30 @@ export default function Footer() {
             <h3 className="text-[#1a1f36] font-bold text-[16px] tracking-wide">
               Quick Links
             </h3>
-            <ul className="flex flex-col items-start gap-3.5">
+            <ul className="flex flex-col items-start gap-2">
               <li>
-                <Link href="/AboutUs" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  About Us
+                <Link href="/AboutUs" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  Services
+                <Link href="/services" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Services
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  Products
+                <Link href="#" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Products
                 </Link>
               </li>
               <li>
-                <Link href="/Carrers" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  Careers
+                <Link href="/Carrers" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Careers
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  Contact
+                <Link href="/contact" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Contact
                 </Link>
               </li>
             </ul>
@@ -120,30 +121,45 @@ export default function Footer() {
             <h3 className="text-[#1a1f36] font-bold text-[16px] tracking-wide">
               Services
             </h3>
-            <ul className="flex flex-col items-start gap-3.5">
+            <ul className="flex flex-col items-start gap-1.5">
               <li>
-                <Link href="/services/software-development" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  Software Development
+                <Link href="/services/software-development" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Software Development
                 </Link>
               </li>
               <li>
-                <Link href="/services/cybersecurity" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  Cybersecurity
+                <Link href="/services/cybersecurity" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Cybersecurity
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  Cloud & DevOps
+                <Link href="/services/cloud-services" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Cloud Services
                 </Link>
               </li>
               <li>
-                <Link href="/Blogs" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  AI & Automation
+                <Link href="/services/it-support" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> IT Support
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium">
-                  BPO Services
+                <Link href="/services/ui-ux" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> UI/UX Design
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/ai-chatbots" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> AI Chatbots
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/digital-marketing" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Digital Marketing
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/bpo-services" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                  <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> BPO Services
                 </Link>
               </li>
             </ul>
@@ -165,7 +181,7 @@ export default function Footer() {
                   </svg>
                 </span>
                 <span className="text-[15px] leading-relaxed text-[#4f5b76]">
-                  123 Tech Plaza, Innovation District Bangalore, Karnataka 560001
+                  Third Floor, PR R One Towers, Plot No 59, DLF Rd, near Radisson Hotel, Jayabheri Enclave, Gachibowli, Hyderabad, Telangana 500032
                 </span>
               </div>
 
@@ -176,8 +192,8 @@ export default function Footer() {
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 </span>
-                <a href="tel:+918012345678" className="text-[15px] text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 font-medium">
-                  +91 80 1234 5678
+                <a href="tel:+917993256679" className="text-[15px] text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 font-medium">
+                  +91 7993256679
                 </a>
               </div>
 
@@ -189,8 +205,8 @@ export default function Footer() {
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                 </span>
-                <a href="mailto:contact@securxpert.com" className="text-[15px] text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 font-medium">
-                  contact@securxpert.com
+                <a href="mailto:info@SecurXperts.com" className="text-[15px] text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 font-medium">
+                  info@SecurXperts.com
                 </a>
               </div>
             </div>
