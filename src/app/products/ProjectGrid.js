@@ -155,7 +155,7 @@ export default function ProjectGrid() {
           {filteredProjects.map((project) => (
             <div 
               key={project.id}
-              className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 group"
+              className="bg-white  overflow-hidden border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 group"
             >
               {/* Image Container */}
               <div className="w-full h-[260px] md:h-[300px] relative overflow-hidden bg-gray-100">

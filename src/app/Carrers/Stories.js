@@ -45,12 +45,12 @@ export default function Stories() {
   const scrollContainerRef = useRef(null);
 
   return (
-    <section 
+    <section
       style={{ background: "linear-gradient(180deg, #374EC4 0%, #2C2D8A 100%)" }}
       className="relative w-full py-14 text-white overflow-hidden"
     >
       <div className="relative w-full max-w-[95%] 2xl:max-w-[1550px] mx-auto px-4 md:px-12">
-        
+
         {/* Header Section */}
         <div className="mb-16">
           <div className="text-center max-w-3xl mx-auto flex flex-col items-center justify-center">
@@ -64,20 +64,21 @@ export default function Stories() {
         </div>
 
         {/* Stories Horizontal Slider Container */}
-        <div 
+        <div
           ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory pb-8 scroll-smooth"
+          className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory pb-7 scroll-smooth"
         >
           {storiesData.map((card) => (
-            <div 
+            <div
               key={card.id}
-              className="flex flex-col bg-[#384AC5]/40 border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:bg-[#384AC5]/60 hover:-translate-y-1 hover:shadow-xl w-[290px] sm:w-[340px] md:w-[370px] shrink-0 snap-start"
+              style={{ background: "linear-gradient(180deg, #374EC4 0%, #2C2D8A 100%)" }}
+              className="flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl w-[290px] sm:w-[340px] md:w-[370px] shrink-0 snap-start"
             >
               {/* Top Image (fits flush with top, left, right) */}
               <div className="w-full aspect-[16/9] overflow-hidden">
-                <img 
-                  src={card.image} 
-                  alt={card.title} 
+                <img
+                  src={card.image}
+                  alt={card.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -85,16 +86,16 @@ export default function Stories() {
               {/* Card Body Container */}
               <div className="p-6 flex flex-col flex-grow">
                 {/* Card Title */}
-                <h3 className="text-white text-base sm:text-lg font-bold leading-snug mb-3 line-clamp-2 font-sans">
+                <h3 className="text-white text-base sm:text-xl font-medium leading-snug mb-3 line-clamp-2 font-sans">
                   {card.title}
                 </h3>
 
                 {/* Author Info Block */}
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 border border-white/20">
-                    <img 
-                      src={card.avatar} 
-                      alt={card.author} 
+                    <img
+                      src={card.avatar}
+                      alt={card.author}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -115,7 +116,7 @@ export default function Stories() {
 
                 {/* Read more Pill Button */}
                 <div className="mt-auto pt-1 text-left">
-                  <button 
+                  <button
                     className="inline-flex items-center gap-2 bg-white text-slate-800 hover:bg-slate-100 transition-colors py-2.5 px-6 rounded-full text-xs font-bold shadow-sm"
                   >
                     <span>Read more</span>

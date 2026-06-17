@@ -5,7 +5,7 @@ import { LuCheck } from "react-icons/lu";
 
 export default function Vision() {
   return (
-    <section className="w-full bg-[#2E3EB1] py-16 sm:py-24 overflow-hidden text-white">
+    <section className="w-full py-16 sm:py-14 overflow-hidden text-white" style={{ background: "linear-gradient(180deg, #2B2A84 0%, #374FC7 100%)" }}>
       <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:pl-10 md:pr-20">
         
         {/* Top Block: Our Vision & Vision Highlights */}
@@ -13,7 +13,7 @@ export default function Vision() {
           
           {/* Left Column: Our Vision Details */}
           <div className="flex flex-col space-y-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold font-Plus Jakarta Sans leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold font-Plus Jakarta Sans leading-tight">
               Our Vision
             </h2>
             <div className="space-y-6 text-white/80 text-sm sm:text-base leading-relaxed font-medium font-Raleway">
@@ -38,7 +38,7 @@ export default function Vision() {
 
           {/* Right Column: Vision Highlights Checklist */}
           <div className="flex flex-col space-y-6 lg:pl-6">
-            <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-bold font-Plus Jakarta Sans leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-semibold font-Plus Jakarta Sans leading-tight">
               Vision Highlights
             </h2>
             <p className="text-white/80 text-sm sm:text-base leading-relaxed font-normal font-Raleway">
@@ -85,7 +85,7 @@ export default function Vision() {
 
           {/* Right Column: Our Mission Details */}
           <div className="flex flex-col space-y-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold font-Plus Jakarta Sans leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold font-Plus Jakarta Sans leading-tight">
               Our Mission
             </h2>
             <div className="space-y-6 text-white/80 text-sm sm:text-base leading-relaxed font-normal font-Raleway">

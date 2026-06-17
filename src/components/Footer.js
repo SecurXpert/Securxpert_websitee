@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-[#F2F3FD] text-[#4f5b76] py-16 px-6 md:px-12 lg:px-16 xl:px-20 select-none border-t border-slate-100/50"
+      className="bg-[#F2F3FD] text-[#4f5b76] py-8 px-6 md:px-12 lg:px-16 xl:px-20 select-none border-t border-slate-100/50"
     >
       <div className="max-w-full w-full">
         {/* TOP CONTENT GRID */}
@@ -214,7 +214,7 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM COPYRIGHT & LEGAL BAR */}
-        <div className="mt-2 pt-2 border-t border-slate-200/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[14px]">
+        <div className="mt-2 pt-0 border-t border-slate-200/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[14px]">
           <p className="text-[#4f5b76] text-center md:text-left">
             © {new Date().getFullYear()} SecurXpert Technologies Pvt. Ltd. All rights reserved.
           </p>

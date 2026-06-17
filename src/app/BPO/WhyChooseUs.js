@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative w-full overflow-hidden py-14 text-slate-800">
+    <section className="relative w-full overflow-hidden py-12 text-slate-800">
       
       {/* Floating Sparkle Left */}
       <img
@@ -84,7 +84,7 @@ export default function WhyChooseUs() {
             {/* CONTACT BUTTON */}
             <Link
               href="/contact"
-              className="inline-block bg-[#3D62EB] hover:bg-[#3D62EB] text-white font-medium px-6 py-3 rounded-[4px] text-sm shadow-md hover:shadow-lg active:scale-95 transition-all duration-150 text-center"
+              className="inline-block bg-[#3D62EB] hover:bg-[#3D62EB] text-white font-medium px-6 py-3 rounded-[4px] text-md shadow-md hover:shadow-lg active:scale-95 transition-all duration-150 text-center"
             >
               Contact Us
             </Link>

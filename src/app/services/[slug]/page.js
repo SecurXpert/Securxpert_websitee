@@ -101,7 +101,7 @@ export default async function ServicePage({ params }) {
             <div className="relative z-10 w-full max-w-4xl flex flex-col items-center text-center space-y-4 pt-2">
 
               {/* Back Button */}
-              <div className="hidden md:flex w-full justify-start mb-1 mt-15 -ml-4 md:-ml-8 lg:-ml-110">
+              <div className="hidden md:flex w-full justify-start mb-1 mt-15 -ml-4 md:-ml-8 lg:-ml-90 relative top-6">
                 <Link
                   href="/services"
                   className="inline-flex items-center gap-1.5 text-white/80 hover:text-white font-semibold text-lg sm:text-xl lg:text-[22px] transition-all duration-150"
@@ -157,7 +157,8 @@ export default async function ServicePage({ params }) {
               return (
                 <div
                   key={idx}
-                  className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/60 shadow-[0_4px_25px_rgba(0,0,0,0.015)] flex flex-col items-start space-y-5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 group"
+                  className="p-6 sm:p-6 rounded-3xl border border-slate-200/60 shadow-[0_4px_25px_rgba(0,0,0,0.015)] flex flex-col items-start space-y-4 hover:shadow-[0_12px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 group"
+                  style={{ background: "linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%)" }}
                 >
                   <div className="text-[#4F46E5] group-hover:scale-110 transition-transform duration-300">
                     {IconComponent && <IconComponent className="w-10 h-10" />}
@@ -191,20 +192,23 @@ export default async function ServicePage({ params }) {
             alt="Background Shape"
             className="absolute right-[-14rem] bottom-[-8rem] h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block select-none opacity-90"
           />
-          <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
-            <div className="text-center mb-12 sm:mb-16">
+          <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-18">
+            <div className="text-center mb-12 sm:mb-8">
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
                 {processHeading}
               </h2>
             </div>
 
-            <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5">
+            <div className="max-w-4xl mx-auto space-y-4 sm:space-y-4">
               {processSteps.map((step, idx) => (
                 <div
                   key={idx}
-                  className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/50 shadow-[0_4px_25px_rgba(0,0,0,0.01)] flex items-center space-x-6 sm:space-x-8 hover:shadow-[0_12px_30px_rgba(0,0,0,0.025)] hover:-translate-y-0.5 transition-all duration-300 group"
+                  className="relative overflow-hidden bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/50 shadow-[0_4px_25px_rgba(0,0,0,0.01)] flex items-center space-x-6 sm:space-x-8 hover:shadow-[0_12px_30px_rgba(0,0,0,0.025)] hover:-translate-y-0.5 transition-all duration-300 group"
                 >
-                  <div className="text-2xl sm:text-[32px] font-bold text-[#4F46E5] w-10 sm:w-14 flex-shrink-0 font-inter">
+                  {/* Left border highlight on hover */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#4F46E5] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-300 ease-out" />
+
+                  <div className="relative text-2xl sm:text-[32px] font-bold text-[#4F46E5] w-10 sm:w-14 flex-shrink-0 font-inter">
                     {step.id}
                   </div>
                   <div className="flex-1 space-y-1">
@@ -235,7 +239,7 @@ export default async function ServicePage({ params }) {
 
       {/* Dynamic CTA Section */}
       <section
-        className={`w-full text-center select-none py-20 px-6 md:px-12 flex items-center justify-center relative z-10 ${service.cta?.bgClass || ""}`}
+        className={`w-full text-center select-none py-14 px-6 md:px-12 flex items-center justify-center relative z-10 ${service.cta?.bgClass || ""}`}
         style={service.cta?.bgClass ? {} : {
           background: service.cta?.gradient || "linear-gradient(135deg, #4F46E5 0%, #4E42E1 7.14%, #4D3EDC 14.29%, #4B3BD8 21.43%, #4A37D3 28.57%, #4933CF 35.71%, #482ECA 42.86%, #462AC6 50%, #4526C2 57.14%, #4421BD 64.29%, #421CB9 71.43%, #4117B5 78.57%, #4010B1 85.71%, #3E08AC 92.86%, #3D00A8 100%)"
         }}

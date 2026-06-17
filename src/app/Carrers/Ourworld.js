@@ -35,6 +35,22 @@ const testimonials = [
     quote: "The remote-first culture is implemented flawlessly here. We have seamless communication, high trust, and state-of-the-art tools that allow us to deploy secure software globally without any friction.",
     linkedin: "https://linkedin.com/",
   },
+  {
+    id: 5,
+    name: "Elena Rodriguez",
+    role: "Backend Engineer",
+    image: "/Carrers/ourworld/james.png",
+    quote: "The challenges we tackle here are genuinely complex and push you to grow. Leadership is incredibly supportive, constantly ensuring we have the resources needed to build scalable and highly reliable systems.",
+    linkedin: "https://linkedin.com/",
+  },
+  {
+    id: 6,
+    name: "Michael Chen",
+    role: "Cloud Architect",
+    image: "/Carrers/ourworld/man_asian.png",
+    quote: "I’ve never worked anywhere else where innovation is so deeply ingrained in everyday tasks. We are encouraged to experiment, fail fast, and eventually deploy transformative cloud solutions.",
+    linkedin: "https://linkedin.com/",
+  },
 ];
  
 export default function Ourworld() {
@@ -55,11 +71,15 @@ export default function Ourworld() {
   const nextIndices = getNextIndices();
  
   const triggerTransition = (newIndex) => {
+    if (newIndex === activeIndex) return;
     setFadeState("out");
     setTimeout(() => {
       setActiveIndex(newIndex);
-      setFadeState("in");
-    }, 250);
+      setFadeState("enter");
+      setTimeout(() => {
+        setFadeState("in");
+      }, 50);
+    }, 300);
   };
  
   const handleNext = () => {
@@ -95,8 +115,10 @@ export default function Ourworld() {
             <div className="w-full bg-white rounded-2xl shadow-sm border border-slate-100/80 p-8 md:p-12 lg:py-14 lg:pr-14 lg:pl-[310px] min-h-[390px] flex flex-col justify-between">
              
               <div
-                className={`transition-all duration-300 ease-in-out ${
-                  fadeState === "in" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+                className={`transition-all ease-in-out ${
+                  fadeState === "in" ? "opacity-100 translate-x-0 duration-300" :
+                  fadeState === "out" ? "opacity-0 -translate-x-12 duration-300" :
+                  "opacity-0 translate-x-12 duration-0"
                 }`}
               >
                 {/* Large Quote Mark */}
@@ -111,8 +133,10 @@ export default function Ourworld() {
              
               {/* Author & Social Info */}
               <div
-                className={`flex flex-col gap-3 mt-4 transition-all duration-300 ease-in-out ${
-                  fadeState === "in" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+                className={`flex flex-col gap-3 mt-4 transition-all ease-in-out ${
+                  fadeState === "in" ? "opacity-100 translate-x-0 duration-300 delay-75" :
+                  fadeState === "out" ? "opacity-0 -translate-x-12 duration-300" :
+                  "opacity-0 translate-x-12 duration-0"
                 }`}
               >
                 <div>
@@ -144,8 +168,10 @@ export default function Ourworld() {
               <img
                 src={active.image}
                 alt={active.name}
-                className={`w-full h-full object-cover transition-all duration-300 ease-in-out ${
-                  fadeState === "in" ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                className={`w-full h-full object-cover transition-all ease-in-out ${
+                  fadeState === "in" ? "opacity-100 translate-x-0 duration-500" : 
+                  fadeState === "out" ? "opacity-0 -translate-x-full duration-300" : 
+                  "opacity-0 translate-x-full duration-0"
                 }`}
               />
             </div>
@@ -160,7 +186,8 @@ export default function Ourworld() {
                 <div
                   key={item.id}
                   onClick={() => handleSelect(idx)}
-                  className="flex-1 rounded-2xl overflow-hidden relative cursor-pointer group shadow-sm hover:shadow-md transition-all duration-300"
+                  onMouseEnter={() => handleSelect(idx)}
+                  className="flex-1 hover:flex-[3] rounded-2xl overflow-hidden relative cursor-pointer group shadow-sm hover:shadow-md transition-all duration-500 ease-out"
                 >
                   <img
                     src={item.image}

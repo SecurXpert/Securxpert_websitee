@@ -58,11 +58,11 @@ export default function Howtobecame() {
       <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-4 md:px-20">
 
         {/* Section Header */}
-        <div className="text-center mb-16 max-w-4xl mx-auto">
-          <h2 className="text-slate-800 text-center text-5xl font-normal mb-4 font-sans">
+        <div className="text-center mb-10 max-w-4xl mx-auto">
+          <h2 className="text-slate-800 text-center text-5xl font-normal mb-4 font-sans"> 
             How to become a Securxperter?
           </h2>
-          <p className="text-slate-500 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+          <p className="text-slate-500 text-sm sm:text-base md:text-lg max-w-2xl mx-auto"> 
             Joining us couldn't be easier! Check out our application process down below. If you have the talent we need, then we'll be meeting you soon!
           </p>
         </div>
@@ -71,17 +71,17 @@ export default function Howtobecame() {
         <div className="relative w-full max-w-5xl mx-auto py-8">
 
           {/* Vertical Line (Desktop: center; Mobile: left aligned with circles) */}
-          <div className="absolute left-[50%] top-6 bottom-6 w-[2px] bg-slate-200/80 -translate-x-[50%] hidden lg:block" />
+          <div className="absolute left-[50%] top-6 bottom-6 w-[2px] bg-slate-200/80 -translate-x-[50%] hidden lg:block" /> 
           <div className="absolute left-[43px] top-6 bottom-6 w-[2px] bg-slate-200/80 lg:hidden" />
 
           {/* Timeline Items */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2"> 
             {steps.map((step, idx) => {
               const isLeft = step.align === "left";
               return (
                 <div
                   key={idx}
-                  className="relative flex flex-row lg:flex-row items-start lg:items-center justify-start lg:justify-center mb-12 lg:mb-16 last:mb-0"
+                  className="relative flex flex-row lg:flex-row items-start lg:items-center justify-start lg:justify-center mb-10 lg:mb-2 last:mb-0 group cursor-default"
                 >
                   {/* Left Side Content (Desktop Only: aligned right) */}
                   <div className={`hidden lg:block w-[42%] px-6 text-right ${!isLeft ? "lg:opacity-0 lg:pointer-events-none" : ""}`}>
@@ -94,19 +94,14 @@ export default function Howtobecame() {
                   </div>
 
                   {/* Center Node / Circle */}
-                  <div className="relative z-10 flex shrink-0 items-center justify-center w-[54px] h-[54px] rounded-full bg-white border-2 border-slate-100 shadow-md mx-4 lg:mx-8">
-                    {step.isActive ? (
-                      <>
-                        <div className="absolute inset-0 rounded-full border-2 border-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.4)]" />
-                        <span className="text-base font-bold text-blue-600">
-                          {step.number}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="text-base font-semibold text-slate-500">
-                        {step.number}
-                      </span>
-                    )}
+                  <div className="relative z-10 flex shrink-0 items-center justify-center w-[54px] h-[54px] rounded-full bg-white border-2 border-slate-100 group-hover:border-transparent transition-colors duration-300 shadow-md mx-4 lg:mx-8 cursor-pointer">
+                    
+                    {/* Hover Blue Border & Glow */}
+                    <div className="absolute inset-0 rounded-full border-2 border-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
+                    
+                    <span className="text-base font-bold transition-colors duration-300 z-10 text-slate-500 group-hover:text-blue-600">
+                      {step.number}
+                    </span>
                   </div>
 
                   {/* Right Side Content (Desktop: active for isRight; Mobile: active for all) */}
@@ -114,7 +109,7 @@ export default function Howtobecame() {
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 font-sans">
                       {step.title}
                     </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed max-w-md">
+                    <p className="text-slate-500 text-sm leading-relaxed max-w-md"> 
                       {step.description}
                     </p>
                   </div>

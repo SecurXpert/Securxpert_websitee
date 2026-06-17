@@ -11,7 +11,7 @@ export default function AboutUs() {
       <img
         src="/BPO/AboutUs/aboutus.svg"
         alt="Left Wave"
-        className="absolute left-[2rem] xl:left-[14rem] top-32 h-[320px] w-auto pointer-events-none select-none z-0 hidden lg:block"
+        className="absolute left-[-2%] xl:left-[10%] 2xl:left-[15%] top-32 h-[220px] lg:h-[260px] xl:h-[320px] w-auto pointer-events-none select-none z-0 hidden lg:block opacity-50 xl:opacity-100"
       />
 
       {/* Bottom Right Wave Shape */}
@@ -23,7 +23,7 @@ export default function AboutUs() {
 
       {/* MAIN CONTAINER */}
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 xl:gap-16 items-center">
 
           {/* LEFT SIDE: IMAGE COLLAGE */}
           <div className="lg:col-span-6 relative h-[320px] sm:h-[360px] lg:h-[380px] xl:h-[410px] w-full flex items-center justify-center">
@@ -32,10 +32,10 @@ export default function AboutUs() {
             <img
               src="/BPO/AboutUs/aboutus2.svg"
               alt="Backdrop Radial Rays"
-              className="absolute top-[-84px] left-[-125px] w-[42%] sm:w-[38%] h-auto pointer-events-none select-none z-0"
+              className="absolute top-[-84px] left-[-125px] lg:left-[-60px] xl:left-[-100px] 2xl:left-[-125px] w-[42%] sm:w-[38%] h-auto pointer-events-none select-none z-0"
             />
 
-            {/* Dot Grid backdrop around lower right of collage */}
+            {/* Dot Grid backdrop around lower right of collage */} 
             <img
               src="/BPO/AboutUs/a3.png"
               alt="Backdrop Dots"
@@ -75,7 +75,7 @@ export default function AboutUs() {
             </div>
 
             {/* HEADING */}
-            <h3 className="text-[#100D35] text-4xl leading-[1.2] font-bold tracking-[-1px] font-inter mb-4 max-w-xl">
+            <h3 className="text-[#100D35] text-3xl sm:text-4xl lg:text-[32px] xl:text-4xl leading-[1.2] font-bold tracking-[-1px] font-inter mb-4 max-w-xl">
               We Are The Best Agency To Improve Your Deals.
             </h3>
 

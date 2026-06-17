@@ -23,7 +23,7 @@ export default function ServicesHero() {
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.04),transparent_60%)] pointer-events-none z-0" />
 
                     {/* Category Pill Button */}
-                    <div className="relative z-10 flex justify-center mb-3 pt-6 lg:pt-8 xl:pt-12">
+                    <div className="relative z-10 flex justify-center mb-0 pt-9 lg:pt-11 xl:pt-24">
                         <span className="px-4 py-1 rounded-lg text-base lg:text-lg font-medium tracking-tight text-[#29257B] bg-[#D9D9D9] border border-slate-200 shadow-sm">
                             Our Services
                         </span>
@@ -36,7 +36,7 @@ export default function ServicesHero() {
                     </h1>
 
                     {/* Description */}
-                    <p className="relative z-10 text-center mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-tight text-[#FFFFFF] max-w-5xl mx-auto px-6 font-normal opacity-90">
+                    <p className="relative z-10 text-center mt-4 lg:mt-4 text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-tight text-[#FFFFFF] max-w-5xl mx-auto px-6 font-normal opacity-90">
                         SecurXpert provides end-to-end digital transformation services, including software development, AI automation, and cybersecurity, to help businesses scale securely and efficiently
                     </p>
 

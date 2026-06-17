@@ -9,6 +9,7 @@ import AboutCta from "./Cta";
 import OurTeam from "../OurTeam";
 import Appointment from "../BPO/Appointment";
 import ServicesCta from "../services/Cta";
+import OurOffices from "../contact/OurOffices";
 
 export default function AboutPage() {
   return (
@@ -19,6 +20,7 @@ export default function AboutPage() {
       <OurValues />
       <AboutCta />
       <OurTeam /> 
+      <OurOffices/>
       <Appointment/>
       <ServicesCta/>
     </main>

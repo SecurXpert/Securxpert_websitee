@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
 
   const testimonials = [
     {
@@ -36,11 +37,24 @@ export default function Testimonials() {
     }
   ];
 
+  // Auto-scroll functionality
+  useEffect(() => {
+    let interval;
+    if (autoPlay) {
+      interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+      }, 3500); // Auto-scrolls every 3.5 seconds
+    }
+    return () => clearInterval(interval);
+  }, [autoPlay, testimonials.length]);
+
   const handlePrev = () => {
+    setAutoPlay(false); // Stop auto-scroll on manual click
     setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
+    setAutoPlay(false); // Stop auto-scroll on manual click
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 

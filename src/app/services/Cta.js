@@ -12,7 +12,7 @@ export default function Cta() {
         >
             <div className="max-w-4xl mx-auto flex flex-col items-center justify-center">
                 {/* Title */}
-                <h2 className="text-4xl sm:text-5xl md:text-5xl text-white font-medium mb-6 tracking-tight leading-tight">
+                <h2 className="text-4xl sm:text-4xl md:text-5xl text-white font-medium mb-6 tracking-tight leading-tight">
                     Ready to Transform Your Business?
                 </h2>
 

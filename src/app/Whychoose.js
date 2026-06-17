@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import {
   Cpu,
   Users,
@@ -23,13 +24,17 @@ export default function Whychoose() {
           </p>
 
           {/* Main Heading */}
-          <h2 className="text-3xl sm:text-4xl lg:text-[26px] xl:text-[28px] 2xl:text-[42px] font-bold leading-tight text-[#000000] max-w-2xl tracking-tight">
+          <motion.h2 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-3xl sm:text-4xl lg:text-[26px] xl:text-[28px] 2xl:text-[42px] font-bold leading-tight text-[#000000] max-w-2xl tracking-tight"
+          >
            Specialist Support for Financial Challenges
-      
-            
-          </h2>
+          </motion.h2>
 
-          {/* Description */}
+          {/* Description */} 
           <p className="text-[#6E6E96]/90 text-sm sm:text-base lg:text-[13px] xl:text-[14px] 2xl:text-lg leading-relaxed mt-3 lg:mt-4 max-w-xl font-normal">
             End-to-end payments and financial management in a
             single solution. Meet the right platform to help realize.

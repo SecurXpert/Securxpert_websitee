@@ -5,11 +5,11 @@ import React from "react";
 const teamData = [
     {
         id: 1,
-        firstName: "Sarah",
-        lastName: "Aileah",
-        role: "Chief Creative Officer",
-        employee: "/Home/OurTeam/members1.png",
-        imgClasses: "h-[320px] w-auto object-contain object-bottom"
+        firstName: "sathwika",
+        lastName: "kalwakuntla",
+        role: "Front-End Developer",
+        employee: "/AboutUs/ourteam/members1.png",
+        imgClasses: "h-[320px] w-auto object-contain object-bottom scale-[1.35] group-hover:scale-[1.42]"
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ const teamData = [
         lastName: "Leon",
         role: "Chief Talent Officer",
         employee: "/Home/OurTeam/members2.png",
-        imgClasses: "h-[320px] w-auto object-contain object-bottom"
+        imgClasses: "h-[320px] w-auto object-contain object-bottom group-hover:scale-105"
     },
     {
         id: 3,
@@ -25,7 +25,7 @@ const teamData = [
         lastName: "Johaness",
         role: "Chief Marketing Officer",
         employee: "/Home/OurTeam/members3.png",
-        imgClasses: "h-[320px] w-auto object-contain object-bottom"
+        imgClasses: "h-[320px] w-auto object-contain object-bottom group-hover:scale-105"
     }
 ];
 
@@ -78,30 +78,46 @@ export default function OurTeam() {
                 </div>
             </div>
 
+            <style>{`
+                @keyframes floatGradient {
+                    0% { background-position: 100% 0%; }
+                    100% { background-position: 0% 0%; }
+                }
+                .float-gradient-bg {
+                    background: linear-gradient(270deg, #3D02A9 0%, #3D02A9 35%, #60A5FA 50%, #2D59F4 65%, #3D02A9 100%);
+                    background-size: 400% 100%;
+                    animation: floatGradient 3s linear infinite;
+                }
+            `}</style>
             {/* 3 Members Responsive Grid */}
             <div className="relative max-w-[1200px] mx-auto px-6 md:px-12 z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-8 w-full justify-items-center">
                     {teamData.map((member) => (
                         <div
                             key={member.id}
-                            className="relative w-full max-w-[280px] bg-[#D7DBFD] p-6 pb-8 flex flex-col items-center group transition-transform duration-300 hover:-translate-y-2"
+                            className="relative w-full max-w-[280px] bg-[#D7DBFD] p-6 pb-8 flex flex-col items-center group transition-all duration-300 hover:-translate-y-2"
                         >
+                            {/* Hover Gradient Background */}
+                            <div 
+                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0 float-gradient-bg" 
+                            />
+
                             {/* The Section-Colored Square Container */}
-                            <div className="w-full aspect-square bg-[#EDEDFD] relative">
+                            <div className="w-full aspect-square bg-[#EDEDFD] relative z-10">
                                 {/* The Person Image (absolutely positioned to break out from the top) */}
                                 <img
                                     src={member.employee}
                                     alt={`${member.firstName} ${member.lastName}`}
-                                    className={`absolute bottom-0 left-1/2 -translate-x-1/2 max-w-none pointer-events-none  z-10 transition-transform duration-500 ease-out group-hover:scale-105 origin-bottom ${member.imgClasses}`}
+                                    className={`absolute bottom-0 left-1/2 -translate-x-1/2 max-w-none pointer-events-none z-10 transition-transform duration-500 ease-out origin-bottom ${member.imgClasses}`}
                                 />
                             </div>
 
                             {/* The Bottom Text Box */}
-                            <div className="mt-6 text-center z-20">
-                                <h3 className="text-black font-bold text-[22px] leading-tight">
+                            <div className="mt-6 text-center z-20 relative">
+                                <h3 className="text-black group-hover:text-white transition-colors duration-300 font-bold text-[22px] leading-tight">
                                     {member.firstName} {member.lastName}
                                 </h3>
-                                <p className="text-gray-800 text-[15px] mt-1.5">
+                                <p className="text-gray-800 group-hover:text-indigo-100 transition-colors duration-300 text-[15px] mt-1.5">
                                     {member.role}
                                 </p>
                             </div>

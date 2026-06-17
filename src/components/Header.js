@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -9,12 +9,24 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const headerRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (pathname === "/Carrers/create") return null;
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Handle scroll to add dynamic shadow or subtle styles
   useEffect(() => {
@@ -32,6 +44,7 @@ export default function Header() {
   // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
+    setOpenDropdown(null);
   }, [pathname]);
 
   const cleanPath = pathname ? pathname.toLowerCase().replace(/\/$/, "") : "";
@@ -57,7 +70,7 @@ export default function Header() {
     const cleanLinkPath = path.toLowerCase().replace(/\/$/, "");
     const isActive = cleanPath === cleanLinkPath;
 
-    return `text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${isActive
+    return `text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${isActive
       ? isDarkBg
         ? "text-white border-white font-bold"
         : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
@@ -83,6 +96,7 @@ export default function Header() {
 
   return (
     <header
+      ref={headerRef}
       className={`fixed left-0 right-0 z-50 transition-all duration-300 ${isTopOffsetPage && !scrolled ? "lg:top-4 top-0" : "top-0"
         } ${scrolled
           ? "bg-white backdrop-blur-md border-b border-slate-100 shadow-md text-slate-800"
@@ -107,7 +121,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation with MacBook Air-optimized spacing */}
-          <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4 2xl:space-x-8 mx-auto">
+          <nav className="hidden lg:flex items-center lg:space-x-2.5 xl:space-x-4 2xl:space-x-8 lg:mr-auto lg:ml-4 xl:ml-8 2xl:mx-auto">
             {/* Home */}
             <Link
               href="/"
@@ -116,11 +130,14 @@ export default function Header() {
               Home
             </Link>
 
-            {/* Services with Hover Dropdown */}
-            <div className="relative group py-2">
+            {/* Services with Click Dropdown */}
+            <div 
+              className="relative py-2 flex items-center"
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
               <Link
                 href="/services"
-                className={`text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/")
+                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/")
                   ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
                   : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
@@ -128,9 +145,17 @@ export default function Header() {
                   }`}
               >
                 Services
+              </Link>
+              <button
+                onMouseEnter={() => setOpenDropdown("services")}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenDropdown(openDropdown === "services" ? null : "services");
+                }}
+                className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60 hover:text-white" : "text-slate-500 hover:text-blue-600"}`}
+              >
                 <svg
-                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${isDarkBg ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
-                    }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${openDropdown === "services" ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
@@ -139,26 +164,53 @@ export default function Header() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
-              </Link>
+              </button>
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                <Link href="/services/software-development" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Software Development</Link>
-                <Link href="/services/it-support" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">IT Support</Link>
-                <Link href="/services/cloud-services" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Cloud Services</Link>
-                <Link href="/services/bpo-services" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">BPO Services</Link>
-                <Link href="/services/ai-chatbots" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">AI Chatbots</Link>
-                <Link href="/services/digital-marketing" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Digital Marketing</Link>
-                <Link href="/services/ui-ux-design" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">UI/UX Design</Link>
-                <Link href="/services/cybersecurity" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Cybersecurity</Link>
+              <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "services" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
+                <Link href="/services/software-development" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  Software Development
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/services/it-support" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  IT Support
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/services/cloud-services" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  Cloud Services
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/services/bpo-services" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  BPO Services
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/services/ai-chatbots" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  AI Chatbots
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/services/digital-marketing" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  Digital Marketing
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/services/ui-ux-design" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  UI/UX Design
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/services/cybersecurity" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  Cybersecurity
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
               </div>
             </div>
 
-            {/* Products with Hover Dropdown */}
-            <div className="relative group py-2">
+            {/* Products with Click Dropdown */}
+            <div 
+              className="relative py-2 flex items-center"
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
               <Link
                 href="/products"
-                className={`text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/products" || cleanPath.startsWith("/products/")
+                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/products" || cleanPath.startsWith("/products/")
                   ? isDarkBg
                     ? "text-white border-white font-bold"
                     : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
@@ -168,9 +220,17 @@ export default function Header() {
                   }`}
               >
                 Products
+              </Link>
+              <button
+                onMouseEnter={() => setOpenDropdown("products")}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenDropdown(openDropdown === "products" ? null : "products");
+                }}
+                className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60 hover:text-white" : "text-slate-500 hover:text-blue-600"}`}
+              >
                 <svg
-                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${isDarkBg ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
-                    }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${openDropdown === "products" ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
@@ -179,41 +239,54 @@ export default function Header() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
-              </Link>
+              </button>
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                <Link
-                  href="/products/grabjobz"
-                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
-                >
+              <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "products" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
+                <Link href="/products/grabjobz" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   GrabJobz
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
-                <Link
-                  href="/products/lens-light"
-                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
-                >
+                <Link href="/products/lens-light" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Lens & Light Media
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
-                <Link
-                  href="/products/devtalent"
-                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
-                >
+                <Link href="/products/devtalent" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   DevTalent
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
-                <Link
-                  href="/products/vishan"
-                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
-                >
+                <Link href="/products/vishan" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Vishan
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
-                <Link href="/products/arogya-narayan" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Arogya Narayan</Link>
-                <Link href="/products/hisphere" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">HiSphere</Link>
-                <Link href="/products/lauratek" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Lauratek</Link>
-                <Link href="/products/lauratek-2-0" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Lauratek 2.0</Link>
-                <Link href="/products/logsphere" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">LogSphere</Link>
-                <Link href="/products/onestep-medi" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">Onestep Medi</Link>
-                <Link href="/products/shrava360" className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150">shrava360</Link>
+                <Link href="/products/arogya-narayan" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  Arogya Narayan
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/products/hisphere" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  HiSphere
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/products/lauratek" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  Lauratek
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/products/lauratek-2-0" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  Lauratek 2.0
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/products/logsphere" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  LogSphere
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/products/onestep-medi" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  Onestep Medi
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
+                <Link href="/products/shrava360" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  shrava360
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
               </div>
             </div>
 
@@ -234,10 +307,14 @@ export default function Header() {
             </Link>
 
             {/* About Us with Hover Dropdown */}
-            <div className="relative group py-2">
+            {/* About Us with Click Dropdown */}
+            <div 
+              className="relative py-2 flex items-center"
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
               <Link
                 href="/AboutUs"
-                className={`text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center gap-1 h-8 ${cleanPath === "/aboutus" || cleanPath.startsWith("/aboutus/")
+                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/aboutus" || cleanPath.startsWith("/aboutus/")
                   ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
                   : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
@@ -245,9 +322,17 @@ export default function Header() {
                   }`}
               >
                 About Us
+              </Link>
+              <button
+                onMouseEnter={() => setOpenDropdown("aboutus")}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenDropdown(openDropdown === "aboutus" ? null : "aboutus");
+                }}
+                className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60 hover:text-white" : "text-slate-500 hover:text-blue-600"}`}
+              >
                 <svg
-                  className={`w-3 h-3 transition-transform duration-200 group-hover:rotate-180 ${isDarkBg ? "text-white/60 group-hover:text-white" : "text-slate-500 group-hover:text-blue-600"
-                    }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${openDropdown === "aboutus" ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
@@ -256,21 +341,17 @@ export default function Header() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
-              </Link>
+              </button>
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-48 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                <Link
-                  href="/AboutUs/team"
-                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
-                >
+              <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-48 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "aboutus" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
+                <Link href="/AboutUs/team" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Our Team
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
-                <Link
-                  href="/AboutUs/founders"
-                  className="block px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150"
-                >
+                <Link href="/AboutUs/founders" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Founders
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
               </div>
             </div>
@@ -278,7 +359,7 @@ export default function Header() {
             {/* Careers */}
             <Link
               href="/Carrers"
-              className={`text-[14px] transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/carrers" || cleanPath.startsWith("/carrers/")
+              className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/carrers" || cleanPath.startsWith("/carrers/")
                 ? isDarkBg
                   ? "text-white border-white font-bold"
                   : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"

@@ -55,7 +55,7 @@ const servicesData = [
 
 export default function OurServices() {
     return (
-        <section className="relative w-full bg-white py-14 overflow-hidden text-slate-800">
+        <section className="relative w-full bg-white py-18 overflow-hidden text-slate-800">
 
 
             {/* Main Container */}

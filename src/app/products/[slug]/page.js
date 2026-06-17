@@ -86,7 +86,7 @@ export default async function ProductDetailPage({ params }) {
             
             <Link
               href="/products"
-              className="inline-flex items-center justify-center gap-1.5 bg-white text-blue-700 hover:text-blue-800 hover:bg-slate-50 font-semibold px-6 py-2.5 rounded-full shadow-md transition-all duration-200 active:scale-95"
+              className="inline-flex items-center justify-center gap-1 bg-white text-blue-700 hover:text-blue-800 hover:bg-slate-50 font-semibold px-10 py-2.5 rounded-full shadow-md transition-all duration-200 active:scale-95"
             >
               <LuChevronLeft className="w-5 h-5" /> Back
             </Link>
@@ -95,22 +95,22 @@ export default async function ProductDetailPage({ params }) {
           {/* Metadata Row */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-white/90">
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-xs font-medium uppercase tracking-wider opacity-80">Type Of Industries</span>
-              <span className="text-sm sm:text-base font-semibold">{product.industry}</span>
+              <span className="text-sm font-medium  tracking-wider opacity-80">Type Of Industries</span>
+              <span className="text-sm sm:text-base font-medium">{product.industry}</span>
             </div>
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-xs font-medium uppercase tracking-wider opacity-80">Services</span>
-              <span className="text-sm sm:text-base font-semibold">{product.services}</span>
+              <span className="text-sm font-medium  tracking-wider opacity-80">Services</span>
+              <span className="text-sm sm:text-base font-medium">{product.services}</span>
             </div>
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-xs font-medium uppercase tracking-wider opacity-80">Project Date</span>
-              <span className="text-sm sm:text-base font-semibold">{product.date}</span>
+              <span className="text-sm font-medium  tracking-wider opacity-80">Project Date</span>
+              <span className="text-sm sm:text-base font-medium">{product.date}</span>
             </div>
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-xs font-medium uppercase tracking-wider opacity-80">Live Link</span>
+              <span className="text-sm font-medium  tracking-wider opacity-80">Live Link</span>
               <div className="mt-1">
-                <a href="#" className="inline-flex items-center gap-2 px-4 py-1.5 border border-white/30 rounded-full text-xs font-semibold hover:bg-white/20 transition-colors">
-                  See live <span className="text-[10px]">↗</span>
+                <a href="#" className="inline-flex items-center gap-2 px-4 py-1.5 border border-white/30 rounded-full text-xs font-medium hover:bg-white/20 transition-colors">
+                  See live <span className="text-[15px]">↗</span>
                 </a>
               </div>
             </div>
@@ -131,7 +131,7 @@ export default async function ProductDetailPage({ params }) {
       </section>
 
       {/* Content Section */}
-      <section className="relative w-full max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 py-16 sm:py-24">
+      <section className="relative w-full max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 py-16 sm:py-14">
         <div className="max-w-4xl">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-8 font-sans">
             Introduction
@@ -148,7 +148,7 @@ export default async function ProductDetailPage({ params }) {
         {/* Blue Background Top Half */}
         <div 
           className="absolute inset-x-0 top-0 h-[70%] sm:h-[75%]"
-          style={{ background: product.bg }}
+          style={{ background: "linear-gradient(180deg, #3445B5 0%, #2D2F8D 100%)" }}
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none" />
           {/* Decorative dots pattern left */}
@@ -160,7 +160,7 @@ export default async function ProductDetailPage({ params }) {
         {/* White Background Bottom Half */}
         <div className="absolute inset-x-0 bottom-0 h-[30%] sm:h-[25%] bg-white" />
 
-        <div className="relative max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 text-center z-10 pb-8 sm:pb-12">
+        <div className="relative max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 text-center z-10 pb-8 sm:pb-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-12 font-sans">
             Product Video
           </h2>

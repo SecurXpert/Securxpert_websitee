@@ -32,6 +32,16 @@ export default function BPOHero() {
         .animate-pulse-slow {
           animation: pulseSlow 4s ease-in-out infinite;
         }
+        @keyframes drawConnectivity {
+          0% { clip-path: inset(0 0 0 100%); opacity: 0; }
+          15% { opacity: 0.9; }
+          50% { clip-path: inset(0 0 0 0); opacity: 0.9; }
+          85% { clip-path: inset(0 0 0 0); opacity: 0.9; }
+          100% { clip-path: inset(0 100% 0 0); opacity: 0; }
+        }
+        .animate-draw-arrow {
+          animation: drawConnectivity 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
       `}} />
 
             <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto pt-0 pb-0 overflow-visible">
@@ -75,7 +85,7 @@ export default function BPOHero() {
                         <div className="flex items-center gap-4 pt-2">
                             <Link
                                 href="/contact"
-                                className="bg-white hover:bg-slate-50 text-blue-600 font-bold px-8 py-3.5 rounded-lg text-sm sm:text-base shadow-lg transition-all active:scale-95 duration-150 block text-center"
+                                className="bg-white hover:bg-slate-50 text-blue-600 font-medium px-8 py-3.5 rounded-lg text-sm sm:text-base shadow-lg transition-all active:scale-95 duration-150 block text-center"
                             >
                                 Try for Free
                             </Link>
@@ -98,7 +108,7 @@ export default function BPOHero() {
                         <img
                             src="/BPO/hero/arrow-banner-shape.png.svg"
                             alt="Dashed Loop Arrow"
-                            className="absolute top-12 right-6 sm:right-16 w-56 sm:w-80 h-auto opacity-80 z-0 pointer-events-none hidden sm:block animate-pulse-slow"
+                            className="absolute top-12 right-6 sm:right-16 w-50 sm:w-70 h-auto opacity-80 z-0 pointer-events-none hidden sm:block animate-draw-arrow"
                         />
 
                         {/* Flags Floating Widget */}

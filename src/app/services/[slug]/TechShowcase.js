@@ -194,7 +194,7 @@ export default function TechShowcase({
           onMouseLeave={() => setIsHovered(false)}
         >
 
-          <div className="overflow-hidden py-8">
+          <div className="overflow-hidden py-4">
             <div
               className={`flex gap-6 ${isHovered ? 'animate-pause' : 'animate-scroll'}`}
               style={{
@@ -217,8 +217,8 @@ export default function TechShowcase({
           </div>
         </div>
 
-        <div className="text-center mt-5">
-          <p className="text-sm text-slate-500">
+        <div className="text-center mt-3">
+          <p className="text-md text-slate-500">
             And many more technologies to bring your vision to life
           </p>
         </div>

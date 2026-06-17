@@ -49,7 +49,7 @@ export default function OurValues() {
       <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:pl-10 md:pr-20">
         
         {/* Wavy line pattern background with title */}
-        <div className="relative flex justify-center items-center mb-16 sm:mb-12 py-4">
+        <div className="relative flex justify-center items-center mb-8 sm:mb-10 py-4">
           <img 
             src="/services-media/OurServices/line pattern.svg" 
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] pointer-events-none select-none opacity-90 h-auto" 
@@ -61,13 +61,14 @@ export default function OurValues() {
         </div>
 
         {/* Values Cards Grid */}
-        <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {values.map((item, index) => {
             const Icon = item.icon;
             return (
               <div 
                 key={index} 
-                className="bg-[#F9FAFB] border border-[#E5E9F0]/80 rounded-[20px] p-8 sm:p-10 transition-all duration-300 flex flex-col items-start text-left space-y-5"
+                className="border border-[#E5E9F0]/80 rounded-[20px] p-6 sm:p-6 transition-all duration-300 flex flex-col items-start text-left space-y-5"
+                style={{ background: "linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%)" }}
               >
                 {/* Icon wrapper */}
                 <div className="  flex items-center justify-center text-[#4F46E5]">
@@ -75,7 +76,7 @@ export default function OurValues() {
                 </div>
                 
                 {/* Title */}
-                <h3 className="text-xl sm:text-2xl font-bold text-[#060913] font-Plus Jakarta Sans">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[#060913] font-Plus Jakarta Sans">
                   {item.title}
                 </h3>
                 

@@ -44,7 +44,7 @@ export default function Cta() {
         <div className="relative z-10 flex-shrink-0">
           <Link
             href="/contact"
-            className="inline-block bg-white hover:bg-slate-50 text-[#3D62EB] font-bold text-sm sm:text-base px-8 py-3.5 rounded-[6px] shadow-lg active:scale-95 transition-all duration-150 text-center font-inter"
+            className="inline-block bg-white hover:bg-slate-70 text-[#3D62EB] font-medium text-sm sm:text-base px-8 py-3.5 rounded-[6px] shadow-lg active:scale-95 transition-all duration-150 text-center font-inter"
           >
             Let's Together Quotes
           </Link>

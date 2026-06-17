@@ -81,15 +81,17 @@ export default function Hero() {
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
-  // Autoplay functionality (slides every 7 seconds)
+  // Autoplay functionality (slides every 3 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
-      handleNext();
-    }, 4000);
+      setDirection("next");
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => (prev + 3) % slidesData.length);
+    }, 3000);
     return () => clearInterval(interval);
   }, [currentIndex]);
 
-  const activeSlide = slidesData[currentIndex];
+  const activeSlide = slidesData[currentIndex]; 
 
   return (
     <div className="relative w-full h-screen overflow-hidden select-none">
@@ -173,7 +175,7 @@ export default function Hero() {
             className={`w-full lg:w-[50%] text-left space-y-6 lg:space-y-8 max-w-7xl ${direction === "next" ? "anim-text-next" : "anim-text-prev"
               }`}
           >
-            <h1 className={`text-4xl sm:text-5xl md:text-5xl font-semibold max-w-full leading-tight font-Plus Jakarta Sans ${activeSlide.titleColor}`}>
+            <h1 className={`text-4xl sm:text-5xl md:text-5xl lg:text-[36px] xl:text-[44px] 2xl:text-5xl font-semibold max-w-full leading-tight font-Plus Jakarta Sans ${activeSlide.titleColor}`}>
               {activeSlide.title}
             </h1>
             <p className={`text-sm sm:text-base md:text-xl leading-relaxed max-w-lg font-medium ${activeSlide.descColor}`}>
