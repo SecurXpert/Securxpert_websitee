@@ -5,55 +5,51 @@ import React, { useState } from "react";
 export default function Faq() {
     const leftFaqs = [
         {
-            q: "WHAT SERVICES DOES POLEN OFFER?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "What services does SecurXpert offer through this portfolio of work?",
+            a: "Software development, UI/UX design, cloud infrastructure, AI automation, and digital marketing — delivered individually or as a combined engagement depending on what the project needs."
         },
         {
-            q: "HOW CAN I START A PROJECT WITH POLEN?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "How can I start a project with SecurXpert?",
+            a: "Book a free consultation through our Contact page. We'll scope your requirements and follow up with a fixed quote — no obligation."
         },
         {
-            q: "DO YOU WORK WITH INTERNATIONAL CLIENTS?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "Do you work with international clients?",
+            a: "Yes — we deliver remotely to clients across India, the US, the UK, and the Middle East, with flexible timezone coverage."
         },
         {
-            q: "HOW LONG DOES A PROJECT USUALLY TAKE?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "How long does a project usually take?",
+            a: "It depends on scope — small projects can ship in 4–8 weeks, while larger enterprise engagements typically run 3–6 months. We agree on a timeline before work begins."
         },
         {
-            q: "WHAT'S INCLUDED IN YOUR PRICING PLAN?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "What's included in your pricing plan?",
+            a: "Pricing is scoped per project based on features and complexity — we don't use flat package pricing, since that usually means you're either overpaying or underserved."
         },
         {
-            q: "CAN I REQUEST A CUSTOM PACKAGE?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "Can I request a custom package?",
+            a: "Yes — most of our engagements are custom-scoped rather than off-the-shelf."
         }
     ];
 
     const rightFaqs = [
         {
-            q: "HOW CAN I CONTACT POLEN?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "Can SecurXpert redesign an existing brand or product?",
+            a: "Yes — we run audits on existing products and brands to identify what's working, what isn't, and where the highest-impact changes are."
         },
         {
-            q: "CAN POLEN REDESIGN AN EXISTING BRAND?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "What tools or platforms do you use?",
+            a: "Figma, React, Next.js, Node.js, AWS, and the rest of the stack listed on our Services pages — matched to what's right for your specific project, not a fixed toolkit."
         },
         {
-            q: "WHAT TOOLS OR PLATFORMS DO YOU USE?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "How does the revision process work?",
+            a: "Revisions are built into each milestone, not treated as an afterthought — you review and sign off at each stage before we move to the next."
         },
         {
-            q: "HOW DOES THE REVISION PROCESS WORK?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "Do you collaborate with agencies or freelancers?",
+            a: "Yes, where it makes sense for the client's existing team structure."
         },
         {
-            q: "DO YOU COLLABORATE WITH AGENCIES OR FREELANCERS?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        },
-        {
-            q: "ONGOING SUPPORT AVAILABLE?",
-            a: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            q: "Is ongoing support available after launch?",
+            a: "Yes — SLA-backed maintenance and support packages are available for every product we build or help launch."
         }
     ];
 
@@ -61,11 +57,11 @@ export default function Faq() {
     const [activeRight, setActiveRight] = useState(0);
 
     return (
-        <section className="relative w-full bg-white overflow-hidden py-14 px-6 sm:px-12 lg:px-24">
+        <section className="relative w-full bg-white overflow-hidden py-8 px-6 sm:px-12 lg:px-24">
             <div className="relative z-10 max-w-[1240px] mx-auto w-full select-none text-left">
                 
                 {/* FAQ'S Tag Header Row with Divider */}
-                <div className="flex items-center w-full mb-8">
+                <div className="flex items-center w-full mb-6">
                     <h3 className="text-[28px] sm:text-[34px] font-bold text-[#1E1B4B] tracking-tight uppercase font-sans">
                         FAQ'S
                     </h3>

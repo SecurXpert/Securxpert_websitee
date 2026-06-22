@@ -8,7 +8,7 @@ const slidesData = [
   {
     id: 1,
     title: "AI-Powered Recruitment Intelligence Hub",
-    desc: "Al-powered recruitment platform with smart hiring, candidate matching, and automated outreach for faster hiring worldwide AI.",
+    desc: "Beyond client engagements, we design, build, and maintain our own software products — proof of how we build, not just how we talk about it. Ten live products, real users, real industries. ",
     image: "/products/home/hero1.png",
     bgGradient: "linear-gradient(105.54deg, #007CFE -2.93%, #FFFFFF 72.14%)",
     titleColor: "text-white",
@@ -184,7 +184,7 @@ export default function Hero() {
             <div className="pt-2">
               <Link
                 href={`/products/${activeSlide.slug}`}
-                className={`inline-block px-8 py-3.5 rounded-full font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 transform hover:scale-[1.04] active:scale-[0.98]   ${activeSlide.btnBg}`}
+                className={`inline-block px-12 py-3.5 rounded-full text-sm sm:text-base tracking-wider uppercase transition-all duration-300 transform hover:scale-[1.04] active:scale-[1.0]   ${activeSlide.btnBg}`}
               >
                 Learn More
               </Link>

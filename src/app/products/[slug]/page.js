@@ -16,7 +16,7 @@ import onestepMedi from "@/utils/products/onestep-medi";
 import shrava360 from "@/utils/products/shrava360";
 
 import BPOServices from "@/app/BPO/services";
-import ProductFAQ from "@/app/products/ProductFAQ";
+import ProductPageFAQ from "./ProductPageFAQ";
 import Appointment from "@/app/BPO/Appointment";
 import VideoPlayer from "../VideoPlayer";
 
@@ -34,6 +34,16 @@ const productsData = {
   "shrava360": shrava360
 };
 
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const product = productsData[resolvedParams.slug];
+  if (!product) return { title: "Product Not Found" };
+  
+  return {
+    title: product.meta?.title || product.title,
+    description: product.meta?.description || product.headline,
+  };
+}
 
 export async function generateStaticParams() {
   return [
@@ -95,24 +105,16 @@ export default async function ProductDetailPage({ params }) {
           {/* Metadata Row */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-white/90">
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-sm font-medium  tracking-wider opacity-80">Type Of Industries</span>
-              <span className="text-sm sm:text-base font-medium">{product.industry}</span>
+              <span className="text-sm font-medium  tracking-wider opacity-60">Industries</span>
+              <span className="text-sm sm:text-[15px] font-medium">{product.industry}</span>
             </div>
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-sm font-medium  tracking-wider opacity-80">Services</span>
-              <span className="text-sm sm:text-base font-medium">{product.services}</span>
+              <span className="text-sm font-medium  tracking-wider opacity-60">Services</span>
+              <span className="text-sm sm:text-[15px] font-medium">{product.services}</span>
             </div>
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-sm font-medium  tracking-wider opacity-80">Project Date</span>
-              <span className="text-sm sm:text-base font-medium">{product.date}</span>
-            </div>
-            <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-sm font-medium  tracking-wider opacity-80">Live Link</span>
-              <div className="mt-1">
-                <a href="#" className="inline-flex items-center gap-2 px-4 py-1.5 border border-white/30 rounded-full text-xs font-medium hover:bg-white/20 transition-colors">
-                  See live <span className="text-[15px]">↗</span>
-                </a>
-              </div>
+              <span className="text-sm font-medium  tracking-wider opacity-60">Released</span>
+              <span className="text-sm sm:text-[15px] font-medium">{product.date}</span>
             </div>
           </div>
 
@@ -137,7 +139,7 @@ export default async function ProductDetailPage({ params }) {
             Introduction
           </h2>
           <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">
-            {product.desc}
+            {product.introduction || product.desc}
           </p>
         </div>
       </section>
@@ -172,11 +174,83 @@ export default async function ProductDetailPage({ params }) {
         </div>
       </section>
 
-      {/* Featured Services Continuation */}
-      <BPOServices />
+      {/* Core Features Section (Replaces BPOServices) */}
+      <section className="relative w-full bg-white overflow-hidden  pb-8 lg:py-8 text-slate-800">
+        {/* Background Wave Shapes */}
+        <img
+          src="/BPO/AboutUs/aboutus3.svg"
+          alt="Bottom Right Wave"
+          className="absolute right-10 bottom-5 h-[50px] w-auto pointer-events-none select-none z-0 hidden lg:block"
+        />
+        <img
+          src="/BPO/AboutUs/aboutus3.svg"
+          alt="Top Left Wave"
+          className="absolute left-20 top-50 h-[50px] w-auto pointer-events-none select-none z-0 hidden lg:block"
+        />
+
+        <div className="max-w-[1140px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+          <div className="text-center flex flex-col items-center mb-10 sm:mb-14">
+            <div className="relative inline-flex items-center mb-4 pt-3">
+              <span className="relative z-10 text-[#3D62EB] text-sm font-semibold tracking-[1px] uppercase font-sans">
+                Core Features
+                <span className="absolute bottom-[-2px] left-0 w-full h-[6px] bg-[#3D62EB]/15 -z-10 rounded-sm" />
+              </span>
+            </div>
+            <h3 className="text-[#100D35] text-3xl sm:text-4xl lg:text-[40px] leading-[1.2] font-bold tracking-[-1px] font-sans max-w-[650px] mx-auto">
+              What Sets This Product Apart
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            {(product.features?.slice(0, 4) || []).map((feature, index) => {
+              const parts = feature.split(' - ');
+              const title = parts[0];
+              const description = parts.slice(1).join(' - ') || feature;
+              
+              return (
+                <div
+                  key={index}
+                  className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-5 sm:p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-transparent hover:border-transparent hover:bg-[#3D62EB] group z-10"
+                >
+                  <img
+                    src={product.bannerImage || product.image || "/BPO/FeauturedServices/Business Audit.jpg.jpeg"}
+                    alt="Hover Background"
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none select-none z-0"
+                  />
+                  <div className="relative z-10 flex flex-col items-start gap-4">
+                    <div className="flex-shrink-0">
+                      <div 
+                        className="w-10 h-10 bg-blue-700 group-hover:bg-white transition-colors duration-300" 
+                        style={{ 
+                          WebkitMaskImage: 'url(/products/features.svg)', 
+                          WebkitMaskSize: 'contain', 
+                          WebkitMaskRepeat: 'no-repeat', 
+                          WebkitMaskPosition: 'center',
+                          maskImage: 'url(/products/features.svg)', 
+                          maskSize: 'contain', 
+                          maskRepeat: 'no-repeat', 
+                          maskPosition: 'center'
+                        }}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-[#0D121E] text-base font-bold mb-2 group-hover:text-white transition-colors font-sans duration-300">
+                        {title}
+                      </h3>
+                      <p className="text-[#555555] text-[13px] leading-relaxed group-hover:text-white/85 transition-colors duration-300">
+                        {description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* FAQ Continuation */}
-      <ProductFAQ />
+      <ProductPageFAQ product={product} />
       <Appointment/>
 
     </main>

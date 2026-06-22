@@ -32,7 +32,7 @@ export default function WhyChooseUs() {
 
             {/* HEADING */}
             <h3 className="text-[#100D35] text-3xl sm:text-4xl lg:text-[40px] leading-[1.2] font-bold tracking-[-1px] font-inter mb-4">
-              We Are Awards Winning Business Consulting Firms
+              A Consulting Partner That Shows Up Like an Extension of Your Team 
             </h3>
 
             {/* INTRO PARAGRAPH */}
@@ -53,10 +53,10 @@ export default function WhyChooseUs() {
                 </div>
                 <div>
                   <h3 className="text-[#0D121E] text-base font-semibold mb-1 font-inter">
-                    Best Business consulting
+                    Best-in-Class Process Consulting 
                   </h3>
                   <p className="text-[#555555] text-xs sm:text-sm leading-relaxed max-w-lg">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy
+                    We design the workflow before we staff it, so automation and people are working together, not against each other.  
                   </p>
                 </div>
               </div>
@@ -74,7 +74,7 @@ export default function WhyChooseUs() {
                     24/7 customer support
                   </h3>
                   <p className="text-[#555555] text-xs sm:text-sm leading-relaxed max-w-lg">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy
+                    Coverage across time zones, so your customers get a consistent experience whenever they reach out. 
                   </p>
                 </div>
               </div>

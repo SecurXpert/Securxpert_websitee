@@ -69,13 +69,16 @@ export default function OurTeam() {
                 <h2 className="text-4xl md:text-5xl font-bold text-[#19085F] tracking-wide mb-3">
                     Our Team
                 </h2>
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-2 mb-3">
                     {/* Left Line: Fades from section bg to dark purple */}
                     <div className="w-20" style={{ height: '3.71px', background: 'linear-gradient(90deg, #EDEDFD 0%, #3734A9 100%)' }}></div>
                     <div className="w-3 h-3 rounded-full bg-[#3734A9]"></div>
                     {/* Right Line: Fades from dark purple to section bg */}
                     <div className="w-20" style={{ height: '3.71px', background: 'linear-gradient(90deg, #3734A9 0%, #EDEDFD 100%)' }}></div>
                 </div>
+                <p className="text-[#19085F] text-lg">
+                   The people behind the delivery — engineers, designers, and strategists who've shipped 500+ projects together.
+                </p>
             </div>
 
             <style>{`

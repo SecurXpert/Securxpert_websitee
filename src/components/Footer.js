@@ -28,7 +28,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-[15px] leading-relaxed text-[#4f5b76] max-w-sm">
-              Empowering enterprises with AI-powered cybersecurity, innovative software solutions, and world-class technology services.
+              Empowering enterprises with AI-powered cybersecurity, innovative software solutions, and world-class technology services. 
             </p>
 
             {/* Social Media Link Icons */}

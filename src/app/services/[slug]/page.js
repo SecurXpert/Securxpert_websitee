@@ -101,7 +101,7 @@ export default async function ServicePage({ params }) {
             <div className="relative z-10 w-full max-w-4xl flex flex-col items-center text-center space-y-4 pt-2">
 
               {/* Back Button */}
-              <div className="hidden md:flex w-full justify-start mb-1 mt-15 -ml-4 md:-ml-8 lg:-ml-90 relative top-6">
+              <div className="hidden md:flex w-full justify-start mb-1 mt-15 -ml-4 md:-ml-8 lg:-ml-12 xl:-ml-32 2xl:-ml-90 relative top-6">
                 <Link
                   href="/services"
                   className="inline-flex items-center gap-1.5 text-white/80 hover:text-white font-semibold text-lg sm:text-xl lg:text-[22px] transition-all duration-150"
@@ -208,7 +208,7 @@ export default async function ServicePage({ params }) {
                   {/* Left border highlight on hover */}
                   <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#4F46E5] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-300 ease-out" />
 
-                  <div className="relative text-2xl sm:text-[32px] font-bold text-[#4F46E5] w-10 sm:w-14 flex-shrink-0 font-inter">
+                  <div className="relative text-2xl sm:text-[32px] font-bold text-[#4F46E5] w-10 sm:w-14 flex-shrink-0 font-inter mt-[-12px] sm:mt-[-14px]">
                     {step.id}
                   </div>
                   <div className="flex-1 space-y-1">

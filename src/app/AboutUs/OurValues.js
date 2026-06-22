@@ -14,32 +14,32 @@ export default function OurValues() {
   const values = [
     {
       title: "Innovation",
-      description: "Building smart and future-ready digital solutions.",
+      description: "Building smart, future-ready digital solutions, not just maintaining what already exists. ",
       icon: LuLightbulb,
     },
     {
       title: "Client Focus",
-      description: "Delivering solutions tailored to business needs.",
+      description: "Delivering solutions shaped around your business needs, not a one-size-fits-all template",
       icon: LuUserCheck,
     },
     {
       title: "Quality",
-      description: "Ensuring reliable, secure, and scalable services.",
+      description: "Reliable, secure, and scalable services — every time, not just on the showcase projects. ",
       icon: LuGem,
     },
     {
       title: "Collaboration",
-      description: "Working together with transparency and trust.",
+      description: "Working with transparency and trust, both internally and with every client. ",
       icon: LuHandshake,
     },
     {
       title: "Growth",
-      description: "Continuously learning and improving with technology.",
+      description: "Continuously learning and improving alongside the technology we work with. ",
       icon: LuTrendingUp,
     },
     {
       title: "Commitment",
-      description: "Dedicated to excellence and long-term success.", 
+      description: "Dedicated to long-term outcomes, not just project sign-off.",
       icon: LuBadgeCheck,
     },
   ];

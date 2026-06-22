@@ -17,7 +17,7 @@ const projectsData = [
     id: 1,
     title: "Lens & Light Media",
     tags: "DESIGN WOK, BRANDING",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "Digital marketing and video production platform for brand growth campaigns. ",
     image: "/products/Projects/project1.png", // Reusing image from existing data if possible, or placeholder
     category: "All", 
   },
@@ -25,7 +25,7 @@ const projectsData = [
     id: 2,
     title: "Grabjobz",
     tags: "DEVELOPMENT, APP DESIGN",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "AI-powered recruitment platform with smart hiring and automated outreach. ",
     image: "/products/Projects/project2.png",
     category: "HR",
   },
@@ -33,7 +33,7 @@ const projectsData = [
     id: 3,
     title: "Arogya Narayan",
     tags: "BRANDING, ILLUSUTRATION",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "Hospital management and patient portal platform for healthcare providers. ",
     image: "/products/Projects/project3.png", // Adjust images as needed
     category: "Healthcare",
   },
@@ -41,7 +41,7 @@ const projectsData = [
     id: 4,
     title: "Lauratek",
     tags: "DESIGN WOK, ILLUSUTRATION",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "Business intelligence and automation platform for enterprise operations. ",
     image: "/products/Projects/project4.png",
     category: "All",
   },
@@ -49,7 +49,7 @@ const projectsData = [
     id: 5,
     title: "Vishan",
     tags: "DESIGN WOK, BRANDING",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "All-in-one school administration and ERP platform for educational institutions. ",
     image: "/products/Projects/project5.png",
     category: "School Management",
   },
@@ -57,7 +57,7 @@ const projectsData = [
     id: 6,
     title: "hi-sphere",
     tags: "DESIGN WOK, APP DESIGN",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "Enterprise cloud and workflow orchestration platform for global teams. ",
     image: "/products/Projects/hisphere.png",
     category: "All",
   },
@@ -65,7 +65,7 @@ const projectsData = [
     id: 7,
     title: "shrava 360",
     tags: "DESIGN WOK, APP DESIGN",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "360-degree data visualisation and BI platform for executive decision-making. ",
     image: "/products/Projects/shrava360.png",
     category: "All",
   },
@@ -73,7 +73,7 @@ const projectsData = [
     id: 8,
     title: "onestepmedi",
     tags: "DESIGN WOK, APP DESIGN",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "Telemedicine and pharmacy platform connecting patients with doctors and labs. ",
     image: "/products/Projects/onestepmedi.png",
     category: "All",
   },
@@ -81,15 +81,15 @@ const projectsData = [
     id: 9,
     title: "Dev Talent",
     tags: "DESIGN WOK, APP DESIGN",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "Technical assessment and coding-test platform for recruiting teams. ",
     image: "/products/Projects/project6.png",
     category: "Examination platform",
   },
   {
     id: 10,
-    title: "Web Design",
+    title: "Lauratek2.0",
     tags: "DESIGN WOK, ILLUSUTRATION",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    desc: "AI-driven evolution of Lauratek with predictive analytics and modern architecture",
     image: "/products/Projects/project7.png",
     category: "All",
   },
@@ -121,7 +121,7 @@ export default function ProjectGrid() {
 
   return (
     <section className="w-full bg-white py-16 md:py-14 px-4 md:px-8 lg:px-16">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1300px] mx-auto">
         
         {/* Section Heading */}
         <div className="text-center mb-12">
@@ -134,7 +134,7 @@ export default function ProjectGrid() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16">
+        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-6">
           {filterCategories.map((category) => (
             <button
               key={category}
@@ -151,14 +151,14 @@ export default function ProjectGrid() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-8">
           {filteredProjects.map((project) => (
             <div 
               key={project.id}
-              className="bg-white  overflow-hidden border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 group"
+              className="bg-white rounded-[24px] border border-gray-300 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 group p-4 sm:p-5 flex flex-col"
             >
               {/* Image Container */}
-              <div className="w-full h-[260px] md:h-[300px] relative overflow-hidden bg-gray-100">
+              <div className="w-full h-[200px] md:h-[260px] relative overflow-hidden bg-gray-100 rounded-[20px]">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -167,14 +167,14 @@ export default function ProjectGrid() {
               </div>
 
               {/* Content Container */}
-              <div className="p-6 md:p-8">
-                <p className="text-[#A45BFF] text-xs font-bold tracking-wider uppercase mb-3">
+              <div className="pt-6 pb-2 px-1 md:px-2 flex flex-col flex-grow">
+                <p className="text-[#A45BFF] text-xs sm:text-[13px] font-semibold tracking-wide uppercase mb-3">
                   {project.tags}
                 </p>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 font-Plus Jakarta Sans">
+                <h3 className="text-[22px] md:text-[26px] font-bold text-[#111827] mb-3 font-sans tracking-tight">
                   {project.title}
                 </h3>
-                <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+                <p className="text-gray-500 text-[15px] md:text-[16px] leading-relaxed">
                   {project.desc}
                 </p>
               </div>

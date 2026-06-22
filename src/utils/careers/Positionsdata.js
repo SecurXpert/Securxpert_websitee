@@ -42,60 +42,62 @@ const defaultDetails = {
 export const positionsData = [
   {
     id: 1,
-    title: "Full-Stack Developers",
-    tags: ["Tartu", "Full-time"],
-    description: "Due to growing workload, we are looking for experienced and talented Full-Stack Developers to join our fast-paced Engineering team. You will work closely with Product, Design and Marketing to analyze, develop, debug, test, roll-out and support new and existing product features.",
+    title: "Full-Stack Developer",
+    tags: ["Full-time", "Hyderabad"],
+    description: "We're looking for an experienced Full-Stack Developer to join our Engineering team. You'll work closely with Product and Design to build, test, and ship new features across our client projects and in-house products — and you'll see your code go to real users, not sit in a backlog.",
     category: "Engineering",
     details: {
       ...defaultDetails,
-      fullDescription: "Due to growing workload, we are looking for experienced and talented Full-Stack Developers to join our fast-paced Engineering team. You will work closely with Product, Design and Marketing to analyze, develop, debug, test, roll-out and support new and existing product features. We need you to drive quality assurance strategies and automation initiatives across our applications.",
-      metadata: { ...defaultDetails.metadata, location: "Tartu", openings: "Senior (1)" }
+      fullDescription: "We're looking for an experienced Full-Stack Developer to join our Engineering team. You'll work closely with Product and Design to build, test, and ship new features across our client projects and in-house products — and you'll see your code go to real users, not sit in a backlog.",
+      metadata: { ...defaultDetails.metadata, location: "Hyderabad", openings: "Mid Level (2)" }
     }
   },
   {
     id: 2,
-    title: "Application developer (react native)",
-    tags: ["Tartu", "Full-time"],
-    description: "Due to growing workload, we are looking for experienced and talented Full-Stack Developers to join our fast-paced Engineering team. You will work closely with Product, Design and Marketing to analyze, develop, debug, test, roll-out and support new and existing product features.",
+    title: "Application Developer (React Native)",
+    tags: ["Full-time", "Hyderabad"],
+    description: "We're hiring a React Native developer to build and maintain cross-platform mobile apps across our client and product portfolio — from early architecture decisions through to app-store release.",
     category: "Engineering",
     details: {
       ...defaultDetails,
-      metadata: { ...defaultDetails.metadata, location: "Tartu" }
+      fullDescription: "We're hiring a React Native developer to build and maintain cross-platform mobile apps across our client and product portfolio — from early architecture decisions through to app-store release.",
+      metadata: { ...defaultDetails.metadata, location: "Hyderabad" }
     }
   },
   {
     id: 3,
-    title: "Senior Product designer",
-    tags: ["Hybrid", "Tallinn", "Full-time"],
-    description: "Since 2019 we've worked on 30+ major projects from 8 different industries that are being used by 500,000+ users and 1000+ businesses from 70+ different countries. Need full-cycle product development or an improvement cycle? Let's talk!",
+    title: "Senior Product Designer",
+    tags: ["Full-time", "Hybrid"],
+    description: "Own end-to-end design across one or more of our products and client engagements — research, wireframes, prototyping, and developer handoff. You'll work directly with engineering and product, not through three layers of approval.",
     category: "Design",
     details: {
       ...defaultDetails,
-      fullDescription: "Since 2019 we've worked on 30+ major projects from 8 different industries that are being used by 500,000+ users and 1000+ businesses from 70+ different countries. We are looking for a Senior Product Designer to spearhead our UI/UX initiatives and mentor junior designers.",
-      metadata: { ...defaultDetails.metadata, category: "Design", location: "Tallinn (Hybrid)" }
+      fullDescription: "Own end-to-end design across one or more of our products and client engagements — research, wireframes, prototyping, and developer handoff. You'll work directly with engineering and product, not through three layers of approval.",
+      metadata: { ...defaultDetails.metadata, category: "Design", location: "Hybrid" }
     }
   },
   {
     id: 4,
     title: "Product Manager",
-    tags: ["Remote", "Netherlands", "Full-time"],
-    description: "If you are PM and you eager to join our fast-paced Engineering team. You will work closely with Product, Design and Marketing to analyze, develop, debug, test, roll-out and support new and existing product features. 30+ major projects from 8 different industries that are being used by 500,000+ users and 1000+ businesses from 70+ different countries.",
+    tags: ["Full-time", "Remote"],
+    description: "Drive the roadmap for one or more of our in-house products or a major client engagement, working cross-functionally with engineering, design, and marketing to ship features that actually move the metrics that matter.",
     category: "Product",
     details: {
       ...defaultDetails,
-      fullDescription: "If you are a Product Manager eager to join our fast-paced Engineering team, you will work closely with Product, Design and Marketing to analyze, develop, debug, test, roll-out and support new and existing product features.",
-      metadata: { ...defaultDetails.metadata, category: "Product", location: "Netherlands (Remote)" }
+      fullDescription: "Drive the roadmap for one or more of our in-house products or a major client engagement, working cross-functionally with engineering, design, and marketing to ship features that actually move the metrics that matter.",
+      metadata: { ...defaultDetails.metadata, category: "Product", location: "Remote" }
     }
   },
   {
     id: 5,
     title: "Product Owner",
-    tags: ["Tartu", "Full-time"],
-    description: "We've worked on 30+ major projects from 8 different industries that are being used . Need full-cycle product development or an improvement cycle? Let's talk!",
+    tags: ["Full-time", "Hyderabad"],
+    description: "Own the backlog and day-to-day prioritisation for an engineering team, translating business requirements into clear, sprint-ready work.",
     category: "Product",
     details: {
       ...defaultDetails,
-      metadata: { ...defaultDetails.metadata, category: "Product", location: "Tartu" }
+      fullDescription: "Own the backlog and day-to-day prioritisation for an engineering team, translating business requirements into clear, sprint-ready work.",
+      metadata: { ...defaultDetails.metadata, category: "Product", location: "Hyderabad" }
     }
   }
 ];

@@ -5,6 +5,26 @@ import { LuChevronLeft } from "react-icons/lu";
 
 import TeamSection from "./TeamSection";
 
+export async function generateMetadata({ params }) {
+    const resolvedParams = await params;
+    const slug = resolvedParams.slug;
+    if (slug === "team") {
+        return {
+            title: "Our Team | SecurXpert Technologies Hyderabad",
+            description: "Meet the technology, operations, strategy, and marketing teams behind SecurXpert Technologies — the people delivering 500+ projects worldwide."
+        };
+    }
+    if (slug === "founders") {
+        return {
+            title: "Our Founders | G. Sri Manasa & G. Praveen Kumar — SecurXpert Technologies",
+            description: "Meet the founders of SecurXpert Technologies — G. Sri Manasa, Founder, MD & CTO, and G. Praveen Kumar, Co-Founder & CEO."
+        };
+    }
+    return {
+        title: "About Us | SecurXpert Technologies"
+    };
+}
+
 export async function generateStaticParams() {
     return [
         { slug: "team" },
@@ -48,13 +68,13 @@ export default async function AboutUsSubPage({ params }) {
                         </h1>
                         <div className="text-slate-700 text-[15px] md:text-[16px] leading-[1.4] space-y-3 font-medium">
                             <p>
-                                G. Sri Manasa is the Founder, Managing Director and Chief Technology Officer of SecurXpert Technologies Pvt Ltd. With over 10 years of industry experience, she leads the company's technology vision and engineering direction from the ground up.
+                               G. Sri Manasa is the Founder, Managing Director, and Chief Technology Officer of SecurXpert Technologies Pvt. Ltd. With over 10 years of industry experience, she leads the company's technology vision and engineering direction from the ground up. 
                             </p>
                             <p>
-                                She played a key role in shaping SecurXperts into a product-driven technology company with a strong focus on security and scalability. In the first year alone, she led the development of more than 10 product MVPs — creating a strong technical foundation for platforms and client solutions.
+                                She played a key role in shaping SecurXpert into a product-driven technology company with a strong focus on security and scalability — in the company's first year alone, leading development of more than 10 product MVPs that became the technical foundation for its platforms and client solutions.
                             </p>
                             <p>
-                                As CTO, she oversees product architecture, software development, infrastructure, cybersecurity and quality standards. She ensures every solution meets strict benchmarks for performance, reliability and security.
+                                As CTO, she oversees product architecture, software development, infrastructure, cybersecurity, and quality standards, ensuring every solution meets strict benchmarks for performance, reliability, and security.
                             </p>
                         </div>
                     </div>
@@ -89,13 +109,13 @@ export default async function AboutUsSubPage({ params }) {
                         </h1>
                         <div className="text-slate-700 text-[15px] md:text-[16px] leading-[1.3] space-y-2 font-medium">
                             <p>
-                                G. Praveen Kumar is the Co-Founder and Chief Executive Officer of SecurXpert Technologies Pvt Ltd and leads the company's global business strategy, growth and operations. He brings over a decade of experience in business development, operations and client management.
+                                G. Praveen Kumar is the Co-Founder and Chief Executive Officer of SecurXpert Technologies Pvt. Ltd., leading the company's global business strategy, growth, and operations. He brings over a decade of experience in business development, operations, and client management.
                             </p>
                             <p>
-                                Since co-founding the company, he has been instrumental in scaling SecurXpert from an early-stage startup into a fast-growing international organization. Under his leadership, the company expanded globally and initiated its UK operations within the first year. As CEO, he drives corporate strategy, partnerships and market expansion. He oversees major functions including operations, recruitment, compliance, delivery governance and process frameworks that support international growth.
+                                Since co-founding the company, he has been instrumental in scaling SecurXpert from an early-stage startup into a fast-growing international organisation — under his leadership, the company expanded globally and launched UK operations within its first year.
                             </p>
                             <p>
-                                His vision is to transform SecurXpert into a globally credible security and technology partner for enterprises. His mission is to create a scalable, execution-focused organization driven by discipline, client trust and sustainable growth.
+                                As CEO, he drives corporate strategy, partnerships, and market expansion, overseeing operations, recruitment, compliance, and the delivery governance frameworks that support international growth. His focus is building a scalable, execution-focused organisation driven by discipline, client trust, and sustainable growth — with strong leadership systems and a performance-driven culture supporting that growth responsibly.
                             </p>
                             <p>
                                 He is also deeply involved in strengthening leadership systems and fostering a performance-driven culture to ensure the company grows responsibly and consistently.

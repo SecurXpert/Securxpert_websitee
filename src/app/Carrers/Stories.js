@@ -52,7 +52,7 @@ export default function Stories() {
       <div className="relative w-full max-w-[95%] 2xl:max-w-[1550px] mx-auto px-4 md:px-12">
 
         {/* Header Section */}
-        <div className="mb-16">
+        <div className="mb-12">
           <div className="text-center max-w-3xl mx-auto flex flex-col items-center justify-center">
             <h2 className="text-white text-center text-5xl font-normal mb-4 font-sans">
               Stories by Securxperts
@@ -72,7 +72,7 @@ export default function Stories() {
             <div
               key={card.id}
               style={{ background: "linear-gradient(180deg, #374EC4 0%, #2C2D8A 100%)" }}
-              className="flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl w-[290px] sm:w-[340px] md:w-[370px] shrink-0 snap-start"
+              className="flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl w-[250px] sm:w-[290px] md:w-[320px] shrink-0 snap-start"
             >
               {/* Top Image (fits flush with top, left, right) */}
               <div className="w-full aspect-[16/9] overflow-hidden">

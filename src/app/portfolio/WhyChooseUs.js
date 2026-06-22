@@ -14,7 +14,7 @@ export default function WhyChooseUs() {
                             Why Choose Us
                         </span>
                         <h3 className="text-3xl sm:text-4xl md:text-[45px] font-normal text-slate-950 tracking-wider leading-[1.08] font-sans mb-8 max-w-md">
-                            We Use Our <br className="hidden sm:inline" /> Experience To <br className="hidden sm:inline" /> Get Clients
+                            We Use Our <br className="hidden sm:inline" /> Experience To <br className="hidden sm:inline" /> Get Results,not just deliverables
                         </h3>
 
                         {/* CTA Button */}
@@ -34,7 +34,7 @@ export default function WhyChooseUs() {
                                     Our Philosophy
                                 </h4>
                                 <p className="text-slate-500 text-sm sm:text-[15px] font-normal leading-relaxed font-sans">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    We treat every engagement like a long-term partnership, not a one-off ticket — which is why most of our work comes from repeat clients and referrals
                                 </p>
                             </div>
 
@@ -44,7 +44,7 @@ export default function WhyChooseUs() {
                                     Our Goals
                                 </h4>
                                 <p className="text-slate-500 text-sm sm:text-[15px] font-normal leading-relaxed font-sans">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    Ship work that's measurably better for the business, not just visually polished for a portfolio
                                 </p>
                             </div>
 
@@ -57,7 +57,7 @@ export default function WhyChooseUs() {
                         {/* Top Text Content */}
                         <div className="w-full">
                             <p className="text-slate-800 text-base sm:text-[21px] font-normal leading-relaxed mb-5 font-sans">
-                                We Are A Creative Agency That Specializes In Web Design, Branding Identity, And Social Media Management. Our Experienced Team Works Closely With Clients To Deliver Customized Solutions That Meet Their Specific Needs.
+                                We're a technology team that specialises in software engineering, product design, and digital growth. Our team works closely with clients to deliver solutions built around their specific operational needs — not a templated package resold to everyone
                             </p>
 
                             {/* Divider Line */}

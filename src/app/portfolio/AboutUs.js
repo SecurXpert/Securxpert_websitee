@@ -5,22 +5,12 @@ import React from "react";
 const statsData = [
   {
     label: "Projects Completed",
-    end: 120,
+    end: 500,
     suffix: "+",
   },
   {
     label: "Happy Clients",
-    end: 300,
-    suffix: "+",
-  },
-  {
-    label: "Years of Experience",
-    end: 6,
-    suffix: "+",
-  },
-  {
-    label: "Creative Experts",
-    end: 15,
+    end: 500,
     suffix: "+",
   },
 ];
@@ -110,7 +100,7 @@ export default function AboutUs() {
             About Us
           </span>
           <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold text-[#1E1B4B] tracking-tight leading-tight max-w-4xl font-sans uppercase">
-            A creative agency focused on thoughtful design and strong visual identity.
+            A Technology Partner Focused on Thoughtful Design and Strong Delivery
           </h3>
         </div>
 
@@ -165,21 +155,21 @@ export default function AboutUs() {
           </div>
 
           {/* Description Text */}
-          <p className="text-slate-600 text-sm sm:text-base md:text-[17px] font-normal leading-relaxed text-left max-w-xl md:max-w-2xl font-sans">
-            Securxperts is a creative agency dedicated to helping brands express their ideas through clean design, strategic thinking, and impactful digital experiences. We believe great design is not just about aesthetics, but about creating meaning, clarity, and connection.
+          <p className="text-slate-600 text-sm sm:text-base md:text-[16px] font-normal leading-relaxed text-left max-w-xl md:max-w-xl font-sans">
+            SecurXpert is a technology and design partner dedicated to helping brands express their ideas through clean engineering, strategic thinking, and digital experiences that actually convert. Good software isn't just about how it looks — it's about creating clarity, trust, and a measurable result for the business behind it. 
           </p>
 
         </div>
 
         {/* HORIZONTAL STATS BANNER */}
         <div className="w-full mt-12 border-t border-slate-200 pt-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-4 items-center justify-items-center lg:justify-items-start w-full">
+          <div className="grid grid-cols-2 gap-8 md:gap-4 items-center justify-items-center lg:justify-items-start w-full">
             {statsData.map((stat, index) => (
-              <div key={index} className="flex items-center gap-6">
-                <span className="text-[12px] sm:text-md font-bold text-[#3E66F3] tracking-wide whitespace-nowrap uppercase text-right leading-tight max-w-[125px] select-none">
+              <div key={index} className="flex items-center justify-center lg:justify-start gap-3 xl:gap-4">
+                <span className="text-[9px] lg:text-[10px] xl:text-[11px] font-bold text-[#3E66F3] tracking-wide whitespace-nowrap uppercase text-right leading-tight select-none">
                   {stat.label}
                 </span>
-                <span className="text-4xl sm:text-5xl lg:text-[50px] font-bold text-[#1E1B4B] tracking-tight leading-none">
+                <span className="text-3xl sm:text-4xl lg:text-[38px] xl:text-[44px] font-bold text-[#1E1B4B] tracking-tight leading-none">
                   <CountUp end={stat.end} suffix={stat.suffix} />
                 </span>
               </div>

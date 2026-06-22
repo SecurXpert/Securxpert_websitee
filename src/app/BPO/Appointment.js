@@ -11,9 +11,41 @@ export default function Appointment() {
     message: ""
   });
 
-  const handleSubmit = (e) => {
+  const handlesubmit = async (e) => {
     e.preventDefault();
-    alert("Form submitted! Thank you for booking an appointment.");
+    try {
+      const res = await fetch("http://192.168.1.42:9000/book-appointment/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJyb2xlIjoiU1VQRVJfQURNSU4iLCJleHAiOjE3ODE3MDE5MjV9.uAy-Uk0OV0MitIimRNiNlgSkATZYSZXUfSwW25c4HBw"
+        },
+        body: JSON.stringify({
+          name: formData.name, 
+          email: formData.email,
+          phone_number: formData.phone,
+          service_type: formData.serviceType,
+          message: formData.message,
+        }),
+      });
+
+      if (res.ok) {
+        alert("Form submitted successfully! We will contact you soon.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          serviceType: "",
+          message: ""
+        });
+      } else {
+        const errorData = await res.json();
+        alert("Failed to submit form: " + (errorData.detail || "Please try again."));
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("An error occurred while submitting the form. Please try again.");
+    }
   };
 
   return (
@@ -23,7 +55,7 @@ export default function Appointment() {
         {/* LIGHT CARD BLOCK CONTAINER */}
         <div className="w-full bg-[#F7F9FB] rounded-[16px] p-8 sm:p-12 md:p-14 border border-slate-100/50">
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <form onSubmit={handlesubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
             {/* COLUMN 1: TITLE AND INTRO (Takes 4 cols) */}
             <div className="lg:col-span-4 text-left pt-2 relative z-10 pr-0 lg:pr-6">
@@ -31,7 +63,7 @@ export default function Appointment() {
                 Book a Appointment
               </h3>
               <p className="text-[#555555] text-sm sm:text-base leading-relaxed font-normal max-w-sm">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy
+                Tell us a bit about what you need handled, and we'll get back to you within one business day with next steps.
               </p>
             </div>
 
@@ -113,12 +145,12 @@ export default function Appointment() {
                       className="w-full bg-white border border-slate-200 rounded-[6px] px-4 py-2.5 text-sm text-slate-900 focus:border-[#3D62EB] focus:outline-none appearance-none cursor-pointer font-sans"
                     >
                       <option value="">Select ...</option>
-                      <option value="business-audit">Business Audit</option>
-                      <option value="tax-strategy">Tax Strategy</option>
-                      <option value="financial-advices">Financial Advices</option>
-                      <option value="insurance-strategy">Insurance Strategy</option>
-                      <option value="startups">Start Ups</option>
-                      <option value="manage-investment">Manage Investment</option>
+                      <option value="business-audit">Customer Support</option>
+                      <option value="tax-strategy">Back-Office Operations</option>
+                      <option value="financial-advices">Sales & Telemarketing</option>
+                      <option value="insurance-strategy">HR & Recruitment</option>
+                      <option value="startups">Document Automation</option>
+                      <option value="manage-investment">other</option>
                     </select>
 
                     {/* Select custom arrow */}
@@ -139,7 +171,7 @@ export default function Appointment() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Type here..."
-                    className="w-full bg-transparent border-b border-slate-200 focus:border-[#3D62EB] focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans resize-none  min-h-[96px]" 
+                    className="w-full bg-transparent border-b border-slate-200 focus:border-[#3D62EB] focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans resize-none  min-h-[96px]"
                   />
                 </div>
 

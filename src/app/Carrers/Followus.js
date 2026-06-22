@@ -26,7 +26,7 @@ export default function FollowUs() {
             </div>
             
             {/* Group Photo */}
-            <div className="rounded-[20px] overflow-hidden aspect-[1.35] w-full shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className=" overflow-hidden aspect-[1.35] w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
                 src="/Carrers/Followus/us 1.png" 
                 alt="Securxpert team gathering" 
@@ -38,7 +38,7 @@ export default function FollowUs() {
           {/* Column 2 (Narrower: col-span-2 out of 12) */}
           <div className="col-span-12 sm:col-span-6 lg:col-span-2 flex flex-col lg:justify-between lg:h-full gap-6 lg:gap-0">
             {/* Christmas Tree */}
-            <div className="rounded-[20px] overflow-hidden aspect-[3/4] w-full shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="overflow-hidden aspect-[3/4] w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
                 src="/Carrers/Followus/us 2.png" 
                 alt="Holiday tree at office" 
@@ -47,7 +47,7 @@ export default function FollowUs() {
             </div>
             
             {/* Dots Graphic */}
-            <div className="rounded-[20px] overflow-hidden aspect-square w-full shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className=" overflow-hidden aspect-square w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
                 src="/Carrers/Followus/us 3.png" 
                 alt="Colorful dots decoration" 
@@ -59,7 +59,7 @@ export default function FollowUs() {
           {/* Column 3 (col-span-3 out of 12) */}
           <div className="col-span-12 sm:col-span-6 lg:col-span-3 h-full">
             {/* Ping Pong (Tall Vertical image) */}
-            <div className="rounded-[20px] overflow-hidden aspect-[1003/2784] lg:aspect-auto lg:h-[530px] w-full shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className=" overflow-hidden aspect-[1003/2784] lg:aspect-auto lg:h-[530px] w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
                 src="/Carrers/Followus/us 4.png" 
                 alt="Team member playing ping pong" 
@@ -71,7 +71,7 @@ export default function FollowUs() {
           {/* Column 4 (col-span-3 out of 12) */}
           <div className="col-span-12 sm:col-span-6 lg:col-span-3 flex flex-col lg:justify-between lg:h-full gap-6 lg:gap-0">
             {/* Logo Graphic */}
-            <div className="rounded-[20px] overflow-hidden aspect-square w-full shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="overflow-hidden aspect-square w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
                 src="/Carrers/Followus/us 5.png" 
                 alt="Securxpert branding artwork" 

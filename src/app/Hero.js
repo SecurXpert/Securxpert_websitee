@@ -50,7 +50,7 @@ const HeroSection = () => {
                 <div className="absolute left-0 top-0 w-[500px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full pointer-events-none"></div>
 
                 <div
-                    className="relative px-8 md:px-20 pt-28 sm:pt-36 lg:pt-18 pb-10 lg:pb-10 flex flex-col lg:flex-row items-center justify-between overflow-visible bg-transparent"
+                    className="relative px-8 md:px-18 pt-28 sm:pt-36 lg:pt-18 pb-10 lg:pb-6 flex flex-col lg:flex-row items-center justify-between overflow-visible bg-transparent"
                 >
                     {/* High-Performance Clipped Background Image Tag (Hidden on mobile, block on desktop) */}
                     <img
@@ -67,14 +67,14 @@ const HeroSection = () => {
 
                         {/* Title */}
                         <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-[46px] 2xl:text-5xl font-semibold leading-[1.20] text-white md:text-[#1E1B4B] lg:text-white tracking-tight">
-                            IT Services & Software <br className="hidden sm:inline" />
-                            Development Company in <br className="hidden sm:inline" />
-                            Hyderabad
+                            Hyderabad's Trusted IT <br className="hidden sm:inline" />
+                            Services & Software <br className="hidden sm:inline" />
+                            Development Partner
                         </h1>
 
                         {/* Description */}
                         <p className="mt-6 text-lg sm:text-xl md:text-xl lg:text-blue-100 xl:text-[18px] 2xl:text-xl leading-relaxed text-blue-100 md:text-slate-600 max-w-xl font-normal opacity-90">
-                            Custom software development, AI automation, cloud & DevOps, cybersecurity, UI/UX design, digital marketing, managed IT, staffing, and BPO solutions for modern businesses.
+                            SecurXpert builds the software, secures the infrastructure, and runs the IT operations behind 500+ businesses across 12+ countries — from custom applications and cloud migration to AI automation, cybersecurity, and outsourced support. One partner, every layer of your technology stack. 
                         </p>
 
                         {/* Rounded Button Capsule in Translucent White positioned absolutely above the avatars */}
@@ -91,7 +91,7 @@ const HeroSection = () => {
                         </div>
 
                         {/* Overlapping circular avatars positioned absolutely inside the bottom-left curve */}
-                        <div className="relative lg:absolute bottom-auto lg:bottom-6 xl:bottom-8 2xl:bottom-14 left-auto lg:left-20 mt-12 lg:mt-0 flex items-center gap-8 z-20">
+                        <div className="relative lg:absolute bottom-auto lg:bottom-6 xl:bottom-8 2xl:bottom-14 left-auto lg:left-16 mt-12 lg:mt-0 flex items-center gap-8 z-20">
                             <div className="flex -space-x-2.5">
                                 <img
                                     src="https://randomuser.me/api/portraits/women/44.jpg"
@@ -110,8 +110,9 @@ const HeroSection = () => {
                                 />
                             </div>
 
-                            <p className=" text-blue-100 md:text-slate-700 lg:text-blue-100 font-semibold text-sm xl:text-[15px] 2xl:text-lg tracking-tight whitespace-nowrap transform -translate-x-6 lg:-translate-x-6">
-                                Over 999+ Users Across the world
+                            <p className="text-blue-100 md:text-slate-700 lg:text-blue-100 font-normal text-sm xl:text-[15px] 2xl:text-[17px] tracking-tight transform -translate-x-6 lg:-translate-x-6 leading-snug">
+                               Trusted by 500+ businesses across India, <br />
+                               the US, the UK, and the Middle East 
                             </p>
                         </div>
                     </div>
@@ -175,7 +176,7 @@ const HeroSection = () => {
                                 <span className="inline lg:hidden">10</span>
                             </span>
                             <span className="mt-2 text-xs sm:text-sm font-semibold text-slate-500  tracking-wide">
-                                Products Built
+                                Products Built In-house
                             </span>
                         </div>
 
@@ -188,7 +189,7 @@ const HeroSection = () => {
                                 <span className="inline lg:hidden">98%</span>
                             </span>
                             <span className="mt-2 text-xs sm:text-sm font-semibold text-slate-500  tracking-wide">
-                                Client Retention
+                                Client Retention Rate
                             </span>
                         </div>
 

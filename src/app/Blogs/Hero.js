@@ -7,12 +7,12 @@ export default function Hero() {
 
     // Blog Categories based on the C:\Users\chekuri vamsikrishna\Downloads\Securxpert_websitee\public\Blogs\hero assets
     const categories = [
-        { id: 1, label: "HEALTH", image: "/Blogs/hero/hero1.png" },
-        { id: 2, label: "TECH", image: "/Blogs/hero/hero2.png" },
-        { id: 3, label: "BUSINESS", image: "/Blogs/hero/hero3.png" },
-        { id: 4, label: "DESIGN", image: "/Blogs/hero/hero4.png" },
-        { id: 5, label: "TECHNOLOGY", image: "/Blogs/hero/hero5.png" },
-        { id: 6, label: "TRAVEL", image: "/Blogs/hero/hero6.png" },
+        { id: 1, label: "Software Development", image: "/Blogs/hero/hero1.png" },
+        { id: 2, label: "Cloud & DevOps", image: "/Blogs/hero/hero2.png" },
+        { id: 3, label: "Ai & Automation", image: "/Blogs/hero/hero3.png" },
+        { id: 4, label: "BPO & Operations", image: "/Blogs/hero/hero4.png" },
+        { id: 5, label: "Digital Marketing", image: "/Blogs/hero/hero5.png" },
+        { id: 6, label: "Cyber Security", image: "/Blogs/hero/hero6.png" },
     ];
 
     // Double the array for seamless infinite looping
@@ -49,8 +49,7 @@ export default function Hero() {
 
                         {/* Title */}
                         <h3 className="text-3xl sm:text-5xl lg:text-[46px] xl:text-[45px] font-semibold leading-[1.3] text-white tracking-wide font-sans">
-                            Hey, We’re <span className="text-white">Blogxpress.</span> See Our <br className="hidden sm:inline" />
-                            Thoughts, Stories And Ideas.
+                            Insights From the SecurXpert Team 
                         </h3>
 
                         {/* Search Bar Capsule */}

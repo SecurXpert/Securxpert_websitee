@@ -6,21 +6,21 @@ export default function FeaturedServices() {
     const services = [
         {
             title: "Business Advice",
-            desc: "We make the over insurance quoting purchasing.",
+            desc: "Strategic guidance on operational structure, vendor selection, and process design before you outsource a single task. ",
             icon: "/BPO/FeauturedServices/Symbol.svg",
-            bgImage: "/BPO/FeauturedServices/business.jpg"
+            bgImage: "/BPO/FeauturedServices/Business Audit.jpg.jpeg"
         },
         {
             title: "Financial Advice",
-            desc: "We make the over insurance quoting purchasing.",
+            desc: "Support on cost modelling and ROI forecasting for outsourcing decisions, so the business case is clear before you commit. ",
             icon: "/BPO/FeauturedServices/Symbol (1).svg",
-            bgImage: "/BPO/FeauturedServices/financial.jpg"
+            bgImage: "/BPO/FeauturedServices/Financial Advice.jpg.jpeg"
         },
         {
             title: "Risk Management",
-            desc: "We make the over insurance quoting purchasing.",
+            desc: "Process-level risk assessment and mitigation planning built into every engagement, not bolted on after something goes wrong. ",
             icon: "/BPO/FeauturedServices/Symbol (2).svg",
-            bgImage: "/BPO/FeauturedServices/risk.jpg"
+            bgImage: "/BPO/FeauturedServices/Insurance Strategy.jpg.jpeg"
         }
     ];
 
@@ -59,7 +59,7 @@ export default function FeaturedServices() {
                         </div>
 
                         {/* HEADING */}
-                        <h3 className="text-[#100D35] text-4xl sm:text-5xl lg:text-[35px] leading-[1.1] font-bold tracking-[-1px] max-w-5xl font-inter">
+                        <h3 className="text-[#100D35] text-4xl sm:text-5xl lg:text-[35px] leading-[1.1] font-bold tracking-[-1px] w-full lg:w-[420px] xl:w-[400px] max-w-none font-inter pr-4 lg:pr-0">
                             What Services We Provide To Our Customers Business
                         </h3>
                     </div>
@@ -67,14 +67,14 @@ export default function FeaturedServices() {
                     {/* RIGHT CARDS */}
                     <div className="lg:col-span-6 lg:col-start-6 lg:translate-y-10">
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> 
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                             {services.map((item, index) => (
                                 <div
                                     key={index}
                                     className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-4 aspect-square transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-[#F1EEEE] hover:border-transparent hover:bg-[#3D62EB] group z-10"
                                 >
-                                    {/* Hover Background Image Overlay */} 
+                                    {/* Hover Background Image Overlay */}
                                     <img
                                         src={item.bgImage}
                                         alt="Hover Background"
@@ -106,7 +106,7 @@ export default function FeaturedServices() {
                                         </div>
                                     </div>
                                 </div>
-                              ))}
+                            ))}
                         </div>
                     </div>
                 </div>

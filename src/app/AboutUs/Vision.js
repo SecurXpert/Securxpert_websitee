@@ -18,15 +18,10 @@ export default function Vision() {
             </h2>
             <div className="space-y-6 text-white/80 text-sm sm:text-base leading-relaxed font-medium font-Raleway">
               <p>
-                To Empower Businesses With Innovative Technology Solutions That Simplify Operations, 
-                Accelerate Growth, And Create Meaningful Digital Experiences. We Envision A Future Where 
-                Every Organization Can Leverage Smart, Scalable, And Secure IT Solutions To Achieve 
-                Lasting Success.
+               To empower businesses with technology solutions that simplify operations, accelerate growth, and create meaningful digital experiences — without the complexity or overhead that usually comes with "enterprise-grade." 
               </p>
               <p>
-                We Believe Technology Should Not Only Solve Problems But Also Create Opportunities For 
-                Transformation And Innovation. Our Vision Is Driven By Creativity, Collaboration, And A 
-                Commitment To Delivering Excellence In Every Project We Undertake.
+                We believe technology should not only solve problems but also create new opportunities. That vision is driven by collaboration, transparency, and a commitment to delivering real outcomes — not just deliverables. 
               </p>
               <p>
                 Through Continuous Learning And Modern Digital Strategies, We Aim To Become A Trusted 
@@ -54,15 +49,15 @@ export default function Vision() {
               </div>
               <div className="flex items-center gap-3">
                 <LuCheck className="text-[#00F2FE] w-6 h-6 stroke-[3px] shrink-0" />
-                <span className="text-sm sm:text-base font-semibold">Build Long-Term Partnerships With Clients</span>
+                <span className="text-sm sm:text-base font-semibold">Build long-term partnerships with clients, not one-off projects </span>
               </div>
               <div className="flex items-center gap-3">
                 <LuCheck className="text-[#00F2FE] w-6 h-6 stroke-[3px] shrink-0" />
-                <span className="text-sm sm:text-base font-semibold">Focus On Digital Transformation And Growth</span>
+                <span className="text-sm sm:text-base font-semibold">Lead with digital transformation, not just digital maintenance </span>
               </div>
               <div className="flex items-center gap-3">
                 <LuCheck className="text-[#00F2FE] w-6 h-6 stroke-[3px] shrink-0" />
-                <span className="text-sm sm:text-base font-semibold">Maintain Excellence Through Continuous Innovation</span>
+                <span className="text-sm sm:text-base font-semibold">Maintain technical excellence through continuous learning </span>
               </div>
             </div>
           </div>
@@ -90,15 +85,10 @@ export default function Vision() {
             </h2>
             <div className="space-y-6 text-white/80 text-sm sm:text-base leading-relaxed font-normal font-Raleway">
               <p>
-                Our Mission Is To Provide Reliable, Future-Ready Technology Solutions That Help 
-                Businesses Improve Efficiency, Enhance User Experiences, And Achieve Their Digital 
-                Goals With Confidence.
+                Our mission is to provide reliable, future-ready technology solutions that help businesses improve efficiency, enhance user experiences, and achieve their digital goals with confidence. 
               </p>
               <p>
-                We Are Committed To Combining Strategy, Creativity, And Advanced Technologies To 
-                Deliver Impactful Solutions Tailored To Each Client's Unique Needs. From Software 
-                Development To Cloud And AI Services, We Focus On Quality, Performance, And Long-Term 
-                Value.
+                We combine strategy, creativity, and engineering discipline to deliver solutions tailored to each client's actual needs — from custom software to cloud infrastructure and AI services — with a consistent focus on quality, performance, and long-term value over quick wins. 
               </p>
               <p>
                 By Fostering Innovation, Transparency, And Customer-Centric Thinking, We Strive To 

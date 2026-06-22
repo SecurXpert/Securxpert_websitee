@@ -10,7 +10,7 @@ import {
 
 export default function Whychoose() {
   return (
-    <section className="bg-[#FFFFFF] min-h-screen flex items-center py-14 px-6 md:px-16 xl:px-24 overflow-hidden">
+    <section className="bg-[#FFFFFF] min-h-screen flex items-center py-8 px-6 md:px-16 xl:px-24 overflow-hidden">
 
       {/* Fluid responsive 12-column grid and gaps */}
       <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-20 items-center w-full">
@@ -19,7 +19,7 @@ export default function Whychoose() {
         <div className="z-10 lg:col-span-5 lg:-mt-16 xl:-mt-24 2xl:-mt-32 lg:pl-4 xl:pl-8 2xl:pl-10">
 
           {/* Small Heading */}
-          <p className="text-[#3734A9] font-semibold uppercase tracking-wide mb-3 text-xs lg:text-[10px] xl:text-xs 2xl:text-sm">
+          <p className="text-[#3734A9] font-semibold uppercase tracking-wide mb-3 text-xs lg:text-[10px] xl:text-sm 2xl:text-md">
             WHY CHOOSE SECURXPERTS
           </p>
 
@@ -29,15 +29,14 @@ export default function Whychoose() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl sm:text-4xl lg:text-[26px] xl:text-[28px] 2xl:text-[42px] font-bold leading-tight text-[#000000] max-w-2xl tracking-tight"
+            className="text-3xl sm:text-4xl lg:text-[26px] xl:text-[32px] 2xl:text-[42px] font-bold leading-tight text-[#000000] max-w-2xl tracking-tight"
           >
-           Specialist Support for Financial Challenges
+           Specialist Support, Without the Overhead 
           </motion.h2>
 
           {/* Description */} 
-          <p className="text-[#6E6E96]/90 text-sm sm:text-base lg:text-[13px] xl:text-[14px] 2xl:text-lg leading-relaxed mt-3 lg:mt-4 max-w-xl font-normal">
-            End-to-end payments and financial management in a
-            single solution. Meet the right platform to help realize.
+          <p className="text-[#6E6E96]/90 text-sm sm:text-base lg:text-[12px] xl:text-[13px] 2xl:text-[16px] leading-relaxed mt-3 lg:mt-3 max-w-xl font-normal">
+            You get a single point of accountability across development, infrastructure, and support — backed by fixed timelines and transparent pricing, not open-ended retainers.
           </p>
 
           {/* FEATURES */}
@@ -51,10 +50,10 @@ export default function Whychoose() {
 
               <div>
                 <h3 className="text-lg sm:text-xl lg:text-sm xl:text-base 2xl:text-xl font-bold text-[#1E1E2F] tracking-tight">
-                  End-to-End Payment Solutions
+                  End-to-End Delivery
                 </h3>
                 <p className="text-[#6E6E96] text-xs sm:text-sm lg:text-[12px] xl:text-[13px] 2xl:text-[15px] leading-relaxed mt-1.5 max-w-lg">
-                 We provide a complete financial management system that handles payments, transactions, and reporting in one powerful platform.
+                 From requirements to deployment to ongoing support, one team owns the outcome — not just the handoff. 
 
                 </p>
               </div>
@@ -68,10 +67,10 @@ export default function Whychoose() {
 
               <div>
                 <h3 className="text-lg sm:text-xl lg:text-sm xl:text-base 2xl:text-xl font-bold text-[#1E1E2F] tracking-tight">
-                  Streamlined Working Process
+                  Structured, Predictable Process 
                 </h3>
                 <p className="text-[#6E6E96] text-xs sm:text-sm lg:text-[12px] xl:text-[13px] 2xl:text-[15px] leading-relaxed mt-1.5 max-w-lg">
-                 Our structured and efficient workflow ensures faster execution, reduced errors, and smooth financial operations from start to finish.
+                 Every engagement runs on agreed milestones and SLAs, so you always know what's shipping and when. 
                 </p>
               </div>
             </div>
@@ -87,7 +86,7 @@ export default function Whychoose() {
                   24/7 Hours Support
                 </h3>
                 <p className="text-[#6E6E96] text-xs sm:text-sm lg:text-[12px] xl:text-[13px] 2xl:text-[15px] leading-relaxed mt-1.5 max-w-lg">
-                 We are always available to assist you anytime, ensuring uninterrupted service and quick resolution of your queries.
+                 Round-the-clock monitoring and response, so issues get caught before your customers notice them. 
                 </p>
               </div>
             </div>
@@ -96,7 +95,7 @@ export default function Whychoose() {
         </div>
 
         {/* RIGHT IMAGE SECTION - Maximized and centered at the bottom on mobile */}
-        <div className="relative flex justify-center lg:justify-end items-center z-10 w-full mt-12 lg:mt-0 lg:col-span-7 px-2">
+        <div className="relative flex justify-center lg:justify-end items-center z-10 w-full mt-2 lg:col-span-7 px-2">
           <img
             src="/Home/WhyChoose.png"
             alt="Why Choose SecurXperts"

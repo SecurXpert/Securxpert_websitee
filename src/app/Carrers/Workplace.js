@@ -7,25 +7,25 @@ export default function Workplace() {
     {
       title: "Company Values",
       description:
-        "Trust, learning, honesty, and co-operation are the pillars that sit at the core of what we do.",
+        "Trust, learning, honesty, and cooperation sit at the core of how we work.",
       image: "/Carrers/workplace/work.1.png",
     },
     {
       title: "Friendly atmosphere",
       description:
-        "We hold a positive attitude in order to foster respect and decency for our entire team.",
+        "A positive, respectful environment where people actually want to show up.",
       image: "/Carrers/workplace/work.2.png",
     },
     {
       title: "Work-life balance",
       description:
-        "For us, a healthy personal life is just as important as the time you spend in the office.",
+        "A healthy personal life matters as much as the hours you put in.",
       image: "/Carrers/workplace/work.3.png",
     },
     {
       title: "Everyday grow",
       description:
-        "We provide the necessary support to ensure your skills never stop growing.",
+        "Real support to keep your skills moving forward, not stagnating in one role.",
       image: "/Carrers/workplace/work.4.png",
     },
   ];

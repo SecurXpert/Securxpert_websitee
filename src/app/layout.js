@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono, Playfair_Display, Inter, Space_Grotesk, Plus_Jakarta_Sans, Raleway } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,11 +54,9 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} ${spaceGrotesk.variable} ${plusJakartaSans.variable} ${raleway.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-slate-900">
-        <Header />
-        <main className="flex-grow">
+        <ClientLayoutWrapper>
           {children}
-        </main>
-        <Footer />
+        </ClientLayoutWrapper>
       </body>
     </html>
   );

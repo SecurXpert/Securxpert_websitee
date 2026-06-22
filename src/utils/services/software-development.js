@@ -2,8 +2,8 @@ import { LuGlobe, LuSmartphone, LuDatabase, LuCode } from "react-icons/lu";
 
 const webDevelopment = {
   category: "01 — SOFTWARE DEVELOPMENT",
-  metaTitle: "Custom Software Development Company | Web & Mobile",
-  metaDescription: "Leading custom software development company serving clients worldwide. We build scalable web, mobile & enterprise apps. Free consultation, no commitment.",
+  metaTitle: "Custom Software Development Company in Hyderabad | Web & Mobile ",
+  metaDescription: "Leading custom software development company in Hyderabad serving clients worldwide. We build scalable web, mobile & enterprise apps. Free consultation, no commitment. ",
   heroTitle: "Custom Software Development — Built for Scale, Designed for Growth",
   heroDesc: "Trusted by 50+ startups and enterprises worldwide to build scalable web, mobile, and cloud software solutions on time, on budget, every time.",
   illustration: "/services-media/services.png",
@@ -37,22 +37,22 @@ const webDevelopment = {
   capabilities: [
     {
       title: "Web Applications",
-      desc: "Modern, responsive web apps using React, Next.js, and Node.js",
+      desc: "Modern, responsive web apps using React, Next.js, and Node.js, built to handle real production traffic from day one. ",
       icon: LuGlobe
     },
     {
       title: "Mobile Development",
-      desc: "Native iOS, Android, and cross-platform solutions",
+      desc: "Native iOS, Android, and cross-platform apps engineered for performance, not just app-store screenshots. ",
       icon: LuSmartphone
     },
     {
       title: "Enterprise Systems",
-      desc: "Scalable ERP, CRM, and custom business applications",
+      desc: "Scalable ERP, CRM, and custom business applications that replace spreadsheets and disconnected tools with one system of record. ",
       icon: LuDatabase
     },
     {
       title: "API Development",
-      desc: "RESTful and GraphQL APIs for seamless integrations",
+      desc: "RESTful and GraphQL APIs for seamless integrations across your existing software stack. ",
       icon: LuCode
     }
   ],
@@ -90,25 +90,25 @@ const webDevelopment = {
       id: 1,
       qNumber: "Q1.",
       question: "What Is the Cost of Custom Software Development?",
-      answer: "It depends on features, complexity, and team size. We offer a free discovery call to provide a fixed-scope quote with no surprises and no commitment."
+      answer: "It depends on features, complexity, and team size. We offer a free discovery call to provide a fixed-scope quote with no surprises and no commitment. "
     },
     {
       id: 2,
       qNumber: "Q2.",
       question: "How long does it take to develop custom software?",
-      answer: "Basic app: 6-12 weeks. Mid-size products: 3 to 6 months Enterprise Solutions: 6-12 months. The timeline is always on time, agreed upon before development begins."
+      answer: "Basic app: 6–12 weeks. Mid-size products: 3–6 months. Enterprise solutions: 6–12 months. Timelines are agreed before development begins — and we deliver on time. "
     },
     {
       id: 3,
       qNumber: "Q3.",
-      question: "Before discussing our project, do you sign NDAs?",
-      answer: "Yes. NDA signed before any conversation. You own all IP upon delivery. No sharing rights, no exceptions."
+      question: "Do you sign NDAs before discussing our project? ",
+      answer: "Yes. NDA signed before any conversation. You own all IP upon delivery — no shared rights, no exceptions"
     },
     {
       id: 4,
       qNumber: "Q4.",
-      question: "Do you work with startups only or with enterprises?",
-      answer: "Both. From early-stage startups to large enterprises, we scale to fit your stage, goal, and budget."
+      question: "Do you work with startups only, or enterprises too? ",
+      answer: "Both. From early-stage startups to large enterprises, we scale our process to fit your stage, goals, and budget. "
     },
     {
       id: 5,

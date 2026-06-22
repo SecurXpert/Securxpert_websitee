@@ -7,22 +7,22 @@ export default function Process() {
         {
             num: "001.",
             title: "DISCOVER",
-            desc: "We explore your goals, audience, and challenges to uncover clear creative opportunities."
+            desc: "We explore your goals, audience, and challenges to uncover clear opportunities"
         },
         {
             num: "002.",
             title: "DEFINE",
-            desc: "We shape insights into strategy, concepts, and direction guiding creative decisions consistently."
+            desc: "We shape insights into strategy, concepts, and direction"
         },
         {
             num: "003.",
             title: "DESIGN",
-            desc: "We design, iterate, and refine visuals to create functional and engaging solutions."
+            desc: "We design, iterate, and refine until it's functional and genuinely engaging"
         },
         {
             num: "004.",
             title: "DELIVER",
-            desc: "We finalize, test, and deliver outcomes ready for launch and long-term impact."
+            desc: "We finalise, test, and ship — ready for launch and built for long-term impact"
         }
     ];
 
@@ -41,7 +41,7 @@ export default function Process() {
                 </div>
 
                 {/* Cards Row Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 w-full">
                     {steps.map((step, idx) => (
                         <div 
                             key={idx} 
@@ -69,7 +69,7 @@ export default function Process() {
                                 </div>
 
                                 {/* Step Title */}
-                                <h3 className="text-2xl sm:text-[28px] font-black text-white uppercase tracking-normal mb-12 sm:mb-16 md:mb-20 mt-1 font-sans leading-none">
+                                <h3 className="text-2xl sm:text-[28px] font-black text-white uppercase tracking-normal mb-4 sm:mb-6 md:mb-12 mt-1 font-sans leading-none">
                                     {step.title}
                                 </h3>
                             </div>

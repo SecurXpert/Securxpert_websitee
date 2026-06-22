@@ -72,8 +72,8 @@ export default function Header() {
 
     return `text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${isActive
       ? isDarkBg
-        ? "text-white border-white font-bold"
-        : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
+        ? "text-white border-white font-semibold"
+        : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent font-semibold [border-image:linear-gradient(180deg,#210A4A_0%,#3E66F3_100%)_1]"
       : isDarkBg
         ? "text-white/85 hover:text-white font-medium border-transparent"
         : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
@@ -101,14 +101,14 @@ export default function Header() {
         } ${scrolled
           ? "bg-white backdrop-blur-md border-b border-slate-100 shadow-md text-slate-800"
           : isTopOffsetPage
-            ? mobileMenuOpen
+            ? mobileMenuOpen 
               ? "bg-white border-b border-slate-100 text-slate-800"
               : "bg-transparent lg:bg-transparent border-transparent lg:border-transparent shadow-none lg:shadow-none text-white lg:text-white"
             : "bg-white border-b border-slate-100 shadow-sm text-slate-800"
         }`}
     >
       <div className="w-full max-w-[1530px] mx-auto px-4 md:px-8 lg:px-20">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 xl:-translate-x-4 2xl:translate-x-0"> 
 
           {/* Original logo image */}
           <Link href="/" className="flex items-center group flex-shrink-0 mr-8">
@@ -130,14 +130,15 @@ export default function Header() {
               Home
             </Link>
 
-            {/* Services with Click Dropdown */}
+            {/* Services with Hover Dropdown */}
             <div 
-              className="relative py-2 flex items-center"
+              className="relative py-2 flex items-center cursor-pointer"
+              onMouseEnter={() => setOpenDropdown("services")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <Link
                 href="/services"
-                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/")
+                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/") || openDropdown === "services"
                   ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
                   : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
@@ -146,14 +147,7 @@ export default function Header() {
               >
                 Services
               </Link>
-              <button
-                onMouseEnter={() => setOpenDropdown("services")}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpenDropdown(openDropdown === "services" ? null : "services");
-                }}
-                className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60 hover:text-white" : "text-slate-500 hover:text-blue-600"}`}
-              >
+              <div className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60" : "text-slate-500"}`}>
                 <svg
                   className={`w-3 h-3 transition-transform duration-200 ${openDropdown === "services" ? "rotate-180" : ""}`}
                   fill="none"
@@ -164,7 +158,7 @@ export default function Header() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
-              </button>
+              </div>
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
               <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "services" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
@@ -203,14 +197,15 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Products with Click Dropdown */}
+            {/* Products with Hover Dropdown */}
             <div 
-              className="relative py-2 flex items-center"
+              className="relative py-2 flex items-center cursor-pointer"
+              onMouseEnter={() => setOpenDropdown("products")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <Link
                 href="/products"
-                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/products" || cleanPath.startsWith("/products/")
+                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/products" || cleanPath.startsWith("/products/") || openDropdown === "products"
                   ? isDarkBg
                     ? "text-white border-white font-bold"
                     : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
@@ -221,14 +216,7 @@ export default function Header() {
               >
                 Products
               </Link>
-              <button
-                onMouseEnter={() => setOpenDropdown("products")}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpenDropdown(openDropdown === "products" ? null : "products");
-                }}
-                className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60 hover:text-white" : "text-slate-500 hover:text-blue-600"}`}
-              >
+              <div className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60" : "text-slate-500"}`}>
                 <svg
                   className={`w-3 h-3 transition-transform duration-200 ${openDropdown === "products" ? "rotate-180" : ""}`}
                   fill="none"
@@ -239,7 +227,7 @@ export default function Header() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
-              </button>
+              </div>
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
               <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "products" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
@@ -307,14 +295,14 @@ export default function Header() {
             </Link>
 
             {/* About Us with Hover Dropdown */}
-            {/* About Us with Click Dropdown */}
             <div 
-              className="relative py-2 flex items-center"
+              className="relative py-2 flex items-center cursor-pointer"
+              onMouseEnter={() => setOpenDropdown("aboutus")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <Link
                 href="/AboutUs"
-                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/aboutus" || cleanPath.startsWith("/aboutus/")
+                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/aboutus" || cleanPath.startsWith("/aboutus/") || openDropdown === "aboutus"
                   ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
                   : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
@@ -323,14 +311,7 @@ export default function Header() {
               >
                 About Us
               </Link>
-              <button
-                onMouseEnter={() => setOpenDropdown("aboutus")}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpenDropdown(openDropdown === "aboutus" ? null : "aboutus");
-                }}
-                className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60 hover:text-white" : "text-slate-500 hover:text-blue-600"}`}
-              >
+              <div className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60" : "text-slate-500"}`}>
                 <svg
                   className={`w-3 h-3 transition-transform duration-200 ${openDropdown === "aboutus" ? "rotate-180" : ""}`}
                   fill="none"
@@ -341,7 +322,7 @@ export default function Header() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
-              </button>
+              </div>
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
               <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-48 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "aboutus" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>

@@ -39,11 +39,11 @@ export default function Hero() {
         }
     ];
 
-    // Auto-rotate slides every 6 seconds
+    // Auto-rotate slides every 4 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % slides.length);
-        }, 6000);
+        }, 3000);
         return () => clearInterval(interval);
     }, []);
 
@@ -163,7 +163,7 @@ export default function Hero() {
 
                             {/* ABSOLUTE BOTTOM-LEFT PLAY BUTTON & COMPETENCIES (DESKTOP) */}
                             <div
-                                className={`hidden lg:flex absolute left-10 bottom-8 xl:left-20 xl:bottom-12 items-center gap-4 z-30 transition-all duration-1000 ${isActive ? "opacity-100 translate-y-0 delay-700" : "opacity-0 -translate-y-4"
+                                className={`hidden lg:flex absolute left-10 bottom-8 xl:left-20 xl:bottom-2 2xl:bottom-12 items-center gap-4 z-30 transition-all duration-1000 ${isActive ? "opacity-100 translate-y-0 delay-700" : "opacity-0 -translate-y-4"
                                     }`}
                             >
                                 {/* Red Pulsing Play Button */}
@@ -195,7 +195,7 @@ export default function Hero() {
                 })}
             </div>
 
-            {/* 3. PAGINATION DOT INDICATORS */}
+            
 
 
         </section>

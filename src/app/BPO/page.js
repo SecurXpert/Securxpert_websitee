@@ -1,5 +1,3 @@
-"use client";
-
 import BPOHero from "./Hero";
 import FeaturedServices from "./FeaturedServices";
 import AboutUs from "./AboutUs";
@@ -12,6 +10,11 @@ import Testimonials from "./Testimonials";
 import FAQ from "./FAQ";
 import LatestBlogs from "./LatestBlogs";
 import Appointment from "./Appointment";
+
+export const metadata = {
+  title: "BPO | Business Process Outsourcing Services",
+  description: "BPO | Business Process Outsourcing Services | Securxpert.com",
+};
 
 export default function BPOPage() {
   return (

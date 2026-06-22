@@ -18,16 +18,16 @@ export default function Cta() {
 
                 {/* Subtitle / Description */}
                 <p className="text-white/90 text-md font-normal max-w-3xl mb-10 leading-relaxed">
-                   Join 500+ enterprises worldwide who trust SecurXpert for their digital transformation journey.
+                   Join 500+ enterprises worldwide who trust SecurXpert for software development, cloud infrastructure, cybersecurity, and digital transformation — delivered on time, every time. 
                 </p>
 
                 {/* Interactive Action Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
                     <button className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#4F46E5] font-medium px-6 py-2.5 rounded-full text-base sm:text-lg shadow-lg shadow-black/10 transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer">
-                        Schedule a Consultation
+                        Schedule a Free Consultation
                     </button>
                     <button className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-[#FFFFFF33] hover:border-white/30 text-white font-medium px-6 py-2.5 rounded-full text-base sm:text-lg transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer">
-                        Learn More
+                        Get a Custom Quote
                     </button>
                 </div>
             </div>

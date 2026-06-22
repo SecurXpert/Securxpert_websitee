@@ -9,32 +9,32 @@ export default function FAQ() {
     {
       id: 1,
       qNumber: "Q1.",
-      question: "What activities are done in the development?",
-      answer: "Follow these 6 steps and you'll get your Help Scout account up and running in no time. If you like to get a full tour of Help Scout and all its features, attend one of our weekly live demos or take a video tour."
+      question: "What activities are involved in BPO process onboarding?",
+      answer: "We map your current workflow, identify what can move to automation versus a dedicated team, set up tools and access, and run a shadow period before full handover — typically within 1–2 weeks."
     },
     {
       id: 2,
       qNumber: "Q2.",
-      question: "How can i use landbook When should I use a Tag?",
-      answer: "Tags help you organize and categorize your threads. You can use them to track topics, identify trends, or trigger automated workflows based on specific customer questions."
+      question: "How do you use tags or categorisation in support workflows?",
+      answer: "We use tagging to organise customer queries by topic, urgency, and trend — so recurring issues get flagged for process fixes, not just repeated answers."
     },
     {
       id: 3,
       qNumber: "Q3.",
-      question: "Are social media good for the business growth?",
-      answer: "Absolutely. Social media platform integrations allow businesses to build strong customer loyalty, reach wider target demographics, and run highly targeted inbound lead generation campaigns."
+      question: "Is social media a meaningful channel for business growth?",
+      answer: "Yes — done well, social integrations build customer loyalty and open targeted lead-generation channels that traditional outreach can't reach as efficiently."
     },
     {
       id: 4,
       qNumber: "Q4.",
-      question: "How often should i work on the digital marketing?",
-      answer: "Consistent optimization is key. We recommend reviewing your active ad sets and content pipelines weekly, while doing deeper deep-dives into ROI metrics at the end of each sprint cycle."
+      question: "How often should we review our digital marketing performance?",
+      answer: "We recommend a weekly review of active campaigns and content, with a deeper ROI deep-dive at the end of each sprint or month."
     },
     {
       id: 5,
       qNumber: "Q5.",
-      question: "What are the different types of marketing solutions?",
-      answer: "We offer end-to-end solutions including SEO positioning, paid search (SEM), high-converting social campaigns, personalized email funnels, and data analytics dashboards."
+      question: "What types of marketing solutions do you offer through BPO engagements?",
+      answer: "SEO, paid search, social campaigns, email funnels, and analytics dashboards — integrated with your outsourced support and back-office operations where relevant."
     }
   ];
 

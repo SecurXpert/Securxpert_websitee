@@ -3,7 +3,7 @@ import { LuShield, LuLock, LuSearch, LuServer } from "react-icons/lu";
 const cybersecurity = {
   category: "08 — CYBERSECURITY",
   metaTitle: "Cyber Security Services in Hyderabad | Trusted Experts",
-  metaDescription: "Trusted cybersecurity services in Hyderabad. Penetration testing, SOC, cloud security, endpoint protection & compliance. 500+ businesses secured. Get a free audit today.",
+  metaDescription: "Trusted cybersecurity services in Hyderabad. Penetration testing, SOC, cloud security, endpoint protection & compliance. 500+ businesses secured. Free audit. ",
   heroTitle: "Proactive Cybersecurity Services to Defend, Detect & Respond ",
   heroDesc: "Trusted by 500+ businesses to protect critical data, secure digital infrastructure, and stay compliant with proactive cybersecurity solutions built for today's threat landscape.",
   illustration: "/services-media/Cybersecurity Services.png",
@@ -36,13 +36,13 @@ const cybersecurity = {
       id: 1,
       qNumber: "Q1.",
       question: "What types of cybersecurity assessments do you perform?",
-      answer: "We conduct vulnerability scanning, penetration testing (ethical hacking), risk assessments, and compliance audits to identify and mitigate security gaps."
+      answer: "Vulnerability scanning, penetration testing (ethical hacking), risk assessments, and compliance audits to identify and mitigate security gaps."
     },
     {
       id: 2,
       qNumber: "Q2.",
       question: "Can you help us achieve compliance with industry standards?",
-      answer: "Yes, we assist organizations in meeting regulatory compliance requirements such as GDPR, HIPAA, SOC 2, ISO 27001, and PCI-DSS."
+      answer: "Yes — we assist organisations in meeting GDPR, HIPAA, SOC 2, ISO 27001, and PCI-DSS requirements."
     },
     {
       id: 3,
@@ -54,7 +54,7 @@ const cybersecurity = {
       id: 4,
       qNumber: "Q4.",
       question: "Do you offer cybersecurity training for employees?",
-      answer: "Yes, human error is a leading cause of breaches. We provide comprehensive security awareness training and phishing simulations for your staff."
+      answer: "Yes — human error is a leading cause of breaches. We provide security awareness training and phishing simulations for your staff."
     }
   ],
   cta: {

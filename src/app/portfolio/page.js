@@ -12,8 +12,8 @@ import Testimonials from "./Testimonials";
 import Faq from "./Faq";
 
 export const metadata = {
-  title: "Portfolio | SecurXpert Technologies",
-  description: "Explore our latest digital consulting, technology transformation, and smart digital solutions portfolio.",
+  title: "Portfolio | SecurXpert Technologies — Tech Consulting & Digital Transformation",
+  description: "Explore SecurXpert's portfolio of software, AI, and digital transformation projects across fashion, healthcare, logistics, and enterprise technology.",
 };
 
 export default function PortfolioPage() {

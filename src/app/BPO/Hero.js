@@ -78,7 +78,7 @@ export default function BPOHero() {
                         </h3>
 
                         <p className="text-white text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-relaxed tracking-wide font-normal opacity-90 max-w-lg">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            In a rapidly evolving digital landscape, businesses aren't just looking to cut operational costs — they're looking to work smarter. SecurXpert's BPO services combine automation-first thinking with hands-on human expertise, so your back office runs lighter without losing quality. 
                         </p>
 
                         {/* Custom Interactive Button Group */}
@@ -87,13 +87,13 @@ export default function BPOHero() {
                                 href="/contact"
                                 className="bg-white hover:bg-slate-50 text-blue-600 font-medium px-8 py-3.5 rounded-lg text-sm sm:text-base shadow-lg transition-all active:scale-95 duration-150 block text-center"
                             >
-                                Try for Free
+                                Talk to us Today
                             </Link>
                             <Link
                                 href="/contact"
                                 className="w-12 h-12 rounded-lg bg-white hover:bg-slate-50 flex items-center justify-center text-blue-600 shadow-lg transition-all active:scale-95 duration-150"
                             >
-                                <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                                <svg className="w-7 h-7 fill-current ml-0.5" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
                             </Link>
@@ -115,14 +115,14 @@ export default function BPOHero() {
                         <img
                             src="/BPO/hero/hero-3.png"
                             alt="Global Dialing Codes"
-                            className="absolute top-[-12px] sm:top-2 left-2 sm:left-12 lg:left-0 xl:left-0 w-[110px] sm:w-48 xl:w-56 h-auto z-20 shadow-2xl rounded-2xl hover:scale-105 transition-transform duration-300 pointer-events-none animate-float-slow"
+                            className="absolute top-[-12px] sm:top-2 left-2 sm:left-12 lg:left-0 xl:left-8 2xl:left-0 w-[110px] sm:w-48 xl:w-48 2xl:w-56 h-auto z-20 shadow-2xl rounded-2xl hover:scale-105 transition-transform duration-300 pointer-events-none animate-float-slow"
                         />
 
                         {/* Jhon Smith Floating Profile Widget */}
                         <img
                             src="/BPO/hero/hero-2.png"
                             alt="Jhon Smith Profile Widget"
-                            className="absolute top-28 sm:top-auto sm:bottom-32 lg:bottom-44 xl:bottom-48 right-[-8px] sm:right-12 lg:right-[-35px] xl:right-[-65px] w-[105px] sm:w-48 xl:w-64 h-auto z-20 hover:scale-105 transition-transform duration-300 pointer-events-none animate-float-delayed"
+                            className="absolute top-28 sm:top-auto sm:bottom-32 lg:bottom-44 xl:bottom-48 right-[-8px] sm:right-12 lg:right-[-35px] xl:right-[-40px] 2xl:right-[-65px] w-[105px] sm:w-48 xl:w-52 2xl:w-64 h-auto z-20 hover:scale-105 transition-transform duration-300 pointer-events-none animate-float-delayed"
                         />
 
                         {/* Main Character BPO Portrait sitting gracefully on the curve bottom */}

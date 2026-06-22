@@ -2,8 +2,8 @@ import { LuServer, LuHeadset, LuShield, LuWifi } from "react-icons/lu";
 
 const itSupport = {
   category: "02 — IT SUPPORT",
-  metaTitle: "IT Support & Managed Services Company | 24/7 Support",
-  metaDescription: "Trusted IT support & managed services company serving businesses worldwide. 24/7 monitoring,cybersecurity & cloud management. 50+ businesses served.",
+  metaTitle: "IT Support & Managed Services Company in Hyderabad | 24/7 Support",
+  metaDescription: "Trusted IT support & managed services company serving businesses worldwide. 24/7 monitoring,cybersecurity & cloud management. 50+ businesses servedTrusted IT support & managed services company serving businesses worldwide. 24/7 monitoring, cybersecurity & cloud management. 50+ businesses served.",
   heroTitle: "IT Support & Managed Services — Reliable, Proactive & Always On",
   heroDesc: "24/7 IT support and managed services for businesses worldwide: no in-house team needed, no surprise costs, and no downtime.",
   illustration: "/services-media/IT Support and Managed Services.png",
@@ -50,49 +50,49 @@ const itSupport = {
       id: 1,
       qNumber: "Q1.",
       question: "How much do managed IT services cost?",
-      answer: "Flat monthly pricing based on your users and devices. No surprise invoices. Contact us for a custom quote anywhere in the world."
+      answer: "Flat monthly pricing based on your users and devices. No surprise invoices — contact us for a custom quote anywhere in the world."
     },
     {
       id: 2,
       qNumber: "Q2.",
       question: "How fast do you respond to IT issues?",
-      answer: "Critical issues: 15–30 mins. High priority: 1–2 hours. Standard requests: 4–8 hours. All SLA-guaranteed in writing."
+      answer: "Critical issues: 15–30 minutes. High priority: 1–2 hours. Standard requests: 4–8 hours. All SLA-guaranteed in writing."
     },
     {
       id: 3,
       qNumber: "Q3.",
       question: "Do you offer on-site IT support?",
-      answer: "Yes — for local clients. For global clients, we deliver fast, reliable remote support 24/7. No call centers, no scripts."
+      answer: "Yes, for local clients. For global clients, we deliver fast, reliable remote support 24/7 — no call centres, no scripts."
     },
     {
       id: 4,
       qNumber: "Q4.",
       question: "Do you work with international clients?",
-      answer: "Absolutely. We serve businesses across India, the US, the UK, the Middle East, and beyond. Remote-first delivery, any timezone, 24/7."
+      answer: "Absolutely. We serve businesses across India, the US, the UK, the Middle East, and beyond — any timezone, 24/7."
     },
     {
       id: 5,
       qNumber: "Q5.",
       question: "What's included in managed IT services?",
-      answer: "24/7 monitoring, helpdesk (L1–L3), network management, cybersecurity, cloud, and backup & recovery all in one flat monthly price."
+      answer: "24/7 monitoring, helpdesk (L1–L3), network management, cybersecurity, cloud, and backup & recovery — all in one flat monthly price."
     },
     {
       id: 6,
       qNumber: "Q6.",
       question: "Is outsourced IT better than an in-house team?",
-      answer: "For most businesses, yes. You get a fully certified team at a fraction of the cost no hiring, no training, no attrition."
+      answer: "For most businesses, yes — you get a fully certified team at a fraction of the cost, with no hiring, training, or attrition risk."
     },
     {
       id: 7,
       qNumber: "Q7.",
       question: "How fast do you deliver and onboard?",
-      answer: "Most clients are fully onboarded within 1–2 weeks. Fast setup, zero disruption, on-time every time."
+      answer: "Most clients are fully onboarded within 1–2 weeks. Fast setup, zero disruption, on time, every time."
     },
     {
       id: 8,
       qNumber: "Q8.",
       question: "Which industries do you support?",
-      answer: "IT, fintech, healthcare, manufacturing, retail, and professional services. From 10-user startups to 500+ employee enterprises globally."
+      answer: "IT, fintech, healthcare, manufacturing, retail, and professional services — from 10-user startups to 500+ employee enterprises globally."
     }
   ],
   cta: {

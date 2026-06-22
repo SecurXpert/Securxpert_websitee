@@ -99,7 +99,7 @@ export default function Hero() {
                             your <span className="text-[#A5B4FC] bg-gradient-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent">project.</span>
                         </h1>
                         <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-lg font-sans">
-                            We'll design high-performance secure platforms and deliver world-class vulnerability analysis for your systems. Bring the way for you to secure your infrastructure & empower teams.
+                            Tell us what you're trying to build, fix, or scale — we'll come back with a clear plan, a realistic timeline, and a fixed quote. No obligation, no pressure.
                         </p>
                     </div>
 

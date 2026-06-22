@@ -6,7 +6,7 @@ const productsData = [
     {
         id: 0,
         name: "Grab JobZ",
-        description: "AI-powered recruitment platform with smart hiring, candidate matching, and automated outreach for faster hiring worldwide.",
+        description: "AI-powered recruitment platform with smart hiring, candidate matching, and automated outreach for faster hiring worldwide. ",
         bgImage: "/Home/OurProducts/Grabjobz.png",
         logoImage: "/Home/OurProducts/Grabjobz2.png",
         logoBg: "bg-white",
@@ -108,7 +108,7 @@ export default function OurProducts() {
                     Our Products
                 </h2>
                 <p className="text-white/80 text-md md:text-md font-medium tracking-wide">
-                    Innovative Digital Products Built for Modern Business Success
+                    Beyond client work, SecurXpert designs and maintains its own product portfolio — proof of how we build, not just how we talk about building. Ten live products across HR tech, healthcare, education, logistics, and analytics. 
                 </p>
             </div>
 

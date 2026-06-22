@@ -7,54 +7,54 @@ export default function BPOServices() {
   const services = [
     {
       title: "Business Audit",
-      desc: "Lorem Ipsum is simply dummy text of the printing industry. The industry's standard dummy",
+      desc: "A structured review of your current processes to identify what can be automated, outsourced, or eliminated entirely. ",
       icon: "/BPO/FeauturedServices/Symbol.svg",
-      bgImage: "/BPO/FeauturedServices/business.jpg"
+      bgImage: "/BPO/FeauturedServices/Business Audit.jpg.jpeg"
     },
     {
       title: "Tax Strategy",
-      desc: "Lorem Ipsum is simply dummy text of the printing industry. The industry's standard dummy",
+      desc: "Process and compliance support for finance and accounting outsourcing engagements. ",
       icon: "/BPO/FeauturedServices/Symbol3.svg",
-      bgImage: "/BPO/FeauturedServices/financial.jpg"
+      bgImage: "/BPO/FeauturedServices/Tax strategy.jpg.jpeg"
     },
     {
       title: "Financial Advices",
-      desc: "Lorem Ipsum is simply dummy text of the printing industry. The industry's standard dummy",
+      desc: "Cost modelling and reporting support so outsourcing decisions are backed by real numbers. ",
       icon: "/BPO/FeauturedServices/Symbol (1).svg",
-      bgImage: "/BPO/FeauturedServices/risk.jpg"
+      bgImage: "/BPO/FeauturedServices/Financial Advice.jpg.jpeg"
     },
     {
       title: "Insurance Strategy",
-      desc: "Lorem Ipsum is simply dummy text of the printing industry. The industry's standard dummy",
+      desc: "Risk-coverage guidance for outsourced operations, where relevant to your industry.",
       icon: "/BPO/FeauturedServices/Symbol4.svg",
-      bgImage: "/BPO/FeauturedServices/business.jpg",
+      bgImage: "/BPO/FeauturedServices/Insurance Strategy.jpg.jpeg",
     },
     {
       title: "Start Ups",
-      desc: "Lorem Ipsum is simply dummy text of the printing industry. The industry's standard dummy",
+      desc: "Lean, scalable BPO support for early-stage companies that need back-office capacity without early hires. ",
       icon: "/BPO/FeauturedServices/Symbol5.svg",
-      bgImage: "/BPO/FeauturedServices/financial.jpg",
+      bgImage: "/BPO/FeauturedServices/start ups.jpg.jpeg",
     },
     {
       title: "Manage Investment",
-      desc: "Lorem Ipsum is simply dummy text of the printing industry. The industry's standard dummy",
-      bgImage: "/BPO/FeauturedServices/business.jpg",
+      desc: "Operational support for finance teams managing outsourced reporting and reconciliation work",
+      bgImage: "/BPO/FeauturedServices/Manage investments.jpg.jpeg",
       icon: "/BPO/FeauturedServices/Symbol6.svg",
     }
   ];
 
   return (
     <section className="relative w-full bg-white overflow-hidden -mt-8 lg:mt-0 pt-2 pb-14 lg:py-14 text-slate-800">
-      
-      
-      
+
+
+
       {/* Bottom Right Wave Shape */}
       <img
         src="/BPO/AboutUs/aboutus3.svg"
         alt="Bottom Right Wave"
         className="absolute right-10 bottom-5 h-[50px] w-auto  pointer-events-none select-none z-0 hidden lg:block"
       />
-      
+
       {/* Bottom Right Wave Shape */}
       <img
         src="/BPO/AboutUs/aboutus3.svg"
@@ -64,10 +64,10 @@ export default function BPOServices() {
 
       {/* MAIN CONTAINER */}
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* HEADER SECTION */}
         <div className="text-center flex flex-col items-center mb-12 sm:mb-16">
-          
+
           {/* BADGE */}
           <div className="relative inline-flex items-center mb-4 pt-3">
             <span className="relative z-10 text-[#3D62EB] text-sm font-semibold tracking-[1px] uppercase font-sans">
@@ -85,13 +85,13 @@ export default function BPOServices() {
 
         {/* SERVICES GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          
+
           {services.map((item, index) => (
             <div
               key={index}
               className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-6 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-transparent hover:border-transparent hover:bg-[#3D62EB] group z-10"
             >
-              
+
               {/* Hover Background Image Overlay */}
               <img
                 src={item.bgImage}
@@ -101,7 +101,7 @@ export default function BPOServices() {
 
               {/* Card Content Container */}
               <div className="relative z-10 flex items-start gap-5">
-                
+
                 {/* ICON */}
                 <div className="flex-shrink-0">
                   {item.isCustomIcon ? (

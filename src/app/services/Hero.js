@@ -37,7 +37,7 @@ export default function ServicesHero() {
 
                     {/* Description */}
                     <p className="relative z-10 text-center mt-4 lg:mt-4 text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-tight text-[#FFFFFF] max-w-5xl mx-auto px-6 font-normal opacity-90">
-                        SecurXpert provides end-to-end digital transformation services, including software development, AI automation, and cybersecurity, to help businesses scale securely and efficiently
+                       SecurXpert provides end-to-end digital transformation services — software development, AI automation, cloud infrastructure, and cybersecurity — built to help businesses scale securely and efficiently. 
                     </p>
 
                     {/* CTA Button, Avatars, and Subtext - Balanced Columns */}
@@ -46,7 +46,7 @@ export default function ServicesHero() {
                         {/* Column 1: Try it For Free & Cancel Anytime */}
                         <div className="flex flex-col items-center justify-center gap-2">
                             <button className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-8 py-3.5 rounded-full text-base shadow-md transition-all active:scale-95 duration-150">
-                                Try it For Free
+                                Book a Free Consultation
                             </button>
                             <p className="text-[#FFFFFF] text-xs font-normal tracking-wide">
                                 Cancel Anytime
@@ -99,7 +99,7 @@ export default function ServicesHero() {
 
                             </div>
                             <p className="text-white font-normal text-sm sm:text-base tracking-tight">
-                                Trusted by 5644+ pros
+                                Trusted by 500+ businesses worldwide 
                             </p>
                         </div>
 

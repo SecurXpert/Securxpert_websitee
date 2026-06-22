@@ -23,9 +23,11 @@ export default function Cta() {
           <p className="text-white/90 text-sm md:text-base lg:text-lg mb-8 md:mb-10 max-w-xl leading-relaxed">
             Everything you need to accept card payments and grow your business anywhere on the planet.
           </p>
+          <Link href="/contact">
           <button className="bg-white text-black font-semibold rounded-full px-8 md:px-10 py-3 md:py-3.5 hover:bg-gray-100 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg text-sm md:text-base">
-            Get Started Now
+            Talk to our product team
           </button>
+          </Link>
         </div>
       </div>
     </section>

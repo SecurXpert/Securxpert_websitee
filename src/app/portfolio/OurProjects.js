@@ -139,40 +139,40 @@ export default function OurProjects() {
                     {/* Stat 1 */}
                     <div className="flex items-center gap-2.5">
                         <span className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-none">
-                            12K
+                            500+
                         </span>
                         <span className="text-[10px] sm:text-xs md:text-[15px] font-bold text-white/95 tracking-widest uppercase">
-                            Project
+                            ProjectS
                         </span>
                     </div>
 
                     {/* Stat 2 */}
                     <div className="flex items-center gap-2.5">
                         <span className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-none">
-                            1.200+
+                            500+
                         </span>
                         <span className="text-[10px] sm:text-xs md:text-[15px] font-bold text-white/95 tracking-widest uppercase">
-                            Client
+                            ClientS
                         </span>
                     </div>
 
                     {/* Stat 3 */}
                     <div className="flex items-center gap-2.5">
                         <span className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-none">
-                            112
+                            12+
                         </span>
                         <span className="text-[10px] sm:text-xs md:text-[15px] font-bold text-white/95 tracking-widest uppercase">
-                            Worker
+                            CountrieS
                         </span>
                     </div>
 
                     {/* Stat 4 */}
                     <div className="flex items-center gap-2.5">
                         <span className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-none">
-                            240+
+                            98%
                         </span>
                         <span className="bg-white text-[#2D2F8E] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-[4px] font-semibold text-[10px] sm:text-xs md:text-sm tracking-widest uppercase shadow-md leading-none">
-                            Awards
+                            Retention
                         </span>
                     </div>
                 </div>

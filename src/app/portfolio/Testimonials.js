@@ -63,11 +63,15 @@ export default function Testimonials() {
     const [current, setCurrent] = useState(0);
 
     const handleNext = () => {
-        setCurrent((prev) => (prev + 1) % list.length);
+        if (current < list.length - 1) {
+            setCurrent((prev) => prev + 1);
+        }
     };
 
     const handlePrev = () => {
-        setCurrent((prev) => (prev - 1 + list.length) % list.length);
+        if (current > 0) {
+            setCurrent((prev) => prev - 1);
+        }
     };
 
     const activeItem = list[current];
@@ -95,7 +99,12 @@ export default function Testimonials() {
                     {/* Left Navigation Chevron Button */}
                     <button
                         onClick={handlePrev}
-                        className="absolute left-[-16px] sm:left-[-22px] z-20 w-11 h-11 rounded-full bg-[#EFF6FF] hover:bg-[#DBEAFE] flex items-center justify-center text-[#2563EB] cursor-pointer transition-all duration-300 shadow-sm border border-blue-50 active:scale-95"
+                        disabled={current === 0}
+                        className={`absolute left-[-16px] sm:left-[-22px] z-20 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 border ${
+                            current === 0
+                                ? "bg-slate-100 text-slate-300 border-slate-200 shadow-none cursor-not-allowed"
+                                : "bg-[#EFF6FF] hover:bg-[#DBEAFE] text-[#2563EB] border-blue-50 cursor-pointer shadow-sm active:scale-95"
+                        }`}
                     >
                         <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M15 18l-6-6 6-6" />
@@ -134,7 +143,7 @@ export default function Testimonials() {
                                     </div>
 
                                     {/* Main Quote Paragraph */}
-                                    <p className="text-slate-600 text-base sm:text-lg md:text-[19px] font-normal leading-relaxed mb-6 font-sans italic">
+                                    <p className="text-slate-600 text-base sm:text-lg md:text-[16px] font-normal leading-relaxed mb-4 font-sans italic">
                                         "{activeItem.quote}"
                                     </p>
                                 </div>
@@ -163,7 +172,12 @@ export default function Testimonials() {
                     {/* Right Navigation Chevron Button */}
                     <button
                         onClick={handleNext}
-                        className="absolute right-[-16px] sm:right-[-22px] z-20 w-11 h-11 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] flex items-center justify-center text-white cursor-pointer transition-all duration-300 shadow-[0_4px_14px_rgba(37,99,235,0.35)] active:scale-95"
+                        disabled={current === list.length - 1}
+                        className={`absolute right-[-16px] sm:right-[-22px] z-20 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 ${
+                            current === list.length - 1
+                                ? "bg-slate-100 text-slate-300 shadow-none cursor-not-allowed border border-slate-200"
+                                : "bg-[#2563EB] hover:bg-[#1D4ED8] text-white cursor-pointer shadow-[0_4px_14px_rgba(37,99,235,0.35)] active:scale-95"
+                        }`}
                     >
                         <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M9 5l7 7-7 7" />

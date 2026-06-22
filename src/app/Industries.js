@@ -160,7 +160,7 @@ export default function Industries() {
             </h2>
 
             <p className="mt-8 text-base sm:text-lg md:text-xl lg:text-xl leading-relaxed text-blue-100/80 max-w-4xl font-normal">
-              With experience working alongside leading BPO organizations, we realized there is a better and more efficient way to deliver outsourcing services. We focus on providing tailored, technology-driven solutions designed specifically to meet your business needs, improve operational efficiency, and significantly reduce costs.
+              Having worked alongside leading BPO organisations, we built a better, more efficient outsourcing model: technology-driven, tailored to your operations, and priced to actually reduce your costs — not just relocate them. From customer support to back-office processing, our teams plug into your workflows without the long-term lock-in. 
             </p>
 
             {/* STATS */}

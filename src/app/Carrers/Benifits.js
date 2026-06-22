@@ -64,16 +64,11 @@ const CakeIcon = () => (
 export default function Benifits() {
   const benefitsList = [
     { title: "Flexible working hours", icon: ClockIcon },
-    { title: "Sport compensation", icon: DumbbellIcon },
     { title: "Health care Insurance", icon: ShieldIcon },
-    { title: "Marriage bonus", icon: MarriageIcon },
     { title: "Fun team events", icon: PartyIcon },
     { title: "Professional grow budget", icon: RocketIcon },
-    { title: "30 days paid vacation", icon: CalendarIcon },
+    { title: "paid vacation", icon: CalendarIcon },
     { title: "Competitive salary", icon: WalletIcon },
-    { title: "Compensation for eyeglasses", icon: GlassesIcon },
-    { title: "Allowance for first-graders", icon: GraduationIcon },
-    { title: "Childbirth allowance", icon: BabyIcon },
     { title: "Employee referral bonus", icon: ReferralIcon },
     { title: "Birthdays celebration", icon: CakeIcon },
   ];
@@ -92,7 +87,7 @@ export default function Benifits() {
         </div>
  
         {/* Benefits Grid (5 Columns on Desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {benefitsList.map((benefit, index) => {
             const Icon = benefit.icon;
             return (

@@ -2,10 +2,10 @@ import { LuHeadset, LuUsers, LuTrendingUp, LuBriefcase } from "react-icons/lu";
 
 const bpoServices = {
   category: "04 — BPO SERVICES",
-  metaTitle: "BPO | Top Business Process Outsourcing Firm in India",
-  metaDescription: "Trusted business process outsourcing company in India. Customer support, data entry, back office, and finance & HR outsourcing. Flat pricing. Trusted by 500+ businesses. Get a free quote.",
-  heroTitle: "Business Process Outsourcing Services Efficient, Reliable & Cost-Effective",
-  heroDesc: "Trusted by 500+ businesses across India to handle back-office operations, customer support, data management, and more so your team focuses only on growth.",
+  metaTitle: "BPO Services in Hyderabad | Top Business Process Outsourcing Firm ",
+  metaDescription: "Trusted business process outsourcing company in India. Customer support, data entry, back office & finance/HR outsourcing. Flat pricing. Free quote. ",
+  heroTitle: "Business Process Outsourcing — Efficient, Reliable & Cost-Effective ",
+  heroDesc: "Trusted by businesses across India to handle back-office operations, customer support, data management, and more — so your team focuses only on growth. ",
   illustration: "/services-media/Business Process Outsourcing (BPO).png",
   title: "Business Process Outsourcing",
   subtitle: "Operations Service",
@@ -34,49 +34,49 @@ const bpoServices = {
       id: 1,
       qNumber: "Q1.",
       question: "How much do BPO services cost in India?",
-      answer: "Pricing depends on service type, volume, and team size. We offer flat monthly pricing with no hidden charges. Contact us for a custom quote."
+      answer: "Pricing depends on service type, volume, and team size. Flat monthly pricing with no hidden charges — contact us for a custom quote."
     },
     {
       id: 2,
       qNumber: "Q2.",
       question: "What BPO services do you offer?",
-      answer: "Customer support, data entry, back office, finance & accounting, HR outsourcing, and IT help desk all under one roof."
+      answer: "Customer support, data entry, back office, finance & accounting, HR outsourcing, and IT help desk — all under one roof."
     },
     {
       id: 3,
       qNumber: "Q3.",
       question: "Do you sign an NDA before starting?",
-      answer: "Yes. NDA signed before any discussion begins. Your data and processes are fully protected, no exceptions."
+      answer: "Yes. NDA signed before any discussion begins — your data and processes are fully protected, no exceptions."
     },
     {
       id: 4,
       qNumber: "Q4.",
       question: "How quickly can you onboard our processes?",
-      answer: "Most clients are fully onboarded within 1–2 weeks. Fast setup, zero disruption, on-time every time."
+      answer: "Most clients are fully onboarded within 1–2 weeks."
     },
     {
       id: 5,
       qNumber: "Q5.",
       question: "Do you work with startups or only large enterprises?",
-      answer: "Both. From 10-person startups to 500+ employee enterprises, our BPO services scale to fit your size and budget."
+      answer: "Both — from 10-person startups to 500+ employee enterprises."
     },
     {
       id: 6,
       qNumber: "Q6.",
       question: "Is my data secure with your team?",
-      answer: "Absolutely. Strict data security protocols, access controls, and ISO 27001-aligned practices ensure your data is always safe."
+      answer: "Yes. Strict data security protocols, access controls, and ISO 27001-aligned practices."
     },
     {
       id: 7,
       qNumber: "Q7.",
       question: "Can we scale the team up or down?",
-      answer: "Yes. Our model is fully flexible: scale up during peak seasons or scale down anytime. No long-term lock-ins."
+      answer: "Yes — scale up during peak seasons or down anytime, with no long-term lock-ins."
     },
     {
       id: 8,
       qNumber: "Q8.",
       question: "How do we get started?",
-      answer: "Book a free consultation. We understand your requirements, document your processes, and go live within 2 weeks, no obligation."
+      answer: "Book a free consultation. We understand your requirements, document your processes, and go live within 2 weeks."
     }
   ],
   cta: {

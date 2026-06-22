@@ -27,8 +27,8 @@ export default function OurStories() {
               Digital Growth
             </h2>
             
-            <p className="text-[#50656C] text-base sm:text-lg lg:text-[20px] leading-relaxed font-normal max-w-xl">
-              We started with a vision to help businesses embrace technology with confidence. Through innovation, creativity, and reliable IT solutions, we have transformed ideas into impactful digital experiences for clients across industries.
+            <p className="text-[#50656C] text-base sm:text-lg lg:text-[17px] leading-relaxed font-normal max-w-xl">
+              SecurXpert started with a straightforward premise: most businesses don't lack ambition, they lack a technology partner who can move at their pace. We built the company around full-stack capability — software development, cloud, cybersecurity, AI automation, and outsourced operations — so clients get one accountable team instead of five disconnected vendors.What started as a software development practice in Hyderabad has grown into a 500+ project track record across 12+ countries, with a product portfolio of 10 in-house platforms spanning HR tech, healthcare, education, and logistics.
             </p>
           </div>
 

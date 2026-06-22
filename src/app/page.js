@@ -10,8 +10,8 @@ import OurTeam from "./OurTeam";
 import Cta from "./Cta";
 
 export const metadata = {
-  title: " IT Services & Software Development Company in Hyderabad",
-  description: "SecurXpert is a leading IT services & software development company in Hyderabad offering AI automation, cloud, cybersecurity & managed IT solutions.",
+  title: " IT Services & Software Development Company in Hyderabad | SecurXpert ",
+  description: "SecurXpert is a Hyderabad-based IT services & software development company offering AI automation, cloud, cybersecurity, BPO & managed IT for 500+ businesses worldwide. ",
   keywords: [
     "IT Services Company in Hyderabad",
     "Software Development Company in Hyderabad",

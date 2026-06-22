@@ -123,15 +123,15 @@ export default function Hero() {
             {/* Right Side: Stats Badges (Stacked vertically one by one) */}
             <div className="flex flex-col gap-4 w-full lg:w-auto justify-center items-start lg:items-end">
               {/* Stats Card 1 */}
-              <div className="flex items-center justify-between gap-8 bg-[#FFFFFF10] border border-white/40 rounded-[24px] p-3 px-10 min-w-[180px] sm:min-w-[200px] shadow-lg">
+              <div className="flex items-center justify-between gap-8 bg-[#FFFFFF10] border border-white/40 rounded-[24px] p-3 px-12 min-w-[180px] sm:min-w-[200px] shadow-lg">
                 <span className="text-white/70 text-xs sm:text-sm font-semibold max-w-[90px] whitespace-nowrap leading-tight">Happy Clients</span>
-                <span className="text-white text-2xl sm:text-3xl font-bold font-space-grotesk tracking-tight">85K+</span>
+                <span className="text-white text-2xl sm:text-3xl font-bold font-space-grotesk tracking-tight">500+</span>
               </div>
 
               {/* Stats Card 2 */}
               <div className="flex items-center justify-between gap-8 bg-[#FFFFFF10] border border-white/40 rounded-[24px] p-3 px-10 min-w-[180px] sm:min-w-[200px] shadow-lg">
                 <span className="text-white/70 text-xs sm:text-sm font-semibold max-w-[90px] whitespace-nowrap leading-tight">Projects Deliverd</span>
-                <span className="text-white text-2xl sm:text-3xl font-bold font-space-grotesk tracking-tight">32k+</span>
+                <span className="text-white text-2xl sm:text-3xl font-bold font-space-grotesk tracking-tight">500k+</span>
               </div>
             </div>
 

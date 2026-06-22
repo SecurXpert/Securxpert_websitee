@@ -76,12 +76,12 @@ export default function AboutUs() {
 
             {/* HEADING */}
             <h3 className="text-[#100D35] text-3xl sm:text-4xl lg:text-[32px] xl:text-4xl leading-[1.2] font-bold tracking-[-1px] font-inter mb-4 max-w-xl">
-              We Are The Best Agency To Improve Your Deals.
+              A BPO Partner Built on Automation, Not Just Headcount 
             </h3>
 
             {/* DESCRIPTION */}
             <p className="text-[#555555] text-sm sm:text-base leading-relaxed font-normal mb-6 max-w-xl">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.
+              Our core philosophy is simple: business process services through automation-first thinking. We use AI-powered tools and data-driven processes to help enterprises eliminate manual work, reduce errors, and meaningfully boost efficiency — whether you're a startup outsourcing your first process or a global enterprise restructuring an entire back office.We don't run a one-size-fits-all model. Every engagement starts with understanding your actual workflow, not fitting you into a pre-built package
             </p>
 
             {/* CHECKLIST ITEMS */}
@@ -107,7 +107,7 @@ export default function AboutUs() {
                   </svg>
                 </div>
                 <span className="text-[#0D121E] text-sm font-semibold group-hover:text-[#3D62EB] transition-colors font-inter">
-                  Awards Winning Business Comapny
+                  Awards Winning Process Partner
                 </span>
               </div>
 
