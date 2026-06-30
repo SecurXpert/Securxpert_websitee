@@ -49,7 +49,7 @@ export default function Appointment() {
   };
 
   return (
-    <section className="relative w-full bg-white overflow-hidden py-14 text-slate-800">
+    <section id="appointment" className="relative w-full bg-white overflow-hidden py-14 text-slate-800">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* LIGHT CARD BLOCK CONTAINER */}
@@ -62,7 +62,7 @@ export default function Appointment() {
               <h3 className="text-[#100D35] text-2xl sm:text-3xl font-semibold leading-[1.2] font-inter mb-4">
                 Book a Appointment
               </h3>
-              <p className="text-[#555555] text-sm sm:text-base leading-relaxed font-normal max-w-sm">
+              <p className="text-[#555555] text-sm sm:text-[15px] leading-relaxed font-normal max-w-sm">
                 Tell us a bit about what you need handled, and we'll get back to you within one business day with next steps.
               </p>
             </div>

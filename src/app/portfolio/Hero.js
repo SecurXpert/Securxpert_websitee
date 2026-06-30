@@ -12,7 +12,9 @@ export default function Hero() {
             headingLine1: "TECH",
             headingLine2: "CONSULTING",
             btn1Text: "About Company",
+            btn1Link: "/about-us",
             btn2Text: "Our Services",
+            btn2Link: "/services",
             image: "/portfolio-media/Hero/hero1.png",
             playSub: "LET'S START",
             playItems: ["AI AUTOMATION", "ENTERPRISE SOLUTIONS", "DIGITAL GROWTH", "TECH CONSULTING"]
@@ -22,7 +24,9 @@ export default function Hero() {
             headingLine1: "TECH",
             headingLine2: "TRANSFORMATION",
             btn1Text: "Explore Products",
+            btn1Link: "/products",
             btn2Text: "EXPLORE Services",
+            btn2Link: "/services",
             image: "/portfolio-media/Hero/hero2.png",
             playSub: "INNOVATING THE FUTURE OF TECHNOLOGY",
             playItems: ["PAYMENT", "FINANCE", "DRIBBLLE", "DESIGN"]
@@ -32,7 +36,9 @@ export default function Hero() {
             headingLine1: "SMART DIGITAL",
             headingLine2: "SOLUTIONS",
             btn1Text: "GET STARTED",
+            btn1Link: "/contact",
             btn2Text: "VIEW CASE STUDIES",
+            btn2Link: "/portfolio",
             image: "/portfolio-media/Hero/hero3.png",
             playSub: "LET'S START",
             playItems: ["AI AUTOMATION", "SOFTWARE ENGINEERING", "CLOUD INFRASTRUCTURE", "DIGITAL STRATEGY"]
@@ -62,8 +68,8 @@ export default function Hero() {
                         <div
                             key={index}
                             className={`inset-x-0 w-full px-6 md:px-12 lg:px-20 transition-all duration-1000 ease-in-out min-h-[70vh] lg:min-h-[92vh] flex items-center justify-center ${isActive
-                                    ? "relative lg:absolute opacity-100 translate-x-0 pointer-events-auto z-20"
-                                    : "absolute opacity-0 translate-x-12 pointer-events-none z-10"
+                                ? "relative lg:absolute opacity-100 translate-x-0 pointer-events-auto z-20"
+                                : "absolute opacity-0 translate-x-12 pointer-events-none z-10"
                                 }`}
                         >
 
@@ -110,7 +116,7 @@ export default function Hero() {
                                         }`}
                                 >
                                     <Link
-                                        href="/AboutUs"
+                                        href={slide.btn1Link || "/about-us"}
                                         className="bg-white text-[#3734A9] font-bold px-8 py-3.5 sm:px-10 sm:py-4 text-xs sm:text-[13px] hover:bg-white/95 transition-all select-none"
                                     >
                                         {slide.btn1Text}
@@ -119,7 +125,7 @@ export default function Hero() {
                                         OR
                                     </div>
                                     <Link
-                                        href="/services"
+                                        href={slide.btn2Link || "/services"}
                                         className="hover:opacity-95 text-white/90 hover:text-white font-bold pl-8 pr-8 py-3.5 sm:pl-10 sm:pr-10 sm:py-4 text-xs sm:text-[13px] transition-all select-none"
                                         style={{ background: "linear-gradient(100.32deg, #5B5B5B 0%, #404040 100%)" }}
                                     >
@@ -140,7 +146,7 @@ export default function Hero() {
                                 <div className="lg:hidden flex flex-col items-center gap-4 mt-8 w-full z-30">
                                     <div className="flex items-center gap-3">
                                         <div className="relative flex items-center justify-center shrink-0">
-                                            <div className="absolute w-10 h-10 rounded-full bg-red-600 animate-ping opacity-75"></div>
+                                            <div className="absolute w-10 h-10 rounded-full bg-red-600 animate-ping opacity-45"></div>
                                             <div className="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center text-white cursor-pointer relative z-10 shadow-md">
                                                 <svg className="w-4 h-4 fill-current text-white translate-x-[1px]" viewBox="0 0 24 24">
                                                     <path d="M8 5v14l11-7z" />
@@ -195,7 +201,7 @@ export default function Hero() {
                 })}
             </div>
 
-            
+
 
 
         </section>

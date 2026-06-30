@@ -74,13 +74,13 @@ export default function Testimonials() {
           {/* LEFT SIDE - TITLE AND CAROUSEL CONTROLS */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
             <div className="relative inline-flex items-center mb-4">
-              <span className="relative z-10 text-[#FFFFFF] text-sm font-semibold tracking-[2px] uppercase font-sans">
+              <span className="relative z-10 text-[#FFFFFF] text-sm font-medium tracking-[3.5px] uppercase font-sans">
                 TESTIMONIALS
                 {/* Soft highlight bottom pill bar */}
                 <span className="absolute bottom-[-2px] left-0 w-full h-[6px] bg-white/20 -z-10 rounded-sm" />
               </span>
             </div>
-            <h3 className="text-white text-3xl sm:text-4xl lg:text-[40px] font-bold leading-[1.2] font-inter tracking-[-1px] mb-8">
+            <h3 className="text-white text-3xl sm:text-4xl lg:text-[36px] font-bold leading-[1.2] font-inter tracking-[-1px] mb-8">
               What Our Clients<br />Says About Our<br />Best Work.
             </h3>
 

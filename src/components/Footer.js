@@ -8,7 +8,7 @@ import { LuChevronRight } from "react-icons/lu";
 export default function Footer() {
   const pathname = usePathname();
 
-  if (pathname === "/Carrers/create") return null;
+  if (pathname === "/careers/create") return null;
 
   return (
     <footer
@@ -89,7 +89,7 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col items-start gap-2">
               <li>
-                <Link href="/AboutUs" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                <Link href="/about-us" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
                   <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> About Us
                 </Link>
               </li>
@@ -104,7 +104,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/Carrers" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                <Link href="/careers" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
                   <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Careers
                 </Link>
               </li>

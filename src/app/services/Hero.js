@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-
+import Link from "next/link";
 export default function ServicesHero() {
     return (
         <div className="w-full bg-gradient-to-r from-[#172E9D] to-[#2541C5] md:bg-none md:bg-white overflow-hidden text-slate-800">
@@ -45,9 +45,9 @@ export default function ServicesHero() {
 
                         {/* Column 1: Try it For Free & Cancel Anytime */}
                         <div className="flex flex-col items-center justify-center gap-2">
-                            <button className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-8 py-3.5 rounded-full text-base shadow-md transition-all active:scale-95 duration-150">
+                            <Link href="/contact" className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-8 py-3.5 rounded-full text-base shadow-md transition-all active:scale-95 duration-150 inline-block text-center">
                                 Book a Free Consultation
-                            </button>
+                            </Link>
                             <p className="text-[#FFFFFF] text-xs font-normal tracking-wide">
                                 Cancel Anytime
                             </p>

@@ -108,7 +108,7 @@ export default function AboutUs() {
                 </div>
                 <span className="text-[#0D121E] text-sm font-semibold group-hover:text-[#3D62EB] transition-colors font-inter">
                   Awards Winning Process Partner
-                </span>
+                </span> 
               </div>
 
             </div>
@@ -116,7 +116,7 @@ export default function AboutUs() {
             {/* CTA BUTTON */}
             <Link
               href="/contact"
-              className="bg-[#3D62EB] hover:bg-[#3D62EB] text-white font-medium px-6 py-3 rounded-[4px] text-sm shadow-md hover:shadow-lg active:scale-95 transition-all duration-150 text-center"
+              className="bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-6 py-2.5 rounded-[4px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 text-center inline-block"
             >
               Learn More
             </Link>

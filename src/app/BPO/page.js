@@ -8,7 +8,7 @@ import WhyChooseUs from "./WhyChooseUs";
 import TeamMembers from "./TeamMembers";
 import Testimonials from "./Testimonials";
 import FAQ from "./FAQ";
-import LatestBlogs from "./LatestBlogs";
+
 import Appointment from "./Appointment";
 
 export const metadata = {
@@ -29,7 +29,6 @@ export default function BPOPage() {
       <Testimonials />
       <TeamMembers />
        <FAQ /> 
-      <LatestBlogs />
       <Appointment /> 
     </div>
   );

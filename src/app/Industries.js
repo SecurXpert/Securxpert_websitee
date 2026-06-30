@@ -11,7 +11,7 @@ import {
 import { GrMultimedia } from "react-icons/gr";
 import { FaHandshake } from "react-icons/fa6";
 
-const CountUp = ({ end, duration = 2000, suffix = "" }) => {
+const CountUp = ({ end, duration = 2000, suffix = "" }) => { 
   const [count, setCount] = React.useState(0);
   const elementRef = React.useRef(null);
   const [isInView, setIsInView] = React.useState(false);

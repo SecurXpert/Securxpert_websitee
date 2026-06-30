@@ -78,7 +78,7 @@ export default function Benifits() {
       <div className="relative w-full max-w-[95%] 2xl:max-w-[1620px] mx-auto px-4 md:px-10">
         {/* Section Header */}
         <div className="text-center mb-16 max-w-4xl mx-auto">
-          <h2 className="text-[#100D35] text-center text-5xl font-normal mb-4 font-sans">
+          <h2 className="text-[#090808] text-center text-5xl font-normal mb-4 font-sans">
             What benefits are waiting for you?
           </h2>
           <p className="text-slate-600 text-sm sm:text-base md:text-lg">

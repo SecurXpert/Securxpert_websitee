@@ -13,8 +13,8 @@ export default function FollowUs() {
           {/* Column 1 (Wider: col-span-4 out of 12) */}
           <div className="col-span-12 sm:col-span-6 lg:col-span-4 flex flex-col lg:justify-between lg:h-full gap-6 lg:gap-0">
             {/* Header Text */}
-            <div className="text-[#100D35] text-left pt-2 flex flex-col gap-1 font-sans">
-              <h2 className="text-5xl font-extrabold leading-none tracking-tight font-sans">
+            <div className="text-[#090808] text-left pt-2 flex flex-col gap-1 font-sans">
+              <h2 className="text-5xl font-semibold leading-none tracking-tight font-sans">
                 Follow us <span className="font-normal text-4xl">on</span>
               </h2>
               <span className="text-[38px] font-light leading-tight tracking-tight text-slate-500">
@@ -81,7 +81,7 @@ export default function FollowUs() {
             
             {/* Social Channels List */}
             <div className="flex flex-col text-left py-2 mt-auto">
-              <p className="text-[#100D35] text-sm font-medium mb-6 leading-relaxed opacity-80">
+              <p className="text-[#090808] text-sm font-medium mb-6 leading-relaxed opacity-80">
                 We are eager to be in touch with you in the following channels:
               </p>
               
@@ -91,7 +91,7 @@ export default function FollowUs() {
                   href="https://facebook.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 text-slate-800 hover:text-[#3D62EB] transition-colors group"
+                  className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-sm shrink-0 group-hover:scale-105 transition-transform">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@ export default function FollowUs() {
                   href="https://youtube.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 text-slate-800 hover:text-[#3D62EB] transition-colors group"
+                  className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-sm shrink-0 group-hover:scale-105 transition-transform">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -121,7 +121,7 @@ export default function FollowUs() {
                   href="https://twitter.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 text-slate-800 hover:text-[#3D62EB] transition-colors group"
+                  className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-sm shrink-0 group-hover:scale-105 transition-transform">
                     <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -136,7 +136,7 @@ export default function FollowUs() {
                   href="https://instagram.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 text-slate-800 hover:text-[#3D62EB] transition-colors group"
+                  className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-sm shrink-0 group-hover:scale-105 transition-transform">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -151,7 +151,7 @@ export default function FollowUs() {
                   href="https://linkedin.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 text-slate-800 hover:text-[#3D62EB] transition-colors group"
+                  className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-sm shrink-0 group-hover:scale-105 transition-transform">
                     <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">

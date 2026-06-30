@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const filterCategories = [
   "All",
@@ -18,8 +19,9 @@ const projectsData = [
     title: "Lens & Light Media",
     tags: "DESIGN WOK, BRANDING",
     desc: "Digital marketing and video production platform for brand growth campaigns. ",
-    image: "/products/Projects/project1.png", // Reusing image from existing data if possible, or placeholder
+    image: "/products/Projects/project1.png",
     category: "All", 
+    slug: "lens-light",
   },
   {
     id: 2,
@@ -28,14 +30,16 @@ const projectsData = [
     desc: "AI-powered recruitment platform with smart hiring and automated outreach. ",
     image: "/products/Projects/project2.png",
     category: "HR",
+    slug: "grabjobz",
   },
   {
     id: 3,
     title: "Arogya Narayan",
     tags: "BRANDING, ILLUSUTRATION",
     desc: "Hospital management and patient portal platform for healthcare providers. ",
-    image: "/products/Projects/project3.png", // Adjust images as needed
+    image: "/products/Projects/project3.png", 
     category: "Healthcare",
+    slug: "arogya-narayan",
   },
   {
     id: 4,
@@ -44,6 +48,7 @@ const projectsData = [
     desc: "Business intelligence and automation platform for enterprise operations. ",
     image: "/products/Projects/project4.png",
     category: "All",
+    slug: "lauratek",
   },
   {
     id: 5,
@@ -52,6 +57,7 @@ const projectsData = [
     desc: "All-in-one school administration and ERP platform for educational institutions. ",
     image: "/products/Projects/project5.png",
     category: "School Management",
+    slug: "vishan",
   },
   {
     id: 6,
@@ -60,6 +66,7 @@ const projectsData = [
     desc: "Enterprise cloud and workflow orchestration platform for global teams. ",
     image: "/products/Projects/hisphere.png",
     category: "All",
+    slug: "hisphere",
   },
   {
     id: 7,
@@ -68,6 +75,7 @@ const projectsData = [
     desc: "360-degree data visualisation and BI platform for executive decision-making. ",
     image: "/products/Projects/shrava360.png",
     category: "All",
+    slug: "shrava360",
   },
   {
     id: 8,
@@ -76,6 +84,7 @@ const projectsData = [
     desc: "Telemedicine and pharmacy platform connecting patients with doctors and labs. ",
     image: "/products/Projects/onestepmedi.png",
     category: "All",
+    slug: "onestep-medi",
   },
   {
     id: 9,
@@ -84,6 +93,7 @@ const projectsData = [
     desc: "Technical assessment and coding-test platform for recruiting teams. ",
     image: "/products/Projects/project6.png",
     category: "Examination platform",
+    slug: "devtalent",
   },
   {
     id: 10,
@@ -92,6 +102,7 @@ const projectsData = [
     desc: "AI-driven evolution of Lauratek with predictive analytics and modern architecture",
     image: "/products/Projects/project7.png",
     category: "All",
+    slug: "lauratek-2-0",
   },
   {
     id: 11,
@@ -152,11 +163,17 @@ export default function ProjectGrid() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-8">
-          {filteredProjects.map((project) => (
-            <div 
-              key={project.id}
-              className="bg-white rounded-[24px] border border-gray-300 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 group p-4 sm:p-5 flex flex-col"
-            >
+          {filteredProjects.map((project) => {
+            const isClickable = !!project.slug;
+            const CardWrapper = isClickable ? Link : 'div';
+            const cardProps = isClickable ? { href: `/products/${project.slug}` } : {};
+
+            return (
+              <CardWrapper 
+                key={project.id}
+                {...cardProps}
+                className={`bg-white rounded-[24px] border border-gray-300 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 group p-4 sm:p-5 flex flex-col ${isClickable ? 'cursor-pointer' : ''}`}
+              >
               {/* Image Container */}
               <div className="w-full h-[200px] md:h-[260px] relative overflow-hidden bg-gray-100 rounded-[20px]">
                 <img
@@ -178,8 +195,9 @@ export default function ProjectGrid() {
                   {project.desc}
                 </p>
               </div>
-            </div>
-          ))}
+              </CardWrapper>
+            );
+          })}
         </div>
 
       </div>

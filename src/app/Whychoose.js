@@ -10,7 +10,7 @@ import {
 
 export default function Whychoose() {
   return (
-    <section className="bg-[#FFFFFF] min-h-screen flex items-center py-8 px-6 md:px-16 xl:px-24 overflow-hidden">
+    <section className="bg-[#FFFFFF] flex items-center pt-8 pb-0 lg:pt-12 lg:pb-0 -mb-6 lg:-mb-12 px-6 md:px-16 xl:px-24 overflow-hidden">
 
       {/* Fluid responsive 12-column grid and gaps */}
       <div className="max-w-[1540px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-20 items-center w-full">
@@ -40,12 +40,12 @@ export default function Whychoose() {
           </p>
 
           {/* FEATURES */}
-          <div className="mt-5 lg:mt-5 xl:mt-6 2xl:mt-10 space-y-4 lg:space-y-4 xl:space-y-5 2xl:space-y-8">
+          <div className="mt-5 lg:mt-5 xl:mt-6 2xl:mt-10 space-y-4 lg:space-y-4 xl:space-y-5 2xl:space-y-6">
 
             {/* ITEM 1 */}
             <div className="flex gap-4 lg:gap-4 xl:gap-5 items-start">
               <div className="min-w-[60px] w-[60px] h-[60px] lg:min-w-[46px] lg:w-[46px] lg:h-[46px] xl:min-w-[50px] xl:w-[50px] xl:h-[50px] 2xl:min-w-[72px] 2xl:w-[72px] 2xl:h-[72px] rounded-full bg-[#FF7F5C] flex items-center justify-center shadow-md shrink-0">
-                <Cpu className="w-4 h-4 xl:w-4.5 xl:h-4.5 2xl:w-6 2xl:h-6 text-white" />
+                <Cpu className="w-4 h-4 xl:w-4.5 xl:h-4.5 2xl:w-6 2xl:h-7 text-white" />
               </div>
 
               <div>

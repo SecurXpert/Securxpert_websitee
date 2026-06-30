@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 
@@ -36,7 +35,7 @@ export default function BlogsLogin() {
         }
 
         // If the API returns 200 OK, route to the create page
-        router.push("/Blogs/create");
+        router.push("/blogs/create");
       } else if (res.status === 422) {
         alert("Validation Error: Please check your email and password.");
       } else {
@@ -47,68 +46,39 @@ export default function BlogsLogin() {
     }
   };
 
-
-
-
   return (
-    <div className="min-h-screen w-full relative flex items-center justify-center bg-[#FCFCFD] overflow-hidden">
-      {/* Top Left Logo */}
-      <div className="absolute top-6 left-6 sm:top-10 sm:left-10 z-20">
-        <Link href="/">
-          <Image
-            src="/securxpertslogo.png"
-            alt="SecurXpert Logo"
-            width={180}
-            height={60}
-            className="w-32 sm:w-40 lg:w-48 h-auto object-contain"
-            priority
-          />
-        </Link>
-      </div>
-
-      {/* Main Content Wrapper */}
-      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 relative z-10 mt-16 lg:mt-0">
-
-        {/* Left Side: 3D Illustration */}
-        <div className="w-full lg:w-1/2 flex justify-center items-center">
-          <div className="relative w-full max-w-[400px] sm:max-w-[550px] lg:max-w-[650px] aspect-square animate-float-slow">
-            {/* Base Image: The circular rings pattern */}
-            <Image
-              src="/Blogs/login/login-image2.png"
-              alt="Login Background Rings"
-              fill
-              className="object-contain"
-              priority
-            />
-            {/* Top Image: The 3D Security Illustration stacked exactly in the center */}
-            <Image
-              src="/Blogs/login/login-image.png"
-              alt="Login Security Illustration"
-              fill
-              className="object-contain drop-shadow-lg z-10 scale-[0.95]"
-              priority
-            />
+    <div className="min-h-screen w-full bg-[#FCFCFD] flex items-center justify-center p-4 sm:p-6 md:p-10 select-none">
+      {/* Outer Card Container */}
+      <div className="bg-white rounded-[32px] shadow-2xl shadow-slate-200 border border-slate-100 max-w-6xl w-full flex flex-col lg:flex-row overflow-hidden min-h-[680px]">
+        
+        {/* Left Column: Login Form */}
+        <div className="w-full lg:w-1/2 p-8 sm:p-12 md:p-16 flex flex-col justify-between">
+          {/* Top Logo */}
+          <div className="mb-8">
+            <Link href="/">
+              <img
+                src="/securxpertslogo.png"
+                alt="SecurXpert Logo"
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
           </div>
-        </div>
 
-        {/* Right Side: Login Form */}
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end xl:pr-16">
-          <div className="w-full max-w-md bg-white/40 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none p-6 sm:p-8 rounded-2xl">
-
-            <div className="text-center mb-10">
-              <h2 className="text-[#3A3C42] text-3xl sm:text-[34px] font-bold mb-2 font-inter tracking-tight">
+          {/* Form Content */}
+          <div className="my-auto max-w-[360px] w-full mx-auto lg:mx-0">
+            <div className="mb-8 text-left">
+              <h2 className="text-[#333333] text-[32px] font-bold tracking-tight mb-2 font-inter">
                 Welcome Back
               </h2>
-              <p className="text-[#A1A5B7] text-[15px] font-medium">
+              <p className="text-[#999999] text-sm font-medium">
                 Please login your account
               </p>
             </div>
 
-            <form onSubmit={handlesubmit} className="space-y-6">
-
-              {/* Email Field */}
+            <form onSubmit={handlesubmit} className="space-y-5">
+              {/* Email */}
               <div className="space-y-2">
-                <label className="block text-[#464E5F] text-[15px] font-bold">
+                <label className="block text-[#4A4A4A] text-sm font-bold">
                   Email
                 </label>
                 <input
@@ -117,13 +87,13 @@ export default function BlogsLogin() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@gmail.com"
                   required
-                  className="w-full px-4 py-3.5 bg-white border border-[#E1E3EA] rounded-xl text-sm text-slate-800 focus:outline-none focus:border-[#4154F1] focus:ring-1 focus:ring-[#4154F1] transition-all placeholder:text-[#A1A5B7]"
+                  className="w-full px-4 py-3 bg-white border border-[#D5D9E2] rounded-[14px] text-sm text-slate-800 focus:outline-none focus:border-[#3D5BE5] focus:ring-1 focus:ring-[#3D5BE5] transition-all placeholder:text-[#A0A5B5]"
                 />
               </div>
 
-              {/* Password Field */}
+              {/* Password */}
               <div className="space-y-2">
-                <label className="block text-[#464E5F] text-[15px] font-bold">
+                <label className="block text-[#4A4A4A] text-sm font-bold">
                   Password
                 </label>
                 <div className="relative">
@@ -133,40 +103,54 @@ export default function BlogsLogin() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="enter your password"
                     required
-                    className="w-full px-4 py-3.5 bg-white border border-[#E1E3EA] rounded-xl text-sm text-slate-800 focus:outline-none focus:border-[#4154F1] focus:ring-1 focus:ring-[#4154F1] transition-all placeholder:text-[#A1A5B7] pr-12"
+                    className="w-full px-4 py-3 bg-white border border-[#D5D9E2] rounded-[14px] text-sm text-slate-800 focus:outline-none focus:border-[#3D5BE5] focus:ring-1 focus:ring-[#3D5BE5] transition-all placeholder:text-[#A0A5B5] pr-10"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#A1A5B7] hover:text-[#464E5F] transition-colors"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#A0A5B5] hover:text-[#4A4A4A] transition-colors"
                   >
                     {showPassword ? (
-                      <EyeOff className="w-5 h-5" />
+                      <EyeOff className="w-4 h-4" />
                     ) : (
-                      <Eye className="w-5 h-5" />
+                      <Eye className="w-4 h-4" />
                     )}
                   </button>
                 </div>
               </div>
 
               {/* Forgot Password */}
-              <div className="flex justify-end pt-1">
+              <div className="flex justify-end">   
                 <Link
                   href="#"
-                  className="text-[#4154F1] text-[13px] font-bold hover:text-blue-800 transition-colors"
+                  className="text-[#3D5BE5] text-[13px] font-bold hover:text-blue-800 transition-colors"
                 >
                   Forgot Password
                 </Link>
               </div>
 
-              {/* Submit Button */}
-              <button 
+              {/* Sign In Button */}
+              <button
                 type="submit"
-                className="w-full bg-[#4154F1] hover:bg-[#3444C9] text-white font-bold text-[15px] py-4 rounded-xl shadow-[0_4px_14px_rgba(65,84,241,0.3)] transition-all active:scale-[0.98] mt-4"
+                className="w-full bg-[#3D5BE5] hover:bg-[#2C48D4] text-white font-bold text-sm py-3.5 rounded-[14px] shadow-[0_4px_12px_rgba(61,91,229,0.25)] transition-all active:scale-[0.98] mt-2 cursor-pointer text-center"
               >
                 Sign in
               </button>
             </form>
+          </div>
+
+          {/* Bottom spacer for flex justify-between alignment */}
+          <div className="hidden lg:block h-6"></div>
+        </div>
+
+        {/* Right Column: Banner Image */}
+        <div className="hidden lg:block lg:w-1/2 p-4">
+          <div className="w-full h-full relative rounded-[24px] overflow-hidden min-h-[580px]">
+            <img
+              src="/blogs/login/loginimage.png"
+              alt="Powering Businesses with Secure Digital Innovation"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 

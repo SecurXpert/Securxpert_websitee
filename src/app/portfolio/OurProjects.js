@@ -1,36 +1,114 @@
 "use client";
 
 import React from "react";
-
+import Link from "next/link";
 const projectsData = [
-    {
-        id: 1,
-        brand: "STUDIO",
-        title: "Fashion Brand",
-        badge: "MID-LEVEL ADS",
-        image: "/portfolio-media/Projects/projects1.jpg",
-    },
-    {
-        id: 2,
-        brand: "HYNDHAV",
-        title: "Astrology App",
-        badge: "MID-LEVEL ADS",
-        image: "/portfolio-media/Projects/projects2.jpg",
-    },
-    {
-        id: 3,
-        brand: "MANYAVAR",
-        title: "Jewellery App",
-        badge: "MID-LEVEL ADS",
-        image: "/portfolio-media/Projects/projects3.jpg",
-    },
-    {
-        id: 4,
-        brand: "SHOOT ORDER",
-        title: "Digital Marketing App",
-        badge: "MID-LEVEL ADS",
-        image: "/portfolio-media/Projects/projects4.jpg",
-    },
+  {
+    id: 1,
+    title: "Lens & Light Media",
+    tags: "DESIGN WOK, BRANDING",
+    desc: "Digital marketing and video production platform for brand growth campaigns. ",
+    image: "/products/Projects/project1.png", 
+    category: "All", 
+    slug: "lens-light",
+  },
+  {
+    id: 2,
+    title: "Grabjobz",
+    tags: "DEVELOPMENT, APP DESIGN",
+    desc: "AI-powered recruitment platform with smart hiring and automated outreach. ",
+    image: "/products/Projects/project2.png",
+    category: "HR",
+    slug: "grabjobz",
+  },
+  {
+    id: 3,
+    title: "Arogya Narayan",
+    tags: "BRANDING, ILLUSUTRATION",
+    desc: "Hospital management and patient portal platform for healthcare providers. ",
+    image: "/products/Projects/project3.png", 
+    category: "Healthcare",
+    slug: "arogya-narayan",
+  },
+  {
+    id: 4,
+    title: "Lauratek",
+    tags: "DESIGN WOK, ILLUSUTRATION",
+    desc: "Business intelligence and automation platform for enterprise operations. ",
+    image: "/products/Projects/project4.png",
+    category: "All",
+    slug: "lauratek",
+  },
+  {
+    id: 5,
+    title: "Vishan",
+    tags: "DESIGN WOK, BRANDING",
+    desc: "All-in-one school administration and ERP platform for educational institutions. ",
+    image: "/products/Projects/project5.png",
+    category: "School Management",
+    slug: "vishan",
+  },
+  {
+    id: 6,
+    title: "hi-sphere",
+    tags: "DESIGN WOK, APP DESIGN",
+    desc: "Enterprise cloud and workflow orchestration platform for global teams. ",
+    image: "/products/Projects/hisphere.png",
+    category: "All",
+    slug: "hisphere",
+  },
+  {
+    id: 7,
+    title: "shrava 360",
+    tags: "DESIGN WOK, APP DESIGN",
+    desc: "360-degree data visualisation and BI platform for executive decision-making. ",
+    image: "/products/Projects/shrava360.png",
+    category: "All",
+    slug: "shrava360",
+  },
+  {
+    id: 8,
+    title: "onestepmedi",
+    tags: "DESIGN WOK, APP DESIGN",
+    desc: "Telemedicine and pharmacy platform connecting patients with doctors and labs. ",
+    image: "/products/Projects/onestepmedi.png",
+    category: "All",
+    slug: "onestep-medi",
+  },
+  {
+    id: 9,
+    title: "Dev Talent",
+    tags: "DESIGN WOK, APP DESIGN",
+    desc: "Technical assessment and coding-test platform for recruiting teams. ",
+    image: "/products/Projects/project6.png",
+    category: "Examination platform",
+    slug: "devtalent",
+  },
+  {
+    id: 10,
+    title: "Lauratek2.0",
+    tags: "DESIGN WOK, ILLUSUTRATION",
+    desc: "AI-driven evolution of Lauratek with predictive analytics and modern architecture",
+    image: "/products/Projects/project7.png",
+    category: "All",
+    slug: "lauratek-2-0",
+  },
+  {
+    id: 11,
+    title: "Landing Page Design",
+    tags: "DESIGN WOK, BRANDING",
+    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    image: "/products/Projects/project8.png",
+    category: "All",
+  },
+  {
+    id: 12,
+    title: "Mobile Design",
+    tags: "DESIGN WOK, APP DESIGN",
+    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    image: "/products/Projects/project9.png",
+    category: "All",
+  }
 ];
 
 export default function OurProjects() {
@@ -84,7 +162,7 @@ export default function OurProjects() {
           100% { transform: translateX(-50%); }
         }
         .animate-marquee-projects {
-          animation: marqueeScroll 25s linear infinite !important;
+          animation: marqueeScroll 60s linear infinite !important;
         }
         .projects-marquee-container:hover .animate-marquee-projects {
           animation-play-state: paused !important;
@@ -92,13 +170,19 @@ export default function OurProjects() {
       `}} />
 
             {/* MARQUEE CAROUSEL: Scrolling right to left */}
-            <div className="relative w-full overflow-hidden py-6 z-10 projects-marquee-container">
+            <div className="relative w-full overflow-hidden py-4 z-10 projects-marquee-container">
                 {/* Infinite Scrolling Track */}
                 <div className="flex gap-4 w-max animate-marquee-projects cursor-grab active:cursor-grabbing">
-                    {duplicatedProjects.map((project, idx) => (
-                        <div
+                    {duplicatedProjects.map((project, idx) => {
+                        const isClickable = !!project.slug;
+                        const CardWrapper = isClickable ? Link : 'div';
+                        const cardProps = isClickable ? { href: `/products/${project.slug}` } : {};
+                        
+                        return (
+                        <CardWrapper
                             key={`${project.id}-${idx}`}
-                            className="w-[270px] sm:w-[340px] md:w-[390px] flex-shrink-0 bg-white rounded-[20px] p-3 pb-5 shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] hover:-translate-y-2 group"
+                            {...cardProps}
+                            className={`w-[270px] sm:w-[340px] md:w-[390px] flex-shrink-0 bg-white rounded-[20px] p-3 pb-5 shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] hover:-translate-y-2 group ${isClickable ? 'cursor-pointer block' : ''}`}
                         >
                             {/* Image Container */}
                             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[18px]">
@@ -108,28 +192,19 @@ export default function OurProjects() {
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     loading="lazy"
                                 />
-                                {/* Badge Overlay */}
-                                <div
-                                    style={{ background: "var(--color-grey-2446, #3D3D3D75)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
-                                    className="absolute top-4 left-4 border border-white/50 px-2 py-1 rounded-full"
-                                >
-                                    <span className="text-[9px] sm:text-[10px] tracking-wide uppercase text-white font-medium">
-                                        {project.badge}
-                                    </span>
-                                </div>
                             </div>
 
                             {/* Text Info Below Image */}
                             <div className="pt-5 pb-1 px-1 text-left">
-                                <span className="text-[10px] sm:text-xs text-gray-600 font-normal tracking-widest uppercase block mb-1">
-                                    {project.brand}
+                                <span className="text-[8px] sm:text-xs text-gray-600 font-normal tracking-widest uppercase block mb-1">
+                                    {project.tags}
                                 </span>
-                                <h3 className="text-lg sm:text-xl font-normal text-gray-900 font-sans tracking-tight transition-colors duration-300 group-hover:text-[#2D46D4]">
+                                <h3 className="text-lg sm:text-lg font-normal text-gray-900 font-sans tracking-tight transition-colors duration-300 group-hover:text-[#2D46D4]">
                                     {project.title}
                                 </h3>
                             </div>
-                        </div>
-                    ))}
+                        </CardWrapper>
+                    )})}
                 </div>
             </div>
 

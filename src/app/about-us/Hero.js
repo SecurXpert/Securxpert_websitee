@@ -8,7 +8,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 
 export default function Hero() {
   return (
-    <section className="w-full bg-white relative overflow-hidden pt-20 sm:pt-18 pb-12">
+    <section className="w-full bg-white relative overflow-hidden pt-20 sm:pt-16 pb-12">
       {/* Top Content Grid */}
       <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:pl-10 md:pr-20">
         <div className="flex flex-col lg:flex-row items-stretch justify-between gap-8 lg:gap-4 relative">
@@ -39,7 +39,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Description & Actions */}
-          <div className="w-full lg:w-[30%] flex flex-col items-start lg:items-start justify-center text-left lg:text-left space-y-8 z-20 lg:pt-6">
+          <div className="w-full lg:w-[30%] flex flex-col items-start lg:items-start justify-center text-left lg:text-left space-y-6 z-20 lg:pt-7">
             {/* Get Started Button */}
             <Link
               href="/contact"
@@ -50,7 +50,7 @@ export default function Hero() {
             </Link>
 
             {/* Short Paragraph Description */}
-            <p className="text-slate-500 text-lg lg:text-base xl:text-xl leading-relaxed max-w-xs font-normal">
+            <p className="text-slate-500 text-lg lg:text-base xl:text-lg leading-relaxed max-w-xs font-normal">
               We help businesses grow with innovative IT solutions, scalable software, and future-ready technology designed for modern enterprises.
             </p>
 

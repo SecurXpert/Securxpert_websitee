@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-
+import Link from "next/link";
 const CountUp = ({ end, duration = 2000, suffix = "" }) => {
     const [count, setCount] = React.useState(0);
     const elementRef = React.useRef(null);
@@ -31,7 +31,7 @@ const CountUp = ({ end, duration = 2000, suffix = "" }) => {
 
 const HeroSection = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-r from-[#172E9D] to-[#2541C5] md:bg-none md:bg-white overflow-hidden text-slate-800">
+        <div className="min-h-screen overflow-hidden">
 
             {/* Floating animation keyframes styles */}
             <style>{`
@@ -73,7 +73,7 @@ const HeroSection = () => {
                         </h1>
 
                         {/* Description */}
-                        <p className="mt-6 text-lg sm:text-xl md:text-xl lg:text-blue-100 xl:text-[18px] 2xl:text-xl leading-relaxed text-blue-100 md:text-slate-600 max-w-xl font-normal opacity-90">
+                        <p className="mt-6 text-lg sm:text-xl md:text-xl lg:text-blue-100 xl:text-[18px] 2xl:text-lg leading-relaxed text-blue-100 md:text-slate-600 max-w-xl font-normal opacity-90">
                             SecurXpert builds the software, secures the infrastructure, and runs the IT operations behind 500+ businesses across 12+ countries — from custom applications and cloud migration to AI automation, cybersecurity, and outsourced support. One partner, every layer of your technology stack. 
                         </p>
 
@@ -85,9 +85,9 @@ const HeroSection = () => {
                                 Let’s Start
                             </button>
 
-                            <button className="border border-[#3E66F3]/70 hover:bg-blue-600/10 text-[#3E66F3] font-medium px-4 py-2 sm:px-8 sm:py-2.5 rounded-xl text-sm sm:text-lg transition-all active:scale-95 duration-150 whitespace-nowrap">
-                                Partner with us
-                            </button>
+                            <Link href="/contact" className="border border-[#3E66F3]/70 hover:bg-blue-600/10 text-[#3E66F3] font-medium px-4 py-2 sm:px-8 sm:py-2.5 rounded-xl text-sm sm:text-lg transition-all active:scale-95 duration-150 whitespace-nowrap inline-block text-center">
+                                Partner with us  
+                            </Link>
                         </div>
 
                         {/* Overlapping circular avatars positioned absolutely inside the bottom-left curve */}

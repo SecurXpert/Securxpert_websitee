@@ -102,7 +102,7 @@ export default function AllPosts() {
                 {/* 3-Column Grid Container */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                     {allPostsData.map((post) => (
-                        <Link href={`/Blogs/${post.slug}`} key={post.id} className="flex flex-col group cursor-pointer">
+                        <Link href={`/blogs/${post.slug}`} key={post.id} className="flex flex-col group cursor-pointer">
                             
                             {/* Image Container */}
                             <div className="relative w-full aspect-[16/10] overflow-hidden ">

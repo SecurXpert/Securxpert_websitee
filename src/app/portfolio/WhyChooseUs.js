@@ -6,7 +6,7 @@ export default function WhyChooseUs() {
     return (
         <section className="relative w-full bg-white overflow-hidden py-14 px-6 sm:px-12 lg:px-24">
             <div className="relative z-10 max-w-[1140px] mx-auto w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch w-full">
 
                     {/* LEFT COLUMN */}
                     <div className="lg:col-span-5 flex flex-col justify-start select-none text-left lg:pl-16 md:pl-8">
@@ -30,7 +30,7 @@ export default function WhyChooseUs() {
 
                             {/* Card 1: Our Philosophy */}
                             <div className="bg-[#EFF3F6] border border-[#74747475] rounded-[14px] p-6 shadow-sm">
-                                <h4 className="text-[#1E1B4B] font-bold text-[18px] sm:text-[20px] mb-1.5 font-sans">
+                                <h4 className="text-[#19092D] font-normal text-[18px] sm:text-[20px] mb-1.5 font-sans">
                                     Our Philosophy
                                 </h4>
                                 <p className="text-slate-500 text-sm sm:text-[15px] font-normal leading-relaxed font-sans">
@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
 
                             {/* Card 2: Our Goals */}
                             <div className="bg-[#EFF3F6] border border-[#74747475] rounded-[14px] p-6 shadow-sm">
-                                <h4 className="text-[#1E1B4B] font-bold text-[18px] sm:text-[20px] mb-1.5 font-sans">
+                                <h4 className="text-[#19092D] font-normal text-[18px] sm:text-[20px] mb-1.5 font-sans">
                                     Our Goals
                                 </h4>
                                 <p className="text-slate-500 text-sm sm:text-[15px] font-normal leading-relaxed font-sans">
@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
                     </div>
 
                     {/* RIGHT COLUMN */}
-                    <div className="lg:col-span-7 w-full flex flex-col justify-start text-left pl-0 lg:pl-6">
+                    <div className="lg:col-span-7 w-full flex flex-col justify-start text-left pl-0 lg:pl-6 h-full">
 
                         {/* Top Text Content */}
                         <div className="w-full">
@@ -63,13 +63,11 @@ export default function WhyChooseUs() {
                             {/* Divider Line */}
                             <div className="border-b border-slate-200 pb-5 mb-5" />
 
-                            <p className="text-slate-400 text-sm sm:text-[15px] font-normal leading-relaxed mb-6 font-sans">
-                                Blandit massa enim nec dui nunc mattis enim ut. Tortor consequat id porta nibh venenatis cras. Duis at consectetur lorem donec. Euismod lacinia at quis risus sed vulputate odio ut enim. Mattis enim ut tellus elementum sagittis vitae et.
-                            </p>
+                           
                         </div>
 
                         {/* Bottom Image Showcase */}
-                        <div className="w-full aspect-[16/8] rounded-[20px] overflow-hidden shadow-lg shadow-slate-100 border border-slate-100">
+                        <div className="w-full flex-1 min-h-[300px] rounded-[20px] overflow-hidden shadow-lg shadow-slate-100 border border-slate-100">
                             <img
                                 src="/portfolio-media/WhyChooseUs.jpg"
                                 alt="Our Collaborative Workspace"

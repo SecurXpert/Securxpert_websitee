@@ -157,7 +157,7 @@ export default async function ServicePage({ params }) {
               return (
                 <div
                   key={idx}
-                  className="p-6 sm:p-6 rounded-3xl border border-slate-200/60 shadow-[0_4px_25px_rgba(0,0,0,0.015)] flex flex-col items-start space-y-4 hover:shadow-[0_12px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 group"
+                  className="p-6 sm:p-6 rounded-3xl border border-slate-200/60 border-b-4 border-b-transparent hover:border-b-[#4F46E5] shadow-[0_4px_25px_rgba(0,0,0,0.015)] flex flex-col items-start space-y-4 hover:shadow-[0_12px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 group"
                   style={{ background: "linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%)" }}
                 >
                   <div className="text-[#4F46E5] group-hover:scale-110 transition-transform duration-300">

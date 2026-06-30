@@ -96,7 +96,7 @@ export default function AboutUs() {
         
         {/* HEADER BLOCK */}
         <div className="text-left w-full mb-8 select-none">
-          <span className="text-xs sm:text-sm font-bold text-[#3D60E9] tracking-[0.25em] uppercase block mb-4">
+          <span className="text-xs sm:text-[13px] font-bold text-[#19092D] tracking-[0.25em] uppercase block mb-4">
             About Us
           </span>
           <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold text-[#1E1B4B] tracking-tight leading-tight max-w-4xl font-sans uppercase">

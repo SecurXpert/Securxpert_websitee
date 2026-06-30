@@ -84,12 +84,12 @@ export default function BPOServices() {
         </div>
 
         {/* SERVICES GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
 
           {services.map((item, index) => (
             <div
               key={index}
-              className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-6 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-transparent hover:border-transparent hover:bg-[#3D62EB] group z-10"
+              className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-5 sm:p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-transparent hover:border-transparent hover:bg-[#3D62EB] group z-10"
             >
 
               {/* Hover Background Image Overlay */}
@@ -106,15 +106,15 @@ export default function BPOServices() {
                 <div className="flex-shrink-0">
                   {item.isCustomIcon ? (
                     item.iconType === "insurance" ? (
-                      <svg className="w-12 h-12 text-[#3D62EB] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <svg className="w-10 h-10 text-[#3D62EB] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                       </svg>
                     ) : item.iconType === "startups" ? (
-                      <svg className="w-12 h-12 text-[#3D62EB] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <svg className="w-10 h-10 text-[#3D62EB] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 8.41a14.98 14.98 0 00-6.16 12.12A14.98 14.98 0 0015.59 14.37zm0 0a6 6 0 01-7.38-5.84h4.8m2.58 5.84H21M3 21l3-3m0 0l-1.5-1.5M6 18l1.5 1.5" />
                       </svg>
                     ) : (
-                      <svg className="w-12 h-12 text-[#3D62EB] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <svg className="w-10 h-10 text-[#3D62EB] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21V9.75M12 9.75a3.75 3.75 0 117.5 0c0 2.072-1.68 3.75-3.75 3.75H12m0-3.75a3.75 3.75 0 10-7.5 0c0 2.072 1.68 3.75 3.75 3.75H12M12 5.25a.75.75 0 110-1.5.75.75 0 010 1.5z" />
                       </svg>
                     )
@@ -122,7 +122,7 @@ export default function BPOServices() {
                     <img
                       src={item.icon}
                       alt={item.title}
-                      className="w-12 h-12 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                      className="w-10 h-10 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
                     />
                   )}
                 </div>

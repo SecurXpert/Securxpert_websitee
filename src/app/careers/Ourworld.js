@@ -1,8 +1,8 @@
 "use client";
- 
+
 import React, { useState } from "react";
 import Image from "next/image";
- 
+
 const testimonials = [
   {
     id: 1,
@@ -53,13 +53,13 @@ const testimonials = [
     linkedin: "https://linkedin.com/",
   },
 ];
- 
+
 export default function Ourworld() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [fadeState, setFadeState] = useState("in"); // "in" | "out"
- 
+
   const active = testimonials[activeIndex];
- 
+
   // Helper to get the next 3 indices for the vertical preview strips
   const getNextIndices = () => {
     return [
@@ -68,9 +68,9 @@ export default function Ourworld() {
       (activeIndex + 3) % testimonials.length,
     ];
   };
- 
+
   const nextIndices = getNextIndices();
- 
+
   const triggerTransition = (newIndex) => {
     if (newIndex === activeIndex) return;
     setFadeState("out");
@@ -82,36 +82,35 @@ export default function Ourworld() {
       }, 50);
     }, 300);
   };
- 
+
   const handleNext = () => {
     if (activeIndex >= testimonials.length - 1) return;
     const nextIdx = activeIndex + 1;
     triggerTransition(nextIdx);
   };
- 
+
   const handlePrev = () => {
     if (activeIndex <= 0) return;
     const prevIdx = activeIndex - 1;
     triggerTransition(prevIdx);
   };
- 
+
   const handleSelect = (index) => {
     triggerTransition(index);
   };
- 
+
   return (
-    <section className="relative w-full py-14 bg-[#F7F9FC] text-slate-800 overflow-hidden select-none">
+    <section className="relative w-full py-10 bg-[#F7F9FC] text-slate-800 overflow-hidden select-none">
       <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-4 md:px-20">
-       
+
         {/* Floating Left Button */}
         <button
           onClick={handlePrev}
           disabled={activeIndex === 0}
-          className={`absolute left-0 lg:-left-4 xl:left-0 top-1/2 -translate-y-1/2 z-50 hidden lg:flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 bg-white ${
-            activeIndex === 0 
-              ? "border-slate-200 text-slate-300 cursor-not-allowed" 
+          className={`absolute left-0 lg:-left-4 xl:left-0 top-1/2 -translate-y-1/2 z-50 hidden lg:flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 bg-white ${activeIndex === 0
+              ? "border-slate-200 text-slate-300 cursor-not-allowed"
               : "border-[#100D35] text-[#100D35] hover:bg-[#100D35] hover:text-white shadow-md hover:scale-105"
-          }`}
+            }`}
         >
           <svg className="w-5 h-5 -ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -122,11 +121,10 @@ export default function Ourworld() {
         <button
           onClick={handleNext}
           disabled={activeIndex === testimonials.length - 1}
-          className={`absolute right-0 lg:-right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 bg-white ${
-            activeIndex === testimonials.length - 1 
-              ? "border-slate-200 text-slate-300 cursor-not-allowed" 
+          className={`absolute right-0 lg:-right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 bg-white ${activeIndex === testimonials.length - 1
+              ? "border-slate-200 text-slate-300 cursor-not-allowed"
               : "border-[#100D35] text-[#100D35] hover:bg-[#100D35] hover:text-white shadow-md hover:scale-105"
-          }`}
+            }`}
         >
           <svg className="w-5 h-5 -mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -135,44 +133,41 @@ export default function Ourworld() {
 
         {/* Section Header */}
         <div className="text-center mb-8 md:mb-6">
-          <h2 className="text-[#100D35] text-4xl md:text-5xl font-semibold font-sans tracking-tight mb-3">
+          <h2 className="text-[#090808] text-4xl md:text-5xl font-semibold font-sans tracking-tight mb-3">
             Don't just take our word for it!
           </h2>
           <p className="text-slate-500 text-lg md:text-xl font-normal font-sans">
             See the feedback from your teammates.
           </p>
         </div>
- 
+
         {/* Main Content Area: Active Card & Preview Strips */}
         <div className="relative flex flex-col lg:flex-row items-center gap-3 w-full mt-4">
-         
+
           {/* Card Container (Left and Center - Increased to 82% width) */}
           <div className="relative w-full lg:w-[82%] my-9 shrink-0 lg:translate-x-8 xl:translate-x-12 2xl:translate-x-60 z-10">
-           
+
             {/* The White Box (Underneath the photo) */}
             <div className="w-[800px] xl:w-[800px] 2xl:w-[800px] bg-white  shadow-sm border border-slate-100/80 p-8 md:p-12 lg:py-8 lg:pr-10 lg:pl-[310px] min-h-[410px] flex flex-col justify-between">
-             
+
               <div className="flex items-start gap-6 pt-2 xl:-translate-x-14 2xl:translate-x-0">
                 {/* Large Quote Mark Image */}
                 <div className="flex-shrink-0 mt-1">
-                  <Image
+                  <img 
                     src="/Carrers/ourworld/quotes.png"
                     alt="Quote Mark"
-                    width={46}
-                    height={50}
-                    className="opacity-20"
+                    className="w-[46px] h-[50px] opacity-30"        
                   />
                 </div>
-                
+
                 {/* Right Side Content Container */}
                 <div className="flex flex-col">
                   {/* Quote Text Container */}
                   <div
-                    className={`transition-all ease-in-out mb-4 ${
-                      fadeState === "in" ? "opacity-100 translate-x-0 duration-300" :
-                      fadeState === "out" ? "opacity-0 -translate-x-12 duration-300" :
-                      "opacity-0 translate-x-12 duration-0"
-                    }`}
+                    className={`transition-all ease-in-out mb-4 ${fadeState === "in" ? "opacity-100 translate-x-0 duration-300" :
+                        fadeState === "out" ? "opacity-0 -translate-x-12 duration-300" :
+                          "opacity-0 translate-x-12 duration-0"
+                      }`}
                   >
                     <p className="text-[#3A3C42] text-[15px] md:text-[18px] leading-[1.6]  font-normal">
                       {active.quote}
@@ -181,11 +176,10 @@ export default function Ourworld() {
 
                   {/* Author & Social Info Container */}
                   <div
-                    className={`flex flex-col gap-4 transition-all ease-in-out ${
-                      fadeState === "in" ? "opacity-100 translate-x-0 duration-300 delay-75" :
-                      fadeState === "out" ? "opacity-0 -translate-x-12 duration-300" :
-                      "opacity-0 translate-x-12 duration-0"
-                    }`}
+                    className={`flex flex-col gap-4 transition-all ease-in-out ${fadeState === "in" ? "opacity-100 translate-x-0 duration-300 delay-75" :
+                        fadeState === "out" ? "opacity-0 -translate-x-12 duration-300" :
+                          "opacity-0 translate-x-12 duration-0"
+                      }`}
                   >
                     <div>
                       <h4 className="text-[#100D35] text-[15px] md:text-[16px] font-bold leading-tight font-sans">
@@ -195,7 +189,7 @@ export default function Ourworld() {
                         {active.role}
                       </p>
                     </div>
-                    
+
                     {/* LinkedIn Link */}
                     <a
                       href={active.linkedin}
@@ -212,24 +206,23 @@ export default function Ourworld() {
                 </div>
               </div>
             </div>
- 
+
             {/* Overlapping Photo (Floats on the left and overlaps on desktop) */}
             <div className="w-[90%] mx-auto md:w-[260px] lg:w-[290px] xl:w-[300px] h-[360px] md:h-[420px] lg:h-[350px] lg:absolute lg:left-[-100px] lg:top-[50%] lg:-translate-y-[50%] overflow-hidden shadow-2xl z-10 mb-4 lg:mb-0">
               <img
                 src={active.image}
                 alt={active.name}
-                className={`w-full h-full object-cover transition-all ease-in-out ${
-                  fadeState === "in" ? "opacity-100 translate-x-0 duration-500" : 
-                  fadeState === "out" ? "opacity-0 -translate-x-full duration-300" : 
-                  "opacity-0 translate-x-full duration-0"
-                }`}
+                className={`w-full h-full object-cover transition-all ease-in-out ${fadeState === "in" ? "opacity-100 translate-x-0 duration-500" :
+                    fadeState === "out" ? "opacity-0 -translate-x-full duration-300" :
+                      "opacity-0 translate-x-full duration-0"
+                  }`}
               />
             </div>
- 
+
           </div>
- 
+
           {/* Preview Strips (Right Side, Desktop Only - Matches the height of the white box) */}
-          <div className="hidden lg:flex w-[18%] gap-1 h-[390px] items-stretch self-center shrink-0 xl:translate-x-7 2xl:translate-x-[-40px]"> 
+          <div className="hidden lg:flex w-[18%] gap-1 h-[390px] items-stretch self-center shrink-0 xl:translate-x-7 2xl:translate-x-[-40px]">
             {nextIndices.map((idx) => {
               const item = testimonials[idx];
               return (
@@ -249,7 +242,7 @@ export default function Ourworld() {
               );
             })}
           </div>
- 
+
         </div>
         {/* Bottom Pagination & Navigation */}
         <div className="flex items-center justify-between mt-0 w-full px-2">
@@ -270,10 +263,10 @@ export default function Ourworld() {
           </div>
 
         </div>
- 
+
       </div>
     </section>
   );
 }
- 
- 
+
+

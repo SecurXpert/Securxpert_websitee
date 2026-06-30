@@ -64,7 +64,7 @@ export default function TeamMembers() {
         <div className="flex justify-center">
           <Link
             href="/team"
-            className="bg-[#3D62EB] hover:bg-slate-50 text-white font-medium px-8 py-2.5 rounded-[4px] text-md shadow-lg transition-all duration-300 active:scale-95 flex items-center gap-2 group relative z-10"
+            className="inline-flex bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-8 py-3 rounded-[4px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 items-center justify-center gap-2 group relative z-10"
           >
             View All
             <svg

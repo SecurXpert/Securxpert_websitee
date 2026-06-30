@@ -1,5 +1,5 @@
 import React from "react";
-import { AdminCreateJob } from "../../../Blogs/AdminCreateJob";
+import { AdminCreateJob } from "../../../blogs/AdminCreateJob";
 
 export const metadata = {
   title: "Create Blog - SecurXpert",

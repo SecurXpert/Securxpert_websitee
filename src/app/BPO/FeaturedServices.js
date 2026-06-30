@@ -31,7 +31,7 @@ export default function FeaturedServices() {
             <img
                 src="/BPO/FeauturedServices/shape.svg"
                 alt="Background Shape"
-                className="absolute right-[-10rem] top-0 h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block select-none opacity-90"
+                className="absolute right-[-10rem] top-0 h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block select-none opacity-100"
             />
 
             {/* MAIN CONTAINER */}
@@ -48,7 +48,7 @@ export default function FeaturedServices() {
                             <img
                                 src="/BPO/FeauturedServices/Vector.svg"
                                 alt="Star Background"
-                                className="absolute -top-3 -left-4 w-12 h-12 opacity-85 pointer-events-none select-none z-0"
+                                className="absolute -top-3 -left-4 w-12 h-12 opacity-95 pointer-events-none select-none z-0"
                             />
 
                             <span className="relative z-10 text-[#3D62EB] text-sm font-semibold tracking-[2px] uppercase font-sans">
@@ -65,14 +65,14 @@ export default function FeaturedServices() {
                     </div>
 
                     {/* RIGHT CARDS */}
-                    <div className="lg:col-span-6 lg:col-start-6 lg:translate-y-10">
+                    <div className="lg:col-span-6 lg:col-start-6 lg:translate-y-8">
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                             {services.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-4 aspect-square transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-[#F1EEEE] hover:border-transparent hover:bg-[#3D62EB] group z-10"
+                                    className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-4  transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-[#F1EEEE] hover:border-transparent hover:bg-[#3D62EB] group z-10"
                                 >
                                     {/* Hover Background Image Overlay */}
                                     <img
@@ -88,7 +88,7 @@ export default function FeaturedServices() {
                                             <img
                                                 src={item.icon}
                                                 alt={item.title}
-                                                className="w-10 h-10 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                                                className="w-8 h-8 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
                                             />
                                         </div>
 

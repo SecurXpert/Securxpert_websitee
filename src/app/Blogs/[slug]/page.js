@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }) {
                             {/* Back Button */}
                             <div className="mb-8 sm:mb-12">
                                 <Link
-                                    href="/Blogs"
+                                    href="/blogs"
                                     className="inline-flex items-center justify-center bg-white text-[#2541C5] font-bold px-8 py-2.5 rounded-full text-[13px] hover:scale-105 transition-transform duration-200 shadow-sm"
                                 >
                                     Back

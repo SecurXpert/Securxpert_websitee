@@ -10,8 +10,33 @@
     "trailingSlash": true,
     "redirects": [
       {
-        "source": "/blogs/:slug*",
-        "destination": "/Blogs/:slug*",
+        "source": "/AboutUs",
+        "destination": "/about-us",
+        "type": 301
+      },
+      {
+        "source": "/AboutUs/:slug*",
+        "destination": "/about-us/:slug*",
+        "type": 301
+      },
+      {
+        "source": "/Carrers",
+        "destination": "/careers",
+        "type": 301
+      },
+      {
+        "source": "/Carrers/:slug*",
+        "destination": "/careers/:slug*",
+        "type": 301
+      },
+      {
+        "source": "/AboutUs/:slug*",
+        "destination": "/about-us/:slug*",
+        "type": 301
+      },
+      {
+        "source": "/Blogs/:slug*", 
+        "destination": "/blogs/:slug*",
         "type": 301
       },
       {

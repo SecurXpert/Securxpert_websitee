@@ -51,7 +51,7 @@ export default async function PositionDetail({ params }) {
             </h1>
             
             <Link
-              href="/Carrers"
+              href="/careers"
               className="inline-flex items-center justify-center gap-1.5 bg-white text-blue-700 hover:text-blue-800 hover:bg-slate-50 font-semibold px-10 py-3 rounded-full shadow-md transition-all duration-200 active:scale-95 shrink-0"
             >
               <LuChevronLeft className="w-6 h-6" /> Back
@@ -277,7 +277,7 @@ export default async function PositionDetail({ params }) {
                 
                 <div className="flex justify-end mt-2">
                   <Link
-                    href={`/Carrers/${slugify(pos.title)}`}
+                    href={`/careers/${slugify(pos.title)}`}
                     className="text-white text-xs sm:text-sm font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg hover:opacity-90"
                     style={{ backgroundColor: "#364BC0" }}
                   >

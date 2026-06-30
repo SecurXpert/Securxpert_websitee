@@ -33,20 +33,20 @@ export default function Cta() {
         {/* LEFT CONTENT */}
         <div className="flex-1 text-left relative z-10 max-w-2xl">
           <h3 className="text-white text-3xl sm:text-4xl md:text-[38px] leading-[1.2] font-bold tracking-[-1px] font-inter mb-4">
-            Let's discuss how can we help make your Business better
+            Let's discuss how can we help make your Business better 
           </h3>
           <p className="text-white/85 text-sm sm:text-base leading-relaxed font-normal">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy
+            Optimize your business operations with expert BPO services. From customer support to back-office management, we help improve productivity while reducing operational costs
           </p>
         </div>
  
         {/* RIGHT BUTTON */} 
-        <div className="relative z-10 flex-shrink-0">
+        <div className="relative z-10 flex-shrink-0"> 
           <Link
             href="/contact"
-            className="inline-block bg-white hover:bg-slate-70 text-[#3D62EB] font-medium text-sm sm:text-base px-8 py-3.5 rounded-[6px] shadow-lg active:scale-95 transition-all duration-150 text-center font-inter"
+            className="inline-block bg-white hover:bg-blue-600 text-[#3D62EB] hover:text-white font-medium text-[15px] sm:text-base px-8 py-3.5 rounded-[6px] shadow-lg hover:shadow-xl hover:-translate-y-0.5 hover:scale-105 transition-all active:scale-95 duration-300 text-center font-inter"
           >
-            Let's Together Quotes
+            Request a Custom Quote
           </Link>
         </div>
 

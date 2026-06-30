@@ -31,7 +31,7 @@ export default function Workplace() {
   ];
 
   return (
-    <section className="relative w-full py-16 md:py-20 overflow-visible bg-[#F8FAFC] text-slate-600">
+    <section className="relative w-full py-16 md:py-14 overflow-visible bg-[#F8FAFC] text-slate-600">
       {/* Background Accent Glows */}
       <div className="absolute top-1/4 right-0 w-90 h-72 bg-blue-100/30 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-72 h-72 bg-indigo-100/30 rounded-full blur-3xl pointer-events-none" />
@@ -39,7 +39,7 @@ export default function Workplace() {
       <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
         {/* Header Section */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-[#1E1B4B] text-center text-5xl font-normal font-sans">
+          <h2 className="text-[#090808] text-center text-5xl font-normal font-sans">
             What make Securxpert a great place to work?
           </h2>
         </div>
@@ -63,7 +63,7 @@ export default function Workplace() {
 
               {/* Text Container */}
               <div className="flex flex-col flex-grow px-1">
-                <h3 className="text-lg sm:text-xl md:text-xl font-medium text-[#1E1B4B] tracking-tight mb-3 font-sans">
+                <h3 className="text-lg sm:text-xl md:text-xl font-medium text-[#090808] tracking-tight mb-3 font-sans">
                   {card.title}
                 </h3>
                 <p className="text-slate-600 text-sm md:text-base leading-relaxed opacity-95">

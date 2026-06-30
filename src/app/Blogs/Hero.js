@@ -27,7 +27,7 @@ export default function Hero() {
                     100% { transform: translateX(-33.33%); }
                 }
                 .animate-marquee {
-                    animation: marquee 28s linear infinite;
+                    animation: marquee 28s linear infinite; 
                 }
             `}</style>
 
@@ -38,7 +38,7 @@ export default function Hero() {
 
                     {/* Clipped Background Image Graphic */}
                     <img
-                        src="/Blogs/hero/blogs-herobg.png" 
+                        src="/Blogs/hero/blogs-herobg.png"
                         alt="Curved Blog Hero Background"
                         className="hidden md:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-6 md:mt-6 rounded-[24px]"
                     />
@@ -90,7 +90,7 @@ export default function Hero() {
                                             className="w-full h-full object-cover "
                                         />
                                         {/* Category Name Pill inside Glass container */}
-                                        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/80  px-5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-black text-slate-800 tracking-[0.12em] shadow-sm select-none">
+                                        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/80  px-5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-black text-slate-800 tracking-[0.12em] whitespace-nowrap shadow-sm select-none">
                                             {item.label}
                                         </div>
                                     </div>

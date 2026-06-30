@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative w-full overflow-hidden py-12 text-slate-800">
+    <section className="relative w-full overflow-hidden py-14 text-slate-800">
       
       {/* Floating Sparkle Left */}
       <img
@@ -22,7 +22,7 @@ export default function WhyChooseUs() {
           <div className="lg:col-span-6 text-left relative z-10">
             
             {/* BADGE */}
-            <div className="relative inline-flex items-center mb-4 pt-3">
+            <div className="relative inline-flex items-center mb-6 pt-3">
               <span className="relative z-10 text-[#3D62EB] text-sm font-semibold tracking-[1px] uppercase font-sans">
                 Why Choose Us
                 {/* Soft highlight bottom pill bar */}
@@ -31,14 +31,11 @@ export default function WhyChooseUs() {
             </div>
 
             {/* HEADING */}
-            <h3 className="text-[#100D35] text-3xl sm:text-4xl lg:text-[40px] leading-[1.2] font-bold tracking-[-1px] font-inter mb-4">
+            <h3 className="text-[#100D35] text-3xl sm:text-4xl lg:text-[40px] leading-[1.2] font-bold tracking-[-1px] font-inter mb-6">
               A Consulting Partner That Shows Up Like an Extension of Your Team 
             </h3>
 
-            {/* INTRO PARAGRAPH */}
-            <p className="text-[#555555] text-sm sm:text-base leading-relaxed mb-5 font-normal max-w-xl">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy
-            </p>
+            
 
             {/* TWO FEATURE LISTS */}   
             <div className="space-y-4 mb-3 mt-2">
@@ -83,8 +80,8 @@ export default function WhyChooseUs() {
 
             {/* CONTACT BUTTON */}
             <Link
-              href="/contact"
-              className="inline-block bg-[#3D62EB] hover:bg-[#3D62EB] text-white font-medium px-6 py-3 rounded-[4px] text-md shadow-md hover:shadow-lg active:scale-95 transition-all duration-150 text-center"
+              href="/contact" 
+              className="inline-block bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-6 py-3 rounded-[4px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 text-center"
             >
               Contact Us
             </Link>

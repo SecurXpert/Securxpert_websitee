@@ -27,7 +27,7 @@ export default function OurOffices() {
   ];
 
   return (
-    <section className="py-20 bg-white select-none">
+    <section className="py-20 bg-[#FFFFFF] select-none">
       <div className="max-w-[1100px] mx-auto px-6">
         
         {/* Header Section */}
@@ -41,14 +41,14 @@ export default function OurOffices() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-20">
           {offices.map((office) => (
             <div 
               key={office.id} 
-              className="bg-white p-8 sm:p-10 rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-slate-50 flex flex-col h-full"
+              className="bg-[#FFFFFF4D] p-4 sm:p-6 rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-slate-50 flex flex-col h-full"
             >
               {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-[#F0F4FF] flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-xl bg-[#F0F4FF] flex items-center justify-center mb-3">
                 <svg className="w-6 h-6 text-[#3D62EB]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -56,12 +56,12 @@ export default function OurOffices() {
               </div>
 
               {/* Title */}
-              <h3 className="text-[22px] font-bold text-[#2C2F8D] mb-6">
+              <h3 className="text-[22px] font-bold text-[#2C2F8D] mb-3">
                 {office.title}
               </h3>
 
               {/* Details Wrapper */}
-              <div className="flex flex-col gap-4 flex-grow mb-8 border-t border-slate-100 pt-6">
+              <div className="flex flex-col gap-4 flex-grow mb-3 border-t border-slate-100 pt-3">
                 <p className="text-[14px] text-[#64748B] leading-relaxed">
                   {office.address}
                 </p>

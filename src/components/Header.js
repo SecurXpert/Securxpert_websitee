@@ -59,12 +59,12 @@ export default function Header() {
     cleanPath === "/bpo" ||
     cleanPath === "/portfolio" ||
     cleanPath === "/contact" ||
-    cleanPath === "/blogs" || cleanPath === "/Blogs" ||
-    cleanPath.startsWith("/blogs/") || cleanPath.startsWith("/Blogs/") ||
-    cleanPath === "/carrers" ||
-    cleanPath.startsWith("/carrers/");
+    cleanPath === "/blogs" ||
+    cleanPath.startsWith("/blogs/") ||
+    cleanPath === "/careers" ||
+    cleanPath.startsWith("/careers/");
 
-  const isDarkBg = (cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/") || cleanPath.startsWith("/carrers/")) && !scrolled;
+  const isDarkBg = (cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/") || cleanPath.startsWith("/careers/")) && !scrolled;
 
   const getDesktopLinkClass = (path) => {
     const cleanLinkPath = path.toLowerCase().replace(/\/$/, "");
@@ -115,7 +115,7 @@ export default function Header() {
             <img
               src="/securxpertslogo.png"
               alt="SecurXpert Logo"
-              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/") || cleanPath.startsWith("/carrers/")) && !scrolled && !mobileMenuOpen ? "brightness-0 invert" : ""
+              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/") || cleanPath.startsWith("/careers/")) && !scrolled && !mobileMenuOpen ? "brightness-0 invert" : ""
                 }`}
             />
           </Link>
@@ -231,10 +231,6 @@ export default function Header() {
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
               <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "products" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
-                <Link href="/products/grabjobz" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
-                  GrabJobz
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-                </Link>
                 <Link href="/products/lens-light" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Lens & Light Media
                   <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
@@ -275,21 +271,25 @@ export default function Header() {
                   shrava360
                   <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
+                <Link href="/products/grabjobz" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                  GrabJobz
+                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </Link>
               </div>
             </div>
 
             {/* BPO */}
             <Link
-              href="/BPO"
-              className={getDesktopLinkClass("/BPO")}
+              href="/bpo"
+              className={getDesktopLinkClass("/bpo")}
             >
               BPO
             </Link>
 
             {/* Insights / Blogs */}
             <Link
-              href="/Blogs"
-              className={getDesktopLinkClass("/Blogs")}
+              href="/blogs"
+              className={getDesktopLinkClass("/blogs")}
             >
               Blogs
             </Link>
@@ -301,8 +301,8 @@ export default function Header() {
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <Link
-                href="/AboutUs"
-                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/aboutus" || cleanPath.startsWith("/aboutus/") || openDropdown === "aboutus"
+                href="/about-us"
+                className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/about-us" || cleanPath.startsWith("/about-us/") || openDropdown === "aboutus"
                   ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
                   : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
@@ -326,11 +326,11 @@ export default function Header() {
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
               <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-48 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "aboutus" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
-                <Link href="/AboutUs/team" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                <Link href="/about-us/team" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Our Team
                   <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
-                <Link href="/AboutUs/founders" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                <Link href="/about-us/founders" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Founders
                   <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
@@ -339,8 +339,8 @@ export default function Header() {
 
             {/* Careers */}
             <Link
-              href="/Carrers"
-              className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/carrers" || cleanPath.startsWith("/carrers/")
+              href="/careers"
+              className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/careers" || cleanPath.startsWith("/careers/")
                 ? isDarkBg
                   ? "text-white border-white font-bold"
                   : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
@@ -445,12 +445,6 @@ export default function Header() {
               </Link>
               <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
                 <Link
-                  href="/products/grabjobz"
-                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  GrabJobz
-                </Link>
-                <Link
                   href="/products/lens-light"
                   className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
@@ -475,13 +469,19 @@ export default function Header() {
                 <Link href="/products/logsphere" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">LogSphere</Link>
                 <Link href="/products/onestep-medi" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Onestep Medi</Link>
                 <Link href="/products/shrava360" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">shrava360</Link>
+                <Link
+                  href="/products/grabjobz"
+                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                >
+                  GrabJobz
+                </Link>
               </div>
             </div>
 
             {/* BPO */}
             <Link
-              href="/BPO"
-              className={getMobileLinkClass("/BPO")}
+              href="/bpo"
+              className={getMobileLinkClass("/bpo")}
             >
               BPO
             </Link>
@@ -497,20 +497,20 @@ export default function Header() {
             {/* About Us with Mobile Sub-options */}
             <div className="flex flex-col">
               <Link
-                href="/AboutUs"
-                className={getMobileLinkClass("/AboutUs")}
+                href="/about-us"
+                className={getMobileLinkClass("/about-us")}
               >
                 About Us
               </Link>
               <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
                 <Link
-                  href="/AboutUs/team"
+                  href="/about-us/team"
                   className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
                   Our Team
                 </Link>
                 <Link
-                  href="/AboutUs/founders"
+                  href="/about-us/founders"
                   className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
                 >
                   Founders
@@ -520,8 +520,8 @@ export default function Header() {
 
             {/* Careers */}
             <Link
-              href="/Carrers"
-              className={getMobileLinkClass("/Carrers")}
+              href="/careers"
+              className={getMobileLinkClass("/careers")}
             >
               Careers
             </Link>

@@ -7,7 +7,7 @@ import Vision from "./Vision";
 import OurValues from "./OurValues";
 import AboutCta from "./Cta";
 import OurTeam from "../OurTeam";
-import Appointment from "../BPO/Appointment";
+import Appointment from "../bpo/Appointment";
 import ServicesCta from "../services/Cta";
 import OurOffices from "../contact/OurOffices";
 

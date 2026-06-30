@@ -25,12 +25,12 @@ export default function Positions() {
   const displayedPositions = filteredPositions.slice(0, visibleCount);
 
   return (
-    <section className="relative w-full py-14 bg-[#F8FAFC] text-slate-800 border-t border-slate-100">
+    <section id="positions" className="relative w-full py-14 bg-[#F8FAFC] text-slate-800 border-t border-slate-100">
       <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20 pt-8">
         
         {/* Main Section Header */}
         <div className="text-center mb-16 max-w-4xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-regular text-[#100D35] tracking-tight leading-tight font-sans">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-regular text-[#090808] tracking-tight leading-tight font-sans">
             We have 17 open positions now!
           </h2>
         </div>
@@ -101,7 +101,7 @@ export default function Positions() {
                   </div>
                   <div className="flex shrink-0 self-end">
                     <Link
-                      href={`/Carrers/${slugify(pos.title)}`}
+                      href={`/careers/${slugify(pos.title)}`}
                       className="text-white text-xs md:text-sm font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg hover:opacity-90"
                       style={{ backgroundColor: "#364BC0" }}
                     >

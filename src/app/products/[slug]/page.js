@@ -5,7 +5,7 @@ import { LuChevronLeft, LuCircleCheck } from "react-icons/lu";
 
 import grabjobz from "@/utils/products/grabjobz";
 import lensLight from "@/utils/products/lens-light";
-import devtalent from "@/utils/products/devtalent";
+import devtalent from "@/utils/products/devtalent";                                           
 import vishan from "@/utils/products/vishan";
 import arogyaNarayan from "@/utils/products/arogya-narayan";
 import hisphere from "@/utils/products/hisphere";
@@ -15,9 +15,9 @@ import logsphere from "@/utils/products/logsphere";
 import onestepMedi from "@/utils/products/onestep-medi";
 import shrava360 from "@/utils/products/shrava360";
 
-import BPOServices from "@/app/BPO/services";
+
 import ProductPageFAQ from "./ProductPageFAQ";
-import Appointment from "@/app/BPO/Appointment";
+import Appointment from "@/app/bpo/Appointment";
 import VideoPlayer from "../VideoPlayer";
 
 const productsData = {
@@ -47,7 +47,6 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   return [
-    { slug: "grabjobz" },
     { slug: "lens-light" },
     { slug: "devtalent" },
     { slug: "vishan" },
@@ -57,7 +56,8 @@ export async function generateStaticParams() {
     { slug: "lauratek-2-0" },
     { slug: "logsphere" },
     { slug: "onestep-medi" },
-    { slug: "shrava360" }
+    { slug: "shrava360" },
+    { slug: "grabjobz" }
   ];
 }
 
@@ -86,8 +86,8 @@ export default async function ProductDetailPage({ params }) {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex items-center gap-6">
               {/* Product Logo Box */}
-              <div className="w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-2xl shadow-lg flex items-center justify-center p-3 shrink-0">
-                <img src={product.logo} alt={`${product.title} Logo`} className="w-full h-full object-contain drop-shadow-sm" />
+              <div className="w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-2xl shadow-lg flex items-center justify-center p-0 shrink-0">
+                <img src={product.logo} alt={`${product.title} Logo`} className="w-full h-full object-contain" />
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white font-sans">
                 {product.title}

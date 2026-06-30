@@ -114,7 +114,7 @@ export default function CaseStudies() {
         <div className="flex justify-center mb-20">
           <Link
             href="/portfolio"
-            className="bg-[#3D62EB] hover:bg-blue-700 text-white font-medium  px-8 py-3 rounded-[6px] text-md shadow-md transition-all active:scale-95"
+            className="inline-block bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-8 py-3.5 rounded-[6px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 text-center"
           >
             See All Projects
           </Link>

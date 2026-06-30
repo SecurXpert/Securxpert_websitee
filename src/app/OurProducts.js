@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-
+import Link from "next/link";
 const productsData = [
     {
         id: 0,
@@ -11,7 +11,8 @@ const productsData = [
         logoImage: "/Home/OurProducts/Grabjobz2.png",
         logoBg: "bg-white",
         btnColor: "bg-[#0058FE] hover:bg-[#0058FE]",
-        dotColor: "#005BFF"
+        dotColor: "#005BFF",
+        slug: "grabjobz"
     },
     {
         id: 1,
@@ -21,7 +22,8 @@ const productsData = [
         logoImage: "/Home/OurProducts/llmedia (2).png",
         logoBg: "bg-black",
         btnColor: "bg-[#C69857] hover:bg-[#C69857]",
-        dotColor: "#C69857"
+        dotColor: "#C69857",
+        slug: "lens-light"
     },
     {
         id: 2,
@@ -31,7 +33,8 @@ const productsData = [
         logoImage: "/Home/OurProducts/Vishan2 (2).png",
         logoBg: "bg-white",
         btnColor: "bg-[#FB8906] hover:bg-[#FB8906]",
-        dotColor: "#FB8906"
+        dotColor: "#FB8906",
+        slug: "vishan"
     },
     {
         id: 3,
@@ -41,7 +44,8 @@ const productsData = [
         logoImage: "/Home/OurProducts/Devtalent2 (2).png",
         logoBg: "bg-white",
         btnColor: "bg-[#7E21A9] hover:bg-[#7E21A9]",
-        dotColor: "#7E21A9"
+        dotColor: "#7E21A9",
+        slug: "devtalent"
     }
 ];
 
@@ -126,11 +130,20 @@ export default function OurProducts() {
                     <p className="text-white/80 text-base md:text-lg mb-8 leading-relaxed font-light max-w-lg min-h-[80px]">
                         {activeProduct.description}
                     </p>
-                    <button
-                        className={`text-white font-medium px-8 py-4 rounded-xl text-base shadow-md transition-all active:scale-95 duration-150 cursor-pointer ${activeProduct.btnColor}`}
-                    >
-                        Explore Now
-                    </button>
+                    <div className="flex items-center gap-4">
+                        <Link
+                            href={`/products/${activeProduct.slug}`}
+                            className={`text-white font-medium px-8 py-4 rounded-xl text-base shadow-md transition-all active:scale-95 duration-150 cursor-pointer text-center inline-block ${activeProduct.btnColor}`}
+                        >
+                            Explore Now
+                        </Link>
+                        <Link
+                            href="/products"
+                            className="text-white font-medium px-8 py-4 rounded-xl text-base transition-all active:scale-95 duration-150 cursor-pointer bg-transparent border border-white/40 hover:bg-white/10 text-center inline-block"
+                        >
+                            View All Products
+                        </Link>
+                    </div>
                 </div>
 
                 {/* RIGHT CONTENT (Stack of Overlapping Interaction Cards) */}

@@ -24,7 +24,7 @@ export default function Cta() {
 
   return (
     <section 
-      className="w-full relative overflow-hidden bg-cover bg-center py-16 sm:py-20 lg:py-24"
+      className="w-full relative overflow-hidden bg-cover bg-center py-16 sm:py-20 lg:py-18"
       style={{
         backgroundImage: "url('/AboutUs/cta.png')",
       }}

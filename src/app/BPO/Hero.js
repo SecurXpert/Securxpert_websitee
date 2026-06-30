@@ -65,33 +65,33 @@ export default function BPOHero() {
                     <div className="relative z-10 w-full lg:w-1/2 flex flex-col items-start text-left space-y-6 lg:space-y-7 pt-2 sm:pt-4 lg:pt-6 xl:pt-8 pb-12 lg:pb-20 max-w-5xl">
 
                         {/* Category Pill Button */}
-                        <div className="relative z-10 flex justify-start mb-1 pt-6 lg:pt-8 xl:pt-12">
+                        <div className="relative z-10 flex justify-start mb-1 pt-6 lg:pt-8 xl:pt-10">
                             <span className="px-4 py-1 rounded-lg text-sm sm:text-base font-medium tracking-tight text-[#29257B] bg-[#D9D9D9] border border-slate-200 shadow-sm">
                                 BPO Services
                             </span>
                         </div>
 
-                        <h3 className="text-4xl sm:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-semibold text-white leading-tight font-inter">
-                            Keeping You <br className="hidden sm:inline" />
-                            Connected Wherever <br className="hidden sm:inline" />
+                        <h1 className="text-4xl sm:text-5xl lg:text-[40px] xl:text-[46px] 2xl:text-6xl font-semibold text-white leading-tight font-inter">
+                            Keeping You <br className="hidden sm:block" />
+                            Connected Wherever <br className="hidden sm:block" />
                             You Are!
-                        </h3>
+                        </h1>
 
-                        <p className="text-white text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-relaxed tracking-wide font-normal opacity-90 max-w-lg">
+                        <p className="text-white text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-lg leading-relaxed tracking-wide font-normal opacity-90 max-w-lg">
                             In a rapidly evolving digital landscape, businesses aren't just looking to cut operational costs — they're looking to work smarter. SecurXpert's BPO services combine automation-first thinking with hands-on human expertise, so your back office runs lighter without losing quality. 
                         </p>
 
                         {/* Custom Interactive Button Group */}
                         <div className="flex items-center gap-4 pt-2">
                             <Link
-                                href="/contact"
-                                className="bg-white hover:bg-slate-50 text-blue-600 font-medium px-8 py-3.5 rounded-lg text-sm sm:text-base shadow-lg transition-all active:scale-95 duration-150 block text-center"
+                                href="#appointment"
+                                className="bg-white hover:bg-blue-600 text-blue-600 hover:text-white font-medium px-6 py-2.5 rounded-lg text-sm sm:text-base shadow-lg hover:shadow-blue-500/50 hover:shadow-xl hover:scale-105 transition-all active:scale-95 duration-300 block text-center"
                             >
                                 Talk to us Today
                             </Link>
                             <Link
                                 href="/contact"
-                                className="w-12 h-12 rounded-lg bg-white hover:bg-slate-50 flex items-center justify-center text-blue-600 shadow-lg transition-all active:scale-95 duration-150"
+                                className="w-10 h-10 rounded-lg bg-white hover:bg-blue-600 flex items-center justify-center text-blue-600 hover:text-white shadow-lg hover:shadow-blue-500/50 hover:shadow-xl hover:scale-105 transition-all active:scale-95 duration-300"
                             >
                                 <svg className="w-7 h-7 fill-current ml-0.5" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
@@ -108,7 +108,7 @@ export default function BPOHero() {
                         <img
                             src="/BPO/hero/arrow-banner-shape.png.svg"
                             alt="Dashed Loop Arrow"
-                            className="absolute top-12 right-6 sm:right-16 w-50 sm:w-70 h-auto opacity-80 z-0 pointer-events-none hidden sm:block animate-draw-arrow"
+                            className="absolute top-12 lg:top-20 xl:top-24 2xl:top-12 right-6 sm:right-16 w-50 sm:w-70 lg:w-48 xl:w-56 2xl:w-70 h-auto opacity-80 z-0 pointer-events-none hidden sm:block animate-draw-arrow"
                         />
 
                         {/* Flags Floating Widget */}

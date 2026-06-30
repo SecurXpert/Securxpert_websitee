@@ -1,25 +1,25 @@
 "use client";
 
-import React from "react";
+import React from "react"; 
 
 const steps = [
   {
     number: "01",
     title: "Find a role that suits you",
-    description: "Browse open positions on our website or social channels.",
+    description: "Browse open positions on our website or social channels.", 
     align: "right",
     isActive: true,
   },
   {
     number: "02",
     title: "Send your application",
-    description: "A few simple questions and your contact details.",
+    description: "A few simple questions and your contact details.", 
     align: "left",
   },
   {
     number: "03",
     title: "Receive your interview invite",
-    description: "We review applications within 3 working days.",
+    description: "We review applications within 3 working days.", 
     align: "right",
   },
   {
@@ -50,7 +50,7 @@ const steps = [
 
 export default function Howtobecame() {
   return (
-    <section className="relative w-full py-16 md:py-14 bg-[#FFFFFF80] overflow-hidden text-slate-800">
+    <section className="relative w-full py-16 md:py-14 bg-[#FFFFFF60] overflow-hidden text-slate-800">
 
       {/* Decorative background gradients */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-50/20 via-transparent to-transparent pointer-events-none" /> 
@@ -59,7 +59,7 @@ export default function Howtobecame() {
 
         {/* Section Header */}
         <div className="text-center mb-10 max-w-4xl mx-auto">
-          <h2 className="text-slate-800 text-center text-5xl font-normal mb-4 font-sans"> 
+          <h2 className="text-[#090808] text-center text-5xl font-normal mb-4 font-sans"> 
             How to become a Securxperter?
           </h2>
           <p className="text-slate-500 text-sm sm:text-base md:text-lg max-w-2xl mx-auto"> 
@@ -72,12 +72,12 @@ export default function Howtobecame() {
 
           {/* Vertical Line (Desktop: center; Mobile: left aligned with circles) */}
           <div className="absolute left-[50%] top-[60px] bottom-[60px] w-[2px] bg-slate-200/80 -translate-x-[50%] hidden lg:block" /> 
-          <div className="absolute left-[43px] top-[60px] bottom-[60px] w-[2px] bg-slate-200/80 lg:hidden" />
+          <div className="absolute left-[43px] top-[60px] bottom-[60px] w-[2px] bg-slate-200/80 lg:hidden" /> 
 
           {/* Timeline Items */}
           <div className="flex flex-col gap-2"> 
             {steps.map((step, idx) => {
-              const isLeft = step.align === "left";
+              const isLeft = step.align === "left";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
               return (
                 <div
                   key={idx}
@@ -85,7 +85,7 @@ export default function Howtobecame() {
                 >
                   {/* Left Side Content (Desktop Only: aligned right) */}
                   <div className={`hidden lg:block w-[42%] px-6 text-right ${!isLeft ? "lg:opacity-0 lg:pointer-events-none" : ""}`}>
-                    <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 font-sans">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#090808] mb-2 font-sans">
                       {step.title}
                     </h3>
                     <p className="text-slate-500 text-sm leading-relaxed max-w-md ml-auto">
@@ -96,10 +96,10 @@ export default function Howtobecame() {
                   {/* Center Node / Circle */}
                   <div className="relative z-10 flex shrink-0 items-center justify-center w-[54px] h-[54px] rounded-full bg-white border-2 border-slate-100 group-hover:border-transparent transition-colors duration-300 shadow-md mx-4 lg:mx-8 cursor-pointer">
                     
-                    {/* Hover Blue Border & Glow */}
-                    <div className="absolute inset-0 rounded-full border-2 border-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
+                    {/* Hover Blue Background & Glow */}
+                    <div className="absolute inset-0 rounded-full bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
                     
-                    <span className="text-base font-bold transition-colors duration-300 z-10 text-slate-500 group-hover:text-blue-600">
+                    <span className="text-base font-bold transition-colors duration-300 z-10 text-slate-500 group-hover:text-white">
                       {step.number}
                     </span>
                   </div>
