@@ -67,7 +67,7 @@ export default function OurValues() {
             return (
               <div 
                 key={index} 
-                className="border border-[#E5E9F0]/80 rounded-[20px] p-6 sm:p-6 transition-all duration-300 flex flex-col items-start text-left space-y-5"
+                className="group border border-slate-200/60 border-b-4 border-b-transparent hover:border-b-[#4F46E5] rounded-[20px] p-6 sm:p-6 transition-all duration-300 flex flex-col items-start text-left space-y-5 hover:shadow-lg hover:-translate-y-1"
                 style={{ background: "linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%)" }}
               >
                 {/* Icon wrapper */}

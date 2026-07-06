@@ -80,8 +80,8 @@ export default function OurServices() {
                         </div>
 
                         {/* Symmetrical Tech Pill Button inside the relative frame */}
-                        <div className="relative z-10 inline-flex justify-center items-center px-6 sm:px-10 py-2 rounded-lg bg-gradient-to-r from-blue-900 to-indigo-950 shadow-md border border-blue-950/20">
-                            <span className="text-white text-xl font-medium  tracking-wide text-center">
+                        <div className="relative z-10 inline-flex justify-center items-center px-6 sm:px-4 py-2 rounded-lg bg-gradient-to-r from-blue-900 to-indigo-950 shadow-md border border-blue-950/20">
+                            <span className="text-white text-lg font-medium  tracking-wide text-center">
                                 Comprehensive technology solutions designed to solve complex business challenges
                             </span>
                         </div>
@@ -130,7 +130,7 @@ export default function OurServices() {
                             </div>
 
                             {/* Title Section left-aligned perfectly with card edge */}
-                            <h3 className="text-left font-semibold text-[#2F2F2F] text-xl  mt-3 px-2 group-hover:text-[#2563EB] transition-colors duration-250 font-sans tracking-tight">
+                            <h3 className="text-left font-semibold text-[#2F2F2F] text-md  mt-3 px-2 group-hover:text-[#2563EB] transition-colors duration-250 font-sans tracking-tight">
                                 {service.title}
                             </h3>
                         </Link>

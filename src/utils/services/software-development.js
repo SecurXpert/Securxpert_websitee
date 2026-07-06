@@ -122,18 +122,7 @@ const webDevelopment = {
       question: "Do you have clients worldwide?",
       answer: "Absolutely. We work with businesses across India, the US, the UK, the Middle East, and beyond. Remote-first, timezone-flexible, 24/7 communication."
     },
-    {
-      id: 7,
-      qNumber: "Q7.",
-      question: "Do you provide post-launch support?",
-      answer: "Yes. Maintenance, bug fixes, and SLA-backed support after go-live. A dedicated team handles enhancements and monitoring; we don't disappear."
-    },
-    {
-      id: 8,
-      qNumber: "Q8.",
-      question: "How do we get started?",
-      answer: "Book a free discovery call. We understand your requirements, scope the project, and deliver a fixed quote with no obligation and no pressure."
-    }
+
   ],
   cta: {
     heading: "Ready to build your next software product?",

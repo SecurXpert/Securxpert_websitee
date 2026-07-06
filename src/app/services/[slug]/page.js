@@ -88,7 +88,7 @@ export default async function ServicePage({ params }) {
       <div className="w-full bg-gradient-to-r from-[#172E9D] to-[#2541C5] md:bg-none md:bg-white overflow-hidden text-slate-800">
         <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto pt-0 pb-0 overflow-visible">
 
-          <div className="relative px-6 md:px-20 pt-18 sm:pt-24 md:pt-28 lg:pt-20 xl:pt-14 pb-0 flex flex-col items-center justify-between overflow-visible bg-transparent w-full min-h-[500px] lg:min-h-[700px] xl:min-h-[800px] max-h-[500px] lg:max-h-[700px] xl:max-h-[800px]">
+          <div className="relative px-3 sm:px-6 md:px-20 pt-18 sm:pt-24 md:pt-28 lg:pt-20 xl:pt-14 pb-0 flex flex-col items-center justify-between overflow-visible bg-transparent w-full min-h-[580px] lg:min-h-[700px] xl:min-h-[800px] max-h-[580px] lg:max-h-[700px] xl:max-h-[800px]">
 
             {/* High-Performance Clipped Background Image Tag */}
             <img
@@ -111,12 +111,12 @@ export default async function ServicePage({ params }) {
               </div>
 
               {/* Category Pill Tag */}
-              <div className="inline-block bg-[#D9D9D9] text-[#29257B] px-4 sm:px-8 py-1.5 rounded-lg text-sm sm:text-lg font-bold tracking-wide uppercase shadow-sm whitespace-nowrap">
+              <div className="inline-block bg-[#D9D9D9] text-[#29257B] px-4 sm:px-8 py-1.5 rounded-lg text-sm sm:text-lg font-bold tracking-wide uppercase shadow-sm whitespace-nowrap mt-8 lg:mt-0">
                 {meta.category}
               </div>
 
               {/* Main Title */}
-              <h1 className="text-white text-3xl sm:text-4xl lg:text-[44px] xl:text-[50px] font-semibold leading-tight max-w-full mx-auto px-4 font-inter">
+              <h1 className="text-white text-[24px] tracking-tight sm:tracking-normal sm:text-4xl lg:text-[44px] xl:text-[50px] font-semibold leading-tight max-w-full mx-auto px-0 sm:px-4 font-inter">
                 {meta.title}
               </h1>
 
@@ -129,11 +129,11 @@ export default async function ServicePage({ params }) {
 
             {/* Centered Illustration (Anchored to bottom curve) */}
             {meta.illustration && (
-              <div className="relative z-10 w-full flex justify-center items-end mt-auto h-[100px] sm:h-[200px] lg:h-[240px] xl:h-[320px] max-w-full overflow-visible">
+              <div className="relative z-10 w-full flex justify-center items-end mt-auto h-[150px] sm:h-[200px] lg:h-[240px] xl:h-[320px] max-w-full overflow-visible">
                 <img
                   src={meta.illustration}
                   alt={meta.title}
-                  className="w-auto h-auto max-h-[110%] sm:max-h-[120%] max-w-[85%] sm:max-w-[75%] lg:max-w-[500px] xl:max-w-[500px] object-contain object-bottom select-none translate-y-2 sm:-translate-y-2 lg:-translate-y-4"
+                  className="w-auto h-auto max-h-[130%] sm:max-h-[120%] max-w-[95%] sm:max-w-[75%] lg:max-w-[500px] xl:max-w-[500px] object-contain object-bottom select-none -translate-y-4 sm:-translate-y-2 lg:-translate-y-4"
                 />
               </div>
             )}
@@ -143,9 +143,9 @@ export default async function ServicePage({ params }) {
       </div>
 
       {/* Our Capabilities Section (Coded from user mockup screenshot) */}
-      <section className="bg-white py-16 sm:py-14 relative z-10 border-b border-slate-100">
+      <section className="bg-white py-10 sm:py-14 lg:py-16 relative z-10 border-b border-slate-100">
         <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-6 sm:mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
               Our Capabilities
             </h2>
@@ -179,7 +179,7 @@ export default async function ServicePage({ params }) {
       {/* Our Process Section (Coded from user mockup screenshot) */}
       {processSteps.length > 0 && (
         <section
-          className="py-16 sm:py-14 relative z-10 border-b border-slate-100/80"
+          className="py-10 sm:py-14 lg:py-16 relative z-10 border-b border-slate-100/80"
           style={{ background: "linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%)" }}
         >
           <img
@@ -193,7 +193,7 @@ export default async function ServicePage({ params }) {
             className="absolute right-[-14rem] bottom-[-8rem] h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block select-none opacity-90"
           />
           <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-18">
-            <div className="text-center mb-12 sm:mb-8">
+            <div className="text-center mb-6 sm:mb-8 lg:mb-12">
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0F172A] tracking-tight font-space-grotesk">
                 {processHeading}
               </h2>
@@ -239,13 +239,13 @@ export default async function ServicePage({ params }) {
 
       {/* Dynamic CTA Section */}
       <section
-        className={`w-full text-center select-none py-14 px-6 md:px-12 flex items-center justify-center relative z-10 ${service.cta?.bgClass || ""}`}
+        className={`w-full text-center select-none py-10 lg:py-14 px-4 sm:px-6 md:px-12 flex items-center justify-center relative z-10 ${service.cta?.bgClass || ""}`}
         style={service.cta?.bgClass ? {} : {
           background: service.cta?.gradient || "linear-gradient(135deg, #4F46E5 0%, #4E42E1 7.14%, #4D3EDC 14.29%, #4B3BD8 21.43%, #4A37D3 28.57%, #4933CF 35.71%, #482ECA 42.86%, #462AC6 50%, #4526C2 57.14%, #4421BD 64.29%, #421CB9 71.43%, #4117B5 78.57%, #4010B1 85.71%, #3E08AC 92.86%, #3D00A8 100%)"
         }}
       >
-        <div className="max-w-4xl mx-auto flex flex-col items-center justify-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl md:text-[44px] text-white font-semibold tracking-tight font-space-grotesk">
+        <div className="max-w-4xl mx-auto flex flex-col items-center justify-center space-y-4 lg:space-y-6">
+          <h2 className="text-[26px] leading-tight lg:leading-normal sm:text-4xl md:text-[44px] text-white font-semibold tracking-tight font-space-grotesk px-2 sm:px-0">
             {service.cta?.heading || "Ready to Build Something Amazing?"}
           </h2>
           <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">

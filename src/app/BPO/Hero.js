@@ -44,7 +44,7 @@ export default function BPOHero() {
         }
       `}} />
 
-            <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto pt-0 pb-0 overflow-visible">
+            <section className="relative w-full max-w-[100%] lg:max-w-[90%] 2xl:max-w-[1465px] mx-auto pt-0 pb-0 overflow-visible">
 
                 {/* Soft Background Blue Glow Effect */}
                 <div className="absolute left-0 top-0 w-[500px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full pointer-events-none" />
@@ -65,8 +65,8 @@ export default function BPOHero() {
                     <div className="relative z-10 w-full lg:w-1/2 flex flex-col items-start text-left space-y-6 lg:space-y-7 pt-2 sm:pt-4 lg:pt-6 xl:pt-8 pb-12 lg:pb-20 max-w-5xl">
 
                         {/* Category Pill Button */}
-                        <div className="relative z-10 flex justify-start mb-1 pt-6 lg:pt-8 xl:pt-10">
-                            <span className="px-4 py-1 rounded-lg text-sm sm:text-base font-medium tracking-tight text-[#29257B] bg-[#D9D9D9] border border-slate-200 shadow-sm">
+                        <div className="relative z-10 flex justify-start mb-1 pt-2 lg:pt-8 xl:pt-10">
+                            <span className="px-4 py-1 rounded-xl text-sm sm:text-base font-medium tracking-tight text-[#29257B] bg-[#D9D9D9] border border-slate-200 shadow-sm">
                                 BPO Services
                             </span>
                         </div>
@@ -78,7 +78,7 @@ export default function BPOHero() {
                         </h1>
 
                         <p className="text-white text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-lg leading-relaxed tracking-wide font-normal opacity-90 max-w-lg">
-                            In a rapidly evolving digital landscape, businesses aren't just looking to cut operational costs — they're looking to work smarter. SecurXpert's BPO services combine automation-first thinking with hands-on human expertise, so your back office runs lighter without losing quality. 
+                            In a rapidly evolving digital landscape, businesses aren't just looking to cut operational costs — they're looking to work smarter. SecurXpert's BPO services combine automation-first thinking with hands-on human expertise, so your back office runs lighter without losing quality.
                         </p>
 
                         {/* Custom Interactive Button Group */}
@@ -108,7 +108,7 @@ export default function BPOHero() {
                         <img
                             src="/BPO/hero/arrow-banner-shape.png.svg"
                             alt="Dashed Loop Arrow"
-                            className="absolute top-12 lg:top-20 xl:top-24 2xl:top-12 right-6 sm:right-16 w-50 sm:w-70 lg:w-48 xl:w-56 2xl:w-70 h-auto opacity-80 z-0 pointer-events-none hidden sm:block animate-draw-arrow"
+                            className="absolute top-2 sm:top-12 lg:top-20 xl:top-24 2xl:top-12 right-12 sm:right-16 w-[150px] sm:w-70 lg:w-48 xl:w-56 2xl:w-70 h-auto opacity-60 sm:opacity-80 z-0 pointer-events-none block animate-draw-arrow rotate-[-15deg] sm:rotate-0"
                         />
 
                         {/* Flags Floating Widget */}

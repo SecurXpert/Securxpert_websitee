@@ -40,7 +40,7 @@ export default function ProductPageFAQ({ product }) {
   };
 
   return (
-    <section className="relative w-full bg-white py-14">
+    <section className="relative w-full bg-white py-8 lg:py-14">
       <div className="max-w-[1300px] mx-auto px-6 md:px-12 lg:px-20">
         
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">

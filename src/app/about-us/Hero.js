@@ -43,7 +43,7 @@ export default function Hero() {
             {/* Get Started Button */}
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center text-white font-medium px-8 py-3.5 rounded-lg text-base shadow-lg shadow-[#364CC4]/20 hover:scale-105 active:scale-95 transition-all duration-200"
+              className="inline-flex items-center justify-center text-white font-medium px-8 py-3.5 rounded-2xl text-base shadow-lg shadow-[#364CC4]/20 hover:scale-105 active:scale-95 transition-all duration-200"
               style={{ background: "linear-gradient(180deg, #364CC4 0%, #2C2D89 100%)" }}
             >
               Get Started &rarr;
@@ -115,7 +115,7 @@ export default function Hero() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-white text-lg sm:text-xl lg:text-[13px] xl:text-xl font-normal leading-snug">Talk With Experts</span>
-                  <span className="text-white/60 text-sm sm:text-base lg:text-xs xl:text-base font-normal mt-1">(+02)1972973</span>
+                  <span className="text-white/60 text-sm sm:text-base lg:text-xs xl:text-base font-normal mt-1">+91 7993256679</span>
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function Hero() {
             {/* Right Side: Stats Badges (Stacked vertically one by one) */}
             <div className="flex flex-col gap-4 w-full lg:w-auto justify-center items-start lg:items-end">
               {/* Stats Card 1 */}
-              <div className="flex items-center justify-between gap-8 bg-[#FFFFFF10] border border-white/40 rounded-[24px] p-3 px-12 min-w-[180px] sm:min-w-[200px] shadow-lg">
+              <div className="flex items-center justify-between gap-8 bg-[#FFFFFF10] border border-white/40 rounded-[24px] p-3 px-10 min-w-[180px] sm:min-w-[200px] shadow-lg">
                 <span className="text-white/70 text-xs sm:text-sm font-semibold max-w-[90px] whitespace-nowrap leading-tight">Happy Clients</span>
                 <span className="text-white text-2xl sm:text-3xl font-bold font-space-grotesk tracking-tight">500+</span>
               </div>
@@ -131,7 +131,7 @@ export default function Hero() {
               {/* Stats Card 2 */}
               <div className="flex items-center justify-between gap-8 bg-[#FFFFFF10] border border-white/40 rounded-[24px] p-3 px-10 min-w-[180px] sm:min-w-[200px] shadow-lg">
                 <span className="text-white/70 text-xs sm:text-sm font-semibold max-w-[90px] whitespace-nowrap leading-tight">Projects Deliverd</span>
-                <span className="text-white text-2xl sm:text-3xl font-bold font-space-grotesk tracking-tight">500k+</span>
+                <span className="text-white text-2xl sm:text-3xl font-bold font-space-grotesk tracking-tight">500+</span>
               </div>
             </div>
 

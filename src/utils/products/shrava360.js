@@ -3,7 +3,7 @@ const shrava360 = {
     title: "shrava360 | 360° Data Visualisation & BI Platform ",
     description: "shrava360 is SecurXpert's data visualisation platform — aggregating multi-source data into one 360-degree view for executive decision-making. ",
   },
-  title: "shrava360",
+  title: "Shrava360",
   headline: "360° Data Analytics & Visualization",
   desc: "An immersive data visualization platform that aggregates information from multiple sources, providing executives with a comprehensive 360-degree view of their organization's health.",
   introduction: "shrava360 is an immersive data visualisation platform that aggregates information from multiple sources, giving executives a comprehensive, real-time view of their organisation's health — without needing a data analyst to build a custom report every time a question comes up. ",

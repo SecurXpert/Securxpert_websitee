@@ -75,7 +75,7 @@ export default async function ProductDetailPage({ params }) {
       
       {/* Top Blue Section */}
       <section 
-        className="relative w-full pt-32 pb-48 lg:pb-64 overflow-hidden"
+        className="relative w-full pt-32 pb-28 lg:pb-64 overflow-hidden"
         style={{ background: product.bg }}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none" />
@@ -105,7 +105,7 @@ export default async function ProductDetailPage({ params }) {
           {/* Metadata Row */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-white/90">
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-sm font-medium  tracking-wider opacity-60">Industries</span>
+              <span className="text-sm font-medium  tracking-wider opacity-60">Industry</span>
               <span className="text-sm sm:text-[15px] font-medium">{product.industry}</span>
             </div>
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
@@ -122,7 +122,7 @@ export default async function ProductDetailPage({ params }) {
       </section>
 
       {/* Overlapping Mockup Section */}
-      <section className="relative w-full max-w-[1350px] mx-auto px-6 md:px-12 lg:px-20 z-20 -mt-32 lg:-mt-48">
+      <section className="relative w-full max-w-[1350px] mx-auto px-6 md:px-12 lg:px-20 z-20 -mt-20 lg:-mt-48">
         <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[16/7] rounded-2xl sm:rounded-3xl  overflow-hidden flex items-center justify-center border-[4px] border-white">
           <img 
             src={product.bannerImage || product.image} 
@@ -133,7 +133,7 @@ export default async function ProductDetailPage({ params }) {
       </section>
 
       {/* Content Section */}
-      <section className="relative w-full max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 py-16 sm:py-14">
+      <section className="relative w-full max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 py-8 lg:py-16 sm:py-14">
         <div className="max-w-4xl">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-8 font-sans">
             Introduction
@@ -145,7 +145,7 @@ export default async function ProductDetailPage({ params }) {
       </section>
 
       {/* Product Video Section */}
-      <section className="relative w-full pt-20">
+      <section className="relative w-full pt-10 lg:pt-20">
         
         {/* Blue Background Top Half */}
         <div 

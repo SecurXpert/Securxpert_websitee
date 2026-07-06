@@ -6,7 +6,7 @@ const hisphere = {
   title: "HiSphere",
   headline: "Next-Gen Cloud Collaboration Hub",
   desc: "HiSphere is a powerful enterprise platform built to connect distributed teams, manage scalable cloud resources, and orchestrate complex project workflows in a single, secure environment — for organisations that have outgrown disconnected tools and need one operational layer across departments and geographies. ",
-  introduction: "HiSphere is a powerful enterprise platform designed to connect global teams, manage scalable cloud resources, and orchestrate complex project workflows in a secure environment. Built for the modern remote-first workforce, it unifies task management, cross-departmental communication, and resource allocation into one intuitive cloud hub.",
+  introduction: "HiSphere is a powerful enterprise platform built to connect distributed teams, manage scalable cloud resources, and orchestrate complex project workflows in a single, secure environment — for organisations that have outgrown disconnected tools and need one operational layer across departments and geographies",
   bg: "linear-gradient(135deg, #0284C7 0%, #0F172A 100%)",
   bannerImage: "/products/banners/hispherebanner.png",
   videoUrl: "/products/banners/hisphere_video.mp4",

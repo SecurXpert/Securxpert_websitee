@@ -8,6 +8,7 @@
   --accent-cyan: #00f2fe;
   --accent-blue: #4facfe;
   --accent-purple: #8b5cf6;
+  --radius: 0.5rem;
 }
 
 @theme inline {
@@ -27,6 +28,31 @@
   --font-plus-jakarta: var(--font-plus-jakarta-sans);
   --font-Raleway: var(--font-raleway);
   --font-raleway: var(--font-raleway);
+
+  /* Blog Admin Theme Variables */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 body {
@@ -189,4 +215,44 @@ h6,
 
 .font-space-grotesk {
   font-family: var(--font-space-grotesk), sans-serif !important;
+}.blog-admin-theme {
+  --background: #f1f4f8;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #eff6ff;
+  --secondary-foreground: #1d4ed8;
+  --muted: #f3f6fb;
+  --muted-foreground: #6b7280;
+  --accent: #dbeafe;
+  --accent-foreground: #1e40af;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: transparent;
+  --input-background: #f8fafc;
+  --switch-background: #cbd5e1;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #93c5fd;
+  --radius: 0.625rem;
+}
+
+.blog-admin-theme h1,
+.blog-admin-theme h2,
+.blog-admin-theme h3,
+.blog-admin-theme h4,
+.blog-admin-theme label,
+.blog-admin-theme button {
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+.blog-admin-theme input {
+  font-weight: var(--font-weight-normal);
+  line-height: 1.5;
 }

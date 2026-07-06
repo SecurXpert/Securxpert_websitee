@@ -5,7 +5,7 @@ const aiChatbots = {
   metaTitle: "AI Chatbot Development Company in Hyderabad | Custom Bots ",
   metaDescription: "Custom AI chatbot development in Hyderabad for support, lead generation & WhatsApp. Scalable, CRM-connected & GPT-enabled. 500+ businesses trust us. Free demo",
   heroTitle: "Build Smarter Conversations with Custom AI Chatbots",
-  heroDesc: " We build custom AI chatbots that handle real conversations, qualify leads, resolve support queries, and automate workflows so your team spends zero time on repetitive interactions.",
+  heroDesc: " We build custom AI chatbots that handle real conversations, qualify leads, resolve support queries, and automate workflows — so your team spends zero time on repetitive interactions",
   illustration: "/services-media/AI Chatbots Development.png",
   title: "AI & Smart Chatbots",
   subtitle: "Automation Service",
@@ -81,7 +81,7 @@ const aiChatbots = {
   ],
   cta: {
     heading: "Ready to Put Your Business Conversations on Autopilot?",
-    description: "Tell us your use case; we'll design, build, and deploy an AI chatbot that handles the conversations so your team handles the growth.",
+    description: "Tell us your use case — we'll design, build, and deploy an AI chatbot that handles the conversations so your team handles the growth.",
     buttonText: "Get a Free Demo",
     buttonLink: "/contact"
   }

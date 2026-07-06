@@ -1,7 +1,7 @@
 const vishan = {
   meta: {
     title: "Vishan | School Administration & ERP Platform",
-    description: "Vishan is SecurXpert's school administration & ERP platform — connect teachers, students, and parents with modern tools for attendance, fees, grades, and communication. ",
+    description: "Vishan by SecurXpert: the school ERP that connects teachers, students & parents — attendance, fees, grades & communication, all in one place.",
   },
   title: "Vishan",
   headline: "Smart School Management System Platform",

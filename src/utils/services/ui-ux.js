@@ -113,7 +113,7 @@ const uiUx = {
   ],
   cta: {
     heading: "Ready to Design a Product Your Users Will Actually Love?",
-    description: "Share your product brief; we'll design an experience that's intuitive, conversion-focused, and built to scale with your business.",
+    description: "Share your product brief — we'll design an experience that's intuitive, conversion-focused, and built to scale with your business.",
     buttonText: "Get a Free Demo",
     buttonLink: "/contact"
   }

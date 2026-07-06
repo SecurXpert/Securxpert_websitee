@@ -25,7 +25,7 @@ export default function FeaturedServices() {
     ];
 
     return (
-        <section className="relative w-full bg-white overflow-hidden py-20 text-slate-800">
+        <section className="relative w-full bg-white overflow-hidden pt-10 pb-16 lg:py-20 text-slate-800">
 
             {/* RIGHT SIDE SVG SHAPE */}
             <img

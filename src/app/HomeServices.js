@@ -49,7 +49,7 @@ export default function HomeServices() {
             gridClass: "md:col-span-8 aspect-[16/7.2] w-full",
         },
         {
-            title: "Digital Marketting",
+            title: "Digital Marketing",
             desc: "SEO, paid media, and content strategy built to compound, not just spike. ",
             img: "/Home/OurServices/Services.8.png",
             gridClass: "md:col-span-12 aspect-[16/4.2] w-full",

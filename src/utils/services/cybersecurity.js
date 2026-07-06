@@ -29,7 +29,7 @@ const cybersecurity = {
     { id: "04", title: "Incident Response", desc: "Rapid mitigation and recovery from security events" }
   ],
   techStackTitle: "Technology Stack",
-  techStackDesc: "Metasploit · Burp Suite · Nessus · Qualys · Splunk · IBM QRadar · CrowdStrike · SentinelOne · Palo Alto · Fortinet · Wireshark · Nmap · AWS Security Hub · Microsoft Defender · Rapid7",
+  techStackDesc: "Metasploit,  Burp Suite, Nessus, Qualys, Splunk, IBM QRadar, CrowdStrike, SentinelOne, Palo Alto, Fortinet, Wireshark, Nmap, AWS Security Hub, Microsoft Defender, Rapid7",
   techStack: ["Metasploit", "Burp Suite", "Nessus", "Qualys", "Splunk", "IBM QRadar", "CrowdStrike", "SentinelOne", "Palo Alto", "Fortinet", "Wireshark", "Nmap", "AWS Security Hub", "Microsoft Defender", "Rapid7"],
   faqs: [
     {
@@ -59,7 +59,7 @@ const cybersecurity = {
   ],
   cta: {
     heading: "Ready to Secure Your Business Before a Breach Forces You To?",
-    description: "Tell us about your infrastructure; we'll assess your security posture, identify critical vulnerabilities, and build a protection plan that keeps threats out for good.",
+    description: "Tell us about your infrastructure — we'll assess your security posture, identify critical vulnerabilities, and build a protection plan that keeps threats out for good.",
     buttonText: "Get a Free Demo",
     buttonLink: "/contact"
   }

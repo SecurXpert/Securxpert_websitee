@@ -14,7 +14,7 @@ const arogyaNarayan = {
   logo: "/products/images/Arogya Narayan.png",
   industry: "Healthcare & Medicine",
   services: "Hospital Management, Patient Portal",
-  date: "November 20th, 2023 Release Started",
+  date: "November 2023",
   accent: "#3B82F6",
 
   features: [

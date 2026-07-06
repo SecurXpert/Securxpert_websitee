@@ -13,19 +13,25 @@ export default function Appointment() {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
+
+    // Ensure all required fields are present (backend will throw 422 otherwise)
+    if (!formData.name || !formData.email || !formData.phone || !formData.serviceType) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
     try {
-      const res = await fetch("http://192.168.1.42:9000/book-appointment/", {
+      const res = await fetch("http://192.168.0.128:8000/book-appointment/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJyb2xlIjoiU1VQRVJfQURNSU4iLCJleHAiOjE3ODE3MDE5MjV9.uAy-Uk0OV0MitIimRNiNlgSkATZYSZXUfSwW25c4HBw"
         },
         body: JSON.stringify({
-          name: formData.name, 
+          name: formData.name,
           email: formData.email,
           phone_number: formData.phone,
           service_type: formData.serviceType,
-          message: formData.message,
+          message: formData.message || "No message provided",
         }),
       });
 
@@ -40,16 +46,16 @@ export default function Appointment() {
         });
       } else {
         const errorData = await res.json();
-        alert("Failed to submit form: " + (errorData.detail || "Please try again."));
+        alert("Failed to submit form: " + (errorData.detail?.[0]?.msg || "Please try again."));
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("An error occurred while submitting the form. Please try again.");
+      alert("An error occurred while submitting the form. Please check your connection and try again.");
     }
   };
 
   return (
-    <section id="appointment" className="relative w-full bg-white overflow-hidden py-14 text-slate-800">
+    <section id="appointment" className="relative w-full bg-white overflow-hidden py-8 lg:py-14 text-slate-800">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* LIGHT CARD BLOCK CONTAINER */}
@@ -111,15 +117,21 @@ export default function Appointment() {
                   <input
                     type="tel"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+1 (00)"
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                      setFormData({ ...formData, phone: val });
+                    }}
+                    pattern="[0-9]{10}"
+                    maxLength="10"
+                    placeholder="1234567890"
+                    title="Please enter exactly 10 digits"
                     className="w-full bg-transparent border-b border-slate-200 focus:border-[#3D62EB] focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans"
                     required
                   />
                 </div>
 
-                {/* Submit button */}
-                <div className="pt-2">
+                {/* Submit button (Desktop Only) */}
+                <div className="pt-2 hidden md:block">
                   <button
                     type="submit"
                     className="bg-[#3D62EB] hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-[6px] text-md shadow-md transition-all active:scale-95"
@@ -145,12 +157,12 @@ export default function Appointment() {
                       className="w-full bg-white border border-slate-200 rounded-[6px] px-4 py-2.5 text-sm text-slate-900 focus:border-[#3D62EB] focus:outline-none appearance-none cursor-pointer font-sans"
                     >
                       <option value="">Select ...</option>
-                      <option value="business-audit">Customer Support</option>
-                      <option value="tax-strategy">Back-Office Operations</option>
-                      <option value="financial-advices">Sales & Telemarketing</option>
-                      <option value="insurance-strategy">HR & Recruitment</option>
-                      <option value="startups">Document Automation</option>
-                      <option value="manage-investment">other</option>
+                      <option value="Business Audit">Customer Support</option>
+                      <option value="Tax Strategy">Back-Office Operations</option>
+                      <option value="Financial Advices">Sales & Telemarketing</option>
+                      <option value="Insurance Strategy">HR & Recruitment</option>
+                      <option value="Start Ups">Document Automation</option>
+                      <option value="Manage Investment">other</option>
                     </select>
 
                     {/* Select custom arrow */}
@@ -175,6 +187,16 @@ export default function Appointment() {
                   />
                 </div>
 
+              </div>
+
+              {/* Submit button (Mobile Only) */}
+              <div className="pt-2 md:hidden">
+                <button
+                  type="submit"
+                  className="bg-[#3D62EB] hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-[6px] text-md shadow-md transition-all active:scale-95"
+                >
+                  Submit
+                </button>
               </div>
 
             </div>

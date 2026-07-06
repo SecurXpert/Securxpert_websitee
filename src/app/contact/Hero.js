@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 // High-Performance Butter-Smooth Count-Up Component
 function AnimatedCounter({ target, suffix = "", duration = 1600 }) {
@@ -44,7 +46,8 @@ export default function Hero() {
         email: "",
         phone: "",
         purpose: "",
-        message: ""
+        message: "",
+        location: ""
     });
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -61,7 +64,8 @@ export default function Hero() {
                 email: "",
                 phone: "",
                 purpose: "",
-                message: ""
+                message: "",
+                location: ""
             });
             // Clear success message after 5 seconds
             setTimeout(() => setSubmitted(false), 5000);
@@ -229,31 +233,52 @@ export default function Hero() {
                                     {/* Phone Number */}
                                     <div className="space-y-1 text-left">
                                         <label className="text-[14px] font-bold text-[#5D5D5D] tracking-wide font-sans">Phone Number</label>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            required
+                                        <PhoneInput
+                                            defaultCountry="in"
                                             value={formData.phone || ""}
-                                            onChange={handleInputChange}
-                                            placeholder="+1 (555) 000-0000"
-                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-all font-sans"
+                                            onChange={(phone) => setFormData({ ...formData, phone })}
+                                            inputClassName="!w-full !bg-transparent !py-2.5 !text-[15px] !font-semibold !text-slate-900 placeholder-slate-400 focus:!outline-none font-sans !border-none !ring-0"
+                                            className="flex items-center w-full bg-transparent border-b border-slate-200 focus-within:border-blue-600 transition-all"
+                                            countrySelectorStyleProps={{
+                                                buttonClassName: "!bg-transparent !py-2.5 !pr-2 !text-[15px] !font-semibold !text-slate-900 !h-full !border-none",
+                                                dropdownStyleProps: {
+                                                    className: "!z-50"
+                                                }
+                                            }}
                                         />
                                     </div>
 
                                 </div>
 
-                                {/* Message */}
-                                <div className="space-y-2 text-left">
-                                    <label className="text-[14px] font-bold text-[#5D5D5D] tracking-wide  font-sans">Message</label>
-                                    <textarea
-                                        name="message"
-                                        rows={4}
-                                        required
-                                        value={formData.message}
-                                        onChange={handleInputChange}
-                                        placeholder="Write the message..."
-                                        className="w-full rounded-2xl bg-[#F3F4F6] p-4 text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all resize-none min-h-[120px] font-sans"
-                                    />
+                                {/* Row 3: Location & Message */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+                                    
+                                    {/* Location */}
+                                    <div className="space-y-1 text-left">
+                                        <label className="text-[14px] font-bold text-[#5D5D5D] tracking-wide font-sans">Location</label>
+                                        <input
+                                            type="text"
+                                            name="location"
+                                            value={formData.location || ""}
+                                            onChange={handleInputChange}
+                                            placeholder="Enter your location"
+                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-all font-sans"
+                                        />
+                                    </div>
+
+                                    {/* Message */}
+                                    <div className="space-y-2 text-left">
+                                        <label className="text-[14px] font-bold text-[#5D5D5D] tracking-wide font-sans">Message</label>
+                                        <textarea
+                                            name="message"
+                                            rows={4}
+                                            required
+                                            value={formData.message}
+                                            onChange={handleInputChange}
+                                            placeholder="Write the message..."
+                                            className="w-full rounded-2xl bg-[#F3F4F6] p-4 text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all resize-none min-h-[120px] font-sans"
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Submit Button aligned to Right */}

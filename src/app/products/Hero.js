@@ -91,7 +91,7 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, [currentIndex]);
 
-  const activeSlide = slidesData[currentIndex]; 
+  const activeSlide = slidesData[currentIndex];
 
   return (
     <div className="relative w-full h-screen overflow-hidden select-none">
@@ -167,7 +167,7 @@ export default function Hero() {
         {/* Subtle radial light layout overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.06),transparent_60%)] pointer-events-none" />
 
-        <div className="w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 z-10 pt-20">
+        <div className="w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 z-10 pt-32 lg:pt-20">
 
           {/* Left Column: Text & CTA (Keyed by index to force animation restart) */}
           <div
@@ -232,7 +232,7 @@ export default function Hero() {
       </div>
 
       {/* Slide Indicators / Dots */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-3.5 z-30">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-3.5 z-30">
         {slidesData.map((_, idx) => (
           <button
             key={idx}

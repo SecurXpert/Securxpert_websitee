@@ -61,7 +61,7 @@ const projectsData = [
   },
   {
     id: 6,
-    title: "hi-sphere",
+    title: "Hi-sphere",
     tags: "DESIGN WOK, APP DESIGN",
     desc: "Enterprise cloud and workflow orchestration platform for global teams. ",
     image: "/products/Projects/hisphere.png",
@@ -70,7 +70,7 @@ const projectsData = [
   },
   {
     id: 7,
-    title: "shrava 360",
+    title: "Shrava 360",
     tags: "DESIGN WOK, APP DESIGN",
     desc: "360-degree data visualisation and BI platform for executive decision-making. ",
     image: "/products/Projects/shrava360.png",
@@ -79,7 +79,7 @@ const projectsData = [
   },
   {
     id: 8,
-    title: "onestepmedi",
+    title: "OneStep Medi",
     tags: "DESIGN WOK, APP DESIGN",
     desc: "Telemedicine and pharmacy platform connecting patients with doctors and labs. ",
     image: "/products/Projects/onestepmedi.png",
@@ -104,22 +104,7 @@ const projectsData = [
     category: "All",
     slug: "lauratek-2-0",
   },
-  {
-    id: 11,
-    title: "Landing Page Design",
-    tags: "DESIGN WOK, BRANDING",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
-    image: "/products/Projects/project8.png",
-    category: "All",
-  },
-  {
-    id: 12,
-    title: "Mobile Design",
-    tags: "DESIGN WOK, APP DESIGN",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
-    image: "/products/Projects/project9.png",
-    category: "All",
-  }
+
 ];
 
 export default function ProjectGrid() {
@@ -145,12 +130,12 @@ export default function ProjectGrid() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-6">
+        <div className="flex flex-nowrap md:flex-wrap items-center justify-start md:justify-center gap-3 md:gap-4 mb-6 overflow-x-auto md:overflow-visible pb-2 w-full max-w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {filterCategories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveFilter(category)}
-              className={`px-5 py-2 md:px-6 md:py-2.5 rounded-full text-sm md:text-base font-medium transition-all duration-300 border ${
+              className={`px-5 py-2 md:px-6 md:py-2.5 rounded-full text-sm md:text-base font-medium transition-all duration-300 border whitespace-nowrap flex-shrink-0 ${
                 activeFilter === category
                   ? "bg-[#5B6CFF] text-white border-[#5B6CFF] shadow-md"
                   : "bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50"

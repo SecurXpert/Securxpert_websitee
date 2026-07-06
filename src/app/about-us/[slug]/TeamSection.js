@@ -108,7 +108,7 @@ export default function TeamSection() {
                 {/* Back Button */}
                 <div className="flex justify-start mt-15 pl-40">
                     <Link
-                        href="/AboutUs"
+                        href="/about-us"
                         className="inline-flex items-center gap-1.5 text-[#384DE4] hover:text-[#2541C5] font-medium text-[20px] transition-all duration-150"
                     >
                         <LuChevronLeft className="w-6 h-6" /> Back

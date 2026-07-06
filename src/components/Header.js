@@ -103,7 +103,7 @@ export default function Header() {
           : isTopOffsetPage
             ? mobileMenuOpen 
               ? "bg-white border-b border-slate-100 text-slate-800"
-              : "bg-transparent lg:bg-transparent border-transparent lg:border-transparent shadow-none lg:shadow-none text-white lg:text-white"
+              : "max-lg:bg-white max-lg:border-b max-lg:border-slate-100 max-lg:text-slate-800 bg-transparent lg:bg-transparent border-transparent lg:border-transparent shadow-none lg:shadow-none text-white lg:text-white"
             : "bg-white border-b border-slate-100 shadow-sm text-slate-800"
         }`}
     >
@@ -115,7 +115,7 @@ export default function Header() {
             <img
               src="/securxpertslogo.png"
               alt="SecurXpert Logo"
-              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/") || cleanPath.startsWith("/careers/")) && !scrolled && !mobileMenuOpen ? "brightness-0 invert" : ""
+              className={`h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${(cleanPath === "/portfolio" || cleanPath === "/contact" || cleanPath === "/products" || cleanPath.startsWith("/products/") || cleanPath.startsWith("/careers/")) && !scrolled && !mobileMenuOpen ? "max-lg:brightness-100 max-lg:invert-0 lg:brightness-0 lg:invert" : ""
                 }`}
             />
           </Link>
@@ -268,7 +268,7 @@ export default function Header() {
                   <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
                 <Link href="/products/shrava360" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
-                  shrava360
+                  Shrava360
                   <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
                 </Link>
                 <Link href="/products/grabjobz" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
@@ -384,8 +384,8 @@ export default function Header() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`inline-flex items-center justify-center p-2 rounded-lg focus:outline-none transition-colors ${(cleanPath === "/portfolio" || cleanPath === "/contact") && !scrolled && !mobileMenuOpen
-                ? "text-white hover:text-white/80 hover:bg-white/10"
-                : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                ? "max-lg:text-slate-800 max-lg:hover:bg-slate-100 text-white hover:text-white/80 hover:bg-white/10"
+                : "text-slate-800 hover:text-slate-900 hover:bg-slate-100"
                 }`}
             >
               <span className="sr-only">Open main menu</span>
@@ -486,12 +486,12 @@ export default function Header() {
               BPO
             </Link>
 
-            {/* Insights */}
+            {/* Blogs */}
             <Link
-              href="#"
-              className="block px-3 py-2.5 rounded-lg text-[15px] font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
+              href="/blogs"
+              className={getMobileLinkClass("/blogs")}
             >
-              Insights
+              Blogs
             </Link>
 
             {/* About Us with Mobile Sub-options */}

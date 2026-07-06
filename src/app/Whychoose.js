@@ -83,7 +83,7 @@ export default function Whychoose() {
 
               <div>
                 <h3 className="text-lg sm:text-xl lg:text-sm xl:text-base 2xl:text-xl font-bold text-[#1E1E2F] tracking-tight">
-                  24/7 Hours Support
+                  24/7 Support
                 </h3>
                 <p className="text-[#6E6E96] text-xs sm:text-sm lg:text-[12px] xl:text-[13px] 2xl:text-[15px] leading-relaxed mt-1.5 max-w-lg">
                  Round-the-clock monitoring and response, so issues get caught before your customers notice them. 

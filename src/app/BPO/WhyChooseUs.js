@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative w-full overflow-hidden py-14 text-slate-800">
+    <section className="relative w-full overflow-hidden pt-4 pb-14 lg:py-14 text-slate-800">
       
       {/* Floating Sparkle Left */}
       <img

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import {
   FaTv,
   FaRegFileAlt,
@@ -164,7 +165,7 @@ export default function Industries() {
             </p>
 
             {/* STATS */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-4 mt-16 w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-4 mt-6 w-full">
 
               <div>
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight">
@@ -205,6 +206,16 @@ export default function Industries() {
                   Client Retention
                 </p>
               </div>
+            </div>
+
+            {/* BPO SPECIALIST BUTTON */}
+            <div className="mt-12 sm:mt-6 w-full flex justify-start">
+              <Link 
+                href="/bpo#appointment" 
+                className="bg-white/90 hover:bg-white/100 text-[#3D60E9] font-semibold px-8 py-4 sm:px-10 sm:py-4.5 rounded-[14px] shadow-[0_8px_20px_rgba(255,255,255,0.2)] transition-all active:scale-[0.98] cursor-pointer text-sm sm:text-[15px]"
+              >
+                Talk to a BPO Specialist
+              </Link>
             </div>
           </div>
 

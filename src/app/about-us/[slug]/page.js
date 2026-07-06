@@ -53,7 +53,7 @@ export default async function AboutUsSubPage({ params }) {
                         {/* Back Button */}
                         <div className="flex justify-start mb-6">
                             <Link
-                                href="/AboutUs"
+                                href="/about-us"
                                 className="inline-flex items-center gap-1.5 text-[#3E66F3] hover:text-[#2541C5] font-semibold text-[16px] transition-all duration-150"
                             >
                                 <LuChevronLeft className="w-5 h-5" /> Back

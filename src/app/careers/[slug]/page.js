@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { LuChevronLeft, LuArrowRight } from "react-icons/lu";
 import { positionsData, slugify } from "@/utils/careers/Positionsdata";
+import PhoneInputField from "./PhoneInputField";
 
 // Generate static routes for the export build
 export async function generateStaticParams() {
@@ -157,17 +158,7 @@ export default async function PositionDetail({ params }) {
                 </div>
 
                 {/* Contact Number */}
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] text-[#7A7A7A] font-medium">Contact Number <span className="text-red-500">*</span></label>
-                  <div className="flex border border-slate-200 rounded-lg overflow-hidden focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition-colors">
-                    <div className="bg-slate-50 px-3 py-2 border-r border-slate-200 text-sm text-slate-600 flex items-center">
-                      <select className="bg-transparent outline-none cursor-pointer">
-                        <option>+91</option>
-                      </select>
-                    </div>
-                    <input type="tel" className="w-full px-3 py-2 text-sm focus:outline-none" />
-                  </div>
-                </div>
+                <PhoneInputField />
 
                 {/* Experience */}
                 <div className="flex flex-col gap-1.5">
@@ -201,7 +192,7 @@ export default async function PositionDetail({ params }) {
 
                 {/* LinkedIn */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] text-[#7A7A7A] font-medium">LinkedIn Profile Link <span className="text-red-500">*</span></label>
+                  <label className="text-[13px] text-[#7A7A7A] font-medium">LinkedIn Profile Link </label>
                   <input type="url" className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors" />
                 </div>
 

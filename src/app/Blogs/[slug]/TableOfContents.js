@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Demo from "./Demo";
 
 export default function TableOfContents({ items }) {
   const [activeId, setActiveId] = useState(items.length > 0 ? items[0].id : "");
@@ -87,6 +88,9 @@ export default function TableOfContents({ items }) {
           })}
         </ul>
       </div>
+
+      {/* Get Your Free Demo Form */}
+      <Demo />
     </aside>
   );
 }

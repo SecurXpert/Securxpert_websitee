@@ -31,7 +31,7 @@ const teamData = [
 
 export default function OurTeam() {
     return (
-        <section className="relative w-full overflow-hidden pt-14 pb-14 bg-[#EDEDFD] select-none font-sans">
+        <section className="relative w-full overflow-hidden pt-8 pb-8 lg:pt-14 lg:pb-14 bg-[#EDEDFD] select-none font-sans">
             {/* Background Decorative Elements */}
 
             {/* Top Left Corner Wave Blob */}
@@ -65,8 +65,8 @@ export default function OurTeam() {
             </div>
 
             {/* Header Titles */}
-            <div className="relative max-w-[1540px] mx-auto px-8 md:px-12 text-center mb-26 z-10">
-                <h2 className="text-4xl md:text-5xl font-bold text-[#19085F] tracking-wide mb-3">
+            <div className="relative max-w-[1540px] mx-auto px-4 lg:px-8 md:px-12 text-center mb-16 lg:mb-26 z-10">
+                <h2 className="text-[28px] sm:text-[32px] md:text-5xl font-bold text-[#19085F] tracking-wide mb-3">
                     Our Team
                 </h2>
                 <div className="flex items-center justify-center gap-2 mb-3">
@@ -76,7 +76,7 @@ export default function OurTeam() {
                     {/* Right Line: Fades from dark purple to section bg */}
                     <div className="w-20" style={{ height: '3.71px', background: 'linear-gradient(90deg, #3734A9 0%, #EDEDFD 100%)' }}></div>
                 </div>
-                <p className="text-[#19085F] text-lg">
+                <p className="text-[#19085F] text-[15px] sm:text-[16px] lg:text-lg max-w-[90%] mx-auto">
                    The people behind the delivery — engineers, designers, and strategists who've shipped 500+ projects together.
                 </p>
             </div>
@@ -93,8 +93,8 @@ export default function OurTeam() {
                 }
             `}</style>
             {/* 3 Members Responsive Grid */}
-            <div className="relative max-w-[1200px] mx-auto px-6 md:px-12 z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-8 w-full justify-items-center">
+            <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 md:px-12 z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-24 lg:gap-y-8 w-full justify-items-center mt-12 lg:mt-0">
                     {teamData.map((member) => (
                         <div
                             key={member.id}
@@ -129,8 +129,8 @@ export default function OurTeam() {
                 </div>
 
                 {/* Centered View All Members Button */}
-                <div className="flex justify-center mt-18 relative z-20">
-                    <button className="bg-[#FEFEFE] hover:bg-slate-50 text-[#384DE4] font-medium text-[17px] py-4 px-10 rounded-full cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                <div className="flex justify-center mt-12 lg:mt-18 relative z-20">
+                    <button className="bg-[#FEFEFE] hover:bg-slate-50 text-[#384DE4] font-medium text-[15px] lg:text-[17px] py-3 px-8 lg:py-4 lg:px-10 rounded-full cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
                         View All Team Memebers
                     </button>
                 </div>

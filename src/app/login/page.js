@@ -14,7 +14,7 @@ export default function BlogsLogin() {
   const handlesubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://192.168.1.42:9000/auth/login", {
+      const res = await fetch("http://192.168.0.128:8000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,15 +27,24 @@ export default function BlogsLogin() {
 
       if (res.ok) {
         const data = await res.json();
-        
+
         // Securely store the token and role in localStorage for future API requests
         if (data.access_token) {
           localStorage.setItem("access_token", data.access_token);
           localStorage.setItem("role", data.role);
+          const roleNormalized = data.role ? String(data.role).toLowerCase().replace(/[^a-z]/g, "") : "";
+          if (roleNormalized === "superadmin") {
+            localStorage.setItem("super_admin_token", data.access_token);
+            localStorage.setItem("superadmin_token", data.access_token);
+          }
         }
 
-        // If the API returns 200 OK, route to the create page
-        router.push("/blogs/create");
+        // Route depending on credentials/role
+        if (data.role === "careers" || data.role === "hr" || data.role === "recruiter") {
+          router.push("/careers/create");
+        } else {
+          router.push("/blogs/create");
+        }
       } else if (res.status === 422) {
         alert("Validation Error: Please check your email and password.");
       } else {
@@ -50,7 +59,7 @@ export default function BlogsLogin() {
     <div className="min-h-screen w-full bg-[#FCFCFD] flex items-center justify-center p-4 sm:p-6 md:p-10 select-none">
       {/* Outer Card Container */}
       <div className="bg-white rounded-[32px] shadow-2xl shadow-slate-200 border border-slate-100 max-w-6xl w-full flex flex-col lg:flex-row overflow-hidden min-h-[680px]">
-        
+
         {/* Left Column: Login Form */}
         <div className="w-full lg:w-1/2 p-8 sm:p-12 md:p-16 flex flex-col justify-between">
           {/* Top Logo */}
@@ -120,7 +129,7 @@ export default function BlogsLogin() {
               </div>
 
               {/* Forgot Password */}
-              <div className="flex justify-end">   
+              <div className="flex justify-end">
                 <Link
                   href="#"
                   className="text-[#3D5BE5] text-[13px] font-bold hover:text-blue-800 transition-colors"

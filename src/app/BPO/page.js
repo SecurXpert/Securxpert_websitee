@@ -13,7 +13,7 @@ import Appointment from "./Appointment";
 
 export const metadata = {
   title: "BPO | Business Process Outsourcing Services",
-  description: "BPO | Business Process Outsourcing Services | Securxpert.com",
+  description: "SecurXpert's BPO services automation, AI, and human expertise — customer support, back-office processing, and document automation for growing businesses",
 };
 
 export default function BPOPage() {

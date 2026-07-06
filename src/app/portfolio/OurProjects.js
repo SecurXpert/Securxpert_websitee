@@ -93,22 +93,7 @@ const projectsData = [
     category: "All",
     slug: "lauratek-2-0",
   },
-  {
-    id: 11,
-    title: "Landing Page Design",
-    tags: "DESIGN WOK, BRANDING",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
-    image: "/products/Projects/project8.png",
-    category: "All",
-  },
-  {
-    id: 12,
-    title: "Mobile Design",
-    tags: "DESIGN WOK, APP DESIGN",
-    desc: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
-    image: "/products/Projects/project9.png",
-    category: "All",
-  }
+
 ];
 
 export default function OurProjects() {
@@ -142,12 +127,12 @@ export default function OurProjects() {
 
                 {/* Foreground Centered Subtitle */}
                 <div className="relative lg:absolute lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-[170%] w-full flex items-center justify-center gap-2.5 md:gap-2 flex-wrap pointer-events-none mt-4 lg:mt-1">
-                    <p className="text-white/90 text-sm sm:text-lg md:text-2xl font-bold tracking-normal uppercase whitespace-nowrap">
+                    <p className="text-white/90 text-sm sm:text-lg md:text-2xl font-semibold tracking-normal uppercase whitespace-nowrap">
                         Everything begin with
                     </p>
                     <span
                         style={{ background: "linear-gradient(90deg, #3A56D6 0%, rgba(219, 56, 56, 0) 100%)" }}
-                        className="text-white text-xs sm:text-base md:text-xl font-bold uppercase tracking-normal px-2 py-1.5 rounded-[6px] shadow-md"
+                        className="text-white text-sm sm:text-lg md:text-2xl font-semibold uppercase tracking-normal px-2 py-1.5 rounded-[6px] shadow-md"
                     >
                         Idea
                     </span>

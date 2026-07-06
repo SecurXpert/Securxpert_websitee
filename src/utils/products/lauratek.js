@@ -6,7 +6,7 @@ const lauratek = {
   title: "Lauratek",
   headline: "Intelligent Corporate Solutions Suite",
   desc: "A highly customizable business management platform helping mid-to-large scale enterprises track performance, handle procurement, and automate HR tasks efficiently.",
-  introduction: "Lauratek is a highly customizable business management suite designed to help mid-to-large scale enterprises track operational performance, handle procurement efficiently, and automate routine HR tasks. As a unified ERP solution, it eliminates the need for fragmented software tools and brings complete operational transparency to your organization.",
+  introduction: "Lauratek is a highly customisable business management platform helping mid-to-large scale enterprises track performance, handle procurement, and automate HR tasks efficiently — built to replace fragmented spreadsheets and point tools with a single operational system.",
   bg: "linear-gradient(135deg, #4338CA 0%, #171717 100%)",
   image: "/products/thumbnails/LauraTak_Thumbnail.png",
   bannerImage: "/products/banners/LauraTekbanner.png",

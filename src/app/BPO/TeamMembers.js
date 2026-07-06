@@ -19,7 +19,7 @@ export default function TeamMembers() {
       <img
         src="/BPO/Blogs/blogdesign1.png"
         alt="Bottom Left Stripe Accent"
-        className="absolute bottom-[1px] left-[-14px] w-[180px] sm:w-[200px] h-auto select-none pointer-events-none z-0"
+        className="absolute bottom-[1px] left-[-14px] w-[180px] sm:w-[200px] h-auto select-none pointer-events-none z-0 hidden sm:block"
       />
       {/* Top Right Violet Accent */}
       <img

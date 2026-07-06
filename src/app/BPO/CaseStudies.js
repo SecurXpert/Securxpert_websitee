@@ -95,7 +95,7 @@ export default function CaseStudies() {
         </div>
 
         {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 max-w-[1000px] mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 max-w-[1000px] mx-auto">
           {cases.map((item) => (
             <div
               key={item.id}
@@ -111,7 +111,7 @@ export default function CaseStudies() {
         </div>
 
         {/* See All Project Button */}
-        <div className="flex justify-center mb-20">
+        <div className="flex justify-center mb-10 lg:mb-20">
           <Link
             href="/portfolio"
             className="inline-block bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-8 py-3.5 rounded-[6px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 text-center"
@@ -131,19 +131,19 @@ export default function CaseStudies() {
           <div className="absolute inset-0 bg-blue-900/10 mix-blend-multiply z-0 pointer-events-none" />
 
           {/* Counters Content (Reduced vertical padding & inner stats sizes) */}
-          <div className="relative z-10 px-6 py-10 sm:px-10 sm:py-12 lg:py-14 grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 items-center text-center">
+          <div className="relative z-10 px-4 py-6 sm:px-10 sm:py-12 lg:py-14 grid grid-cols-2 lg:grid-cols-4 gap-y-6 sm:gap-y-8 gap-x-4 sm:gap-x-6 items-center text-center">
             {stats.map((stat) => (
               <div key={stat.id} className="flex flex-col items-center">
                 {/* SVG Icon */}
-                <div className="mb-3">
+                <div className="mb-2 sm:mb-3 transform scale-[0.65] sm:scale-100">
                   {stat.icon}
                 </div>
                 {/* Stat Number */}
-                <h4 className="text-white text-2xl sm:text-3xl lg:text-[32px] font-semibold leading-tight font-inter">
+                <h4 className="text-white text-[20px] sm:text-3xl lg:text-[32px] font-semibold leading-tight font-inter -mt-2 sm:mt-0">
                   {stat.number}
                 </h4>
                 {/* Stat Label */}
-                <p className="text-slate-200/90 text-xs sm:text-base font-medium mt-1 font-sans tracking-wide">
+                <p className="text-slate-200/90 text-[11px] sm:text-base font-medium mt-1 font-sans tracking-wide">
                   {stat.label}
                 </p>
               </div>

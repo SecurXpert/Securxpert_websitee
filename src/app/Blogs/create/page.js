@@ -1,15 +1,8 @@
-import React from "react";
-import { AdminCreateJob } from "../../../blogs/AdminCreateJob";
+"use client";
 
-export const metadata = {
-  title: "Create Blog - SecurXpert",
-  description: "Admin portal to create new blogs.",
-};
+import React from "react";
+import { AdminCreateBlog } from "../../../blog-admin/AdminCreateBlog";
 
 export default function CreateBlogPage() {
-  return (
-    <main className="w-full min-h-screen bg-slate-50">
-      <AdminCreateJob />
-    </main>
-  );
+  return <AdminCreateBlog />;
 }

@@ -93,13 +93,13 @@ export default function OurProducts() {
     }, [activeIndex]);
 
     return (
-        <section className="relative w-full overflow-hidden min-h-[850px] md:h-[900px] lg:h-[950px] flex flex-col justify-between py-14 px-6 md:px-20 lg:px-40 text-white select-none">
+        <section className="relative w-full overflow-hidden min-h-[850px] md:h-[900px] lg:h-[950px] max-lg:min-h-[420px] max-lg:h-auto max-lg:pb-10 flex flex-col justify-between py-14 max-lg:pt-8 px-6 md:px-20 lg:px-40 text-white select-none">
             {/* Absolute Background Slideshow: covers top header down past explore button on mobile */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 w-full h-full">
                 {productsData.map((product, idx) => (
                     <div
                         key={product.id}
-                        className={`absolute inset-x-0 top-0 h-[660px] lg:h-full bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out ${idx === activeIndex ? "opacity-100" : "opacity-0"
+                        className={`absolute inset-x-0 top-0 h-[660px] max-lg:h-full lg:h-full bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out ${idx === activeIndex ? "opacity-100" : "opacity-0"
                             }`}
                         style={{ backgroundImage: `url(${product.bgImage})` }}
                     />
@@ -111,35 +111,40 @@ export default function OurProducts() {
                 <h2 className="text-[28px] md:text-[55px] font-playfair font-semibold text-white mb-2 leading-none">
                     Our Products
                 </h2>
-                <p className="text-white/80 text-md md:text-md font-medium tracking-wide">
+                {/* Desktop Description */}
+                <p className="text-white/80 text-md md:text-md font-medium tracking-wide max-lg:hidden">
                     Beyond client work, SecurXpert designs and maintains its own product portfolio — proof of how we build, not just how we talk about building. Ten live products across HR tech, healthcare, education, logistics, and analytics. 
+                </p>
+                {/* Mobile Description (from mockup) */}
+                <p className="hidden max-lg:block text-white/80 text-[14px] font-medium tracking-wide">
+                    Powerful products for your business
                 </p>
             </div>
 
             {/* MIDDLE BODY CONTAINER: Split Columns */}
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto w-full">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto w-full max-lg:flex max-lg:flex-row max-lg:bg-[#232323] max-lg:rounded-[28px] max-lg:p-5 max-lg:shadow-2xl max-lg:gap-3 max-lg:mt-4">
 
                 {/* LEFT CONTENT (Product Title, Paragraph, Button) */}
                 {/* Kept your precise desktop translate transforms completely intact */}
-                <div className="lg:col-span-6 flex flex-col items-start text-left max-w-xl transition-all duration-700 ease-out lg:-translate-x-12 lg:-translate-y-20 w-full">
+                <div className="lg:col-span-6 flex flex-col items-start text-left max-w-xl transition-all duration-700 ease-out lg:-translate-x-12 lg:-translate-y-20 w-full max-lg:w-[55%] max-lg:pr-1 max-lg:justify-center">
                     <h2
-                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight animate-fade-in ![font-family:var(--font-Playfair-Display),serif]"
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 max-lg:mb-2 tracking-tight animate-fade-in ![font-family:var(--font-Playfair-Display),serif] max-lg:!font-sans max-lg:text-[22px] max-lg:font-semibold"
                     >
                         {activeProduct.name}
                     </h2>
-                    <p className="text-white/80 text-base md:text-lg mb-8 leading-relaxed font-light max-w-lg min-h-[80px]">
+                    <p className="text-white/80 text-base md:text-lg mb-8 leading-relaxed font-light max-w-lg min-h-[80px] max-lg:min-h-0 max-lg:text-[11px] max-lg:leading-[1.4] max-lg:mb-4 max-lg:text-slate-300">
                         {activeProduct.description}
                     </p>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 max-lg:w-full">
                         <Link
                             href={`/products/${activeProduct.slug}`}
-                            className={`text-white font-medium px-8 py-4 rounded-xl text-base shadow-md transition-all active:scale-95 duration-150 cursor-pointer text-center inline-block ${activeProduct.btnColor}`}
+                            className={`text-white font-medium px-10 py-4 max-lg:px-5 max-lg:py-2.5 max-lg:text-[13px] rounded-2xl max-lg:rounded-xl text-base shadow-md transition-all active:scale-95 duration-150 cursor-pointer text-center inline-block ${activeProduct.btnColor}`}
                         >
                             Explore Now
                         </Link>
                         <Link
                             href="/products"
-                            className="text-white font-medium px-8 py-4 rounded-xl text-base transition-all active:scale-95 duration-150 cursor-pointer bg-transparent border border-white/40 hover:bg-white/10 text-center inline-block"
+                            className="text-white font-medium px-6 py-4 rounded-2xl text-base transition-all active:scale-95 duration-150 cursor-pointer bg-transparent border border-white/40 hover:bg-white/10 text-center inline-block max-lg:hidden"
                         >
                             View All Products
                         </Link>
@@ -147,13 +152,13 @@ export default function OurProducts() {
                 </div>
 
                 {/* RIGHT CONTENT (Stack of Overlapping Interaction Cards) */}
-                <div className="lg:col-span-6 flex items-center justify-center lg:justify-end lg:-translate-x-16 relative w-full h-[360px] sm:h-[400px] md:h-[480px] overflow-visible">
+                <div className="lg:col-span-6 flex items-center justify-center lg:justify-end lg:-translate-x-16 relative w-full h-[360px] sm:h-[400px] md:h-[480px] max-lg:w-[45%] max-lg:h-[150px] overflow-visible">
                     {/* Inner relative container scales intelligently on MacBook Air screens via dynamic origin point alignment */}
                     <div
                         onTouchStart={onTouchStart}
                         onTouchMove={onTouchMove}
                         onTouchEnd={onTouchEnd}
-                        className="relative w-[280px] sm:w-[400px] md:w-[500px] h-[260px] sm:h-[320px] md:h-[440px] flex items-center justify-start transform lg:scale-[0.75] xl:scale-[0.85] 2xl:scale-100 origin-center lg:origin-right transition-transform duration-700 touch-pan-y"
+                        className="relative w-[280px] sm:w-[400px] md:w-[500px] h-[260px] sm:h-[320px] md:h-[440px] max-lg:w-full max-lg:h-full flex items-center justify-start transform lg:scale-[0.75] xl:scale-[0.85] 2xl:scale-100 origin-center lg:origin-right transition-transform duration-700 touch-pan-y max-lg:justify-end"
                     >
 
                         {/* Dynamically Mapped Cards for Smooth Size/Position Transition */}
@@ -164,13 +169,13 @@ export default function OurProducts() {
 
                             let stateClasses = "";
                             if (isActive) {
-                                stateClasses = "left-0 w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-[480px] rounded-[24px] sm:rounded-[32px]  z-20 hover:scale-[1.03] -translate-x-8 sm:translate-x-[-70px] opacity-100";
+                                stateClasses = "left-0 w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-[480px] max-lg:left-auto max-lg:right-0 max-lg:w-[140px] max-lg:h-[140px] max-lg:translate-x-0 rounded-[24px] sm:rounded-[32px] max-lg:rounded-3xl z-20 hover:scale-[1.03] -translate-x-8 sm:translate-x-[-70px] opacity-100 max-lg:shadow-lg";
                             } else if (isNext) {
-                                stateClasses = "left-[40%] sm:left-[50%] md:left-[55%] w-36 h-36 sm:w-48 sm:h-48 md:w-63 md:h-80 rounded-[18px] sm:rounded-[24px]  z-10 hover:scale-[1.02] cursor-pointer translate-x-4 sm:translate-x-10 md:translate-x-32 opacity-100";
+                                stateClasses = "left-[40%] sm:left-[50%] md:left-[55%] w-36 h-36 sm:w-48 sm:h-48 md:w-63 md:h-80 max-lg:hidden rounded-[18px] sm:rounded-[24px] z-10 hover:scale-[1.02] cursor-pointer translate-x-4 sm:translate-x-10 md:translate-x-32 opacity-100";
                             } else if (isPrev) {
-                                stateClasses = "left-[-50%] w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-[480px] rounded-[24px] sm:rounded-[32px] z-0 -translate-x-[150px] opacity-0 scale-75";
+                                stateClasses = "left-[-50%] w-56 h-56 sm:w-80 sm:h-80 md:w-95 md:h-[480px] max-lg:hidden rounded-[24px] sm:rounded-[32px] z-0 -translate-x-[150px] opacity-0 scale-75";
                             } else {
-                                stateClasses = "left-[100%] w-36 h-36 sm:w-48 sm:h-48 md:w-63 md:h-80 rounded-[18px] sm:rounded-[24px] z-0 opacity-0 translate-x-[100px] scale-75";
+                                stateClasses = "left-[100%] w-36 h-36 sm:w-48 sm:h-48 md:w-63 md:h-80 rounded-[18px] sm:rounded-[24px] max-lg:hidden z-0 opacity-0 translate-x-[100px] scale-75";
                             }
 
                             return (

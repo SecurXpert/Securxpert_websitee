@@ -43,7 +43,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="relative w-full bg-[#F7F9FA] py-14 text-slate-800 select-none">
+    <section className="relative w-full bg-[#F7F9FA] pt-4 pb-14 lg:py-14 text-slate-800 select-none">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* GRID WITH LEFT HEADER & IMAGE SIDE-BY-SIDE WITH QUESTIONS */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start">

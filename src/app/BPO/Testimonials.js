@@ -123,10 +123,8 @@ export default function Testimonials() {
             {/* Carousel wrapper */}
             <div className="overflow-hidden py-4 -my-4 pr-10 lg:pr-0">
               <div
-                className="flex gap-6 transition-transform duration-500 ease-in-out"
-                style={{
-                  transform: `translateX(-${currentIndex * 85}%)`
-                }}
+                className="flex gap-6 transition-transform duration-500 ease-in-out -translate-x-[calc(var(--slide-idx)*100%+var(--slide-idx)*1.5rem)] sm:-translate-x-[calc(var(--slide-idx)*85%+var(--slide-idx)*1.5rem)] lg:-translate-x-[calc(var(--slide-idx)*80%+var(--slide-idx)*1.5rem)]"
+                style={{ '--slide-idx': currentIndex }}
               >
                 {testimonials.map((t) => (
                   <div
