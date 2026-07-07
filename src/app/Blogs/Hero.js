@@ -19,7 +19,7 @@ export default function Hero() {
     const marqueeItems = [...categories, ...categories, ...categories];
 
     return (
-        <div className="bg-white overflow-hidden text-white select-none">
+        <div className="bg-white overflow-hidden text-white">
             {/* Infinite Marquee & Floating Arrow Keyframes */}
             <style>{`
                 @keyframes marquee {
@@ -71,7 +71,7 @@ export default function Hero() {
                     </div>
 
                     {/* Infinite Scrolling Category Slider Row */}
-                    <div className="w-full max-w-[1340px] mx-auto mt-24 md:mt-26 relative z-10 px-4 select-none group">
+                    <div className="w-full max-w-[1340px] mx-auto mt-24 md:mt-26 relative z-10 px-4  group">
 
                        
 
@@ -90,7 +90,7 @@ export default function Hero() {
                                             className="w-full h-full object-cover "
                                         />
                                         {/* Category Name Pill inside Glass container */}
-                                        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/80  px-5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-black text-slate-800 tracking-[0.12em] whitespace-nowrap shadow-sm select-none">
+                                        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/80  px-5 py-1.5 rounded-full text-[10px] sm:text-[11px] font-black text-slate-800 tracking-[0.12em] whitespace-nowrap shadow-sm">
                                             {item.label}
                                         </div>
                                     </div>

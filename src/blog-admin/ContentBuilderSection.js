@@ -33,7 +33,7 @@ export default function ContentBuilderSection({
 
         for (let id = 1; id <= maxScanId; id++) {
           sectionPromises.push(
-            axios.get(`http://192.168.0.128:8000/blogs/sections/${id}`, {
+            axios.get(`http://192.168.0.135:8000/blogs/sections/${id}`, {
               headers: {
                 "Authorization": `Bearer ${token}`
               }
@@ -74,14 +74,26 @@ export default function ContentBuilderSection({
         }
 
         const mapped = uniqueSections.map((sec, idx) => {
+          let decodedCaption = sec.image_caption || "";
+          let decodedDescription = "";
+          try {
+            if (sec.image_caption && (sec.image_caption.startsWith("{") || sec.image_caption.startsWith("["))) {
+              const parsed = JSON.parse(sec.image_caption);
+              decodedCaption = parsed.caption || "";
+              decodedDescription = parsed.description || "";
+            }
+          } catch (e) {
+            // fallback if it is not JSON
+          }
+
           return {
             id: sec.id || (idx + 1),
             title: sec.section_title || "",
             imageAltText: sec.image_alt_text || "",
-            imageCaption: sec.image_caption || "",
+            imageCaption: decodedCaption,
             imagePosition: sec.image_position === "full_width" ? "full" : (sec.image_position || "full"),
             descriptionBlocks: [sec.id ? `desc-${sec.id}` : Date.now() + idx],
-            existingDescription: sec.description || "",
+            existingDescription: decodedDescription || sec.description || "",
             existingImage: sec.section_image || sec.section_image_url || null
           };
         });
@@ -146,7 +158,7 @@ export default function ContentBuilderSection({
         localStorage.getItem("token") ||
         "";
 
-      const response = await axios.post(`http://192.168.0.128:8000/blogs/${blogId}/sections`, formData, {
+      const response = await axios.post(`http://192.168.0.135:8000/blogs/${blogId}/sections`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "Authorization": `Bearer ${token}`
@@ -289,7 +301,7 @@ export default function ContentBuilderSection({
                 {section.existingImage && (
                   <div className="mb-2 relative w-full max-w-[200px] h-[100px] rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
                     <img
-                      src={section.existingImage.startsWith("http") ? section.existingImage : `http://192.168.0.128:8000${section.existingImage}`}
+                      src={section.existingImage.startsWith("http") ? section.existingImage : `http://192.168.0.135:8000${section.existingImage}`}
                       alt="Existing section image"
                       className="w-full h-full object-cover"
                     />

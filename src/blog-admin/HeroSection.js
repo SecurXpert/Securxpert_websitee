@@ -27,7 +27,7 @@ export default function HeroSection({ blogId }) {
           "";
 
         console.log("HeroSection: Fetching hero details for ID:", blogId);
-        const response = await axios.get(`http://192.168.0.128:8000/blogs/${blogId}/hero`, {
+        const response = await axios.get(`http://192.168.0.135:8000/blogs/${blogId}/hero`, {
           headers: {
             "Authorization": `Bearer ${token}`
           }
@@ -78,7 +78,7 @@ export default function HeroSection({ blogId }) {
         localStorage.getItem("token") ||
         "";
 
-      const response = await axios.post(`http://192.168.0.128:8000/blogs/${blogId}/hero`, formData, {
+      const response = await axios.post(`http://192.168.0.135:8000/blogs/${blogId}/hero`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "Authorization": `Bearer ${token}`
@@ -146,9 +146,9 @@ export default function HeroSection({ blogId }) {
             <Label>Hero Banner</Label>
             {existingHeroBanner && (
               <div className="mb-2 relative w-full h-[100px] rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
-                <img 
-                  src={existingHeroBanner.startsWith("http") ? existingHeroBanner : `http://192.168.0.128:8000${existingHeroBanner}`} 
-                  alt="Existing Hero Banner" 
+                <img
+                  src={existingHeroBanner.startsWith("http") ? existingHeroBanner : `http://192.168.0.135:8000${existingHeroBanner}`}
+                  alt="Existing Hero Banner"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-1 left-1 bg-black/60 px-1.5 py-0.5 rounded text-[8px] font-bold text-white uppercase">Current Banner</div>
@@ -164,9 +164,9 @@ export default function HeroSection({ blogId }) {
             <Label>Author Image</Label>
             {existingAuthorImage && (
               <div className="mb-2 relative w-full h-[100px] rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
-                <img 
-                  src={existingAuthorImage.startsWith("http") ? existingAuthorImage : `http://192.168.0.128:8000${existingAuthorImage}`} 
-                  alt="Existing Author Photo" 
+                <img
+                  src={existingAuthorImage.startsWith("http") ? existingAuthorImage : `http://192.168.0.135:8000${existingAuthorImage}`}
+                  alt="Existing Author Photo"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-1 left-1 bg-black/60 px-1.5 py-0.5 rounded text-[8px] font-bold text-white uppercase">Current Author Photo</div>

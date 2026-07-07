@@ -1,5 +1,5 @@
 import { Clock, User, Calendar, GripVertical, Trash2, Plus, AlertCircle, Image } from "lucide-react";
-import { Card, Label, Input, Textarea, Select, UploadZone, TagInput, Toggle } from "./SharedUI.jsx";
+import { Card, Label, Input, Textarea, Select, UploadZone, TagInput, Toggle } from "./SharedUI.js";
 import { useState } from "react";
 
 const CATEGORIES = [

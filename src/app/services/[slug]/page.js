@@ -190,7 +190,7 @@ export default async function ServicePage({ params }) {
           <img
             src="/BPO/FeauturedServices/shape.svg"
             alt="Background Shape"
-            className="absolute right-[-14rem] bottom-[-8rem] h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block select-none opacity-90"
+            className="absolute right-[-14rem] bottom-[-8rem] h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block opacity-90"
           />
           <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-18">
             <div className="text-center mb-6 sm:mb-8 lg:mb-12">
@@ -239,7 +239,7 @@ export default async function ServicePage({ params }) {
 
       {/* Dynamic CTA Section */}
       <section
-        className={`w-full text-center select-none py-10 lg:py-14 px-4 sm:px-6 md:px-12 flex items-center justify-center relative z-10 ${service.cta?.bgClass || ""}`}
+        className={`w-full text-center py-10 lg:py-14 px-4 sm:px-6 md:px-12 flex items-center justify-center relative z-10 ${service.cta?.bgClass || ""}`}
         style={service.cta?.bgClass ? {} : {
           background: service.cta?.gradient || "linear-gradient(135deg, #4F46E5 0%, #4E42E1 7.14%, #4D3EDC 14.29%, #4B3BD8 21.43%, #4A37D3 28.57%, #4933CF 35.71%, #482ECA 42.86%, #462AC6 50%, #4526C2 57.14%, #4421BD 64.29%, #421CB9 71.43%, #4117B5 78.57%, #4010B1 85.71%, #3E08AC 92.86%, #3D00A8 100%)"
         }}

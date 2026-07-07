@@ -14,7 +14,7 @@ export default function BlogsLogin() {
   const handlesubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://192.168.0.128:8000/auth/login", {
+      const res = await fetch("http://192.168.0.135:8000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

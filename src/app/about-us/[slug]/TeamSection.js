@@ -100,7 +100,7 @@ const teamData = [
 export default function TeamSection() {
     return (
         <main
-            className="relative w-full min-h-screen pt-18 pb-14 text-[#19085F] select-none overflow-hidden bg-[#EDEDFD]"
+            className="relative w-full min-h-screen pt-18 pb-14 text-[#19085F] overflow-hidden bg-[#EDEDFD]"
         >
             {/* Top Header Section */}
             <div className="relative max-w-[1400px] mx-auto px-6 md:px-12 z-10">

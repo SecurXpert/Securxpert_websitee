@@ -14,7 +14,7 @@ export default function OurStories() {
               <img
                 src="/AboutUs/ourstory.png"
                 alt="Our Story of Innovation & Digital Growth"
-                className="w-full h-auto object-contain select-none"
+                className="w-full h-auto object-contain"
               />
             </div>
           </div>

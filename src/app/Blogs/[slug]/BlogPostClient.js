@@ -36,7 +36,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                         const guestPassword = "VisitorPass123";
 
                         try {
-                            const loginRes = await axios.post('http://192.168.0.128:8000/auth/login', {
+                            const loginRes = await axios.post('http://192.168.0.135:8000/auth/login', {
                                 email: guestEmail,
                                 password: guestPassword
                             });
@@ -47,13 +47,13 @@ export default function BlogPostClient({ slug, staticBlog }) {
                         } catch (err) {
                             if (err.response && err.response.status === 401) {
                                 // Register guest visitor
-                                await axios.post('http://192.168.0.128:8000/auth/register-admin', {
+                                await axios.post('http://192.168.0.135:8000/auth/register-admin', {
                                     username: guestUsername,
                                     email: guestEmail,
                                     password: guestPassword
                                 });
                                 // Login
-                                const loginRes2 = await axios.post('http://192.168.0.128:8000/auth/login', {
+                                const loginRes2 = await axios.post('http://192.168.0.135:8000/auth/login', {
                                     email: guestEmail,
                                     password: guestPassword
                                 });
@@ -69,7 +69,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 }
 
                 // 1. Fetch all blogs to find the one matching slug
-                const listRes = await axios.get("http://192.168.0.128:8000/blogs/", {
+                const listRes = await axios.get("http://192.168.0.135:8000/blogs/", {
                     headers: { "Authorization": `Bearer ${token}` }
                 });
                 const blogsList = Array.isArray(listRes.data) ? listRes.data : (listRes.data?.data || []);
@@ -84,7 +84,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 const blogId = matchedBlog.id;
 
                 // 2. Fetch blog details
-                const detailRes = await axios.get(`http://192.168.0.128:8000/blogs/${blogId}`, {
+                const detailRes = await axios.get(`http://192.168.0.135:8000/blogs/${blogId}`, {
                     headers: { "Authorization": `Bearer ${token}` }
                 });
                 const detailData = detailRes.data || {};
@@ -92,7 +92,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 // 3. Fetch hero section details
                 let heroData = {};
                 try {
-                    const heroRes = await axios.get(`http://192.168.0.128:8000/blogs/${blogId}/hero`, {
+                    const heroRes = await axios.get(`http://192.168.0.135:8000/blogs/${blogId}/hero`, {
                         headers: { "Authorization": `Bearer ${token}` }
                     });
                     const resData = heroRes.data || {};
@@ -107,7 +107,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 const sectionPromises = [];
                 for (let id = 1; id <= maxScanId; id++) {
                     sectionPromises.push(
-                        axios.get(`http://192.168.0.128:8000/blogs/sections/${id}`, {
+                        axios.get(`http://192.168.0.135:8000/blogs/sections/${id}`, {
                             headers: { "Authorization": `Bearer ${token}` }
                         })
                             .then(res => {
@@ -139,7 +139,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 if (bannerPath) {
                     bannerUrl = (bannerPath.startsWith("http://") || bannerPath.startsWith("https://"))
                         ? bannerPath
-                        : `http://192.168.0.128:8000${bannerPath}`;
+                        : `http://192.168.0.135:8000${bannerPath}`;
                 }
 
                 let authorAvatarUrl = "/Blogs/AllPosts/Image (5).png";
@@ -147,7 +147,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 if (authorAvatarPath) {
                     authorAvatarUrl = (authorAvatarPath.startsWith("http://") || authorAvatarPath.startsWith("https://"))
                         ? authorAvatarPath
-                        : `http://192.168.0.128:8000${authorAvatarPath}`;
+                        : `http://192.168.0.135:8000${authorAvatarPath}`;
                 }
 
                 // Deduplicate sections by ID and Title to prevent double items from database
@@ -167,7 +167,24 @@ export default function BlogPostClient({ slug, staticBlog }) {
                         if (seenTitles.has(title)) continue;
                         seenTitles.add(title);
                     }
-                    uniqueSections.push(sec);
+
+                    let decodedCaption = sec.image_caption || "";
+                    let decodedDescription = "";
+                    try {
+                        if (sec.image_caption && (sec.image_caption.startsWith("{") || sec.image_caption.startsWith("["))) {
+                            const parsed = JSON.parse(sec.image_caption);
+                            decodedCaption = parsed.caption || "";
+                            decodedDescription = parsed.description || "";
+                        }
+                    } catch (e) {
+                        // fallback
+                    }
+
+                    uniqueSections.push({
+                        ...sec,
+                        image_caption: decodedCaption,
+                        description: decodedDescription || sec.description || ""
+                    });
                 }
 
                 // Build table of contents from unique sections using 'title'
@@ -225,7 +242,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
     }
 
     return (
-        <div className="relative min-h-screen bg-white text-slate-800 pb-20 select-none">
+        <div className="relative min-h-screen bg-white text-slate-800 pb-20">
             {/* Blog Hero Section */}
             <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto pt-0 pb-16">
                 {/* Curved Container Wrapper */}
@@ -324,7 +341,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                                 if (imagePath) {
                                     imageUrl = (imagePath.startsWith("http://") || imagePath.startsWith("https://"))
                                         ? imagePath
-                                        : `http://192.168.0.128:8000${imagePath}`;
+                                        : `http://192.168.0.135:8000${imagePath}`;
                                 }
 
                                 return (

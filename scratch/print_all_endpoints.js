@@ -1,8 +1,8 @@
 async function run() {
     try {
-        const res = await fetch("http://192.168.0.128:8000/openapi.json");
+        const res = await fetch("http://192.168.0.135:8000/openapi.json");
         const schema = await res.json();
-        
+
         console.log("All paths in openapi.json:");
         const paths = Object.keys(schema.paths || {});
         for (const p of paths) {

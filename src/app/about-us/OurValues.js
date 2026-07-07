@@ -52,7 +52,7 @@ export default function OurValues() {
         <div className="relative flex justify-center items-center mb-8 sm:mb-10 py-4">
           <img 
             src="/services-media/OurServices/line pattern.svg" 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] pointer-events-none select-none opacity-90 h-auto" 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] pointer-events-none opacity-90 h-auto" 
             alt="" 
           />
           <h2 className="relative z-10 text-3xl sm:text-4xl lg:text-[38px] font-bold text-[#060913] font-Plus Jakarta Sans tracking-tight">

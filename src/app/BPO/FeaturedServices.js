@@ -31,7 +31,7 @@ export default function FeaturedServices() {
             <img
                 src="/BPO/FeauturedServices/shape.svg"
                 alt="Background Shape"
-                className="absolute right-[-10rem] top-0 h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block select-none opacity-100"
+                className="absolute right-[-10rem] top-0 h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block opacity-100"
             />
 
             {/* MAIN CONTAINER */}
@@ -48,7 +48,7 @@ export default function FeaturedServices() {
                             <img
                                 src="/BPO/FeauturedServices/Vector.svg"
                                 alt="Star Background"
-                                className="absolute -top-3 -left-4 w-12 h-12 opacity-95 pointer-events-none select-none z-0"
+                                className="absolute -top-3 -left-4 w-12 h-12 opacity-95 pointer-events-none z-0"
                             />
 
                             <span className="relative z-10 text-[#3D62EB] text-sm font-semibold tracking-[2px] uppercase font-sans">
@@ -78,7 +78,7 @@ export default function FeaturedServices() {
                                     <img
                                         src={item.bgImage}
                                         alt="Hover Background"
-                                        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none select-none z-0"
+                                        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none z-0"
                                     />
 
                                     {/* Card Content Container */}

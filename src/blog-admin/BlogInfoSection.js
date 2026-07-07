@@ -23,20 +23,20 @@ export default function BlogInfoSection({
 
     const fetchBlogInfo = async () => {
       try {
-        const token = 
-          localStorage.getItem("super_admin_token") ||                  
-          localStorage.getItem("superadmin_token") || 
-          localStorage.getItem("access_token") ||  
-          localStorage.getItem("token") || 
+        const token =
+          localStorage.getItem("super_admin_token") ||
+          localStorage.getItem("superadmin_token") ||
+          localStorage.getItem("access_token") ||
+          localStorage.getItem("token") ||
           "";
 
         console.log("BlogInfoSection: Fetching blog details for ID:", blogId);
-        const response = await axios.get(`http://192.168.0.128:8000/blogs/${blogId}`, {
+        const response = await axios.get(`http://192.168.0.135:8000/blogs/${blogId}`, {
           headers: {
             "Authorization": `Bearer ${token}`
           }
         });
-        
+
         const data = response.data;
         if (data) {
           if (data.title) handleTitleChange(data.title);
@@ -62,14 +62,14 @@ export default function BlogInfoSection({
     if (status) params.append("status", status);
 
     try {
-      const token = 
-        localStorage.getItem("super_admin_token") ||                  
-        localStorage.getItem("superadmin_token") || 
-        localStorage.getItem("access_token") ||  
-        localStorage.getItem("token") || 
+      const token =
+        localStorage.getItem("super_admin_token") ||
+        localStorage.getItem("superadmin_token") ||
+        localStorage.getItem("access_token") ||
+        localStorage.getItem("token") ||
         "";
 
-      const response = await axios.post("http://192.168.0.128:8000/blogs/", params, {
+      const response = await axios.post("http://192.168.0.135:8000/blogs/", params, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
           "Authorization": `Bearer ${token}`
@@ -90,7 +90,7 @@ export default function BlogInfoSection({
           createdId = response.data.blog.id;
         }
       }
-      
+
       if (createdId && onSuccess) {
         onSuccess(createdId);
       }

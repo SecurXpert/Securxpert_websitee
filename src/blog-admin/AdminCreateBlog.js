@@ -150,7 +150,7 @@ export function AdminCreateBlog() {
       if (!createdId) {
         try {
           console.log("Publishing step 1: Creating Blog Info...", blogInfoParams.toString());
-          const blogInfoRes = await axios.post("http://192.168.0.128:8000/blogs/", blogInfoParams, {
+          const blogInfoRes = await axios.post("http://192.168.0.135:8000/blogs/", blogInfoParams, {
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",
               "Authorization": `Bearer ${token}`
@@ -171,7 +171,7 @@ export function AdminCreateBlog() {
         } catch (postErr) {
           if (postErr.response && postErr.response.status === 409) {
             console.log("Slug conflict detected. Fetching blogs to locate ID...");
-            const listRes = await axios.get("http://192.168.0.128:8000/blogs/", {
+            const listRes = await axios.get("http://192.168.0.135:8000/blogs/", {
               headers: { "Authorization": `Bearer ${token}` }
             });
             const blogsList = listRes.data?.data || [];
@@ -180,7 +180,7 @@ export function AdminCreateBlog() {
               createdId = existingBlog.id;
               console.log("Found existing blog ID:", createdId);
               console.log("Updating existing blog details using PATCH...");
-              await axios.patch(`http://192.168.0.128:8000/blogs/${createdId}`, blogInfoParams, {
+              await axios.patch(`http://192.168.0.135:8000/blogs/${createdId}`, blogInfoParams, {
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
                   "Authorization": `Bearer ${token}`
@@ -195,7 +195,7 @@ export function AdminCreateBlog() {
         }
       } else {
         console.log("Updating existing blog details using PATCH...");
-        await axios.patch(`http://192.168.0.128:8000/blogs/${createdId}`, blogInfoParams, {
+        await axios.patch(`http://192.168.0.135:8000/blogs/${createdId}`, blogInfoParams, {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": `Bearer ${token}`
@@ -226,7 +226,7 @@ export function AdminCreateBlog() {
 
       console.log("Publishing step 2: Hero Section...");
       try {
-        await axios.post(`http://192.168.0.128:8000/blogs/${createdId}/hero`, heroFormData, {
+        await axios.post(`http://192.168.0.135:8000/blogs/${createdId}/hero`, heroFormData, {
           headers: {
             "Content-Type": "multipart/form-data",
             "Authorization": `Bearer ${token}`
@@ -236,7 +236,7 @@ export function AdminCreateBlog() {
       } catch (heroErr) {
         if (heroErr.response && (heroErr.response.status === 409 || heroErr.response.status === 400)) {
           console.log("Hero section already exists. Updating using PATCH...");
-          await axios.patch(`http://192.168.0.128:8000/blogs/${createdId}/hero`, heroFormData, {
+          await axios.patch(`http://192.168.0.135:8000/blogs/${createdId}/hero`, heroFormData, {
             headers: {
               "Content-Type": "multipart/form-data",
               "Authorization": `Bearer ${token}`
@@ -254,13 +254,13 @@ export function AdminCreateBlog() {
         const maxScanId = Math.max(100, Number(createdId) * 5 + 30);
         for (let id = 1; id <= maxScanId; id++) {
           try {
-            const secRes = await axios.get(`http://192.168.0.128:8000/blogs/sections/${id}`, {
+            const secRes = await axios.get(`http://192.168.0.135:8000/blogs/sections/${id}`, {
               headers: { "Authorization": `Bearer ${token}` }
             });
             const secData = secRes.data?.data || secRes.data;
             if (secData && Number(secData.blog_post_id) === Number(createdId)) {
               console.log("Deleting existing section ID:", id);
-              await axios.delete(`http://192.168.0.128:8000/blogs/sections/${id}`, {
+              await axios.delete(`http://192.168.0.135:8000/blogs/sections/${id}`, {
                 headers: { "Authorization": `Bearer ${token}` }
               });
             }
@@ -278,8 +278,6 @@ export function AdminCreateBlog() {
         sectionFormData.append("order_index", index);
         sectionFormData.append("section_title", section.title || "Untitled Section");
         sectionFormData.append("image_alt_text", section.imageAltText || "");
-        sectionFormData.append("image_caption", section.imageCaption || "");
-
         const finalImagePosition = section.imagePosition === "full" ? "full_width" : (section.imagePosition || "full_width");
         sectionFormData.append("image_position", finalImagePosition);
 
@@ -296,9 +294,13 @@ export function AdminCreateBlog() {
           .filter(html => html.trim() !== "")
           .join("\n");
 
-        sectionFormData.append("description", descriptionHtml);
+        const captionData = JSON.stringify({
+          caption: section.imageCaption || "",
+          description: descriptionHtml || ""
+        });
+        sectionFormData.append("image_caption", captionData);
 
-        await axios.post(`http://192.168.0.128:8000/blogs/${createdId}/sections`, sectionFormData, {
+        await axios.post(`http://192.168.0.135:8000/blogs/${createdId}/sections`, sectionFormData, {
           headers: {
             "Content-Type": "multipart/form-data",
             "Authorization": `Bearer ${token}`
@@ -309,14 +311,14 @@ export function AdminCreateBlog() {
 
       // 5. GET verification: fetch all sections and merge them into one single blog object
       console.log("Verification step: Retrieving all data from GET APIs...");
-      const finalBlogRes = await axios.get(`http://192.168.0.128:8000/blogs/${createdId}`, {
+      const finalBlogRes = await axios.get(`http://192.168.0.135:8000/blogs/${createdId}`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       const finalBlogObj = finalBlogRes.data?.data || finalBlogRes.data || {};
 
       let finalHero = {};
       try {
-        const finalHeroRes = await axios.get(`http://192.168.0.128:8000/blogs/${createdId}/hero`, {
+        const finalHeroRes = await axios.get(`http://192.168.0.135:8000/blogs/${createdId}/hero`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
         finalHero = finalHeroRes.data?.data || finalHeroRes.data || {};
@@ -329,7 +331,7 @@ export function AdminCreateBlog() {
         const maxScanId = Math.max(100, Number(createdId) * 5 + 30);
         for (let id = 1; id <= maxScanId; id++) {
           try {
-            const secRes = await axios.get(`http://192.168.0.128:8000/blogs/sections/${id}`, {
+            const secRes = await axios.get(`http://192.168.0.135:8000/blogs/sections/${id}`, {
               headers: { "Authorization": `Bearer ${token}` }
             });
             const secData = secRes.data?.data || secRes.data;

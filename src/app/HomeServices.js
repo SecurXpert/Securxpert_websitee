@@ -101,7 +101,7 @@ export default function HomeServices() {
 
                             {/* Responsive Text Stack overlayed on top (Default state) */}
                             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 z-20 flex flex-col justify-end h-full pointer-events-none group-hover:opacity-0 transition-opacity duration-300">
-                                <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight select-none">
+                                <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
                                     {service.title}
                                 </h3>
                                 <p className="text-[12px] sm:text-[15px] text-slate-300 mt-1 font-normal max-w-md leading-relaxed  opacity-90 select-none">

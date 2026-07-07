@@ -11,14 +11,14 @@ export default function AboutUs() {
       <img
         src="/BPO/AboutUs/aboutus.svg"
         alt="Left Wave"
-        className="absolute left-[-2%] xl:left-[10%] 2xl:left-[15%] top-32 h-[220px] lg:h-[260px] xl:h-[320px] w-auto pointer-events-none select-none z-0 hidden lg:block opacity-50 xl:opacity-100"
+        className="absolute left-[-2%] xl:left-[10%] 2xl:left-[15%] top-32 h-[220px] lg:h-[260px] xl:h-[320px] w-auto pointer-events-none z-0 hidden lg:block opacity-50 xl:opacity-100"
       />
 
       {/* Bottom Right Wave Shape */}
       <img
         src="/BPO/AboutUs/aboutus3.svg"
         alt="Bottom Right Wave"
-        className="absolute right-10 bottom-5 h-[100px] w-auto pointer-events-none select-none z-0 hidden lg:block"
+        className="absolute right-10 bottom-5 h-[100px] w-auto pointer-events-none z-0 hidden lg:block"
       />
 
       {/* MAIN CONTAINER */}
@@ -32,14 +32,14 @@ export default function AboutUs() {
             <img
               src="/BPO/AboutUs/aboutus2.svg"
               alt="Backdrop Radial Rays"
-              className="absolute top-[-84px] left-[-125px] lg:left-[-60px] xl:left-[-100px] 2xl:left-[-125px] w-[42%] sm:w-[38%] h-auto pointer-events-none select-none z-0"
+              className="absolute top-[-84px] left-[-125px] lg:left-[-60px] xl:left-[-100px] 2xl:left-[-125px] w-[42%] sm:w-[38%] h-auto pointer-events-none z-0"
             />
 
             {/* Dot Grid backdrop around lower right of collage */} 
             <img
               src="/BPO/AboutUs/a3.png"
               alt="Backdrop Dots"
-              className="absolute bottom-[2%] right-[4%] w-[20%] h-auto pointer-events-none select-none z-0"
+              className="absolute bottom-[2%] right-[4%] w-[20%] h-auto pointer-events-none z-0"
             />
 
             {/* Main Upper Right Image (a1.jpg) */}
@@ -47,7 +47,7 @@ export default function AboutUs() {
               <img
                 src="/BPO/AboutUs/a1.jpg"
                 alt="Businesswomen Collaborating"
-                className="w-full h-auto object-cover pointer-events-none select-none"
+                className="w-full h-auto object-cover pointer-events-none"
               />
             </div>
 
@@ -56,7 +56,7 @@ export default function AboutUs() {
               <img
                 src="/BPO/AboutUs/a2.jpg"
                 alt="Team Specialists Consulting"
-                className="w-full h-auto object-cover pointer-events-none select-none"
+                className="w-full h-auto object-cover pointer-events-none"
               />
             </div>
 

@@ -110,7 +110,7 @@ export default function AllPosts() {
                         const guestPassword = "VisitorPass123";
 
                         try {
-                            const loginRes = await axios.post('http://192.168.0.128:8000/auth/login', {
+                            const loginRes = await axios.post('http://192.168.0.135:8000/auth/login', {
                                 email: guestEmail,
                                 password: guestPassword
                             });
@@ -121,13 +121,13 @@ export default function AllPosts() {
                         } catch (err) {
                             if (err.response && err.response.status === 401) {
                                 // Register guest visitor
-                                await axios.post('http://192.168.0.128:8000/auth/register-admin', {
+                                await axios.post('http://192.168.0.135:8000/auth/register-admin', {
                                     username: guestUsername,
                                     email: guestEmail,
                                     password: guestPassword
                                 });
                                 // Login
-                                const loginRes2 = await axios.post('http://192.168.0.128:8000/auth/login', {
+                                const loginRes2 = await axios.post('http://192.168.0.135:8000/auth/login', {
                                     email: guestEmail,
                                     password: guestPassword
                                 });
@@ -142,7 +142,7 @@ export default function AllPosts() {
                     }
                 }
 
-                const response = await axios.get("http://192.168.0.128:8000/blogs/", {
+                const response = await axios.get("http://192.168.0.135:8000/blogs/", {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
@@ -155,7 +155,7 @@ export default function AllPosts() {
                         .map(async (blog) => {
                             let heroData = {};
                             try {
-                                const heroRes = await axios.get(`http://192.168.0.128:8000/blogs/${blog.id}/hero`, {
+                                const heroRes = await axios.get(`http://192.168.0.135:8000/blogs/${blog.id}/hero`, {
                                     headers: {
                                         "Authorization": `Bearer ${token}`
                                     }
@@ -179,7 +179,7 @@ export default function AllPosts() {
                             if (bannerPath) {
                                 bannerUrl = (bannerPath.startsWith("http://") || bannerPath.startsWith("https://"))
                                     ? bannerPath
-                                    : `http://192.168.0.128:8000${bannerPath}`;
+                                    : `http://192.168.0.135:8000${bannerPath}`;
                             }
 
                             const categoryName = blog.category || "Security";
@@ -217,7 +217,7 @@ export default function AllPosts() {
 
     return (
         <div className="bg-white w-full">
-            <section className="w-full max-w-[85%] 2xl:max-w-[1300px] mx-auto pb-16 sm:pb-24 select-none">
+            <section className="w-full max-w-[85%] 2xl:max-w-[1300px] mx-auto pb-16 sm:pb-24">
 
                 {/* Header */}
                 <h3 className="text-2xl sm:text-[32px] font-bold text-slate-900 tracking-tight mb-8 sm:mb-10 font-sans">

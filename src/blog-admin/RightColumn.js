@@ -1,6 +1,6 @@
 import { Trash2, Plus, Search, FileText, Globe, Star } from "lucide-react";
-import { Card, Label, Input, Textarea } from "./SharedUI.jsx";
-import { RichEditor } from "./RichEditor.jsx";
+import { Card, Label, Input, Textarea } from "./SharedUI.js";
+import { RichEditor } from "./RichEditor.js";
 import { useState } from "react";
 
 export function RightColumn({ publishStatus, setPublishStatus }) {

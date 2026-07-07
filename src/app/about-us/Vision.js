@@ -68,7 +68,7 @@ export default function Vision() {
               <img
                 src="/AboutUs/mission.jpg"
                 alt="Our Mission"
-                className="w-full h-full object-cover select-none"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>

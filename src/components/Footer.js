@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-[#F2F3FD] text-[#4f5b76] py-8 px-6 md:px-12 lg:px-16 xl:px-20 select-none border-t border-slate-100/50"
+      className="bg-[#F2F3FD] text-[#4f5b76] py-8 px-6 md:px-12 lg:px-16 xl:px-20  border-t border-slate-100/50"
     >
       <div className="max-w-full w-full">
         {/* TOP CONTENT GRID */}
