@@ -1,8 +1,18 @@
 "use client";
 
 import React from "react";
-import { AdminCreateBlog } from "../../../blog-admin/AdminCreateBlog";
+import AdminBlogForm from "../../../admin/blogs/AdminBlogForm";
+import { useRouter } from "next/navigation";
 
 export default function CreateBlogPage() {
-  return <AdminCreateBlog />;
+  const router = useRouter();
+
+  return (
+    <div className="min-h-screen bg-slate-50 flex">
+      <AdminBlogForm 
+        onBack={() => router.push("/admin/dashboard")} 
+        onPublish={() => router.push("/admin/dashboard")} 
+      />
+    </div>
+  );
 }

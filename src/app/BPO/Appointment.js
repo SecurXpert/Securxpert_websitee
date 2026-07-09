@@ -21,7 +21,7 @@ export default function Appointment() {
     }
 
     try {
-      const res = await fetch("http://192.168.0.135:8000/book-appointment/", {
+      const res = await fetch("http://192.168.0.141:8000/book-appointment/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -16,7 +16,7 @@ const categories = [
 
 export default function Positions() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [visibleCount, setVisibleCount] = useState(5); 
+  const [visibleCount, setVisibleCount] = useState(5);
 
   const filteredPositions = activeCategory === "All"
     ? positionsData
@@ -27,7 +27,7 @@ export default function Positions() {
   return (
     <section id="positions" className="relative w-full py-14 bg-[#F8FAFC] text-slate-800 border-t border-slate-100">
       <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20 pt-8">
-        
+
         {/* Main Section Header */}
         <div className="text-center mb-16 max-w-4xl mx-auto">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-regular text-[#090808] tracking-tight leading-tight font-sans">
@@ -37,7 +37,7 @@ export default function Positions() {
 
         {/* Content Layout Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
-          
+
           {/* LEFT SIDEBAR: Categories & LinkedIn */}
           <div className="lg:col-span-1 flex flex-col gap-8 lg:sticky lg:top-8">
             <div className="flex flex-col gap-4">
@@ -50,11 +50,10 @@ export default function Positions() {
                       setActiveCategory(cat.name);
                       setVisibleCount(5); // Reset visible count on filter change
                     }}
-                    className={`text-left text-[15px] py-1.5 transition-all duration-300 ${
-                      isActive
+                    className={`text-left text-[15px] py-1.5 transition-all duration-300 ${isActive
                         ? "border-l-[3px] border-[#2B47FC] pl-4 font-semibold text-[#2B47FC]"
                         : "border-l-[3px] border-transparent pl-4 text-slate-500 hover:text-[#2B47FC] hover:border-slate-300"
-                    }`}
+                      }`}
                   >
                     {cat.name} ({cat.count})
                   </button>

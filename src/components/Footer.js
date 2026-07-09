@@ -6,10 +6,6 @@ import { usePathname } from "next/navigation";
 import { LuChevronRight } from "react-icons/lu";
 
 export default function Footer() {
-  const pathname = usePathname();
-
-  if (pathname === "/careers/create") return null;
-
   return (
     <footer
       className="bg-[#F2F3FD] text-[#4f5b76] py-8 px-6 md:px-12 lg:px-16 xl:px-20  border-t border-slate-100/50"

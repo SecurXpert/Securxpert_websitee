@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { LuChevronLeft, LuArrowRight } from "react-icons/lu";
 import { positionsData, slugify } from "@/utils/careers/Positionsdata";
 import PhoneInputField from "./PhoneInputField";
@@ -21,11 +22,12 @@ export default async function PositionDetail({ params }) {
     : "QA Automation Engineer – Selenium with Java";
 
   // Find the exact job from our utils database
-  const jobData = positionsData.find(pos => slugify(pos.title) === slug) || positionsData[0];
-  if (jobData) {
-    displayTitle = jobData.title;
+  const jobData = positionsData.find(pos => slugify(pos.title) === slug);
+  if (!jobData) {
+    notFound();
   }
-  const details = jobData?.details;
+  displayTitle = jobData.title;
+  const details = jobData.details;
 
   return (
     <main className="relative min-h-screen bg-slate-50 text-slate-900 select-none pt-0">

@@ -16,7 +16,7 @@ export default function ClientLayoutWrapper({ children }) {
   const pathname = usePathname();
   
   // List paths where we want to hide the header and footer
-  const hideHeaderFooter = pathname?.toLowerCase()?.startsWith("/blogs/login") || pathname?.toLowerCase()?.startsWith("/blogs/create") || pathname?.toLowerCase() === "/login";
+  const hideHeaderFooter = pathname?.toLowerCase()?.startsWith("/blogs/login") || pathname?.toLowerCase()?.startsWith("/blogs/create") || pathname?.toLowerCase() === "/login" || pathname?.toLowerCase()?.startsWith("/admin");
 
   return (
     <>
