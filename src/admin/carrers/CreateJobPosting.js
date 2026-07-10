@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react"; 
+import axios from "axios";
+import { API_BASE_URL } from "../config";
 import {
   ChevronLeft,
   CheckCircle2,
@@ -41,6 +43,87 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
     setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
   };
 
+  const hasFetched = React.useRef(false);
+
+  React.useEffect(() => {
+    const fetchFullJob = async () => {
+      if (!job?.id || hasFetched.current) return;
+      hasFetched.current = true;
+      try {
+        const token =
+          typeof window !== "undefined"
+            ? (localStorage.getItem("super_admin_token") ||
+              localStorage.getItem("superadmin_token") ||
+              localStorage.getItem("access_token") ||
+              localStorage.getItem("token") ||
+              "")
+            : "";
+        const headers = { "Authorization": `Bearer ${token}` };
+
+        // We fetch the basic info to get all fields accurately instead of relying on the dashboard's table mapping
+        let basicInfo = job.basicInfo || null;
+        try {
+          const resBasic = await axios.get(`${API_BASE_URL}/jobs/${job.id}`, { headers });
+          if (resBasic.data) {
+            const d = resBasic.data;
+            basicInfo = {
+              id: d.id,
+              jobTitle: d.job_title || d.jobTitle || "",
+              jobCategory: d.job_category || d.jobCategory || "",
+              department: d.department || "",
+              employmentType: d.employment_type || d.employmentType || "Full-Time",
+              jobLocation: d.job_location || d.jobLocation || "",
+              workMode: d.work_mode || d.workMode || "Onsite",
+              experienceLevel: d.experience_level || d.experienceLevel || "Entry",
+              yearsOfExperience: d.years_of_experience || d.yearsOfExperience || "",
+              numberOfOpenings: d.number_of_openings || d.numberOfOpenings || "1",
+              jobStatus: d.job_status || d.jobStatus || "Draft",
+              jobExpiryDate: d.job_expiry_date || d.jobExpiryDate || ""
+            };
+          }
+        } catch (e) {
+          console.error("Failed to fetch basic info:", e);
+        }
+
+        let hero = null;
+        try {
+          const resHero = await axios.get(`${API_BASE_URL}/jobs/${job.id}/hero-section`, { headers });
+          if (resHero.data) hero = resHero.data;
+        } catch (e) { console.log("No hero section found"); }
+
+        let jobDescription = "";
+        try {
+          const resDesc = await axios.get(`${API_BASE_URL}/jobs/${job.id}/description`, { headers });
+          if (resDesc.data) jobDescription = resDesc.data.job_description || resDesc.data;
+        } catch (e) { console.log("No job description found"); }
+
+        let rolesAndResponsibilities = null;
+        try {
+          const resRoles = await axios.get(`${API_BASE_URL}/jobs/${job.id}/responsibilities`, { headers });
+          if (resRoles.data) rolesAndResponsibilities = resRoles.data;
+        } catch (e) { console.log("No roles found"); }
+
+        let requirements = null;
+        try {
+          const resReq = await axios.get(`${API_BASE_URL}/jobs/${job.id}/requirements`, { headers });
+          if (resReq.data) requirements = resReq.data;
+        } catch (e) { console.log("No requirements found"); }
+
+        setJobData(prev => ({
+          ...prev,
+          basicInfo,
+          hero,
+          jobDescription,
+          rolesAndResponsibilities,
+          requirements
+        }));
+      } catch (err) {
+        console.error("Error fetching job details:", err);
+      }
+    };
+    fetchFullJob();
+  }, [job?.id]);
+
   const handleSaveSection = (section, data) => {
     setJobData(prev => {
       const nextData = { ...prev, [section]: data };
@@ -63,18 +146,85 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
   const totalSections = 5;
   const completionPercentage = Math.round((completedCount / totalSections) * 100);
 
-  const handlePublish = (status) => {
-    if (!jobData.basicInfo || !jobData.basicInfo.jobTitle) {
-      alert("Please fill and save the 'Job Basic Information' section first.");
+  const handlePublish = async (status) => {
+    if (!jobData.id || !jobData.basicInfo) {
+      alert("Please fill and save the 'Job Basic Information' section first to generate a Job ID.");
       return;
     }
-    const finalJob = {
-      ...jobData,
-      id: jobData.id || "job_" + Date.now(),
-      status: status || jobData.basicInfo.jobStatus || "Draft",
-      updatedAt: new Date().toISOString()
-    };
-    onSave(finalJob);
+    
+    try {
+      const token =
+        typeof window !== "undefined"
+          ? (localStorage.getItem("super_admin_token") ||
+            localStorage.getItem("superadmin_token") ||
+            localStorage.getItem("access_token") ||
+            localStorage.getItem("token") ||
+            "")
+          : "";
+
+      const mapEmploymentType = (type) => {
+        if (!type) return "Full-Time";
+        const t = type.toLowerCase();
+        if (t === "part-time" || t === "parttime") return "Part-Time";
+        if (t === "contract") return "Contract";
+        if (t === "internship") return "Internship";
+        return "Full-Time";
+      };
+
+      const mapWorkMode = (mode) => {
+        if (!mode) return "Onsite";
+        const m = mode.toLowerCase();
+        if (m === "hybrid") return "Hybrid";
+        if (m === "remote") return "Remote";
+        return "Onsite";
+      };
+
+      const mapExperienceLevel = (level) => {
+        if (!level) return "Entry";
+        const l = level.toLowerCase();
+        if (l.includes("mid")) return "Mid";
+        if (l.includes("senior")) return "Senior";
+        return "Entry";
+      };
+
+      const bInfo = jobData.basicInfo;
+      const payload = {
+        job_title: bInfo.jobTitle,
+        job_category: bInfo.jobCategory,
+        department: bInfo.department,
+        employment_type: mapEmploymentType(bInfo.employmentType),
+        job_location: bInfo.jobLocation,
+        work_mode: mapWorkMode(bInfo.workMode),
+        experience_level: mapExperienceLevel(bInfo.experienceLevel),
+        years_of_experience: parseInt(bInfo.yearsOfExperience || "0", 10),
+        number_of_openings: parseInt(bInfo.numberOfOpenings || "1", 10),
+        job_status: status === "Published" ? "Active" : "Draft",
+      };
+
+      await axios.patch(`${API_BASE_URL}/jobs/${jobData.id}`, payload, {
+        headers: {
+          "accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      });
+
+      const finalJob = {
+        ...jobData,
+        status: status === "Published" ? "Active" : "Draft",
+        updatedAt: new Date().toISOString()
+      };
+      
+      if (status === "Published") {
+        alert("Job successfully published!");
+      } else {
+        alert("Job saved as draft.");
+      }
+      
+      onSave(finalJob);
+    } catch (err) {
+      alert("Failed to publish job status. Please ensure all required basic info fields are saved.");
+    }
   };
 
   return (
@@ -122,10 +272,10 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
       </header>
 
       {/* Main Layout */}
-      <div className="flex-1 flex max-w-[1400px] mx-auto w-full p-6 lg:p-8 gap-8 items-start">
+      <div className="flex-1 flex max-w-4xl mx-auto w-full p-6 lg:p-8 items-start justify-center">
 
-        {/* Left Column - Form Area */}
-        <main className="w-full lg:w-[72%] flex flex-col gap-6">
+        {/* Form Area */}
+        <main className="w-full flex flex-col gap-6">
           <BasicInfoSection
             isExpanded={expandedSections.basicInfo}
             onToggle={() => toggleSection('basicInfo')}
@@ -165,96 +315,6 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
             onSaveSection={handleSaveSection}
           />
         </main>
-
-        {/* Right Sidebar */}
-        <aside className="w-full lg:w-[28%] flex flex-col gap-6 sticky top-[88px]">
-
-          {/* Job Completion Widget */}
-          <div className="bg-white rounded-2xl border border-indigo-50 shadow-sm p-6 flex flex-col gap-5">
-            <div className="flex items-center justify-between">
-              <h3 className="text-[15px] font-bold text-slate-800">Job Completion</h3>
-              <span className="text-[22px] font-black text-[#2B0A5A]">{completionPercentage}%</span>
-            </div>
-            <div className="w-full h-2 bg-indigo-50 rounded-full overflow-hidden">
-              <div className="h-full rounded-full transition-all duration-300" style={{ width: `${completionPercentage}%`, background: 'linear-gradient(90deg, #2B0A5A 0%, #5A73FF 100%)' }}></div>
-            </div>
-            <div className="flex flex-col gap-3.5 mt-2">
-              {[
-                { key: 'basicInfo', label: 'Basic Information' },
-                { key: 'hero', label: 'Hero Section' },
-                { key: 'jobDescription', label: 'Job Description' },
-                { key: 'rolesAndResponsibilities', label: 'Responsibilities' },
-                { key: 'requirements', label: 'Requirements' },
-              ].map(({ key, label }) => (
-                <div key={key} className="flex items-center gap-3">
-                  {isCompleted[key] ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <Circle className="w-4 h-4 text-slate-300" />}
-                  <span className={`text-[13px] font-medium ${isCompleted[key] ? 'text-slate-800 font-bold' : 'text-slate-400'}`}>{label}</span>
-                </div>
-              ))}
-            </div>
-            <div className="bg-[#EFF6FF] border-[#BEDBFF] border rounded-xl p-3 text-center mt-2">
-              <span className="text-[12px] font-bold text-[#193CB8]">{completedCount} of {totalSections} sections completed</span>
-            </div>
-          </div>
-
-          {/* Status Alert */}
-          <div className={`border rounded-2xl p-5 flex flex-col gap-2 ${jobData.status === "Published" ? "bg-emerald-50 border-emerald-200" : "bg-[#FEFCE8] border-[#FFF085]"}`}>
-            <div className={`flex items-center gap-2 ${jobData.status === "Published" ? "text-emerald-700" : "text-[#D49800]"}`}>
-              <AlertCircle className="w-5 h-5" />
-              <span className="text-[15px] font-bold">{jobData.status === "Published" ? "Published" : "Draft"}</span>
-            </div>
-            <p className={`text-[13px] font-medium ml-7 ${jobData.status === "Published" ? "text-emerald-700/80" : "text-[#D49800]/80"}`}>
-              {jobData.status === "Published" ? "Job is active on website" : "Job is not yet published"}
-            </p>
-          </div>
-
-          {/* Publishing Details */}
-          <div className="bg-white rounded-2xl border border-indigo-50 shadow-sm p-6 flex flex-col gap-5">
-            <h3 className="text-[15px] font-bold text-slate-800">Publishing Details</h3>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full flex items-center justify-center text-white" style={{ background: 'linear-gradient(90deg, #2B0A5A 0%, #5A73FF 100%)' }}>
-                  <Users className="w-4 h-4" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Created By</span>
-                  <span className="text-[13px] font-bold text-slate-800">Admin User</span>
-                  <span className="text-[12px] text-slate-500">HR Department</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 pt-2">
-                <div className="w-9 h-9 flex items-center justify-center text-slate-400">
-                  <Calendar className="w-4 h-4" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Last Updated</span>
-                  <span className="text-[13px] font-bold text-slate-800">
-                    {jobData.updatedAt ? new Date(jobData.updatedAt).toLocaleDateString() : "Just now"}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col gap-3 pb-8">
-            <button
-              onClick={() => handlePublish("Draft")}
-              className="w-full py-3.5 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold text-[14px] hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 shadow-sm"
-            >
-              <Save className="w-4 h-4" />
-              Save Draft
-            </button>
-            <button
-              onClick={() => handlePublish("Published")}
-              className="w-full py-3.5 bg-[#2B0A5A] text-white rounded-xl font-semibold text-[14px] hover:bg-[#2c286b] transition-colors flex items-center justify-center gap-2 shadow-sm"
-            >
-              <CheckCircle2 className="w-4 h-4" />
-              Publish Job
-            </button>
-          </div>
-
-        </aside>
       </div>
     </div>
   );

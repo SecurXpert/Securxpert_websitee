@@ -33,9 +33,9 @@ export default function OfficeMap() {
           <button
             key={office.id}
             onClick={() => setActiveOffice(office)}
-            className={`px-6 py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 ${activeOffice.id === office.id
-                ? "bg-[#3D62EB] text-white shadow-lg shadow-blue-500/30"
-                : "bg-white text-slate-600 hover:bg-slate-50 shadow-sm border border-slate-200"
+            className={`px-6 py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-md active:scale-95 ${activeOffice.id === office.id
+                ? "bg-[#3D62EB] text-white shadow-lg shadow-blue-500/30 hover:brightness-110"
+                : "bg-white text-slate-600 hover:text-[#3D62EB] hover:border-[#3D62EB]/30 hover:bg-slate-50 shadow-sm border border-slate-200"
               }`}
           >
             {office.name}

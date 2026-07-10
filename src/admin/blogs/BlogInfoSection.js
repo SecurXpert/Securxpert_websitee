@@ -3,8 +3,34 @@ import { FileText } from "lucide-react";
 import { Label, Input, SectionCard, SaveBtn } from "./SharedUI";
 import { API_BASE_URL } from "../config";
 
-export default function BlogInfoSection({ form, setForm, onDeleted }) {
+export default function BlogInfoSection({ form, setForm, onDeleted, onSaved }) {
   const [saved, setSaved] = useState(false);
+  const [categoryInput, setCategoryInput] = useState("");
+  const categories = Array.isArray(form.category) 
+    ? form.category 
+    : (typeof form.category === 'string' && form.category.trim() !== "" 
+        ? form.category.split(',').map(c => c.trim()).filter(Boolean) 
+        : []);
+
+  const handleAddCategory = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const val = categoryInput.trim();
+      if (val && !categories.includes(val)) {
+        if (categories.length >= 4) {
+          alert("You can only add up to 4 categories.");
+          return;
+        }
+        setForm(p => ({ ...p, category: [...categories, val].join(', ') }));
+      }
+      setCategoryInput("");
+    }
+  };
+
+  const handleRemoveCategory = (catToRemove) => {
+    const newCats = categories.filter(c => c !== catToRemove);
+    setForm(p => ({ ...p, category: newCats.join(', ') }));
+  };
 
   const handleSave = async () => {
     try {
@@ -12,10 +38,10 @@ export default function BlogInfoSection({ form, setForm, onDeleted }) {
 
       const payload = new URLSearchParams();
       payload.append("title", form.blogTitle || "");
-      payload.append("slug", form.slug || ""); 
+      payload.append("slug", form.slug || "");
       payload.append("category", form.category || "");
       payload.append("author", form.author || "");
-      payload.append("status", form.status || "active");
+      payload.append("status", form.status === "in_active" ? "in_active" : (form.status || "active"));
 
       const isEdit = !!form.blogId;
       const url = isEdit ? `${API_BASE_URL}/blogs/${form.blogId}` : API_BASE_URL + "/blogs/";
@@ -32,12 +58,15 @@ export default function BlogInfoSection({ form, setForm, onDeleted }) {
 
       if (res.ok) {
         const data = await res.json();
-        if (!isEdit && data.id) {
-          setForm(p => ({ ...p, blogId: data.id })); // Set the ID for subsequent PATCH/DELETE
+        console.log("Blog creation response:", data);
+        const newId = data.id || data?.data?.id || data?.blog_id;
+        if (!isEdit && newId) {
+          setForm(p => ({ ...p, blogId: newId })); // Set the ID for subsequent PATCH/DELETE
         }
         setSaved(true);
         setTimeout(() => setSaved(false), 2000);
         alert(`Blog ${isEdit ? 'updated' : 'created'} successfully!`);
+        onSaved?.();
       } else {
         let errorMsg = `Failed to ${isEdit ? 'update' : 'create'} blog`;
         try {
@@ -118,12 +147,36 @@ export default function BlogInfoSection({ form, setForm, onDeleted }) {
 
       <div className="grid grid-cols-2 gap-5">
         <div>
-          <Label>Category</Label>
-          <Input
-            placeholder="Tech"
-            value={form.category}
-            onChange={(v) => setForm((p) => ({ ...p, category: v }))}
-          />
+          <Label>Category (Max 4)</Label>
+          <div className="flex flex-col gap-2">
+            <input
+              type="text"
+              placeholder="Type category & hit Enter (e.g., Services, Software)"
+              value={categoryInput}
+              onChange={(e) => setCategoryInput(e.target.value)}
+              onKeyDown={handleAddCategory}
+              className="w-full h-10 px-4 text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+            />
+            {categories.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-1">
+                {categories.map((cat, idx) => (
+                  <span
+                    key={idx}
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-[13px] font-medium rounded-full"
+                  >
+                    {cat}
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveCategory(cat)}
+                      className="hover:text-red-600 focus:outline-none ml-1 font-bold"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <div>
           <Label>Author</Label>
@@ -141,10 +194,12 @@ export default function BlogInfoSection({ form, setForm, onDeleted }) {
           <select
             value={form.status}
             onChange={(e) => setForm((p) => ({ ...p, status: e.target.value }))}
-            className="w-full h-10 px-4 text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:border-blue-500 transition-all"
+            className="w-full h-10 px-4 text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:border-blue-500 transition-all disabled:opacity-60"
+            disabled={form.status === "in_active"}
           >
+            {form.status === "in_active" && <option value="in_active">Draft (Unpublished)</option>}
             <option value="active">Active</option>
-            <option value="InActive">InActive</option>
+            <option value="in_active">InActive</option>
           </select>
         </div>
         <div>

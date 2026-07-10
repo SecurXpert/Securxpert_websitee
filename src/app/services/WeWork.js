@@ -1,6 +1,9 @@
 "use client";
 
 import React from "react";
+import { MdOutlineDesignServices, MdOutlineBugReport, MdSupportAgent } from "react-icons/md";
+import { FaCode } from "react-icons/fa";
+import { TbRocket } from "react-icons/tb";
 
 const stepsData = [
     {
@@ -8,65 +11,45 @@ const stepsData = [
         number: "01",
         title: "Design",
         description: " Understanding client requirements and creating UI/UX wireframes",
-        icon: (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-            </svg>
-        )
+        icon: <MdOutlineDesignServices className="w-5 h-5" />
     },
     {
         id: 2,
         number: "02",
         title: "Build",
         description: "Developing secure, scalable, and high-performance solutions",
-        icon: (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-            </svg>
-        )
+        icon: <FaCode className="w-5 h-5" />
     },
     {
         id: 3,
         number: "03",
         title: "Test",
         description: " Checking functionality, fixing bugs, and ensuring quality",
-        icon: (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-        )
+        icon: <MdOutlineBugReport className="w-5 h-5" />
     },
     {
         id: 4,
         number: "04",
         title: "Deploy",
         description: "Shipping the project with optimised performance",
-        icon: (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-        )
+        icon: <TbRocket className="w-5 h-5" />
     },
     {
         id: 5,
         number: "05",
         title: "Support",
         description: " Providing continuous updates, monitoring, and maintenance",
-        icon: (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-        )
+        icon: <MdSupportAgent className="w-5 h-5" />
     }
 ];
 
 // Circular layout angle definitions in degrees
 const stepAngles = {
-    1: 125, // Bottom-left
-    2: 185, // Left-middle
-    3: 245, // Top-left/center
-    4: 330, // Right-middle
-    5: 35    // Bottom-right
+    1: 126, // Bottom-left
+    2: 198, // Top-left
+    3: 270, // Top-center
+    4: 342, // Top-right
+    5: 54   // Bottom-right
 };
 
 export default function WeWork() {
@@ -77,7 +60,7 @@ export default function WeWork() {
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 font-sans">
                     How We work 
                 </h2>
-                <p className="text-slate-500 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">
+                <p className="text-slate-800 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">
                    We have a structured and transparent development process to ensure quality delivery: 
                 </p>
             </div>

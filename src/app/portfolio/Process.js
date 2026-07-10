@@ -36,7 +36,7 @@ export default function Process() {
                         HOW WE WORK
                     </span>
                     <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-[45px] font-bold text-[#1E1B4B] tracking-tight leading-none uppercase font-sans">
-                        OUR CREATIVE PROCESS
+                        OUR PROCESS
                     </h3>
                 </div>
 

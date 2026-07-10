@@ -17,7 +17,7 @@ import shrava360 from "@/utils/products/shrava360";
 
 
 import ProductPageFAQ from "./ProductPageFAQ";
-import Appointment from "@/app/bpo/Appointment";
+import ProductAppointment from "./ProductAppointment";
 import VideoPlayer from "../VideoPlayer";
 
 const productsData = {
@@ -133,8 +133,8 @@ export default async function ProductDetailPage({ params }) {
       </section>
 
       {/* Content Section */}
-      <section className="relative w-full max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 py-16 sm:py-14">
-        <div className="max-w-4xl">
+      <section className="relative w-full max-w-[1350px] mx-auto px-6 md:px-12 lg:px-20 py-10 sm:py-10">
+        <div className="max-w-5xl">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-8 font-sans">
             Introduction
           </h2>
@@ -145,7 +145,7 @@ export default async function ProductDetailPage({ params }) {
       </section>
 
       {/* Product Video Section */}
-      <section className="relative w-full pt-20">
+      <section className="relative w-full pt-15">
         
         {/* Blue Background Top Half */}
         <div 
@@ -163,7 +163,7 @@ export default async function ProductDetailPage({ params }) {
         <div className="absolute inset-x-0 bottom-0 h-[30%] sm:h-[25%] bg-white" />
 
         <div className="relative max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20 text-center z-10 pb-8 sm:pb-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-12 font-sans">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-8 font-sans">
             Product Video
           </h2>
           
@@ -251,7 +251,7 @@ export default async function ProductDetailPage({ params }) {
 
       {/* FAQ Continuation */}
       <ProductPageFAQ product={product} />
-      <Appointment/>
+      <ProductAppointment product={product} />
 
     </main>
   );

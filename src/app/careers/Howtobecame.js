@@ -60,7 +60,7 @@ export default function Howtobecame() {
         {/* Section Header */}
         <div className="text-center mb-10 max-w-4xl mx-auto">
           <h2 className="text-[#090808] text-center text-5xl font-normal mb-4 font-sans"> 
-            How to become a Securxperter?
+            How to become a SecurXperter?
           </h2>
           <p className="text-slate-500 text-sm sm:text-base md:text-lg max-w-2xl mx-auto"> 
             Joining us couldn't be easier! Check out our application process down below. If you have the talent we need, then we'll be meeting you soon!
@@ -99,7 +99,7 @@ export default function Howtobecame() {
                     {/* Hover Blue Background & Glow */}
                     <div className="absolute inset-0 rounded-full bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
                     
-                    <span className="text-base font-bold transition-colors duration-300 z-10 text-slate-500 group-hover:text-white">
+                    <span className="text-lg sm:text-xl font-bold transition-colors duration-300 z-10 text-slate-500 group-hover:text-white">
                       {step.number}
                     </span>
                   </div>

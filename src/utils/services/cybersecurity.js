@@ -1,4 +1,5 @@
 import { LuShield, LuLock, LuSearch, LuServer } from "react-icons/lu";
+import { MdOutlineFactCheck } from "react-icons/md";
 
 const cybersecurity = {
   category: "08 — CYBERSECURITY",
@@ -19,7 +20,7 @@ const cybersecurity = {
     { title: "Penetration Testing", desc: "Ethical hacking to identify system vulnerabilities", icon: LuSearch },
     { title: "Threat Protection", desc: "Advanced defense against malware, ransomware, and phishing", icon: LuShield },
     { title: "Data Encryption", desc: "Secure encryption protocols for data at rest and in transit", icon: LuLock },
-    { title: "Compliance & Auditing", desc: "Ensuring adherence to GDPR, HIPAA, and ISO standards", icon: LuServer }
+    { title: "Compliance & Auditing", desc: "Ensuring adherence to GDPR, HIPAA, and ISO standards", icon: MdOutlineFactCheck }
   ],
   processHeading: "Our Security Framework",
   process: [

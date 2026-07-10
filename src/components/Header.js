@@ -132,14 +132,16 @@ export default function Header() {
 
             {/* Services with Hover Dropdown */}
             <div 
-              className="relative py-2 flex items-center cursor-pointer"
+              className="relative py-2 flex items-center cursor-pointer group"
               onMouseEnter={() => setOpenDropdown("services")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <Link
                 href="/services"
                 className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/services" || cleanPath.startsWith("/services/") || openDropdown === "services"
-                  ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
+                  ? isDarkBg
+                    ? "text-white border-white font-bold"
+                    : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
                   : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
                     : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
@@ -147,12 +149,15 @@ export default function Header() {
               >
                 Services
               </Link>
-              <div className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60" : "text-slate-500"}`}>
+              <div className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none transition-colors duration-200 ${cleanPath === "/services" || cleanPath.startsWith("/services/") || openDropdown === "services"
+                  ? isDarkBg ? "text-white" : "text-[#3E66F3]"
+                  : isDarkBg ? "text-white/85 group-hover:text-white" : "text-slate-800 group-hover:text-blue-600"
+                }`}>
                 <svg
-                  className={`w-3 h-3 transition-transform duration-200 ${openDropdown === "services" ? "rotate-180" : ""}`}
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${openDropdown === "services" ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2.5"
+                  strokeWidth="3.5"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -199,7 +204,7 @@ export default function Header() {
 
             {/* Products with Hover Dropdown */}
             <div 
-              className="relative py-2 flex items-center cursor-pointer"
+              className="relative py-2 flex items-center cursor-pointer group"
               onMouseEnter={() => setOpenDropdown("products")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
@@ -216,12 +221,15 @@ export default function Header() {
               >
                 Products
               </Link>
-              <div className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60" : "text-slate-500"}`}>
+              <div className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none transition-colors duration-200 ${cleanPath === "/products" || cleanPath.startsWith("/products/") || openDropdown === "products"
+                  ? isDarkBg ? "text-white" : "text-[#3E66F3]"
+                  : isDarkBg ? "text-white/85 group-hover:text-white" : "text-slate-800 group-hover:text-blue-600"
+                }`}>
                 <svg
-                  className={`w-3 h-3 transition-transform duration-200 ${openDropdown === "products" ? "rotate-180" : ""}`}
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${openDropdown === "products" ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2.5"
+                  strokeWidth="3.5"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -296,14 +304,16 @@ export default function Header() {
 
             {/* About Us with Hover Dropdown */}
             <div 
-              className="relative py-2 flex items-center cursor-pointer"
+              className="relative py-2 flex items-center cursor-pointer group"
               onMouseEnter={() => setOpenDropdown("aboutus")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <Link
                 href="/about-us"
                 className={`text-[14px] whitespace-nowrap transition-all duration-200 pb-1 border-b-2 flex items-center h-8 ${cleanPath === "/about-us" || cleanPath.startsWith("/about-us/") || openDropdown === "aboutus"
-                  ? "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
+                  ? isDarkBg
+                    ? "text-white border-white font-bold"
+                    : "bg-gradient-to-b from-[#210A4A] to-[#3E66F3] bg-clip-text text-transparent border-[#3E66F3] font-bold"
                   : isDarkBg
                     ? "text-white/85 hover:text-white font-medium border-transparent"
                     : "text-slate-800 hover:text-blue-600 font-semibold border-transparent"
@@ -311,12 +321,15 @@ export default function Header() {
               >
                 About Us
               </Link>
-              <div className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none ${isDarkBg ? "text-white/60" : "text-slate-500"}`}>
+              <div className={`ml-1 p-1 pb-1.5 flex items-center justify-center outline-none transition-colors duration-200 ${cleanPath === "/about-us" || cleanPath.startsWith("/about-us/") || openDropdown === "aboutus"
+                  ? isDarkBg ? "text-white" : "text-[#3E66F3]"
+                  : isDarkBg ? "text-white/85 group-hover:text-white" : "text-slate-800 group-hover:text-blue-600"
+                }`}>
                 <svg
-                  className={`w-3 h-3 transition-transform duration-200 ${openDropdown === "aboutus" ? "rotate-180" : ""}`}
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${openDropdown === "aboutus" ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2.5"
+                  strokeWidth="3.5"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -373,7 +386,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center lg:-translate-x-6 xl:-translate-x-4 2xl:translate-x-0">
             <Link
               href="/contact"
-              className="bg-[#3E66F3] text-white font-semibold px-6 py-2.5 rounded-full text-[13px] transition-all shadow-md hover:shadow-lg active:scale-95"
+              className="bg-[#3E66F3] text-white font-semibold px-6 py-2.5 rounded-full text-[13px] transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1 hover:brightness-110 active:scale-95"
             >
               Book Consultation
             </Link>
@@ -546,7 +559,7 @@ export default function Header() {
             <div className="pt-4 pb-2">
               <Link
                 href="/contact"
-                className="w-full text-center block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 text-white font-semibold px-4 py-3 rounded-full text-[13px] shadow-md transition-all active:scale-95"
+                className="w-full text-center block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 text-white font-semibold px-4 py-3 rounded-full text-[13px] shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:brightness-110 active:scale-95"
               >
                 INDIA
               </Link>

@@ -21,7 +21,7 @@ export default function Appointment() {
     }
 
     try {
-      const res = await fetch("http://192.168.0.141:8000/book-appointment/", {
+      const res = await fetch("http://192.168.0.125:8000/book-appointment/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,7 +89,7 @@ export default function Appointment() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="John Smith"
-                    className="w-full bg-transparent border-b border-slate-200 focus:border-[#3D62EB] focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans"
+                    className="w-full bg-transparent border-b border-slate-200 hover:border-blue-900 focus:border-blue-900 focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans transition-all"
                     required
                   />
                 </div>
@@ -104,7 +104,7 @@ export default function Appointment() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="john@example.com"
-                    className="w-full bg-transparent border-b border-slate-200 focus:border-[#3D62EB] focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans"
+                    className="w-full bg-transparent border-b border-slate-200 hover:border-slate-400 focus:border-[#3D62EB] focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans transition-all"
                     required
                   />
                 </div>
@@ -125,7 +125,7 @@ export default function Appointment() {
                     maxLength="10"
                     placeholder="1234567890"
                     title="Please enter exactly 10 digits"
-                    className="w-full bg-transparent border-b border-slate-200 focus:border-[#3D62EB] focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans"
+                    className="w-full bg-transparent border-b border-slate-200 hover:border-slate-400 focus:border-[#3D62EB] focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans transition-all"
                     required
                   />
                 </div>
@@ -154,21 +154,21 @@ export default function Appointment() {
                     <select
                       value={formData.serviceType}
                       onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                      className="w-full bg-white border border-slate-200 rounded-[6px] px-4 py-2.5 text-sm text-slate-900 focus:border-[#3D62EB] focus:outline-none appearance-none cursor-pointer font-sans"
+                      className="w-full bg-white border border-slate-200 hover:border-slate-400 rounded-[6px] px-4 py-2.5 text-sm font-semibold text-slate-900 focus:border-[#3D62EB] focus:ring-1 focus:ring-[#3D62EB] focus:outline-none appearance-none cursor-pointer font-sans transition-all"
                     >
-                      <option value="">Select ...</option>
-                      <option value="Business Audit">Customer Support</option>
-                      <option value="Tax Strategy">Back-Office Operations</option>
-                      <option value="Financial Advices">Sales & Telemarketing</option>
-                      <option value="Insurance Strategy">HR & Recruitment</option>
-                      <option value="Start Ups">Document Automation</option>
-                      <option value="Manage Investment">other</option>
+                      <option className="font-semibold" value="">Select</option>
+                      <option className="font-semibold" value="Business Audit">Customer Support</option>
+                      <option className="font-semibold" value="Tax Strategy">Back-Office Operations</option>
+                      <option className="font-semibold" value="Financial Advices">Sales & Telemarketing</option>
+                      <option className="font-semibold" value="Insurance Strategy">HR & Recruitment</option>
+                      <option className="font-semibold" value="Start Ups">Document Automation</option>
+                      <option className="font-semibold" value="Manage Investment">Other</option>
                     </select>
 
                     {/* Select custom arrow */}
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
-                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-900">
+                      <svg className="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export default function Appointment() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Type here..."
-                    className="w-full bg-transparent border-b border-slate-200 focus:border-[#3D62EB] focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans resize-none  min-h-[96px]"
+                    className="w-full bg-transparent border-b border-slate-200 hover:border-slate-400 focus:border-[#3D62EB] focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans resize-none min-h-[96px] transition-all"
                   />
                 </div>
 

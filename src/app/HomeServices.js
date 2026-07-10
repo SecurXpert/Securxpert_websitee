@@ -57,7 +57,7 @@ export default function HomeServices() {
     ];
 
     return (
-        <section className="relative bg-white text-white py-14 overflow-hidden ">
+        <section className="relative bg-white text-white pt-6 pb-14 overflow-hidden ">
             {/* Scoped CSS media query for mobile only aspect ratio */}
             <style>{`
                 @media (max-width: 767px) {
@@ -76,7 +76,7 @@ export default function HomeServices() {
                 <span className="text-[24px] font-medium text-[#3E66F3] tracking-wide ">
                     What We Do
                 </span>
-                <h2 className="text-5xl font-playfair font-semibold mt-4 text-[#313131] tracking-tight">
+                <h2 className="text-5xl font-playfair font-semibold mt-0 text-[#313131] tracking-tight">
                     Our Services
                 </h2>
                 <p className="text-[#4A5565] mt-4 text-lg font-medium max-w-5xl mx-auto opacity-80 leading-relaxed">

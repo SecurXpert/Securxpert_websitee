@@ -7,6 +7,9 @@ import {
   Users,
   BadgeHelp,
 } from "lucide-react";
+import { TbRoute } from "react-icons/tb";
+import { FaProjectDiagram } from "react-icons/fa";
+import { BiSupport } from "react-icons/bi";
 
 export default function Whychoose() {
   return (
@@ -45,7 +48,7 @@ export default function Whychoose() {
             {/* ITEM 1 */}
             <div className="flex gap-4 lg:gap-4 xl:gap-5 items-start">
               <div className="min-w-[60px] w-[60px] h-[60px] lg:min-w-[46px] lg:w-[46px] lg:h-[46px] xl:min-w-[50px] xl:w-[50px] xl:h-[50px] 2xl:min-w-[72px] 2xl:w-[72px] 2xl:h-[72px] rounded-full bg-[#FF7F5C] flex items-center justify-center shadow-md shrink-0">
-                <Cpu className="w-4 h-4 xl:w-4.5 xl:h-4.5 2xl:w-6 2xl:h-7 text-white" />
+                <TbRoute className="w-4 h-4 xl:w-4.5 xl:h-4.5 2xl:w-6 2xl:h-7 text-white" />
               </div>
 
               <div>
@@ -62,7 +65,7 @@ export default function Whychoose() {
             {/* ITEM 2 */}
             <div className="flex gap-4 lg:gap-4 xl:gap-5 items-start">
               <div className="min-w-[60px] w-[60px] h-[60px] lg:min-w-[46px] lg:w-[46px] lg:h-[46px] xl:min-w-[50px] xl:w-[50px] xl:h-[50px] 2xl:min-w-[72px] 2xl:w-[72px] 2xl:h-[72px] rounded-full bg-[#4A38C2] flex items-center justify-center shadow-md shrink-0">
-                <Users className="w-4 h-4 xl:w-4.5 xl:h-4.5 2xl:w-6 2xl:h-6 text-white" />
+                <FaProjectDiagram className="w-4 h-4 xl:w-4.5 xl:h-4.5 2xl:w-6 2xl:h-6 text-white" />
               </div>
 
               <div>
@@ -78,7 +81,7 @@ export default function Whychoose() {
             {/* ITEM 3 */}
             <div className="flex gap-4 lg:gap-4 xl:gap-5 items-start">
               <div className="min-w-[60px] w-[60px] h-[60px] lg:min-w-[46px] lg:w-[46px] lg:h-[46px] xl:min-w-[50px] xl:w-[50px] xl:h-[50px] 2xl:min-w-[72px] 2xl:w-[72px] 2xl:h-[72px] rounded-full bg-[#4563FF] flex items-center justify-center shadow-md shrink-0">
-                <BadgeHelp className="w-4 h-4 xl:w-4.5 xl:h-4.5 2xl:w-6 2xl:h-6 text-white" />
+                <BiSupport className="w-4 h-4 xl:w-4.5 xl:h-4.5 2xl:w-6 2xl:h-6 text-white" />
               </div>
 
               <div>

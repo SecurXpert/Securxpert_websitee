@@ -31,14 +31,14 @@ export default function Workplace() {
   ];
 
   return (
-    <section className="relative w-full py-16 md:py-14 overflow-visible bg-[#F8FAFC] text-slate-600">
+    <section className="relative w-full py-8 md:py-8 overflow-visible bg-[#F8FAFC] text-slate-600">
       {/* Background Accent Glows */}
       <div className="absolute top-1/4 right-0 w-90 h-72 bg-blue-100/30 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-72 h-72 bg-indigo-100/30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
         {/* Header Section */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-10 max-w-3xl mx-auto">
           <h2 className="text-[#090808] text-center text-5xl font-normal font-sans">
             What make Securxpert a great place to work?
           </h2>

@@ -15,9 +15,9 @@ export default function Whatgoes() {
       <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20">
        
         {/* Section Header */}
-        <div className="text-center mb-16 max-w-5xl mx-auto">
+        <div className="text-center mb-10 max-w-5xl mx-auto">
           <h2 className="text-white text-center text-5xl font-normal font-sans">
-            Take a peep at what goes on at Securxpert
+            Take a Look at what goes on at SecurXpert
           </h2>
         </div>
  

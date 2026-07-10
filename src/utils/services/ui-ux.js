@@ -1,4 +1,6 @@
-import { LuUsers, LuLayers } from "react-icons/lu";
+import { LuUsers, LuLayers, LuComponent } from "react-icons/lu";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { TbDeviceDesktopCode } from "react-icons/tb";
 
 const uiUx = {
   category: "07 — UI/UX DESIGN",
@@ -43,17 +45,17 @@ const uiUx = {
     {
       title: "Wireframing",
       desc: "Low-fidelity layouts to map out page logic and structure",
-      icon: LuLayers
+      icon: MdOutlineDashboardCustomize
     },
     {
       title: "Design Systems",
       desc: "Consistent, reusable UI components for scalable development",
-      icon: LuLayers
+      icon: LuComponent
     },
     {
       title: "High-Fi Prototypes",
       desc: "Interactive Figma layouts to test flow and get approvals",
-      icon: LuLayers
+      icon: TbDeviceDesktopCode
     }
   ],
   processHeading: "Our Development Process",

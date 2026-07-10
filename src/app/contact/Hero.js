@@ -187,8 +187,8 @@ export default function Hero() {
                                             required
                                             value={formData.name}
                                             onChange={handleInputChange}
-                                            placeholder="Robert Sanchez"
-                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-all font-sans"
+                                            placeholder="Enter your full name"
+                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-slate-900 placeholder-slate-400 focus:outline-none hover:border-blue-600 focus:border-blue-600 transition-all font-sans"
                                         />
                                     </div>
 
@@ -201,8 +201,8 @@ export default function Hero() {
                                             required
                                             value={formData.email}
                                             onChange={handleInputChange}
-                                            placeholder="SanchezRobert@gmail.com"
-                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-all font-sans"
+                                            placeholder="Enter your email address"
+                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-slate-900 placeholder-slate-400 focus:outline-none hover:border-blue-600 focus:border-blue-600 transition-all font-sans"
                                         />
                                     </div>
 
@@ -219,7 +219,7 @@ export default function Hero() {
                                             required
                                             value={formData.purpose}
                                             onChange={handleInputChange}
-                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-[#0F172B] focus:outline-none focus:border-blue-600 transition-all font-sans cursor-pointer"
+                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-[#0F172B] focus:outline-none hover:border-blue-600 focus:border-blue-600 transition-all font-sans cursor-pointer"
                                         >
                                             <option value="" className="text-slate-400">Select Purpose</option>
                                             <option value="Business Enquiry" className="text-slate-800">Business Enquiry</option>
@@ -237,8 +237,9 @@ export default function Hero() {
                                             defaultCountry="in"
                                             value={formData.phone || ""}
                                             onChange={(phone) => setFormData({ ...formData, phone })}
+                                            placeholder="Enter your phone number"
                                             inputClassName="!w-full !bg-transparent !py-2.5 !text-[15px] !font-semibold !text-slate-900 placeholder-slate-400 focus:!outline-none font-sans !border-none !ring-0"
-                                            className="flex items-center w-full bg-transparent border-b border-slate-200 focus-within:border-blue-600 transition-all"
+                                            className="flex items-center w-full bg-transparent border-b border-slate-200 hover:border-blue-600 focus-within:border-blue-600 transition-all"
                                             countrySelectorStyleProps={{
                                                 buttonClassName: "!bg-transparent !py-2.5 !pr-2 !text-[15px] !font-semibold !text-slate-900 !h-full !border-none",
                                                 dropdownStyleProps: {
@@ -262,7 +263,7 @@ export default function Hero() {
                                             value={formData.location || ""}
                                             onChange={handleInputChange}
                                             placeholder="Enter your location"
-                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-all font-sans"
+                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-slate-900 placeholder-slate-400 focus:outline-none hover:border-blue-600 focus:border-blue-600 transition-all font-sans"
                                         />
                                     </div>
 
@@ -275,8 +276,8 @@ export default function Hero() {
                                             required
                                             value={formData.message}
                                             onChange={handleInputChange}
-                                            placeholder="Write the message..."
-                                            className="w-full rounded-2xl bg-[#F3F4F6] p-4 text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all resize-none min-h-[120px] font-sans"
+                                            placeholder="Enter your message"
+                                            className="w-full rounded-2xl bg-[#F3F4F6] p-4 text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none hover:ring-2 hover:ring-blue-400 hover:bg-white focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all resize-none min-h-[120px] font-sans"
                                         />
                                     </div>
                                 </div>

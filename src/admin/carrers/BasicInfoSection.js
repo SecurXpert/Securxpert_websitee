@@ -176,20 +176,20 @@ export default function BasicInfoSection({ isExpanded, onToggle, initialData, on
                 label="Job Title"
                 placeholder="e.g. Senior QA Automation Engineer"
                 required
-                value={formData.jobTitle}
+                value={formData.jobTitle || ""}
                 onChange={(e) => handleChange('jobTitle', e.target.value)}
               />
             </div>
-            <FormInput label="Job Category" placeholder="e.g. Quality Assurance" required value={formData.jobCategory} onChange={(e) => handleChange('jobCategory', e.target.value)} />
-            <FormInput label="Department" placeholder="e.g. Engineering" required value={formData.department} onChange={(e) => handleChange('department', e.target.value)} />
-            <FormSelect label="Employment Type" placeholder="Select" required options={["Full-time", "Part-time", "Contract", "Internship"]} value={formData.employmentType} onChange={(e) => handleChange('employmentType', e.target.value)} />
-            <FormInput label="Job Location" placeholder="e.g. Bangalore, India" required value={formData.jobLocation} onChange={(e) => handleChange('jobLocation', e.target.value)} />
-            <FormSelect label="Work Mode" placeholder="Select" required options={["On-site", "Hybrid", "Remote"]} value={formData.workMode} onChange={(e) => handleChange('workMode', e.target.value)} />
-            <FormSelect label="Experience Level" placeholder="Select" required options={["Entry Level (0-2 Years)", "Mid Level (2-5 Years)", "Senior Level (5+ Years)"]} value={formData.experienceLevel} onChange={(e) => handleChange('experienceLevel', e.target.value)} />
-            <FormInput label="Years of Experience" placeholder="e.g. 5" type="number" required value={formData.yearsOfExperience} onChange={(e) => handleChange('yearsOfExperience', e.target.value)} />
-            <FormInput label="Number of Openings" placeholder="1" type="number" required value={formData.numberOfOpenings} onChange={(e) => handleChange('numberOfOpenings', e.target.value)} />
-            <FormSelect label="Job Status" placeholder="Draft" required options={["Draft", "Published", "Closed"]} value={formData.jobStatus} onChange={(e) => handleChange('jobStatus', e.target.value)} />
-            <FormInput label="Job Expiry Date" placeholder="Select date" type="date" value={formData.jobExpiryDate} onChange={(e) => handleChange('jobExpiryDate', e.target.value)} />
+            <FormInput label="Job Category" placeholder="e.g. Quality Assurance" required value={formData.jobCategory || ""} onChange={(e) => handleChange('jobCategory', e.target.value)} />
+            <FormInput label="Department" placeholder="e.g. Engineering" required value={formData.department || ""} onChange={(e) => handleChange('department', e.target.value)} />
+            <FormSelect label="Employment Type" placeholder="Select" required options={["Full-time", "Part-time", "Contract", "Internship"]} value={formData.employmentType || "Full-Time"} onChange={(e) => handleChange('employmentType', e.target.value)} />
+            <FormInput label="Job Location" placeholder="e.g. Bangalore, India" required value={formData.jobLocation || ""} onChange={(e) => handleChange('jobLocation', e.target.value)} />
+            <FormSelect label="Work Mode" placeholder="Select" required options={["On-site", "Hybrid", "Remote"]} value={formData.workMode || "Onsite"} onChange={(e) => handleChange('workMode', e.target.value)} />
+            <FormSelect label="Experience Level" placeholder="Select" required options={["Entry Level (0-2 Years)", "Mid Level (2-5 Years)", "Senior Level (5+ Years)"]} value={formData.experienceLevel || "Entry"} onChange={(e) => handleChange('experienceLevel', e.target.value)} />
+            <FormInput label="Years of Experience" placeholder="e.g. 5" type="number" required value={formData.yearsOfExperience || ""} onChange={(e) => handleChange('yearsOfExperience', e.target.value)} />
+            <FormInput label="Number of Openings" placeholder="1" type="number" required value={formData.numberOfOpenings || ""} onChange={(e) => handleChange('numberOfOpenings', e.target.value)} />
+            <FormSelect label="Job Status" placeholder="Draft" required options={["Draft", "Published", "Closed"]} value={formData.jobStatus || "Draft"} onChange={(e) => handleChange('jobStatus', e.target.value)} />
+            <FormInput label="Job Expiry Date" placeholder="Select date" type="date" value={formData.jobExpiryDate || ""} onChange={(e) => handleChange('jobExpiryDate', e.target.value)} />
           </div>
 
           <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">

@@ -26,9 +26,13 @@ export function Input({ placeholder, value, onChange, readOnly }) {
   );
 }
 
-export function UploadArea({ label, sublabel, onChange }) {
+export function UploadArea({ label, sublabel, onChange, value }) {
   const [file, setFile] = useState(null);
   const ref = useRef(null);
+  
+  // Determine what to display: the local file name, or the existing value (e.g. a URL from the backend)
+  const displayValue = file || (typeof value === "string" && value ? value.split("/").pop() : null);
+
   return (
     <div
       onClick={() => ref.current?.click()}
@@ -48,8 +52,8 @@ export function UploadArea({ label, sublabel, onChange }) {
       <div className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-400">
         <Upload className="w-4 h-4" />
       </div>
-      {file ? (
-        <span className="text-xs font-bold text-blue-600 px-4 truncate max-w-full">{file}</span>
+      {displayValue ? (
+        <span className="text-xs font-bold text-blue-600 px-4 truncate max-w-full">{displayValue}</span>
       ) : (
         <div className="text-center px-4">
           <p className="text-sm font-medium text-slate-600">{label}</p>

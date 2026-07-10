@@ -40,7 +40,7 @@ export default function ProductPageFAQ({ product }) {
   };
 
   return (
-    <section className="relative w-full bg-white py-8 lg:py-14">
+    <section className="relative w-full bg-white py-8 lg:py-8">
       <div className="max-w-[1300px] mx-auto px-6 md:px-12 lg:px-20">
         
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
@@ -84,12 +84,12 @@ export default function ProductPageFAQ({ product }) {
                   >
                     <button
                       onClick={() => toggleFaq(index)}
-                      className="w-full flex items-center justify-between p-3 sm:p-4 text-left focus:outline-none"
+                      className="w-full flex items-center justify-between p-3 sm:p-4 text-left focus:outline-none group transition-colors hover:bg-slate-50/50"
                     >
                       <span className="text-slate-900 font-semibold text-[15px] sm:text-base">
                         {faq.question}
                       </span>
-                      <span className="ml-4 flex-shrink-0 text-slate-800">
+                      <span className={`ml-4 flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 ${isOpen ? 'bg-[#3D62EB] text-white' : 'text-slate-800 group-hover:bg-[#3D62EB]/10 group-hover:text-[#3D62EB]'}`}>
                         {isOpen ? <LuMinus className="w-5 h-5" /> : <LuPlus className="w-5 h-5" />}
                       </span>
                     </button>

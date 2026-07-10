@@ -54,9 +54,9 @@ export default function CareersHero() {
                     {/* Left Column: Careers Dynamic Messaging & Call to Action */}
                     <div className="relative z-10 w-full lg:w-1/2 flex flex-col items-start text-left space-y-6 lg:space-y-7 pt-2 sm:pt-4 lg:pt-6 xl:pt-8 pb-12 lg:pb-20 xl:pb-12 2xl:pb-20 max-w-5xl">
 
-                        <h3 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight font-sans pt-4 lg:pt-8">
+                        <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight font-sans pt-4 lg:pt-8">
                             Join The Team
-                        </h3>
+                        </h1>
 
                         <p className="text-white text-sm sm:text-base lg:text-md xl:text-xl leading-relaxed tracking-wider font-normal opacity-90 max-w-3xl">
                             SecurXpert is an employee-centred company — we give people autonomy to make decisions, invest in self-development, and back career growth with real opportunity, not just a mission statement. We're always looking for talented people who want to build, not just maintain. 
@@ -68,7 +68,7 @@ export default function CareersHero() {
                                 href="#positions"
                                 className="bg-[#3E66F3] hover:bg-blue-600 text-white font-semibold px-8 py-3.5 rounded-full text-sm sm:text-base shadow-lg transition-all active:scale-95 duration-150 flex items-center gap-2"
                             >
-                                <span>Open Positions</span>
+                                <span>view Open Positions</span>
                                 <svg
                                     className="w-4 h-4"
                                     fill="none"

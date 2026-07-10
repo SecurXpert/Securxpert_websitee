@@ -5,18 +5,18 @@ import { API_BASE_URL } from "../config";
 
 let blockIdCounter = 100;
 
-export default function ContentBuilderSection({ form, sections, setSections }) {
+export default function ContentBuilderSection({ form, sections, setSections, onSaved }) {
   const [saved, setSaved] = useState(false);
 
   const handleSave = async () => {
-    if (!form?.slug) {
-      alert("Please enter a Blog Title to generate a slug first!");
+    if (!form?.blogId) {
+      alert("Please save the Blog Information first to create the blog!");
       return;
     }
 
     try {
       const token = localStorage.getItem("access_token");
-      const blogId = form.slug;
+      const blogId = form.blogId;
 
       const updatedSections = [...sections];
 
@@ -76,6 +76,7 @@ export default function ContentBuilderSection({ form, sections, setSections }) {
       setSaved(true);
       setTimeout(() => setSaved(false), 2000);
       alert("Sections saved successfully!");
+      onSaved?.();
     } catch (error) {
       alert("Network error. Please try again later.");
     }
@@ -97,7 +98,7 @@ export default function ContentBuilderSection({ form, sections, setSections }) {
       if (!confirm("Are you sure you want to delete this section from the server?")) return;
       try {
         const token = localStorage.getItem("access_token");
-        const blogId = form?.slug;
+        const blogId = form?.blogId;
         const res = await fetch(`${API_BASE_URL}/blogs/${blogId}/sections/${sec.serverId}`, {
           method: "DELETE",
           headers: {

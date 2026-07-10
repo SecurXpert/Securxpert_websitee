@@ -4,7 +4,7 @@ import React from "react";
 
 export default function OurStories() {
   return (
-    <section className="w-full bg-white py-16 sm:py-14 overflow-hidden">
+    <section className="w-full bg-white py-16 sm:py-10 overflow-hidden">
       <div className="max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:pl-10 md:pr-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
 

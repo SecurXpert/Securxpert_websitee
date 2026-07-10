@@ -110,7 +110,7 @@ export default function AllPosts() {
                         const guestPassword = "VisitorPass123";
 
                         try {
-                            const loginRes = await axios.post('http://192.168.0.141:8000/auth/login', {
+                            const loginRes = await axios.post('http://192.168.0.125:8000/auth/login', {
                                 email: guestEmail,
                                 password: guestPassword
                             });
@@ -121,13 +121,13 @@ export default function AllPosts() {
                         } catch (err) {
                             if (err.response && err.response.status === 401) {
                                 // Register guest visitor
-                                await axios.post('http://192.168.0.141:8000/auth/register-admin', {
+                                await axios.post('http://192.168.0.125:8000/auth/register-admin', {
                                     username: guestUsername,
                                     email: guestEmail,
                                     password: guestPassword
                                 });
                                 // Login
-                                const loginRes2 = await axios.post('http://192.168.0.141:8000/auth/login', {
+                                const loginRes2 = await axios.post('http://192.168.0.125:8000/auth/login', {
                                     email: guestEmail,
                                     password: guestPassword
                                 });
@@ -142,7 +142,7 @@ export default function AllPosts() {
                     }
                 }
 
-                const response = await axios.get("http://192.168.0.141:8000/blogs/", {
+                const response = await axios.get("http://192.168.0.125:8000/blogs/", {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
@@ -155,7 +155,7 @@ export default function AllPosts() {
                         .map(async (blog) => {
                             let heroData = {};
                             try {
-                                const heroRes = await axios.get(`http://192.168.0.141:8000/blogs/${blog.id}/hero`, {
+                                const heroRes = await axios.get(`http://192.168.0.125:8000/blogs/${blog.id}/hero`, {
                                     headers: {
                                         "Authorization": `Bearer ${token}`
                                     }
@@ -179,7 +179,7 @@ export default function AllPosts() {
                             if (bannerPath) {
                                 bannerUrl = (bannerPath.startsWith("http://") || bannerPath.startsWith("https://"))
                                     ? bannerPath
-                                    : `http://192.168.0.141:8000${bannerPath}`;
+                                    : `http://192.168.0.125:8000${bannerPath}`;
                             }
 
                             const categoryName = blog.category || "Security";
@@ -215,6 +215,13 @@ export default function AllPosts() {
         fetchPosts();
     }, []);
 
+    // Pagination logic
+    const postsPerPage = 6;
+    const totalPages = Math.max(1, Math.ceil(posts.length / postsPerPage));
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
     return (
         <div className="bg-white w-full">
             <section className="w-full max-w-[85%] 2xl:max-w-[1300px] mx-auto pb-16 sm:pb-24">
@@ -226,7 +233,7 @@ export default function AllPosts() {
 
                 {/* 3-Column Grid Container */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                    {posts.map((post) => (
+                    {currentPosts.map((post) => (
                         <Link href={`/blogs/${post.slug}`} key={post.isDynamic ? `api-${post.id}` : `static-${post.id}`} className="flex flex-col group cursor-pointer">
 
                             {/* Image Container */}
@@ -273,72 +280,47 @@ export default function AllPosts() {
                 </div>
 
                 {/* Pagination Controls */}
-                <div className="border-t border-slate-100 mt-16 sm:mt-6 pt-6 flex flex-row items-center justify-between">
+                {totalPages > 1 && (
+                    <div className="border-t border-slate-100 mt-16 sm:mt-6 pt-6 flex flex-row items-center justify-between">
 
-                    {/* Previous Button */}
-                    <button
-                        onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
-                        className="flex items-center gap-2 text-[#667085] hover:text-blue-600 font-semibold text-sm transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                        disabled={currentPage === 1}
-                    >
-                        <LuArrowLeft className="w-5 h-5" />
-                        <span className="hidden sm:inline">Previous</span>
-                    </button>
-
-                    {/* Numeric Pagination items */}
-                    <div className="flex items-center gap-1 sm:gap-2">
+                        {/* Previous Button */}
                         <button
-                            onClick={() => setCurrentPage(1)}
-                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-semibold text-sm transition-all ${currentPage === 1 ? "bg-[#F9F5FF] text-[#7F56D9]" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"}`}
+                            onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+                            className="flex items-center gap-2 text-[#667085] hover:text-blue-600 font-semibold text-sm transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled={currentPage === 1}
                         >
-                            1
-                        </button>
-                        <button
-                            onClick={() => setCurrentPage(2)}
-                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-semibold text-sm transition-all ${currentPage === 2 ? "bg-[#F9F5FF] text-[#7F56D9]" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"}`}
-                        >
-                            2
-                        </button>
-                        <button
-                            onClick={() => setCurrentPage(3)}
-                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-semibold text-sm transition-all ${currentPage === 3 ? "bg-[#F9F5FF] text-[#7F56D9]" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"}`}
-                        >
-                            3
+                            <LuArrowLeft className="w-5 h-5" />
+                            <span className="hidden sm:inline">Previous</span>
                         </button>
 
-                        <span className="text-slate-400 px-1 text-sm font-medium">...</span>
+                        {/* Numeric Pagination items */}
+                        <div className="flex items-center gap-1 sm:gap-2">
+                            {Array.from({ length: totalPages }).map((_, index) => {
+                                const pageNumber = index + 1;
+                                return (
+                                    <button
+                                        key={pageNumber}
+                                        onClick={() => setCurrentPage(pageNumber)}
+                                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-semibold text-sm transition-all ${currentPage === pageNumber ? "bg-[#F9F5FF] text-[#7F56D9]" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"}`}
+                                    >
+                                        {pageNumber}
+                                    </button>
+                                );
+                            })}
+                        </div>
 
+                        {/* Next Button */}
                         <button
-                            onClick={() => setCurrentPage(8)}
-                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-semibold text-sm transition-all ${currentPage === 8 ? "bg-[#F9F5FF] text-[#7F56D9]" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"}`}
+                            onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
+                            className="flex items-center gap-2 text-[#667085] hover:text-blue-600 font-semibold text-sm transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled={currentPage === totalPages}
                         >
-                            8
+                            <span className="hidden sm:inline">Next</span>
+                            <LuArrowRight className="w-5 h-5" />
                         </button>
-                        <button
-                            onClick={() => setCurrentPage(9)}
-                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-semibold text-sm transition-all ${currentPage === 9 ? "bg-[#F9F5FF] text-[#7F56D9]" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"}`}
-                        >
-                            9
-                        </button>
-                        <button
-                            onClick={() => setCurrentPage(10)}
-                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-semibold text-sm transition-all ${currentPage === 10 ? "bg-[#F9F5FF] text-[#7F56D9]" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"}`}
-                        >
-                            10
-                        </button>
+
                     </div>
-
-                    {/* Next Button */}
-                    <button
-                        onClick={() => currentPage < 10 && setCurrentPage(currentPage + 1)}
-                        className="flex items-center gap-2 text-[#667085] hover:text-blue-600 font-semibold text-sm transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                        disabled={currentPage === 10}
-                    >
-                        <span className="hidden sm:inline">Next</span>
-                        <LuArrowRight className="w-5 h-5" />
-                    </button>
-
-                </div>
+                )}
 
             </section>
         </div>

@@ -42,7 +42,13 @@ export default function Testimonials() {
     let interval;
     if (autoPlay) {
       interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+        setCurrentIndex((prev) => {
+          if (prev === testimonials.length - 1) {
+            setAutoPlay(false);
+            return prev;
+          }
+          return prev + 1;
+        });
       }, 3500); // Auto-scrolls every 3.5 seconds
     }
     return () => clearInterval(interval);
@@ -50,12 +56,16 @@ export default function Testimonials() {
 
   const handlePrev = () => {
     setAutoPlay(false); // Stop auto-scroll on manual click
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
   };
 
   const handleNext = () => {
     setAutoPlay(false); // Stop auto-scroll on manual click
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    if (currentIndex < testimonials.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+    }
   };
 
   return (
@@ -72,7 +82,7 @@ export default function Testimonials() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* LEFT SIDE - TITLE AND CAROUSEL CONTROLS */}
-          <div className="lg:col-span-5 flex flex-col items-start text-left">
+          <div className="lg:col-span-5 flex flex-col items-start text-left lg:pl-10">
             <div className="relative inline-flex items-center mb-4">
               <span className="relative z-10 text-[#FFFFFF] text-sm font-medium tracking-[3.5px] uppercase font-sans">
                 TESTIMONIALS
@@ -88,10 +98,11 @@ export default function Testimonials() {
             <div className="flex gap-4">
               <button
                 onClick={handlePrev}
-                className="bg-[#2D45C4]/60 hover:bg-[#2D45C4] text-white w-12 h-12 rounded-full flex items-center justify-center border border-white/10 transition-all duration-200 active:scale-90 focus:outline-none"
+                disabled={currentIndex === 0}
+                className={`w-12 h-12 rounded-full flex items-center justify-center border border-white/10 transition-all duration-200 focus:outline-none ${currentIndex === 0 ? 'bg-[#2D45C4]/30 text-white/40 cursor-not-allowed' : 'bg-[#2D45C4]/60 hover:bg-[#2D45C4] text-white active:scale-90'}`}
               >
                 <svg
-                  className="w-5 h-5 text-white"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
@@ -102,10 +113,11 @@ export default function Testimonials() {
               </button>
               <button
                 onClick={handleNext}
-                className="bg-[#3B54DF] hover:bg-[#4E68F5] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 active:scale-90 focus:outline-none"
+                disabled={currentIndex === testimonials.length - 1}
+                className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 focus:outline-none ${currentIndex === testimonials.length - 1 ? 'bg-[#3B54DF]/50 text-white/40 cursor-not-allowed shadow-none' : 'bg-[#3B54DF] hover:bg-[#4E68F5] text-white active:scale-90'}`}
               >
                 <svg
-                  className="w-5 h-5 text-white"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"

@@ -82,7 +82,7 @@ const CountUp = ({ end, duration = 2000, suffix = "" }) => {
 
 export default function AboutUs() {
   return (
-    <section 
+    <section
       style={{ background: "linear-gradient(180deg, #EBEFFF 1.48%, #FFFFFF 98.59%)" }}
       className="relative w-full overflow-hidden py-12 sm:py-14 px-6 sm:px-12 lg:px-24"
     >
@@ -93,10 +93,10 @@ export default function AboutUs() {
       </div>
 
       <div className="relative z-10 max-w-[1140px] mx-auto w-full flex flex-col">
-        
+
         {/* HEADER BLOCK */}
         <div className="text-left w-full mb-8 select-none">
-          <span className="text-xs sm:text-[13px] font-bold text-[#19092D] tracking-[0.25em] uppercase block mb-4">
+          <span className="text-xs sm:text-[11px] font-bold text-[#0A0A0A] tracking-[0.2em] uppercase block mb-4">
             About Us
           </span>
           <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold text-[#1E1B4B] tracking-tight leading-tight max-w-4xl font-sans uppercase">
@@ -106,7 +106,7 @@ export default function AboutUs() {
 
         {/* OVERLAPPING TILTED IMAGES SECTION */}
         <div className="relative w-full flex flex-wrap items-center justify-center gap-8 sm:gap-10 lg:gap-12 py-6 my-2 min-h-[300px] lg:min-h-[400px]">
-          
+
           {/* Image 1: Left (Tilted slightly left, shifted down) */}
           <div className="relative w-[220px] sm:w-[260px] md:w-[260px] aspect-[4/5] rounded-[5px] overflow-hidden shadow-2xl shadow-indigo-950/15 transform rotate-[15deg] translate-y-[20px] sm:translate-y-[-20px] hover:rotate-0 hover:scale-105 hover:z-20 transition-all duration-500">
             <img
@@ -141,22 +141,18 @@ export default function AboutUs() {
 
         {/* BOTTOM SECTION: CTA BUTTONS & DESCRIPTION TEXT */}
         <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-10 mt-8 md:mt-12">
-          
+
           {/* CTA Buttons Row */}
           <div className="flex items-center gap-4 flex-shrink-0">
             <button className="bg-[#3D60E9] hover:bg-blue-700 hover:scale-[1.03] active:scale-95 text-white font-bold text-xs sm:text-sm py-3.5 px-8 rounded-full shadow-[0_12px_24px_rgba(61,96,233,0.25)] transition-all duration-300 cursor-pointer uppercase tracking-wider">
               Learn More
             </button>
-            <button className="w-12 h-12 rounded-full bg-white hover:bg-slate-50 active:scale-95 shadow-[0_8px_20px_rgba(0,0,0,0.08)] flex items-center justify-center transition-all duration-300 cursor-pointer border border-slate-200">
-              <svg className="w-4 h-4 text-[#3D60E9] fill-current ml-0.5" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </button>
+
           </div>
 
           {/* Description Text */}
           <p className="text-slate-600 text-sm sm:text-base md:text-[16px] font-normal leading-relaxed text-left max-w-xl md:max-w-xl font-sans">
-            SecurXpert is a technology and design partner dedicated to helping brands express their ideas through clean engineering, strategic thinking, and digital experiences that actually convert. Good software isn't just about how it looks — it's about creating clarity, trust, and a measurable result for the business behind it. 
+            SecurXpert is a technology and design partner dedicated to helping brands express their ideas through clean engineering, strategic thinking, and digital experiences that actually convert. Good software isn't just about how it looks — it's about creating clarity, trust, and a measurable result for the business behind it.
           </p>
 
         </div>

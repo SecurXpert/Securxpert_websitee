@@ -27,11 +27,11 @@ export default function OurOffices() {
   ];
 
   return (
-    <section className="py-20 bg-[#FFFFFF] select-none">
+    <section className="py-10 bg-[#FFFFFF] select-none">
       <div className="max-w-[1100px] mx-auto px-6">
         
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-4xl md:text-[42px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2C2F8D] to-[#3D62EB] tracking-tight mb-4 pb-1">
             Our Offices
           </h2>

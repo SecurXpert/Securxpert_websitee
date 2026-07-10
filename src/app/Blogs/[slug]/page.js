@@ -1,17 +1,13 @@
 import React from "react";
-import { blogsData } from "@/utils/blogsData";
 import BlogPostClient from "./BlogPostClient";
 
 export async function generateStaticParams() {
-    const staticSlugs = Object.keys(blogsData).map((slug) => ({
-        slug: slug,
-    }));
-
+    let staticSlugs = [];
     try {
         const guestEmail = "guest_visitor_securxpert@gmail.com";
         const guestPassword = "VisitorPass123";
 
-        const loginRes = await fetch("http://192.168.0.141:8000/auth/login", {
+        const loginRes = await fetch("http://192.168.0.125:8000/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -24,7 +20,7 @@ export async function generateStaticParams() {
             const token = loginData.access_token;
 
             if (token) {
-                const listRes = await fetch("http://192.168.0.141:8000/blogs/", {
+                const listRes = await fetch("http://192.168.0.125:8000/blogs/", {
                     headers: {
                         "Authorization": `Bearer ${token}`,
                     },
@@ -47,13 +43,15 @@ export async function generateStaticParams() {
         console.error("Failed to fetch dynamic slugs for generateStaticParams:", err.message);
     }
 
-    return staticSlugs;
+    return [
+        { slug: "temp-blog-post-1" },
+        { slug: "temp-blog-post-2" }
+    ];
 }
 
 export default async function BlogPostPage({ params }) {
     const resolvedParams = await params;
     const slug = resolvedParams.slug;
-    const staticBlog = blogsData[slug];
 
-    return <BlogPostClient slug={slug} staticBlog={staticBlog} />;
+    return <BlogPostClient slug={slug} />;
 }

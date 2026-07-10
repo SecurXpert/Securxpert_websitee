@@ -88,7 +88,7 @@ const projectsData = [
   },
   {
     id: 9,
-    title: "Dev Talent",
+    title: "DevTalent",
     tags: "DESIGN WOK, APP DESIGN",
     desc: "Technical assessment and coding-test platform for recruiting teams. ",
     image: "/products/Projects/project6.png",
@@ -97,7 +97,7 @@ const projectsData = [
   },
   {
     id: 10,
-    title: "Lauratek2.0",
+    title: "Lauratek 2.0",
     tags: "DESIGN WOK, ILLUSUTRATION",
     desc: "AI-driven evolution of Lauratek with predictive analytics and modern architecture",
     image: "/products/Projects/project7.png",
@@ -129,22 +129,7 @@ export default function ProjectGrid() {
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-nowrap md:flex-wrap items-center justify-start md:justify-center gap-3 md:gap-4 mb-6 overflow-x-auto md:overflow-visible pb-2 w-full max-w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          {filterCategories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveFilter(category)}
-              className={`px-5 py-2 md:px-6 md:py-2.5 rounded-full text-sm md:text-base font-medium transition-all duration-300 border whitespace-nowrap flex-shrink-0 ${
-                activeFilter === category
-                  ? "bg-[#5B6CFF] text-white border-[#5B6CFF] shadow-md"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-8">

@@ -66,11 +66,11 @@ export default function Benifits() {
     { title: "Flexible working hours", icon: ClockIcon },
     { title: "Health care Insurance", icon: ShieldIcon },
     { title: "Fun team events", icon: PartyIcon },
-    { title: "Professional grow budget", icon: RocketIcon },
+    { title: "Professional growth budget", icon: RocketIcon },
     { title: "paid vacation", icon: CalendarIcon },
     { title: "Competitive salary", icon: WalletIcon },
     { title: "Employee referral bonus", icon: ReferralIcon },
-    { title: "Birthdays celebration", icon: CakeIcon },
+    { title: "Birthday celebration", icon: CakeIcon },
   ];
  
   return (
@@ -81,9 +81,6 @@ export default function Benifits() {
           <h2 className="text-[#090808] text-center text-5xl font-normal mb-4 font-sans">
             What benefits are waiting for you?
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base md:text-lg">
-            Securxpert offers a variety of hand-picked benefits that you can take advantage of!
-          </p>
         </div>
  
         {/* Benefits Grid (5 Columns on Desktop) */}

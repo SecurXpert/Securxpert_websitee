@@ -93,7 +93,7 @@ export default function OurProducts() {
     }, [activeIndex]);
 
     return (
-        <section className="relative w-full overflow-hidden min-h-[850px] md:h-[900px] lg:h-[950px] max-lg:min-h-[420px] max-lg:h-auto max-lg:pb-10 flex flex-col justify-between py-14 max-lg:pt-8 px-6 md:px-20 lg:px-40 text-white select-none">
+        <section className="relative w-full overflow-hidden min-h-[750px] md:h-[800px] lg:h-[850px] max-lg:min-h-[420px] max-lg:h-auto max-lg:pb-10 flex flex-col justify-between py-10 max-lg:pt-8 px-6 md:px-20 lg:px-40 text-white select-none">
             {/* Absolute Background Slideshow: covers top header down past explore button on mobile */}
             <div className="absolute inset-0 z-0 w-full h-full">
                 {productsData.map((product, idx) => (
@@ -112,7 +112,7 @@ export default function OurProducts() {
                     Our Products
                 </h2>
                 {/* Desktop Description */}
-                <p className="text-white/80 text-md md:text-md font-medium tracking-wide max-lg:hidden">
+                <p className="text-white text-md md:text-md font-medium tracking-wide max-lg:hidden">
                     Beyond client work, SecurXpert designs and maintains its own product portfolio — proof of how we build, not just how we talk about building. Ten live products across HR tech, healthcare, education, logistics, and analytics. 
                 </p>
                 {/* Mobile Description (from mockup) */}
@@ -128,7 +128,7 @@ export default function OurProducts() {
                 {/* Kept your precise desktop translate transforms completely intact */}
                 <div className="lg:col-span-6 flex flex-col items-start text-left max-w-xl transition-all duration-700 ease-out lg:-translate-x-12 lg:-translate-y-20 w-full max-lg:w-[55%] max-lg:pr-1 max-lg:justify-center">
                     <h2
-                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 max-lg:mb-2 tracking-tight animate-fade-in ![font-family:var(--font-Playfair-Display),serif] max-lg:!font-sans max-lg:text-[22px] max-lg:font-semibold"
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold capitalize text-white mb-6 max-lg:mb-2 tracking-tight animate-fade-in ![font-family:var(--font-Playfair-Display),serif] max-lg:!font-sans max-lg:text-[22px] max-lg:font-semibold"
                     >
                         {activeProduct.name}
                     </h2>
@@ -138,13 +138,13 @@ export default function OurProducts() {
                     <div className="flex items-center gap-4 max-lg:w-full">
                         <Link
                             href={`/products/${activeProduct.slug}`}
-                            className={`text-white font-medium px-10 py-4 max-lg:px-5 max-lg:py-2.5 max-lg:text-[13px] rounded-2xl max-lg:rounded-xl text-base shadow-md transition-all active:scale-95 duration-150 cursor-pointer text-center inline-block ${activeProduct.btnColor}`}
+                            className={`text-white font-medium px-10 py-4 max-lg:px-5 max-lg:py-2.5 max-lg:text-[13px] rounded-2xl max-lg:rounded-xl text-base shadow-md transition-all hover:-translate-y-1 hover:shadow-xl hover:brightness-110 active:scale-95 duration-200 cursor-pointer text-center inline-block ${activeProduct.btnColor}`}
                         >
                             Explore Now
                         </Link>
                         <Link
                             href="/products"
-                            className="text-white font-medium px-6 py-4 rounded-2xl text-base transition-all active:scale-95 duration-150 cursor-pointer bg-transparent border border-white/40 hover:bg-white/10 text-center inline-block max-lg:hidden"
+                            className="text-white font-normal px-6 py-4 rounded-2xl text-base transition-all active:scale-95 duration-150 cursor-pointer bg-transparent border border-white/40 hover:bg-white/10 text-center inline-block max-lg:hidden"
                         >
                             View All Products
                         </Link>

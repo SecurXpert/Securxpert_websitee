@@ -52,7 +52,7 @@ export default function Faq({ faqs }) {
                   {/* Clickable Header */}
                   <button
                     onClick={() => toggleAccordion(idx)}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none select-none"
+                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none select-none group transition-colors hover:bg-slate-50/50"
                   >
                     <div className="flex items-center gap-3 pr-4">
                       {/* Bright blue Q number */}
@@ -65,7 +65,7 @@ export default function Faq({ faqs }) {
                     </div>
 
                     {/* Plus / Minus Indicator Icon */}
-                    <div className="flex-shrink-0 text-[#100D35] font-semibold text-lg sm:text-xl font-mono select-none">
+                    <div className={`flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full font-semibold text-lg sm:text-xl font-mono select-none transition-all duration-200 ${isOpen ? 'bg-[#3D62EB] text-white' : 'text-[#100D35] group-hover:bg-[#3D62EB]/10 group-hover:text-[#3D62EB]'}`}>
                       {isOpen ? "−" : "+"}
                     </div>
                   </button>

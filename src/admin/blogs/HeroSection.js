@@ -3,23 +3,21 @@ import { Star } from "lucide-react";
 import { Label, Input, UploadArea, SectionCard, SaveBtn } from "./SharedUI";
 import { API_BASE_URL } from "../config";
 
-export default function HeroSection({ form, setForm }) {
+export default function HeroSection({ form, setForm, onSaved }) {
   const [saved, setSaved] = useState(false);
   const [hasHero, setHasHero] = useState(false); // Track if hero exists
 
   const handleSave = async () => {
-    if (!form.slug) {
-      alert("Please enter a Blog Title to generate a slug first!");
+    if (!form.blogId) {
+      alert("Please save the Blog Information first to create the blog!");
       return;
     }
 
     try {
       const token = localStorage.getItem("access_token");
-      const blogId = form.slug;
+      const blogId = form.blogId;
 
       const formData = new FormData();
-      formData.append("badge_text", form.badgeText || "");
-      formData.append("reading_time", form.readingTime || "");
       formData.append("hero_title", form.heroTitle || "");
       formData.append("short_description", form.shortDescription || "");
       formData.append("author_name", form.authorName || "");
@@ -50,6 +48,7 @@ export default function HeroSection({ form, setForm }) {
         setSaved(true);
         setTimeout(() => setSaved(false), 2000);
         alert(`Hero section ${hasHero ? 'updated' : 'created'} successfully!`);
+        onSaved?.();
       } else {
         let errorMsg = `Failed to ${hasHero ? 'update' : 'create'} hero section`;
         try {
@@ -73,7 +72,7 @@ export default function HeroSection({ form, setForm }) {
 
     try {
       const token = localStorage.getItem("access_token");
-      const blogId = form.slug;
+      const blogId = form.blogId;
       const res = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
         method: "DELETE",
         headers: {
@@ -109,24 +108,7 @@ export default function HeroSection({ form, setForm }) {
         </div>
       }
     >
-      <div className="grid grid-cols-2 gap-5">
-        <div>
-          <Label>Badge Text</Label>
-          <Input
-            placeholder="Featured"
-            value={form.badgeText}
-            onChange={(v) => setForm((p) => ({ ...p, badgeText: v }))}
-          />
-        </div>
-        <div>
-          <Label>Reading Time</Label>
-          <Input
-            placeholder="8 min read"
-            value={form.readingTime}
-            onChange={(v) => setForm((p) => ({ ...p, readingTime: v }))}
-          />
-        </div>
-      </div>
+
 
       <div>
         <Label>Hero Title</Label>
@@ -154,6 +136,7 @@ export default function HeroSection({ form, setForm }) {
           <UploadArea
             label="Upload Banner"
             sublabel="1200×630px recommended"
+            value={form.heroBanner}
             onChange={(f) => setForm((p) => ({ ...p, heroBanner: f }))}
           />
         </div>
@@ -162,6 +145,7 @@ export default function HeroSection({ form, setForm }) {
           <UploadArea
             label="Upload Author Photo"
             sublabel="80×80px recommended"
+            value={form.authorImage}
             onChange={(f) => setForm((p) => ({ ...p, authorImage: f }))}
           />
         </div>

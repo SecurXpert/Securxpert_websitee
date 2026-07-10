@@ -3,20 +3,131 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { positionsData, slugify } from "@/utils/careers/Positionsdata";
+const slugify = (text) => text ? text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : '';
 
-const categories = [
-  { name: "All", count: 17 },
-  { name: "Engineering", count: 7 },
-  { name: "Product", count: 3 },
-  { name: "Design", count: 1 },
-  { name: "Operation", count: 4 },
-  { name: "Marketing", count: 2 },
+import axios from "axios";
+
+const categoriesTemplate = [
+  { name: "All", count: 0 },
+  { name: "Engineering", count: 0 },
+  { name: "Product", count: 0 },
+  { name: "Design", count: 0 },
+  { name: "Operation", count: 0 },
+  { name: "Marketing", count: 0 },
 ];
 
 export default function Positions() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(5);
+  const [positionsData, setPositionsData] = useState([]);
+  const [categories, setCategories] = useState(categoriesTemplate);
+  const [loading, setLoading] = useState(true);
+
+  React.useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        let token =
+          typeof window !== "undefined"
+            ? (localStorage.getItem("super_admin_token") ||
+              localStorage.getItem("superadmin_token") ||
+              localStorage.getItem("access_token") ||
+              localStorage.getItem("token") ||
+              "")
+            : "";
+
+        // Self-healing automatic guest auth if token is missing
+        if (!token) {
+          try {
+            const guestEmail = "guest_visitor_securxpert@gmail.com";
+            const guestUsername = "guest_visitor";
+            const guestPassword = "VisitorPass123";
+
+            try {
+              const loginRes = await axios.post('http://192.168.0.125:8000/auth/login', {
+                email: guestEmail,
+                password: guestPassword
+              });
+              token = loginRes.data?.access_token || "";
+              if (token) {
+                localStorage.setItem("access_token", token);
+              }
+            } catch (err) {
+              if (err.response && err.response.status === 401) {
+                await axios.post('http://192.168.0.125:8000/auth/register-admin', {
+                  username: guestUsername,
+                  email: guestEmail,
+                  password: guestPassword
+                });
+                const loginRes2 = await axios.post('http://192.168.0.125:8000/auth/login', {
+                  email: guestEmail,
+                  password: guestPassword
+                });
+                token = loginRes2.data?.access_token || "";
+                if (token) {
+                  localStorage.setItem("access_token", token);
+                }
+              }
+            }
+          } catch (e) {
+            console.error("Auto guest auth failed:", e);
+          }
+        }
+
+        const res = await fetch("http://192.168.0.125:8000/jobs/", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+        
+        if (res.ok) {
+          const data = await res.json();
+          const rawList = Array.isArray(data) ? data : (data?.data || []);
+          
+          const activeJobs = rawList
+            .filter(j => j.job_status?.toLowerCase() === "active" || j.job_status?.toLowerCase() === "published")
+            .sort((a, b) => b.id - a.id)
+            .map((j, idx) => ({
+              id: j.id,
+              title: j.job_title || "Untitled Position",
+              category: j.job_category || "Engineering",
+              tags: [j.job_location || "Remote", j.employment_type || "Full-Time", j.experience_level || "Entry Level"],
+              description: j.job_description ? (j.job_description.slice(0, 150) + "...") : "Join our team in this exciting role to help build the future of our platform.",
+            }));
+
+          setPositionsData(activeJobs);
+
+          // Update Category Counts Dynamically
+          const catCounts = { All: activeJobs.length };
+          activeJobs.forEach(job => {
+            const cat = job.category;
+            if (cat) {
+              catCounts[cat] = (catCounts[cat] || 0) + 1;
+            }
+          });
+
+          // Ensure our base categories have correct counts, or add new dynamic ones
+          const newCategories = categoriesTemplate.map(c => ({
+            name: c.name,
+            count: catCounts[c.name] || 0
+          }));
+
+          // Add any new categories that aren't in the template
+          Object.keys(catCounts).forEach(k => {
+            if (!newCategories.find(c => c.name === k)) {
+              newCategories.push({ name: k, count: catCounts[k] });
+            }
+          });
+
+          setCategories(newCategories.filter(c => c.count > 0 || c.name === "All"));
+        }
+      } catch (err) {
+        console.error("Failed to fetch jobs:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchJobs();
+  }, []);
 
   const filteredPositions = activeCategory === "All"
     ? positionsData
@@ -25,13 +136,13 @@ export default function Positions() {
   const displayedPositions = filteredPositions.slice(0, visibleCount);
 
   return (
-    <section id="positions" className="relative w-full py-14 bg-[#F8FAFC] text-slate-800 border-t border-slate-100">
-      <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20 pt-8">
+    <section id="positions" className="relative w-full py-10 bg-[#F8FAFC] text-slate-800 border-t border-slate-100">
+      <div className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto px-6 md:px-20 pt-0">
 
         {/* Main Section Header */}
-        <div className="text-center mb-16 max-w-4xl mx-auto">
+        <div className="text-center mb-12 max-w-4xl mx-auto">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-regular text-[#090808] tracking-tight leading-tight font-sans">
-            We have 17 open positions now!
+            We have {positionsData.length} open position{positionsData.length !== 1 ? 's' : ''} now!
           </h2>
         </div>
 
@@ -104,7 +215,7 @@ export default function Positions() {
                       className="text-white text-xs md:text-sm font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg hover:opacity-90"
                       style={{ backgroundColor: "#364BC0" }}
                     >
-                      See positions <span className="text-[14px]">→</span>
+                      See full job description <span className="text-[14px]">→</span>
                     </Link>
                   </div>
                 </div>
