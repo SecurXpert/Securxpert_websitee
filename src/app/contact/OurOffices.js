@@ -9,6 +9,14 @@ const OfficeMap = dynamic(() => import("./OfficeMap"), {
 });
 
 export default function OurOffices() {
+  const [activeOfficeId, setActiveOfficeId] = React.useState(1);
+  const mapRef = React.useRef(null);
+
+  const handleGetDirections = (id) => {
+    setActiveOfficeId(id);
+    mapRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const offices = [
     {
       id: 1,
@@ -80,19 +88,24 @@ export default function OurOffices() {
 
               {/* Action Link */}
               <div className="mt-auto">
-                <a href="#" className="inline-flex items-center gap-1.5 text-[14px] font-medium text-[#3D62EB] hover:text-blue-700 transition-colors group">
+                <button
+                  onClick={() => handleGetDirections(office.id)}
+                  className="inline-flex items-center gap-1.5 text-[14px] font-medium text-[#3D62EB] hover:text-blue-700 transition-colors group cursor-pointer bg-transparent border-none p-0"
+                >
                   Get Directions
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           ))}
         </div>
 
         {/* Interactive Map */}
-        <OfficeMap />
+        <div ref={mapRef}>
+          <OfficeMap activeOfficeId={activeOfficeId} setActiveOfficeId={setActiveOfficeId} />
+        </div>
 
       </div>
     </section>

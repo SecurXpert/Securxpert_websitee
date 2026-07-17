@@ -31,7 +31,7 @@ const productsData = [
         description: "Professional online assessment platform for skill evaluation, live exams, analytics, and course certifications.",
         bgImage: "/Home/OurProducts/Vishan.png",
         logoImage: "/Home/OurProducts/Vishan2 (2).png",
-        logoBg: "bg-white",
+        logoBg: "bg-[#FFF9F2]",
         btnColor: "bg-[#FB8906] hover:bg-[#FB8906]",
         dotColor: "#FB8906",
         slug: "vishan"
@@ -42,7 +42,7 @@ const productsData = [
         description: "Professional online assessment platform for skill evaluation, live exams, analytics, and course certifications.",
         bgImage: "/Home/OurProducts/Devtalent.png",
         logoImage: "/Home/OurProducts/Devtalent2 (2).png",
-        logoBg: "bg-white",
+        logoBg: "bg-[#F6F5FF]",
         btnColor: "bg-[#7E21A9] hover:bg-[#7E21A9]",
         dotColor: "#7E21A9",
         slug: "devtalent"

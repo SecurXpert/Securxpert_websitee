@@ -62,8 +62,9 @@ export default function TeamMembers() {
 
         {/* View All Button */}
         <div className="flex justify-center">
-          <div
-            className="inline-flex bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-8 py-3 rounded-[4px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 items-center justify-center gap-2 group relative z-10 cursor-default"
+          <Link
+            href="/about-us#our-team"
+            className="inline-flex bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-8 py-3 rounded-[4px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 items-center justify-center gap-2 group relative z-10 cursor-pointer"
           >
             View All
             <svg
@@ -75,7 +76,7 @@ export default function TeamMembers() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
-          </div>
+          </Link>
         </div>
 
       </div>

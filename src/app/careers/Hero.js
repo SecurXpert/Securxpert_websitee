@@ -34,7 +34,7 @@ export default function CareersHero() {
         }
       `}} />
 
-            <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto py-6 overflow-visible">
+            <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto pt-6 pb-0 sm:py-6 overflow-visible">
 
                 {/* Soft Background Blue Glow Effect */}
                 <div className="absolute left-0 top-0 w-[500px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full pointer-events-none" />
@@ -85,12 +85,12 @@ export default function CareersHero() {
                     </div>
 
                     {/* Right Column: Floating Assets and Careers Character Portrait */}
-                    <div className="relative z-10 w-full lg:w-1/2 h-[320px] sm:h-[420px] lg:h-[490px] xl:h-[400px] 2xl:h-[502px] flex items-end justify-center overflow-visible mt-8 lg:mt-0">
+                    <div className="relative z-10 w-full lg:w-1/2 h-[260px] sm:h-[420px] lg:h-[490px] xl:h-[400px] 2xl:h-[502px] flex items-end justify-center overflow-visible -mt-6 sm:mt-0">
                         {/* Main Character Careers Portrait sitting gracefully on the curve bottom */}
                         <img
                             src="/careers/hero.png"
                             alt="Join The Team - Securxpert Careers"
-                            className="relative lg:absolute z-10 w-auto h-[95%] sm:h-[100%] lg:h-[148%] xl:h-[125%] 2xl:h-[120%] max-h-[300px] sm:max-h-[400px] lg:max-h-none object-contain object-bottom pointer-events-none select-none transition-transform duration-500 hover:scale-[1.02] translate-y-4 sm:translate-y-4 lg:translate-y-16 lg:right-[14px] xl:translate-y-[52px] 2xl:translate-y-8 xl:right-[-10px] bottom-0 right-0"
+                            className="relative lg:absolute z-10 w-auto h-full lg:h-[148%] xl:h-[125%] 2xl:h-[120%] max-h-[300px] sm:max-h-[400px] lg:max-h-none object-contain object-bottom pointer-events-none select-none transition-transform duration-500 hover:scale-[1.02] translate-y-0 sm:translate-y-4 lg:translate-y-16 lg:right-[14px] xl:translate-y-[52px] 2xl:translate-y-8 xl:right-[-10px] bottom-0 right-0"
                         />
                     </div>
                 </div>

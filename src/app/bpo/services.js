@@ -141,7 +141,7 @@ export default function BPOServices() {
 
                   {/* LINK */}
                   <Link
-                    href="/services"
+                    href="/contact"
                     className="inline-flex items-center text-[#3D62EB] text-sm font-bold hover:gap-1.5 transition-all group-hover:text-white duration-300"
                   >
                     Learn More

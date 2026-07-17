@@ -113,10 +113,10 @@ export default function CaseStudies() {
         {/* See All Project Button */}
         <div className="flex justify-center mb-10 lg:mb-20">
           <Link
-            href="/portfolio"
+            href="/products"
             className="inline-block bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-8 py-3.5 rounded-[6px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 text-center"
           >
-            See All Projects
+            See All Products
           </Link>
         </div>
 

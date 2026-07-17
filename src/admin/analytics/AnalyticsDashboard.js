@@ -1,36 +1,151 @@
 "use client";
-import React from "react";
-import { 
-  Search, Bell, RefreshCw, BookOpen, CheckCircle2, Briefcase, 
-  Target, Globe, Users, Plus, Download, Filter, Eye, Trash2, TrendingUp, TrendingDown 
+import React, { useState, useEffect } from "react";
+import {
+  Search, Bell, RefreshCw, BookOpen, CheckCircle2, Briefcase,
+  Target, Globe, Users, Plus, Download, Filter, Eye, Trash2, TrendingUp, TrendingDown
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { API_BASE_URL } from "../config";
 
 export default function AnalyticsDashboard() {
   const router = useRouter();
+  const [blogs, setBlogs] = useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [applications, setApplications] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchDashboardData = async () => {
+    try {
+      const token = localStorage.getItem("access_token");
+      const headers = {
+        "ngrok-skip-browser-warning": "true",
+        ...(token && { "Authorization": `Bearer ${token}` })
+      };
+      
+      // Fetch Blogs
+      const blogsRes = await fetch(`${API_BASE_URL}/blogs/`, { headers });
+      let fetchedBlogs = [];
+      if (blogsRes.ok) {
+        const data = await blogsRes.json();
+        const rawList = Array.isArray(data) ? data : (data?.data || []);
+        rawList.sort((a, b) => b.id - a.id);
+        fetchedBlogs = rawList
+          .filter(b => b.status?.toLowerCase() !== "in_active")
+          .map(b => ({
+            id: b.id,
+            title: b.title || "Untitled",
+            category: b.category || "Uncategorized",
+            author: b.author || "Admin",
+            views: b.views !== undefined ? b.views : Math.floor(Math.random() * 50) + 10,
+            slug: b.slug || b.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+            status: b.status || "Draft",
+            statusColor: b.status?.toLowerCase() === "published" || b.status?.toLowerCase() === "active"
+              ? "text-emerald-700 bg-emerald-50"
+              : b.status?.toLowerCase() === "draft"
+              ? "text-slate-600 bg-slate-100"
+              : "text-amber-700 bg-amber-50",
+            date: b.publish_date || b.created_at ? new Date(b.publish_date || b.created_at).toISOString().split("T")[0] : "N/A"
+          }));
+      }
+
+      // Fetch Jobs
+      const jobsRes = await fetch(`${API_BASE_URL}/jobs/`, { headers });
+      let fetchedJobs = [];
+      if (jobsRes.ok) {
+        const data = await jobsRes.json();
+        const rawList = Array.isArray(data) ? data : (data?.data || []);
+        rawList.sort((a, b) => b.id - a.id);
+        fetchedJobs = rawList.map(j => ({
+          id: j.id,
+          title: j.job_title || "Untitled Position",
+          dept: j.department || "General",
+          deptColor: j.department?.toLowerCase().includes("engineer") || j.department?.toLowerCase().includes("tech")
+            ? "text-purple-600 bg-purple-50"
+            : j.department?.toLowerCase().includes("design")
+            ? "text-pink-600 bg-pink-50"
+            : "text-teal-600 bg-teal-50",
+          loc: j.job_location || "Remote",
+          status: j.job_status || "Draft",
+          statusColor: j.job_status?.toLowerCase() === "open" || j.job_status?.toLowerCase() === "active" || j.job_status?.toLowerCase() === "published"
+            ? "text-blue-600 border-blue-200 bg-blue-50"
+            : "text-amber-600 border-amber-200 bg-amber-50",
+          date: j.created_at ? new Date(j.created_at).toISOString().split("T")[0] : "N/A"
+        }));
+      }
+
+      // Fetch Job Applications
+      const appsRes = await fetch(`${API_BASE_URL}/job-applications/get_all_applications`, { headers });
+      let fetchedApps = [];
+      if (appsRes.ok) {
+        const data = await appsRes.json();
+        fetchedApps = Array.isArray(data) ? data : (data?.data || []);
+      }
+
+      setBlogs(fetchedBlogs);
+      setJobs(fetchedJobs);
+      setApplications(fetchedApps);
+    } catch (err) {
+      console.warn("Failed to fetch dashboard data", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
+  const handleDeleteBlog = async (id) => {
+    if (!confirm("Are you sure you want to delete this blog post?")) return;
+    try {
+      const token = localStorage.getItem("access_token");
+      const res = await fetch(`${API_BASE_URL}/blogs/${id}`, {
+        method: "DELETE",
+        headers: {
+          ...(token && { "Authorization": `Bearer ${token}` })
+        }
+      });
+      if (res.ok) {
+        alert("Blog deleted successfully!");
+        fetchDashboardData();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteJob = async (id) => {
+    if (!confirm("Are you sure you want to delete this job posting?")) return;
+    try {
+      const token = localStorage.getItem("access_token");
+      const res = await fetch(`${API_BASE_URL}/jobs/${id}`, {
+        method: "DELETE",
+        headers: {
+          ...(token && { "Authorization": `Bearer ${token}` })
+        }
+      });
+      if (res.ok) {
+        alert("Job deleted successfully!");
+        fetchDashboardData();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const recentBlogs = blogs.slice(0, 5);
+  const recentJobs = jobs.slice(0, 5).map(j => {
+    const appsCount = applications.filter(app => app.job_title === j.title).length;
+    return { ...j, apps: appsCount.toString() };
+  });
+
   const statsCards = [
-    { label: "Total Blogs", value: "25", icon: BookOpen, color: "text-blue-500", bg: "bg-blue-50", trend: "+12%", trendUp: true },
-    { label: "Active Blogs", value: "18", icon: CheckCircle2, color: "text-emerald-500", bg: "bg-emerald-50", trend: "+8%", trendUp: true },
-    { label: "Total Jobs", value: "12", icon: Briefcase, color: "text-purple-500", bg: "bg-purple-50", trend: "+4%", trendUp: true },
-    { label: "Open Positions", value: "8", icon: Target, color: "text-amber-500", bg: "bg-amber-50", trend: "-2%", trendUp: false },
+    { label: "Total Blogs", value: loading ? "..." : blogs.length.toString(), icon: BookOpen, color: "text-blue-500", bg: "bg-blue-50", trend: "+12%", trendUp: true },
+    { label: "Active Blogs", value: loading ? "..." : blogs.filter(b => b.status?.toLowerCase() === "published" || b.status?.toLowerCase() === "active").length.toString(), icon: CheckCircle2, color: "text-emerald-500", bg: "bg-emerald-50", trend: "+8%", trendUp: true },
+    { label: "Total Jobs", value: loading ? "..." : jobs.length.toString(), icon: Briefcase, color: "text-purple-500", bg: "bg-purple-50", trend: "+4%", trendUp: true },
+    { label: "Open Positions", value: loading ? "..." : jobs.filter(j => j.status?.toLowerCase() === "open" || j.status?.toLowerCase() === "active" || j.status?.toLowerCase() === "published").length.toString(), icon: Target, color: "text-amber-500", bg: "bg-amber-50", trend: "-2%", trendUp: false },
     { label: "Website Visitors", value: "18.2K", icon: Globe, color: "text-teal-500", bg: "bg-teal-50", trend: "+21%", trendUp: true },
-    { label: "Applications", value: "436", icon: Users, color: "text-rose-500", bg: "bg-rose-50", trend: "+34%", trendUp: true },
-  ];
-
-  const recentBlogs = [
-    { title: "Zero Trust Architecture in 2025", category: "Security", author: "Rahul Mehta", views: "4.2K", status: "Published", date: "Jul 6, 2026", statusColor: "text-emerald-700 bg-emerald-50" },
-    { title: "Kubernetes Security Hardening", category: "DevOps", author: "Priya Sharma", views: "3.8K", status: "Published", date: "Jul 4, 2026", statusColor: "text-emerald-700 bg-emerald-50" },
-    { title: "AI-Driven Threat Detection", category: "AI & ML", author: "Aditya Kumar", views: "2.9K", status: "Draft", date: "Jul 2, 2026", statusColor: "text-slate-600 bg-slate-100" },
-    { title: "Cloud Security Best Practices", category: "Technology", author: "Sneha Patel", views: "5.1K", status: "Published", date: "Jun 28, 2026", statusColor: "text-emerald-700 bg-emerald-50" },
-    { title: "SIEM Tools Comparison 2026", category: "Security", author: "Rahul Mehta", views: "1.7K", status: "Review", date: "Jun 25, 2026", statusColor: "text-amber-700 bg-amber-50" },
-  ];
-
-  const recentJobs = [
-    { title: "Senior Frontend Engineer", dept: "Engineering", loc: "Remote", apps: "42", status: "Open", date: "Jul 5, 2026", deptColor: "text-purple-600 bg-purple-50", statusColor: "text-blue-600 border-blue-200 bg-blue-50" },
-    { title: "Backend Developer (Node.js)", dept: "Engineering", loc: "Bangalore", apps: "31", status: "Open", date: "Jul 3, 2026", deptColor: "text-purple-600 bg-purple-50", statusColor: "text-blue-600 border-blue-200 bg-blue-50" },
-    { title: "UI/UX Designer", dept: "Design", loc: "Mumbai", apps: "27", status: "Open", date: "Jul 1, 2026", deptColor: "text-pink-600 bg-pink-50", statusColor: "text-blue-600 border-blue-200 bg-blue-50" },
-    { title: "DevOps Engineer", dept: "Infrastructure", loc: "Remote", apps: "19", status: "In Review", date: "Jun 29, 2026", deptColor: "text-indigo-600 bg-indigo-50", statusColor: "text-amber-600 border-amber-200 bg-amber-50" },
-    { title: "Cybersecurity Analyst", dept: "Security", loc: "Delhi", apps: "38", status: "Open", date: "Jun 27, 2026", deptColor: "text-teal-600 bg-teal-50", statusColor: "text-blue-600 border-blue-200 bg-blue-50" },
+    { label: "Applications", value: loading ? "..." : applications.length.toString(), icon: Users, color: "text-rose-500", bg: "bg-rose-50", trend: "+34%", trendUp: true },
   ];
 
   return (
@@ -43,17 +158,17 @@ export default function AnalyticsDashboard() {
         </div>
         <div className="flex items-center gap-3.5">
           <div className="relative hidden md:block">
-            <input 
-              type="text" 
-              placeholder="Search anything..." 
-              className="pl-9 pr-4 py-2.5 bg-slate-50/80 border border-slate-100 rounded-full text-[13px] outline-none focus:border-blue-500 focus:bg-white transition-all w-[240px] text-slate-600 placeholder:text-slate-400" 
+            <input
+              type="text"
+              placeholder="Search anything..."
+              className="pl-9 pr-4 py-2.5 bg-slate-50/80 border border-slate-100 rounded-full text-[13px] outline-none focus:border-blue-500 focus:bg-white transition-all w-[240px] text-slate-600 placeholder:text-slate-400"
             />
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
           </div>
           <button className="p-2.5 border border-slate-100 rounded-full text-slate-500 hover:bg-slate-50 hover:text-blue-600 transition-colors">
             <Bell className="w-4 h-4" />
           </button>
-          <button className="p-2.5 border border-slate-100 rounded-full text-slate-500 hover:bg-slate-50 hover:text-blue-600 transition-colors">
+          <button onClick={fetchDashboardData} className="p-2.5 border border-slate-100 rounded-full text-slate-500 hover:bg-slate-50 hover:text-blue-600 transition-colors" title="Refresh Data">
             <RefreshCw className="w-4 h-4" />
           </button>
           <div className="w-10 h-10 bg-[#5A45FF] rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-sm cursor-pointer ml-1 ring-4 ring-[#5A45FF]/10 hover:ring-[#5A45FF]/20 transition-all">
@@ -64,7 +179,7 @@ export default function AnalyticsDashboard() {
 
       {/* Main Scrollable Area */}
       <div className="flex-1 overflow-y-auto p-8 space-y-6">
-        
+
         {/* Top KPI Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {statsCards.map((card, idx) => (
@@ -86,10 +201,10 @@ export default function AnalyticsDashboard() {
 
         {/* Middle Section (Actions, Stats, Chart) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
+
           {/* Left Column */}
           <div className="flex flex-col gap-6 lg:col-span-1">
-            
+
             {/* Quick Actions */}
             <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
               <h3 className="text-[15px] font-bold text-slate-800 mb-4">Quick Actions</h3>
@@ -164,19 +279,19 @@ export default function AnalyticsDashboard() {
               </div>
               {/* Fake X Axis labels */}
               <div className="absolute bottom-[-24px] left-8 right-0 flex justify-between text-[11px] text-slate-400">
-                {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map(m => (
+                {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(m => (
                   <span key={m}>{m}</span>
                 ))}
               </div>
               {/* CSS Only SVG Wave Chart mimicking image */}
               <div className="absolute inset-0 left-8 right-4 bottom-0 top-0 pointer-events-none">
                 <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 200">
-                  <path 
+                  <path
                     d="M 0,160 C 50,140 100,140 150,145 C 200,150 250,155 300,130 C 350,105 400,115 450,135 C 500,155 550,145 600,110 C 650,75 700,90 750,100 C 800,110 850,85 900,90 C 950,95 980,85 1000,70"
-                    fill="none" stroke="#3b82f6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" 
+                    fill="none" stroke="#3b82f6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
                   />
                   {/* Subtle Gradient fill under line */}
-                  <path 
+                  <path
                     d="M 0,160 C 50,140 100,140 150,145 C 200,150 250,155 300,130 C 350,105 400,115 450,135 C 500,155 550,145 600,110 C 650,75 700,90 750,100 C 800,110 850,85 900,90 C 950,95 980,85 1000,70 L 1000,200 L 0,200 Z"
                     fill="url(#chartGrad)" opacity="0.1"
                   />
@@ -222,20 +337,28 @@ export default function AnalyticsDashboard() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-50 text-slate-700 font-medium">
-                {recentBlogs.map((b, i) => (
-                  <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="px-6 py-4 font-semibold text-slate-800">{b.title}</td>
-                    <td className="px-6 py-4"><span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[11px] font-bold">{b.category}</span></td>
-                    <td className="px-6 py-4">{b.author}</td>
-                    <td className="px-6 py-4 text-slate-500 text-[12px] flex items-center gap-1.5"><Eye className="w-3.5 h-3.5 text-slate-300"/> {b.views}</td>
-                    <td className="px-6 py-4"><span className={`px-2.5 py-1 rounded-full text-[11px] font-bold ${b.statusColor}`}>{b.status}</span></td>
-                    <td className="px-6 py-4 text-slate-400 text-[12px]">{b.date}</td>
-                    <td className="px-6 py-4 flex gap-2">
-                       <button className="text-slate-400 hover:text-blue-600 transition-colors"><Eye className="w-4 h-4" /></button>
-                       <button className="text-slate-400 hover:text-red-500 transition-colors"><Trash2 className="w-4 h-4" /></button>
+                {recentBlogs.length > 0 ? (
+                  recentBlogs.map((b, i) => (
+                    <tr key={i} className="hover:bg-slate-50/50 transition-colors">
+                      <td className="px-6 py-4 font-semibold text-slate-800 max-w-[280px] truncate" title={b.title}>{b.title}</td>
+                      <td className="px-6 py-4"><span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[11px] font-bold">{b.category}</span></td>
+                      <td className="px-6 py-4">{b.author}</td>
+                      <td className="px-6 py-4 text-slate-500 text-[12px] flex items-center gap-1.5"><Eye className="w-3.5 h-3.5 text-slate-300" /> {b.views}</td>
+                      <td className="px-6 py-4"><span className={`px-2.5 py-1 rounded-full text-[11px] font-bold ${b.statusColor}`}>{b.status}</span></td>
+                      <td className="px-6 py-4 text-slate-400 text-[12px]">{b.date}</td>
+                      <td className="px-6 py-4 flex gap-2">
+                        <button onClick={() => window.open(`/blogs/${b.slug}`, '_blank')} className="text-slate-400 hover:text-blue-600 transition-colors" title="View Blog"><Eye className="w-4 h-4" /></button>
+                        <button onClick={() => handleDeleteBlog(b.id)} className="text-slate-400 hover:text-red-500 transition-colors" title="Delete Blog"><Trash2 className="w-4 h-4" /></button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="7" className="px-6 py-8 text-center text-slate-400 font-medium">
+                      {loading ? "Loading blogs..." : "No recent blogs found."}
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>
@@ -271,20 +394,28 @@ export default function AnalyticsDashboard() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-50 text-slate-700 font-medium">
-                {recentJobs.map((j, i) => (
-                  <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="px-6 py-4 font-semibold text-slate-800">{j.title}</td>
-                    <td className="px-6 py-4"><span className={`px-2.5 py-1 rounded-full text-[11px] font-bold ${j.deptColor}`}>{j.dept}</span></td>
-                    <td className="px-6 py-4 text-slate-500 flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-slate-300"/> {j.loc}</td>
-                    <td className="px-6 py-4 text-slate-500 text-[12px]"><Users className="w-3.5 h-3.5 text-slate-300 inline mr-1.5 -mt-0.5"/> {j.apps}</td>
-                    <td className="px-6 py-4"><span className={`px-3 py-1 rounded-full border text-[11px] font-bold ${j.statusColor}`}>{j.status}</span></td>
-                    <td className="px-6 py-4 text-slate-400 text-[12px]">{j.date}</td>
-                    <td className="px-6 py-4 flex gap-2">
-                       <button className="text-slate-400 hover:text-blue-600 transition-colors"><Eye className="w-4 h-4" /></button>
-                       <button className="text-slate-400 hover:text-red-500 transition-colors"><Trash2 className="w-4 h-4" /></button>
+                {recentJobs.length > 0 ? (
+                  recentJobs.map((j, i) => (
+                    <tr key={i} className="hover:bg-slate-50/50 transition-colors">
+                      <td className="px-6 py-4 font-semibold text-slate-800 max-w-[280px] truncate" title={j.title}>{j.title}</td>
+                      <td className="px-6 py-4"><span className={`px-2.5 py-1 rounded-full text-[11px] font-bold ${j.deptColor}`}>{j.dept}</span></td>
+                      <td className="px-6 py-4 text-slate-500 flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-slate-300" /> {j.loc}</td>
+                      <td className="px-6 py-4 text-slate-500 text-[12px]"><Users className="w-3.5 h-3.5 text-slate-300 inline mr-1.5 -mt-0.5" /> {j.apps}</td>
+                      <td className="px-6 py-4"><span className={`px-3 py-1 rounded-full border text-[11px] font-bold ${j.statusColor}`}>{j.status}</span></td>
+                      <td className="px-6 py-4 text-slate-400 text-[12px]">{j.date}</td>
+                      <td className="px-6 py-4 flex gap-2">
+                        <button onClick={() => window.open(`/careers`, '_blank')} className="text-slate-400 hover:text-blue-600 transition-colors" title="View Career"><Eye className="w-4 h-4" /></button>
+                        <button onClick={() => handleDeleteJob(j.id)} className="text-slate-400 hover:text-red-500 transition-colors" title="Delete Job"><Trash2 className="w-4 h-4" /></button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="7" className="px-6 py-8 text-center text-slate-400 font-medium">
+                      {loading ? "Loading jobs..." : "No recent jobs found."}
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>

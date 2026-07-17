@@ -7,6 +7,12 @@ export default function HeroSection({ form, setForm, onSaved }) {
   const [saved, setSaved] = useState(false);
   const [hasHero, setHasHero] = useState(false); // Track if hero exists
 
+  React.useEffect(() => {
+    if (form.heroTitle || form.shortDescription || form.authorName || form.heroBanner || form.authorImage) {
+      setHasHero(true);
+    }
+  }, [form.heroTitle, form.shortDescription, form.authorName, form.heroBanner, form.authorImage]);
+
   const handleSave = async () => {
     if (!form.blogId) {
       alert("Please save the Blog Information first to create the blog!");
@@ -24,24 +30,33 @@ export default function HeroSection({ form, setForm, onSaved }) {
 
       if (form.heroBanner instanceof File) {
         formData.append("hero_banner", form.heroBanner);
-      } else {
-        formData.append("hero_banner", "");
       }
 
       if (form.authorImage instanceof File) {
         formData.append("author_image", form.authorImage);
-      } else {
-        formData.append("author_image", "");
       }
 
-      const method = hasHero ? "PATCH" : "POST";
-      const res = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
+      let method = hasHero ? "PATCH" : "POST";
+      let res = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
         method,
         headers: {
+          "ngrok-skip-browser-warning": "true",
           ...(token && { "Authorization": `Bearer ${token}` })
         },
         body: formData
       });
+
+      if (res.status === 404 && method === "PATCH") {
+        method = "POST";
+        res = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
+          method,
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+            ...(token && { "Authorization": `Bearer ${token}` })
+          },
+          body: formData
+        });
+      }
 
       if (res.ok) {
         setHasHero(true);
@@ -76,6 +91,7 @@ export default function HeroSection({ form, setForm, onSaved }) {
       const res = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
         method: "DELETE",
         headers: {
+          "ngrok-skip-browser-warning": "true",
           ...(token && { "Authorization": `Bearer ${token}` })
         }
       });

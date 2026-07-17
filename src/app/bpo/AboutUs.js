@@ -114,12 +114,7 @@ export default function AboutUs() {
             </div>
 
             {/* CTA BUTTON */}
-            <Link
-              href="/contact"
-              className="bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-6 py-2.5 rounded-[4px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 text-center inline-block"
-            >
-              Learn More
-            </Link>
+ 
 
           </div>
 

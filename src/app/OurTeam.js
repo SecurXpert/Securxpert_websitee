@@ -32,7 +32,7 @@ const teamData = [
 
 export default function OurTeam() {
     return (
-        <section className="relative w-full overflow-hidden pt-8 pb-8 lg:pt-14 lg:pb-14 bg-[#EDEDFD] select-none font-sans">
+        <section id="our-team" className="relative w-full overflow-hidden pt-8 pb-8 lg:pt-14 lg:pb-14 bg-[#EDEDFD] select-none font-sans">
             {/* Background Decorative Elements */}
 
             {/* Top Left Corner Wave Blob */}

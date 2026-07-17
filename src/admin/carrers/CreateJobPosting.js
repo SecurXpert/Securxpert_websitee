@@ -241,7 +241,7 @@ export default function CreateJobPosting({ job, onSave, onCancel, isReadOnly = f
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
+    <div className="h-full overflow-y-auto bg-slate-50 font-sans text-slate-900 flex flex-col">
 
       {/* Top Header */}
       <header className="bg-white border-b border-indigo-100 sticky top-0 z-50 px-6 py-4 flex items-center justify-between shadow-sm">

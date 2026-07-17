@@ -89,7 +89,7 @@ const projectsData = [
     title: "Lauratek2.0",
     tags: "DESIGN WOK, ILLUSUTRATION",
     desc: "AI-driven evolution of Lauratek with predictive analytics and modern architecture",
-    image: "/products/Projects/project7.png",
+    image: "/products/Projects/Lauratek2.0.png",
     category: "All",
     slug: "lauratek-2-0",
   },
@@ -240,9 +240,9 @@ export default function OurProjects() {
 
             {/* CTA BUTTON */}
             <div className="relative z-10 flex justify-center">
-                <button className="bg-[#4262FF] hover:bg-blue-700 hover:scale-[1.03] active:scale-95 text-white font-bold text-sm sm:text-base py-3.5 px-10 sm:py-3 sm:px-10 rounded-full border border-white/10 shadow-[0_12px_24px_rgba(45,70,212,0.4)] transition-all duration-300 cursor-pointer">
+                <Link href="/products" className="bg-[#4262FF] hover:bg-blue-700 hover:scale-[1.03] active:scale-95 text-white font-bold text-sm sm:text-base py-3.5 px-10 sm:py-3 sm:px-10 rounded-full border border-white/10 shadow-[0_12px_24px_rgba(45,70,212,0.4)] transition-all duration-300 cursor-pointer text-center inline-block">
                     View All Products
-                </button>
+                </Link>
             </div>
         </section>
     );

@@ -251,7 +251,7 @@ export default function JobDetailClient({ slug }) {
                     <h3 className="font-bold text-slate-800 mb-3">Technical Expertise:</h3>
                     <ul className="text-[14px] sm:text-base text-slate-600 space-y-2 list-disc pl-5">
                       {requirements.technical_skills.map((req, idx) => (
-                        <li key={idx}>{req.skill || req}</li>
+                        <li key={idx}>{typeof req === 'object' ? (req.skill_name || req.skill || "") : req}</li>
                       ))}
                     </ul>
                   </div>
@@ -262,7 +262,7 @@ export default function JobDetailClient({ slug }) {
                     <h3 className="font-bold text-slate-800 mb-3">Soft Skills:</h3>
                     <ul className="text-[14px] sm:text-base text-slate-600 space-y-2 list-disc pl-5">
                       {requirements.soft_skills.map((req, idx) => (
-                        <li key={idx}>{req.skill || req}</li>
+                        <li key={idx}>{typeof req === 'object' ? (req.skill_name || req.skill || "") : req}</li>
                       ))}
                     </ul>
                   </div>

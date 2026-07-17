@@ -6,6 +6,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaShareAlt } from "react-icons/fa
 import { LuCalendar, LuClock } from "react-icons/lu";
 import axios from "axios";
 import TableOfContents from "./TableOfContents";
+import { API_BASE_URL } from "@/admin/config";
 
 export default function BlogPostClient({ slug, staticBlog }) {
     const [blog, setBlog] = useState(staticBlog || null);
@@ -21,57 +22,72 @@ export default function BlogPostClient({ slug, staticBlog }) {
 
         const fetchDynamicBlog = async () => {
             try {
-                let token =
-                    localStorage.getItem("super_admin_token") ||
-                    localStorage.getItem("superadmin_token") ||
-                    localStorage.getItem("access_token") ||
-                    localStorage.getItem("token") ||
-                    "";
+                const getHeaders = (tok) => ({
+                    "Authorization": tok ? `Bearer ${tok}` : "",
+                    "ngrok-skip-browser-warning": "true"
+                });
 
-                // Self-healing automatic guest auth if token is missing
-                if (!token) {
+                let token = localStorage.getItem("access_token") || "";
+                if (token === "undefined" || token === "null") token = "";
+
+                const performGuestLogin = async () => {
+                    const guestEmail = "guest_visitor_securxpert@gmail.com";
+                    const guestUsername = "guest_visitor";
+                    const guestPassword = "VisitorPass123";
+
                     try {
-                        const guestEmail = "guest_visitor_securxpert@gmail.com";
-                        const guestUsername = "guest_visitor";
-                        const guestPassword = "VisitorPass123";
-
-                        try {
-                            const loginRes = await axios.post('http://192.168.0.125:8000/auth/login', {
-                                email: guestEmail,
-                                password: guestPassword
-                            });
-                            token = loginRes.data?.access_token || "";
-                            if (token) {
-                                localStorage.setItem("access_token", token);
-                            }
-                        } catch (err) {
-                            if (err.response && err.response.status === 401) {
-                                // Register guest visitor
-                                await axios.post('http://192.168.0.125:8000/auth/register-admin', {
+                        const loginRes = await axios.post(`${API_BASE_URL}/auth/login`, {
+                            email: guestEmail,
+                            password: guestPassword
+                        });
+                        const tok = loginRes.data?.access_token || "";
+                        if (tok) {
+                            localStorage.setItem("access_token", tok);
+                            return tok;
+                        }
+                    } catch (err) {
+                        if (err.response && err.response.status === 401) {
+                            try {
+                                await axios.post(`${API_BASE_URL}/auth/register-admin`, {
                                     username: guestUsername,
                                     email: guestEmail,
                                     password: guestPassword
                                 });
-                                // Login
-                                const loginRes2 = await axios.post('http://192.168.0.125:8000/auth/login', {
+                                const loginRes2 = await axios.post(`${API_BASE_URL}/auth/login`, {
                                     email: guestEmail,
                                     password: guestPassword
                                 });
-                                token = loginRes2.data?.access_token || "";
-                                if (token) {
-                                    localStorage.setItem("access_token", token);
+                                const tok = loginRes2.data?.access_token || "";
+                                if (tok) {
+                                    localStorage.setItem("access_token", tok);
+                                    return tok;
                                 }
+                            } catch (regErr) {
+                                console.error("Guest registration/login failed:", regErr);
                             }
                         }
-                    } catch (e) {
-                        console.error("Auto guest auth failed:", e);
+                    }
+                    return "";
+                };
+
+                if (!token) {
+                    token = await performGuestLogin();
+                }
+
+                // 1. Fetch all blogs
+                let listRes;
+                try {
+                    listRes = await axios.get(`${API_BASE_URL}/blogs/`, { headers: getHeaders(token) });
+                } catch (err) {
+                    if (err.response?.status === 401) {
+                        console.log("Token expired/invalid, logging in as guest again...");
+                        token = await performGuestLogin();
+                        listRes = await axios.get(`${API_BASE_URL}/blogs/`, { headers: getHeaders(token) });
+                    } else {
+                        throw err;
                     }
                 }
 
-                // 1. Fetch all blogs to find the one matching slug
-                const listRes = await axios.get("http://192.168.0.125:8000/blogs/", {
-                    headers: { "Authorization": `Bearer ${token}` }
-                });
                 const blogsList = Array.isArray(listRes.data) ? listRes.data : (listRes.data?.data || []);
                 const matchedBlog = blogsList.find(b => b.slug === slug);
 
@@ -84,17 +100,22 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 const blogId = matchedBlog.id;
 
                 // 2. Fetch blog details
-                const detailRes = await axios.get(`http://192.168.0.125:8000/blogs/${blogId}`, {
-                    headers: { "Authorization": `Bearer ${token}` }
-                });
-                const detailData = detailRes.data || {};
+                let detailRes;
+                try {
+                    detailRes = await axios.get(`${API_BASE_URL}/blogs/${blogId}`, { headers: getHeaders(token) });
+                } catch (err) {
+                    if (err.response?.status === 401) {
+                        token = await performGuestLogin();
+                        detailRes = await axios.get(`${API_BASE_URL}/blogs/${blogId}`, { headers: getHeaders(token) });
+                    } else {
+                        throw err;
+                    }
+                }
 
                 // 3. Fetch hero section details
                 let heroData = {};
                 try {
-                    const heroRes = await axios.get(`http://192.168.0.125:8000/blogs/${blogId}/hero`, {
-                        headers: { "Authorization": `Bearer ${token}` }
-                    });
+                    const heroRes = await axios.get(`${API_BASE_URL}/blogs/${blogId}/hero`, { headers: getHeaders(token) });
                     const resData = heroRes.data || {};
                     heroData = resData.data || resData;
                 } catch (heroErr) {
@@ -107,9 +128,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 const sectionPromises = [];
                 for (let id = 1; id <= maxScanId; id++) {
                     sectionPromises.push(
-                        axios.get(`http://192.168.0.125:8000/blogs/sections/${id}`, {
-                            headers: { "Authorization": `Bearer ${token}` }
-                        })
+                        axios.get(`${API_BASE_URL}/blogs/sections/${id}`, { headers: getHeaders(token) })
                             .then(res => {
                                 const resData = res.data;
                                 const sec = resData?.data || resData;
@@ -139,7 +158,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 if (bannerPath) {
                     bannerUrl = (bannerPath.startsWith("http://") || bannerPath.startsWith("https://"))
                         ? bannerPath
-                        : `http://192.168.0.125:8000${bannerPath}`;
+                        : `${API_BASE_URL}${bannerPath}`;
                 }
 
                 let authorAvatarUrl = "/blogs/AllPosts/Image (5).png";
@@ -147,7 +166,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 if (authorAvatarPath) {
                     authorAvatarUrl = (authorAvatarPath.startsWith("http://") || authorAvatarPath.startsWith("https://"))
                         ? authorAvatarPath
-                        : `http://192.168.0.125:8000${authorAvatarPath}`;
+                        : `${API_BASE_URL}${authorAvatarPath}`;
                 }
 
                 // Deduplicate sections by ID and Title to prevent double items from database
@@ -341,7 +360,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                                 if (imagePath) {
                                     imageUrl = (imagePath.startsWith("http://") || imagePath.startsWith("https://"))
                                         ? imagePath
-                                        : `http://192.168.0.125:8000${imagePath}`;
+                                        : `${API_BASE_URL}${imagePath}`;
                                 }
 
                                 return (

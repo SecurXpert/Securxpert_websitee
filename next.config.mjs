@@ -32,7 +32,7 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   allowedDevOrigins: getLocalNetworkIPs(),
-  output: "export",
+  output: process.env.NODE_ENV === "production" ? "export" : undefined,
   trailingSlash: process.env.NODE_ENV === "production",
   images: {
     unoptimized: true,

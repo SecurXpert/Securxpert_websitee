@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LogOut, FileText, Briefcase, Calendar, ChevronRight, BarChart3, Mail, Users, MonitorPlay, CalendarCheck } from "lucide-react";
 import AnalyticsDashboard from "../analytics/AnalyticsDashboard";
 import BlogDashboard from "./BlogDashboard";
@@ -12,6 +12,28 @@ import BpoAppointmentDashboard from "./BpoAppointmentDashboard";
 
 export default function AdminDashboard() {
   const [activeModule, setActiveModule] = useState("analytics");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    if (typeof window !== "undefined") {
+      const savedModule = localStorage.getItem("securxpert_active_module");
+      if (savedModule) {
+        setActiveModule(savedModule);
+      }
+    }
+  }, []);
+
+  const handleModuleChange = (id) => {
+    setActiveModule(id);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("securxpert_active_module", id);
+    }
+  };
+
+  if (!isMounted) {
+    return <div className="h-screen bg-slate-50 flex overflow-hidden" />;
+  }
 
   return (
     <div className="h-screen bg-slate-50 flex overflow-hidden">
@@ -23,7 +45,7 @@ export default function AdminDashboard() {
         </div>
         <nav className="flex-1 p-4 space-y-1">
           {[{ id: "analytics", label: "Analytics", icon: BarChart3 }, { id: "appointments", label: "Appointments", icon: Calendar }, { id: "bpo_appointments", label: "BPO Appts", icon: CalendarCheck }, { id: "blogs", label: "Blogs", icon: FileText }, { id: "careers", label: "Careers", icon: Briefcase }, { id: "contact", label: "Contact", icon: Mail }, { id: "jobapps", label: "Job Apps", icon: Users }, { id: "blogsdemo", label: "Blogs Demo", icon: MonitorPlay }].map(({ id, label, icon: Icon }) => (
-            <button key={id} onClick={() => setActiveModule(id)}
+            <button key={id} onClick={() => handleModuleChange(id)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${activeModule === id ? "bg-blue-600 text-white shadow-lg" : "text-slate-400 hover:bg-white/10 hover:text-white"}`}>
               <Icon className="w-4 h-4" />{label}
               {activeModule === id && <ChevronRight className="w-4 h-4 ml-auto" />}

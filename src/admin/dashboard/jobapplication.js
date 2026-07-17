@@ -8,7 +8,8 @@ export default function JobApplicationDashboard() {
   const [applications, setApplications] = useState([]);
   const [viewItem, setViewItem] = useState(null);
   const [deleteItem, setDeleteItem] = useState(null);
-  
+  const [loading, setLoading] = useState(true);
+
   // Search and Pagination
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,24 +18,38 @@ export default function JobApplicationDashboard() {
   const fetchApplications = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(API_BASE_URL + "/job-applications/", {
+      const res = await fetch("https://poise-crouch-plating.ngrok-free.dev/job-applications/get_all_applications", {
         headers: {
-          "accept": "application/json",
           "ngrok-skip-browser-warning": "true",
+          "accept": "application/json",
           ...(token && { "Authorization": `Bearer ${token}` })
         }
       });
       if (res.ok) {
         const data = await res.json();
-        const rawList = Array.isArray(data) ? data : (data?.data || []);
-        // Reverse to show latest first
-        setApplications(rawList.sort((a, b) => b.id - a.id));
-      } else {
-        setApplications([]);
+        const list = Array.isArray(data) ? data : (data?.data || []);
+        const normalized = list.map(item => ({
+          id: item.id,
+          full_name: item.candidate_name || item.full_name || "N/A",
+          email: item.enter_email || item.email || "N/A",
+          phone_number: item.contact_number || item.phone_number || "N/A",
+          country_code: item.country_code || "",
+          skills: item.technical_proficiency || item.skills || "N/A",
+          resume_url: item.upload_your_latest_resume || item.resume_url || "",
+          job_title: item.job_title || "Job Applicant",
+          total_experience: item.total_experience !== undefined ? item.total_experience : "N/A",
+          relevant_experience: item.relevant_experience !== undefined ? item.relevant_experience : "N/A",
+          current_location: item.current_location || "N/A",
+          current_ctc: item.current_ctc !== undefined ? item.current_ctc : "N/A",
+          expected_ctc: item.expected_ctc !== undefined ? item.expected_ctc : "N/A",
+          linkedin_profile_url: item.linkedin_profile_url || "N/A"
+        }));
+        setApplications(normalized.reverse());
       }
     } catch (err) {
-      console.warn("API Error", err);
-      setApplications([]);
+      console.warn("Failed to fetch applications", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -45,17 +60,21 @@ export default function JobApplicationDashboard() {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(`${API_BASE_URL}/job-applications/${deleteItem.id}`, {
+      const res = await fetch(`https://poise-crouch-plating.ngrok-free.dev/job-applications/delete-job-application/${deleteItem.id}`, {
         method: "DELETE",
-        headers: { ...(token && { "Authorization": `Bearer ${token}` }) }
+        headers: { 
+          "accept": "application/json",
+          ...(token && { "Authorization": `Bearer ${token}` }) 
+        }
       });
       if (res.ok) {
         setApplications(p => p.filter(a => a.id !== deleteItem.id));
+        alert("Job application deleted successfully!");
       } else {
-        console.error("Failed to delete application");
+        alert("Failed to delete application.");
       }
     } catch (error) {
-      console.error("Delete request failed", error);
+      console.error("Delete failed:", error);
     }
     setDeleteItem(null);
   };
@@ -63,9 +82,9 @@ export default function JobApplicationDashboard() {
   const filteredApplications = applications.filter(a => {
     const search = searchTerm.toLowerCase();
     return (
-      (a.candidate_name && a.candidate_name.toLowerCase().includes(search)) ||
-      (a.enter_email && a.enter_email.toLowerCase().includes(search)) ||
-      (a.current_location && a.current_location.toLowerCase().includes(search))
+      (a.full_name && a.full_name.toLowerCase().includes(search)) ||
+      (a.email && a.email.toLowerCase().includes(search)) ||
+      (a.job_title && a.job_title.toLowerCase().includes(search))
     );
   });
 
@@ -76,97 +95,112 @@ export default function JobApplicationDashboard() {
   );
 
   return (
-    <div className="flex-1 flex flex-col h-full overflow-hidden">
-      <header className="bg-white border-b border-slate-100 px-8 py-5 flex items-center justify-between shadow-sm shrink-0 sticky top-0 z-20">
+    <div className="flex-1 flex flex-col h-full overflow-hidden bg-slate-50">
+      <header className="bg-white border-b border-slate-100 px-6 py-3 flex items-center justify-between shadow-sm shrink-0 sticky top-0 z-20">
         <div>
-          <h1 className="text-xl font-bold text-slate-800 capitalize">Job Applications</h1>
-          <p className="text-sm text-slate-400">{filteredApplications.length} records found</p>
+          <h1 className="text-lg font-bold text-slate-800 capitalize">Job Applications</h1>
+          <p className="text-xs text-slate-400">{loading ? "Loading..." : `${filteredApplications.length} records found`}</p>
         </div>
         
         {/* Search Bar */}
         <div className="relative">
           <input 
             type="text" 
-            placeholder="Search Name, Email or Location..." 
+            placeholder="Search Name, Email or Job Title..." 
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
-              setCurrentPage(1); // Reset to first page on search
+              setCurrentPage(1);
             }}
-            className="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-sm outline-none focus:border-blue-500 focus:bg-white transition-all w-[300px] text-slate-700" 
+            className="pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-xs outline-none focus:border-blue-500 focus:bg-white transition-all w-[260px] text-slate-700" 
           />
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto p-8 flex flex-col">
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex-1 flex flex-col">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 border-b border-slate-100">
+      <div className="flex-1 overflow-y-auto p-5 flex flex-col">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex-1 flex flex-col">
+          <div className="overflow-x-auto flex-1">
+            <table className="w-full text-xs text-left border-collapse border border-slate-200">
+              <thead className="bg-slate-50">
                 <tr>
-                  {["Name", "Email", "Phone", "Experience", "Location", "Applied Date", "Actions"].map(h => (
-                    <th key={h} className="py-4 px-6 text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">{h}</th>
+                  {["S.No.", "Full Name", "Job Title", "Email", "Phone", "Technical Proficiency", "Resume", "Actions"].map(h => (
+                    <th key={h} className="py-2 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap border border-slate-200">{h}</th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-50">
+              <tbody>
                 {paginatedApplications.length > 0 ? (
-                  paginatedApplications.map(a => (
-                    <tr key={a.id} className="hover:bg-slate-50/60 transition-colors">
-                      <td className="py-4 px-6 font-semibold text-slate-800 whitespace-nowrap">{a.candidate_name}</td>
-                      <td className="py-4 px-6 text-slate-600">{a.enter_email}</td>
-                      <td className="py-4 px-6 text-slate-500 whitespace-nowrap">{a.contact_number || "N/A"}</td>
-                      <td className="py-4 px-6 text-slate-500 whitespace-nowrap">{a.total_experience || 0} Yrs</td>
-                      <td className="py-4 px-6 text-slate-500 whitespace-nowrap">{a.current_location || "N/A"}</td>
-                      <td className="py-4 px-6 text-slate-500 whitespace-nowrap">{a.created_at ? new Date(a.created_at).toLocaleDateString() : "N/A"}</td>
-                      <td className="py-4 px-6 whitespace-nowrap">
-                        <div className="flex items-center gap-1">
-                          {a.upload_your_latest_resume && (
-                            <a href={API_BASE_URL + "/" + a.upload_your_latest_resume} target="_blank" rel="noopener noreferrer" className="p-2 text-slate-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-all" title="View/Download Resume">
-                              <Download className="w-4 h-4" />
-                            </a>
-                          )}
-                          <button onClick={() => setViewItem(a)} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="View Details"><Eye className="w-4 h-4" /></button>
-                          <button onClick={() => setDeleteItem(a)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="Delete"><Trash2 className="w-4 h-4" /></button>
+                   paginatedApplications.map((a, i) => (
+                    <tr key={a.id || i} className="hover:bg-slate-50/60 transition-colors">
+                      <td className="py-2 px-3 text-slate-400 font-medium text-[11px] border border-slate-200">
+                        {(currentPage - 1) * itemsPerPage + i + 1}
+                      </td>
+                      <td className="py-2 px-3 font-semibold text-slate-800 whitespace-nowrap border border-slate-200">
+                        <span className="hover:text-blue-600 cursor-pointer" onClick={() => setViewItem(a)}>{a.full_name}</span>
+                      </td>
+                      <td className="py-2 px-3 text-slate-600 font-medium border border-slate-200">{a.job_title || "N/A"}</td>
+                      <td className="py-2 px-3 text-slate-500 font-medium border border-slate-200">{a.email}</td>
+                      <td className="py-2 px-3 text-slate-500 text-[11px] font-medium whitespace-nowrap border border-slate-200">{(a.country_code || "") + " " + (a.phone_number || "N/A")}</td>
+                      <td className="py-2 px-3 text-slate-500 text-[11px] max-w-[150px] truncate border border-slate-200" title={a.skills}>
+                        {a.skills || "N/A"}
+                      </td>
+                      <td className="py-2 px-3 border border-slate-200">
+                        {a.resume_url ? (
+                          <a 
+                            href={a.resume_url} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 font-semibold"
+                          >
+                            <Download className="w-3.5 h-3.5" /> View Resume
+                          </a>
+                        ) : (
+                          <span className="text-slate-400">N/A</span>
+                        )}
+                      </td>
+                      <td className="py-2 px-3 whitespace-nowrap border border-slate-200">
+                        <div className="flex items-center gap-0.5">
+                          <button onClick={() => setViewItem(a)} className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-all cursor-pointer" title="View"><Eye className="w-3.5 h-3.5" /></button>
+                          <button onClick={() => setDeleteItem(a)} className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-all cursor-pointer" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
                         </div>
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="7" className="py-12 text-center text-slate-500">
-                      No job applications found.
+                    <td colSpan="8" className="py-8 text-center text-slate-500 border border-slate-200">
+                      {loading ? "Loading applications..." : "No job applications found."}
                     </td>
                   </tr>
                 )}
               </tbody>
             </table>
           </div>
-          
+
           {/* Pagination Controls */}
           {totalPages > 1 && (
-            <div className="mt-auto border-t border-slate-100 p-4 flex items-center justify-between bg-slate-50/50">
-              <span className="text-xs font-medium text-slate-500">
+            <div className="mt-auto border-t border-slate-200 p-3.5 flex items-center justify-between bg-slate-50/50">
+              <span className="text-[11px] font-medium text-slate-500">
                 Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredApplications.length)} of {filteredApplications.length} entries
               </span>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <button 
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="p-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  className="p-1 rounded-md border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <ChevronLeft className="w-3.5 h-3.5" />
                 </button>
-                <span className="text-sm font-semibold text-slate-700 px-2">
+                <span className="text-xs font-semibold text-slate-700 px-1">
                   Page {currentPage} of {totalPages}
                 </span>
                 <button 
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="p-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  className="p-1 rounded-md border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
@@ -176,44 +210,60 @@ export default function JobApplicationDashboard() {
 
       {viewItem && (
         <Modal title="Job Application Details" onClose={() => setViewItem(null)}>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-4 max-h-[80vh] overflow-y-auto pr-1">
+            <div>
+              <h2 className="text-base font-bold text-[#364BC0]">{viewItem.job_title || "Job Application"}</h2>
+              <p className="text-xs text-slate-400 mt-0.5">Application ID: #{viewItem.id}</p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
               {[
-                ["Candidate Name", viewItem.candidate_name], 
-                ["Email", viewItem.enter_email], 
-                ["Phone", viewItem.contact_number || "N/A"], 
-                ["Total Exp.", (viewItem.total_experience || 0) + " Yrs"], 
-                ["Relevant Exp.", (viewItem.relevant_experience || 0) + " Yrs"], 
-                ["Location", viewItem.current_location || "N/A"],
-                ["Current CTC", (viewItem.current_ctc || 0) + " LPA"],
-                ["Expected CTC", (viewItem.expected_ctc || 0) + " LPA"],
-                ["Applied Date", viewItem.created_at ? new Date(viewItem.created_at).toLocaleString() : "N/A"]
+                ["Full Name", viewItem.full_name],
+                ["Email", viewItem.email],
+                ["Phone Number", (viewItem.country_code || "") + " " + (viewItem.phone_number || "N/A")],
+                ["Location", viewItem.current_location],
+                ["Total Experience", `${viewItem.total_experience} Years`],
+                ["Relevant Experience", `${viewItem.relevant_experience} Years`],
+                ["Current CTC", viewItem.current_ctc],
+                ["Expected CTC", viewItem.expected_ctc],
+                ["LinkedIn Profile", viewItem.linkedin_profile_url !== "N/A" && viewItem.linkedin_profile_url ? (
+                  <a href={viewItem.linkedin_profile_url.startsWith('http') ? viewItem.linkedin_profile_url : `https://${viewItem.linkedin_profile_url}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                    View Profile
+                  </a>
+                ) : "N/A"]
               ].map(([k, v]) => (
-                <div key={k} className="bg-slate-50 p-3 rounded-xl">
-                  <p className="text-xs text-slate-400 uppercase font-bold mb-1">{k}</p>
-                  <p className="text-sm font-semibold text-slate-700 truncate" title={v}>{v}</p>
+                <div key={k} className="bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                  <p className="text-[10px] text-slate-400 uppercase font-bold mb-0.5">{k}</p>
+                  <div className="text-xs font-semibold text-slate-700">{v}</div>
                 </div>
               ))}
             </div>
-            
-            {viewItem.linkedin_profile_url && (
-              <div className="bg-slate-50 p-4 rounded-xl">
-                <p className="text-xs text-slate-400 uppercase font-bold mb-2">LinkedIn Profile</p>
-                <a href={viewItem.linkedin_profile_url} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline break-all">
-                  {viewItem.linkedin_profile_url}
+            {viewItem.skills && viewItem.skills !== "N/A" && (
+              <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                <p className="text-[10px] text-slate-400 uppercase font-bold mb-1">Technical Proficiency</p>
+                <p className="text-xs text-slate-600 leading-relaxed whitespace-pre-wrap">{viewItem.skills}</p>
+              </div>
+            )}
+            {viewItem.resume_url && (
+              <div className="bg-slate-50 p-3 rounded-lg flex items-center justify-between border border-slate-100">
+                <div>
+                  <p className="text-[10px] text-slate-400 uppercase font-bold mb-0.5">Resume File</p>
+                  <p className="text-xs text-slate-700 font-semibold">Attached Resume Document</p>
+                </div>
+                <a 
+                  href={viewItem.resume_url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3.5 py-1.5 rounded-lg shadow cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" /> Download
                 </a>
               </div>
             )}
-            
-            <div className="bg-slate-50 p-4 rounded-xl">
-              <p className="text-xs text-slate-400 uppercase font-bold mb-2">Technical Proficiency</p>
-              <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-wrap">{viewItem.technical_proficiency || "N/A"}</p>
-            </div>
           </div>
         </Modal>
       )}
 
-      {deleteItem && <DeleteConfirm item={deleteItem} type="job application" onConfirm={handleDelete} onClose={() => setDeleteItem(null)} />}
+      {deleteItem && <DeleteConfirm item={deleteItem} type="job applications" onConfirm={handleDelete} onClose={() => setDeleteItem(null)} />}
     </div>
   );
 }

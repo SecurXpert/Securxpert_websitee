@@ -1,14 +1,17 @@
 "use client";
 import React, { useState } from 'react';
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 export default function Demo() {
   const [formData, setFormData] = useState({
     full_name: "",
     company_name: "",
     work_email: "",
-    phone_number: "",
     business_need: ""
   });
+  const [phone, setPhone] = useState("");
+  const [countryCode, setCountryCode] = useState("+91");
   const [status, setStatus] = useState("idle");
 
   const handleChange = (e) => {
@@ -19,6 +22,18 @@ export default function Demo() {
     e.preventDefault();
     setStatus("loading");
 
+    // Extract raw phone number minus country code
+    const rawPhoneNumber = phone.replace(countryCode, "").trim() || phone;
+
+    const payload = {
+      full_name: formData.full_name,
+      company_name: formData.company_name,
+      work_email: formData.work_email,
+      country_code: countryCode,
+      phone_number: rawPhoneNumber,
+      business_need: formData.business_need
+    };
+
     try {
       const res = await fetch("https://poise-crouch-plating.ngrok-free.dev/blogs/blogs-demo", {
         method: "POST",
@@ -26,7 +41,7 @@ export default function Demo() {
           "accept": "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload)
       });
 
       if (res.ok) {
@@ -35,9 +50,10 @@ export default function Demo() {
           full_name: "",
           company_name: "",
           work_email: "",
-          phone_number: "",
           business_need: ""
         });
+        setPhone("");
+        setCountryCode("+91");
         setTimeout(() => setStatus("idle"), 5000);
       } else {
         const errData = await res.json().catch(() => ({}));
@@ -75,7 +91,7 @@ export default function Demo() {
             onChange={handleChange}
             required
             placeholder="Full Name" 
-            className="w-full bg-white border border-[#C9CED6] rounded-xl px-4 py-3 text-[14px] xl:text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#3C60E7] focus:ring-1 focus:ring-[#3C60E7] transition-shadow"
+            className="w-full bg-white border border-[#C9CED6] rounded-xl px-4 py-3 text-[14px] xl:text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#3C60E7] focus:ring-1 focus:ring-[#3C60E7] transition-shadow font-sans"
           />
           <input 
             type="text" 
@@ -84,7 +100,7 @@ export default function Demo() {
             onChange={handleChange}
             required
             placeholder="Company Name" 
-            className="w-full bg-white border border-[#C9CED6] rounded-xl px-4 py-3 text-[14px] xl:text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#3C60E7] focus:ring-1 focus:ring-[#3C60E7] transition-shadow"
+            className="w-full bg-white border border-[#C9CED6] rounded-xl px-4 py-3 text-[14px] xl:text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#3C60E7] focus:ring-1 focus:ring-[#3C60E7] transition-shadow font-sans"
           />
           <input 
             type="email" 
@@ -93,17 +109,32 @@ export default function Demo() {
             onChange={handleChange}
             required
             placeholder="Work Email" 
-            className="w-full bg-white border border-[#C9CED6] rounded-xl px-4 py-3 text-[14px] xl:text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#3C60E7] focus:ring-1 focus:ring-[#3C60E7] transition-shadow"
+            className="w-full bg-white border border-[#C9CED6] rounded-xl px-4 py-3 text-[14px] xl:text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#3C60E7] focus:ring-1 focus:ring-[#3C60E7] transition-shadow font-sans"
           />
-          <input 
-            type="tel" 
-            name="phone_number"
-            value={formData.phone_number}
-            onChange={handleChange}
-            required
-            placeholder="Phone Number" 
-            className="w-full bg-white border border-[#C9CED6] rounded-xl px-4 py-3 text-[14px] xl:text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#3C60E7] focus:ring-1 focus:ring-[#3C60E7] transition-shadow"
-          />
+          <div className="w-full bg-white border border-[#C9CED6] rounded-xl px-4 py-1.5 text-[14px] xl:text-[15px] focus-within:border-[#3C60E7] focus-within:ring-1 focus-within:ring-[#3C60E7] transition-shadow flex items-center">
+            <PhoneInput
+              defaultCountry="in"
+              value={phone}
+              onChange={(phoneVal, meta) => {
+                setPhone(phoneVal);
+                if (meta?.country?.dialCode) {
+                  setCountryCode(`+${meta.country.dialCode}`);
+                }
+              }}
+              placeholder="Phone Number"
+              inputClassName="!w-full !bg-transparent !py-1.5 !text-[14px] xl:!text-[15px] !text-slate-700 placeholder:!text-slate-400 focus:!outline-none !border-none !ring-0 font-sans"
+              className="flex items-center w-full"
+              countrySelectorStyleProps={{
+                buttonClassName: "!bg-transparent !py-1.5 !pr-2 !text-[14px] xl:!text-[15px] !text-slate-700 !h-full !border-none",
+                dropdownStyleProps: {
+                  className: "!z-50",
+                  style: {
+                    width: "250px"
+                  }
+                }
+              }}
+            />
+          </div>
           <textarea 
             name="business_need"
             value={formData.business_need}
@@ -111,7 +142,7 @@ export default function Demo() {
             required
             placeholder="Business Need" 
             rows="4"
-            className="w-full bg-white border border-[#C9CED6] rounded-[16px] px-4 py-3 text-[14px] xl:text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#3C60E7] focus:ring-1 focus:ring-[#3C60E7] transition-shadow resize-none"
+            className="w-full bg-white border border-[#C9CED6] rounded-[16px] px-4 py-3 text-[14px] xl:text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#3C60E7] focus:ring-1 focus:ring-[#3C60E7] transition-shadow resize-none font-sans"
           ></textarea>
           
           <div className="flex justify-center mt-3">

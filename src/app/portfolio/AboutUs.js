@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 const statsData = [
   {
@@ -92,7 +93,7 @@ export default function AboutUs() {
         <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-indigo-200 rounded-full blur-[120px]" />
       </div>
 
-      <div className="relative z-10 max-w-[1140px] mx-auto w-full flex flex-col"> 
+      <div className="relative z-10 max-w-[1140px] mx-auto w-full flex flex-col">
 
         {/* HEADER BLOCK */}
         <div className="text-left w-full mb-8 select-none">
@@ -144,9 +145,9 @@ export default function AboutUs() {
 
           {/* CTA Buttons Row */}
           <div className="flex items-center gap-4 flex-shrink-0">
-            <button className="bg-[#3D60E9] hover:bg-blue-700 hover:scale-[1.03] active:scale-95 text-white font-bold text-xs sm:text-sm py-3.5 px-8 rounded-full shadow-[0_12px_24px_rgba(61,96,233,0.25)] transition-all duration-300 cursor-pointer uppercase tracking-wider">
+            <Link href="/about-us" className="bg-[#3D60E9] hover:bg-blue-700 hover:scale-[1.03] active:scale-95 text-white font-bold text-xs sm:text-sm py-3.5 px-8 rounded-full shadow-[0_12px_24px_rgba(61,96,233,0.25)] transition-all duration-300 cursor-pointer uppercase tracking-wider text-center inline-block">
               Learn More
-            </button>
+            </Link>
 
           </div>
 

@@ -145,18 +145,18 @@ export default function Ourworld() {
         <div className="relative flex flex-col lg:flex-row items-center gap-3 w-full mt-4">
 
           {/* Card Container (Left and Center - Increased to 82% width) */}
-          <div className="relative w-full lg:w-[82%] my-9 shrink-0 lg:translate-x-8 xl:translate-x-12 2xl:translate-x-60 z-10">
+          <div className="relative w-full lg:w-[82%] -mt-4 mb-9 sm:my-9 shrink-0 lg:translate-x-8 xl:translate-x-12 2xl:translate-x-60 z-10 flex flex-col lg:block items-center">
 
             {/* The White Box (Underneath the photo) */}
-            <div className="w-[800px] xl:w-[800px] 2xl:w-[800px] bg-white  shadow-sm border border-slate-100/80 p-8 md:p-12 lg:py-8 lg:pr-10 lg:pl-[310px] min-h-[410px] flex flex-col justify-between">
+            <div className="order-2 lg:order-none w-full max-w-[340px] sm:max-w-[600px] lg:max-w-[800px] lg:w-[800px] bg-white shadow-sm border border-slate-100/80 p-4 sm:p-8 md:p-12 lg:py-8 lg:pr-10 lg:pl-[310px] min-h-0 lg:min-h-[410px] flex flex-col justify-between rounded-2xl lg:rounded-none">
 
-              <div className="flex items-start gap-6 pt-2 xl:-translate-x-14 2xl:translate-x-0">
+              <div className="flex items-start gap-3 sm:gap-6 pt-2 xl:-translate-x-14 2xl:translate-x-0">
                 {/* Large Quote Mark Image */}
                 <div className="flex-shrink-0 mt-1">
                   <img 
                     src="/careers/ourworld/quotes.png"
                     alt="Quote Mark"
-                    className="w-[46px] h-[50px] opacity-30"        
+                    className="w-[28px] h-[30px] sm:w-[46px] sm:h-[50px] opacity-30"        
                   />
                 </div>
 
@@ -169,7 +169,7 @@ export default function Ourworld() {
                           "opacity-0 translate-x-12 duration-0"
                       }`}
                   >
-                    <p className="text-[#3A3C42] text-[15px] md:text-[18px] leading-[1.6]  font-normal">
+                    <p className="text-[#3A3C42] text-xs sm:text-base md:text-[18px] leading-[1.6]  font-normal">
                       {active.quote}
                     </p>
                   </div>
@@ -182,10 +182,10 @@ export default function Ourworld() {
                       }`}
                   >
                     <div>
-                      <h4 className="text-[#100D35] text-[15px] md:text-[16px] font-bold leading-tight font-sans">
+                      <h4 className="text-[#100D35] text-sm sm:text-base font-bold leading-tight font-sans">
                         {active.name}
                       </h4>
-                      <p className="text-[#7E8299] text-[13px] md:text-[14px] font-normal mt-1">
+                      <p className="text-[#7E8299] text-[11px] sm:text-sm font-normal mt-1">
                         {active.role}
                       </p>
                     </div>
@@ -208,7 +208,7 @@ export default function Ourworld() {
             </div>
 
             {/* Overlapping Photo (Floats on the left and overlaps on desktop) */}
-            <div className="w-[90%] mx-auto md:w-[260px] lg:w-[290px] xl:w-[300px] h-[360px] md:h-[420px] lg:h-[350px] lg:absolute lg:left-[-100px] lg:top-[50%] lg:-translate-y-[50%] overflow-hidden shadow-2xl z-10 mb-4 lg:mb-0">
+            <div className="order-1 lg:order-none w-[65%] sm:w-[50%] mx-auto md:w-[260px] lg:w-[290px] xl:w-[300px] h-[190px] sm:h-[260px] md:h-[420px] lg:h-[350px] lg:absolute lg:left-[-100px] lg:top-[50%] lg:-translate-y-[50%] overflow-hidden shadow-2xl z-10 mb-6 lg:mb-0 rounded-2xl lg:rounded-none">
               <img
                 src={active.image}
                 alt={active.name}
@@ -245,8 +245,20 @@ export default function Ourworld() {
 
         </div>
         {/* Bottom Pagination & Navigation */}
-        <div className="flex items-center justify-between mt-0 w-full px-2">
-
+        <div className="flex items-center justify-center gap-6 mt-4 w-full px-2">
+          {/* Left Arrow Button for mobile */}
+          <button
+            onClick={handlePrev}
+            disabled={activeIndex === 0}
+            className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 bg-white ${activeIndex === 0
+                ? "border-slate-200 text-slate-300 cursor-not-allowed"
+                : "border-[#100D35] text-[#100D35] hover:bg-[#100D35] hover:text-white shadow-sm"
+              }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
 
           {/* Center: Progress Indicator */}
           <div className="flex flex-col items-center gap-2">
@@ -262,6 +274,19 @@ export default function Ourworld() {
             </div>
           </div>
 
+          {/* Right Arrow Button for mobile */}
+          <button
+            onClick={handleNext}
+            disabled={activeIndex === testimonials.length - 1}
+            className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 bg-white ${activeIndex === testimonials.length - 1
+                ? "border-slate-200 text-slate-300 cursor-not-allowed"
+                : "border-[#100D35] text-[#100D35] hover:bg-[#100D35] hover:text-white shadow-sm"
+              }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
 
       </div>

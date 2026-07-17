@@ -48,9 +48,7 @@ export default function ServicesHero() {
                             <Link href="/contact" className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-[15px] lg:text-base shadow-md transition-all active:scale-95 duration-150 inline-block text-center">
                                 Book a Free Consultation
                             </Link>
-                            <p className="hidden lg:block text-[#FFFFFF] text-xs font-normal tracking-wide">
-                                Cancel Anytime
-                            </p>
+                            
                         </div>
 
                         {/* Column 2: Avatars & Trusted by pros */}

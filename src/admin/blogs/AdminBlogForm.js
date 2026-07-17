@@ -15,8 +15,6 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
     author: editItem?.author || "",
     status: editItem?.status?.toLowerCase() === "published" ? "active" : (editItem?.status?.toLowerCase() || "in_active"),
     publishDate: editItem?.date || "",
-    badgeText: "",
-    readingTime: "",
     heroTitle: "",
     shortDescription: "",
     authorName: "",
@@ -86,8 +84,6 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
           if (hData && Object.keys(hData).length > 0) {
             setForm(p => ({
               ...p,
-              badgeText: hData.badge_text || "",
-              readingTime: hData.reading_time || "",
               heroTitle: hData.hero_title || "",
               shortDescription: hData.short_description || "",
               authorName: hData.author_name || "",

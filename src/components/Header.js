@@ -99,7 +99,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${isTopOffsetPage && !scrolled ? "lg:top-4 top-0" : "top-0"
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${mobileMenuOpen ? "h-screen" : ""} ${isTopOffsetPage && !scrolled ? "lg:top-4 top-0" : "top-0"
         } ${scrolled
           ? "bg-white backdrop-blur-md border-b border-slate-100 shadow-md text-slate-800"
           : isTopOffsetPage
@@ -427,8 +427,28 @@ export default function Header() {
 
       {/* Mobile Drawer Menu (Right Side) */}
       <div 
-        className={`fixed top-0 bottom-0 right-0 w-[280px] sm:w-[320px] bg-white shadow-[-10px_0_30px_rgba(0,0,0,0.1)] z-[45] pt-24 pb-6 overflow-y-auto lg:hidden transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed top-0 bottom-0 right-0 w-[280px] sm:w-[320px] bg-white shadow-[-10px_0_30px_rgba(0,0,0,0.1)] z-[45] pt-6 pb-6 overflow-y-auto lg:hidden transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
+        {/* Mobile Menu Logo Header */}
+        <div className="flex items-center justify-between px-5 pb-5 mb-4 border-b border-slate-100/80">
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center">
+            <img
+              src="/securxpertslogo.png"
+              alt="SecurXpert Logo"
+              className="h-10 w-auto object-contain"
+            />
+          </Link>
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="p-1 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-800 focus:outline-none"
+            aria-label="Close menu"
+          >
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
         <div className="px-5 space-y-3">
           <Link
             href="/"

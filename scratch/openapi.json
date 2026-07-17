@@ -1,0 +1,4736 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/auth/register-super-admin": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Register Super Admin",
+        "operationId": "register_super_admin_auth_register_super_admin_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdminRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register-admin": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Register Admin",
+        "operationId": "register_admin_auth_register_admin_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdminRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login",
+        "operationId": "login_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/admins": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Get Admins",
+        "operationId": "get_admins_auth_admins_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Get Admins Auth Admins Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Create Admin",
+        "operationId": "create_admin_auth_admins_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdminRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/auth/admins/{admin_id}": {
+      "delete": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Delete Admin",
+        "operationId": "delete_admin_auth_admins__admin_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "admin_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Admin Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/users": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Get Users",
+        "operationId": "get_users_auth_users_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Get Users Auth Users Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Create User",
+        "description": "Admin (or super admin) creates a regular USER account. That user then\ngets access to the blog endpoints once they log in.",
+        "operationId": "create_user_auth_users_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/auth/users/{user_id}": {
+      "delete": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Delete User",
+        "operationId": "delete_user_auth_users__user_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "User Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/": {
+      "get": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "List Jobs",
+        "operationId": "list_jobs_jobs__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/JobListResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Jobs Jobs  Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Create Job",
+        "operationId": "create_job_jobs__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/jobs/{job_id}": {
+      "get": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Get Job",
+        "operationId": "get_job_jobs__job_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Update Job",
+        "operationId": "update_job_jobs__job_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Delete Job",
+        "operationId": "delete_job_jobs__job_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/hero-section": {
+      "post": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Create Hero Section",
+        "operationId": "create_hero_section_jobs__job_id__hero_section_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobHeroSectionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobHeroSectionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Get Hero Section",
+        "operationId": "get_hero_section_jobs__job_id__hero_section_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobHeroSectionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Update Hero Section",
+        "operationId": "update_hero_section_jobs__job_id__hero_section_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobHeroSectionUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobHeroSectionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/description": {
+      "post": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Create Job Description",
+        "operationId": "create_job_description_jobs__job_id__description_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobDescriptionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDescriptionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Get Job Description",
+        "operationId": "get_job_description_jobs__job_id__description_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDescriptionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Update Job Description",
+        "operationId": "update_job_description_jobs__job_id__description_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobDescriptionUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDescriptionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/qualifications": {
+      "post": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Create Preferred Qualifications",
+        "operationId": "create_preferred_qualifications_jobs__job_id__qualifications_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreferredQualificationCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreferredQualificationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Get Preferred Qualifications",
+        "operationId": "get_preferred_qualifications_jobs__job_id__qualifications_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreferredQualificationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Update Preferred Qualifications",
+        "operationId": "update_preferred_qualifications_jobs__job_id__qualifications_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreferredQualificationUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreferredQualificationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/responsibilities": {
+      "post": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Add Responsibility",
+        "operationId": "add_responsibility_jobs__job_id__responsibilities_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobResponsibilityCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobResponsibilityResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "List Responsibilities",
+        "operationId": "list_responsibilities_jobs__job_id__responsibilities_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobResponsibilityResponse"
+                  },
+                  "title": "Response List Responsibilities Jobs  Job Id  Responsibilities Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/responsibilities/{resp_id}": {
+      "patch": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Update Responsibility",
+        "operationId": "update_responsibility_jobs__job_id__responsibilities__resp_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          },
+          {
+            "name": "resp_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Resp Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobResponsibilityUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobResponsibilityResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Delete Responsibility",
+        "operationId": "delete_responsibility_jobs__job_id__responsibilities__resp_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          },
+          {
+            "name": "resp_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Resp Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/requirements": {
+      "post": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Add Requirement",
+        "operationId": "add_requirement_jobs__job_id__requirements_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobRequirementCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobRequirementResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "List Requirements",
+        "operationId": "list_requirements_jobs__job_id__requirements_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobRequirementResponse"
+                  },
+                  "title": "Response List Requirements Jobs  Job Id  Requirements Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/requirements/{req_id}": {
+      "delete": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Delete Requirement",
+        "operationId": "delete_requirement_jobs__job_id__requirements__req_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          },
+          {
+            "name": "req_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Req Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/resume-settings": {
+      "post": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Create Resume Settings",
+        "operationId": "create_resume_settings_jobs__job_id__resume_settings_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobResumeSettingsCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobResumeSettingsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Get Resume Settings",
+        "operationId": "get_resume_settings_jobs__job_id__resume_settings_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobResumeSettingsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Update Resume Settings",
+        "operationId": "update_resume_settings_jobs__job_id__resume_settings_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobResumeSettingsUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobResumeSettingsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/all": {
+      "get": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Get Job All",
+        "operationId": "get_job_all_jobs__job_id__all_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobCompleteResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}/complete": {
+      "delete": {
+        "tags": [
+          "careers"
+        ],
+        "summary": "Delete Complete Job",
+        "operationId": "delete_complete_job_jobs__job_id__complete_delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/book-appointment/": {
+      "get": {
+        "tags": [
+          "Book Appointment"
+        ],
+        "summary": "Get Book Appointments By Id",
+        "operationId": "get_book_appointments_by_id_book_appointment__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Book Appointment"
+        ],
+        "summary": "Book Appointment Create",
+        "operationId": "book_appointment_create_book_appointment__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookAppointmentCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/book-appointment/{appointment_id}": {
+      "get": {
+        "tags": [
+          "Book Appointment"
+        ],
+        "summary": "Get All Appointments",
+        "operationId": "get_all_appointments_book_appointment__appointment_id__get",
+        "parameters": [
+          {
+            "name": "appointment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Appointment Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blogs/": {
+      "get": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "List Blogs",
+        "operationId": "list_blogs_blogs__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Create Blog",
+        "operationId": "create_blog_blogs__post",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_create_blog_blogs__post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/blogs/{blog_id}": {
+      "get": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Get Blog",
+        "operationId": "get_blog_blogs__blog_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Update Blog",
+        "operationId": "update_blog_blogs__blog_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_update_blog_blogs__blog_id__patch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Delete Blog",
+        "operationId": "delete_blog_blogs__blog_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blogs/{blog_id}/hero": {
+      "post": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Create Hero Section",
+        "operationId": "create_hero_section_blogs__blog_id__hero_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_create_hero_section_blogs__blog_id__hero_post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Get Hero Section",
+        "operationId": "get_hero_section_blogs__blog_id__hero_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Update Hero Section",
+        "operationId": "update_hero_section_blogs__blog_id__hero_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_update_hero_section_blogs__blog_id__hero_patch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Delete Hero Section",
+        "operationId": "delete_hero_section_blogs__blog_id__hero_delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blogs/{blog_id}/sections": {
+      "post": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Create Content Section",
+        "operationId": "create_content_section_blogs__blog_id__sections_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_create_content_section_blogs__blog_id__sections_post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blogs/sections/{section_id}": {
+      "get": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Get Content Section",
+        "operationId": "get_content_section_blogs_sections__section_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "section_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Section Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Update Content Section",
+        "operationId": "update_content_section_blogs_sections__section_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "section_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Section Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_update_content_section_blogs_sections__section_id__patch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Delete Content Section",
+        "operationId": "delete_content_section_blogs_sections__section_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "section_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Section Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blogs/{blog_id}/{all}": {
+      "delete": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Delete Entire Blog",
+        "operationId": "delete_entire_blog_blogs__blog_id___all__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blogs/{blog_id}/all": {
+      "get": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Get Blog",
+        "operationId": "get_blog_blogs__blog_id__all_get",
+        "parameters": [
+          {
+            "name": "blog_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Blog Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/job-applications/": {
+      "post": {
+        "tags": [
+          "Job Applications"
+        ],
+        "summary": "Submit Application",
+        "operationId": "submit_application_job_applications__post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_submit_application_job_applications__post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobApplicationOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/job-applications/get_all_applications": {
+      "get": {
+        "tags": [
+          "Job Applications"
+        ],
+        "summary": "Get All Applications",
+        "operationId": "get_all_applications_job_applications_get_all_applications_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/JobApplicationOut"
+                  },
+                  "type": "array",
+                  "title": "Response Get All Applications Job Applications Get All Applications Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/job-applications/{application_id}": {
+      "get": {
+        "tags": [
+          "Job Applications"
+        ],
+        "summary": "Get Application By Id",
+        "operationId": "get_application_by_id_job_applications__application_id__get",
+        "parameters": [
+          {
+            "name": "application_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Application Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobApplicationOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contact/contact-us": {
+      "get": {
+        "tags": [
+          "Contact Us"
+        ],
+        "summary": "Get Contacts",
+        "operationId": "get_contacts_contact_contact_us_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ContactUsResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Get Contacts Contact Contact Us Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contact Us"
+        ],
+        "summary": "Create Contact",
+        "operationId": "create_contact_contact_contact_us_post",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_create_contact_contact_contact_us_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactUsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contact/contact-us/{contact_id}": {
+      "get": {
+        "tags": [
+          "Contact Us"
+        ],
+        "summary": "Get Contact",
+        "operationId": "get_contact_contact_contact_us__contact_id__get",
+        "parameters": [
+          {
+            "name": "contact_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Contact Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactUsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/create-booking": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Create Booking",
+        "operationId": "create_booking_products_create_booking_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoBookingCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/list-bookings": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "List Bookings",
+        "operationId": "list_bookings_products_list_bookings_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/get/{booking_id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Booking",
+        "operationId": "get_booking_products_get__booking_id__get",
+        "parameters": [
+          {
+            "name": "booking_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Booking Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/available-slots/{year}/{month}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Booked Slots",
+        "operationId": "get_booked_slots_products_available_slots__year___month__get",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "month",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Month"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blogs-demo/": {
+      "get": {
+        "tags": [
+          "Blogs Demo"
+        ],
+        "summary": "Get Demo Requests",
+        "operationId": "get_demo_requests_blogs_demo__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DemoRequestResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Get Demo Requests Blogs Demo  Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Blogs Demo"
+        ],
+        "summary": "Create Demo Request",
+        "operationId": "create_demo_request_blogs_demo__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoRequestCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoRequestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blogs-demo/{request_id}": {
+      "get": {
+        "tags": [
+          "Blogs Demo"
+        ],
+        "summary": "Get Demo Request",
+        "operationId": "get_demo_request_blogs_demo__request_id__get",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Request Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoRequestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BlogStatus": {
+        "type": "string",
+        "enum": [
+          "active",
+          "in_active"
+        ],
+        "title": "BlogStatus"
+      },
+      "Body_create_blog_blogs__post": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "category": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Category"
+          },
+          "author": {
+            "type": "string",
+            "title": "Author"
+          },
+          "status": {
+            "$ref": "#/components/schemas/BlogStatus",
+            "default": "active"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "slug",
+          "category"
+        ],
+        "title": "Body_create_blog_blogs__post"
+      },
+      "Body_create_contact_contact_contact_us_post": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "email": {
+            "type": "string",
+            "title": "Email"
+          },
+          "purpose": {
+            "$ref": "#/components/schemas/PurposeEnum"
+          },
+          "country_code": {
+            "type": "string",
+            "title": "Country Code"
+          },
+          "phone_number": {
+            "type": "string",
+            "title": "Phone Number"
+          },
+          "location": {
+            "type": "string",
+            "title": "Location"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "email",
+          "purpose",
+          "country_code",
+          "phone_number",
+          "location",
+          "message"
+        ],
+        "title": "Body_create_contact_contact_contact_us_post"
+      },
+      "Body_create_content_section_blogs__blog_id__sections_post": {
+        "properties": {
+          "order_index": {
+            "type": "integer",
+            "title": "Order Index"
+          },
+          "section_title": {
+            "type": "string",
+            "title": "Section Title"
+          },
+          "image_alt_text": {
+            "type": "string",
+            "title": "Image Alt Text"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "image_caption": {
+            "type": "string",
+            "title": "Image Caption"
+          },
+          "image_position": {
+            "$ref": "#/components/schemas/ImagePosition",
+            "default": "full_width"
+          },
+          "section_image": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "Section Image"
+          }
+        },
+        "type": "object",
+        "required": [
+          "order_index",
+          "section_title",
+          "description"
+        ],
+        "title": "Body_create_content_section_blogs__blog_id__sections_post"
+      },
+      "Body_create_hero_section_blogs__blog_id__hero_post": {
+        "properties": {
+          "hero_title": {
+            "type": "string",
+            "title": "Hero Title"
+          },
+          "short_description": {
+            "type": "string",
+            "title": "Short Description"
+          },
+          "author_name": {
+            "type": "string",
+            "title": "Author Name"
+          },
+          "hero_banner": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "Hero Banner"
+          },
+          "author_image": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "Author Image"
+          }
+        },
+        "type": "object",
+        "title": "Body_create_hero_section_blogs__blog_id__hero_post"
+      },
+      "Body_submit_application_job_applications__post": {
+        "properties": {
+          "candidate_name": {
+            "type": "string",
+            "title": "Candidate Name"
+          },
+          "enter_email": {
+            "type": "string",
+            "title": "Enter Email"
+          },
+          "country_code": {
+            "type": "string",
+            "title": "Country Code"
+          },
+          "phone_number": {
+            "type": "string",
+            "title": "Phone Number"
+          },
+          "total_experience": {
+            "type": "number",
+            "title": "Total Experience"
+          },
+          "relevant_experience": {
+            "type": "number",
+            "title": "Relevant Experience"
+          },
+          "current_location": {
+            "type": "string",
+            "title": "Current Location"
+          },
+          "current_ctc": {
+            "type": "number",
+            "title": "Current Ctc"
+          },
+          "expected_ctc": {
+            "type": "number",
+            "title": "Expected Ctc"
+          },
+          "linkedin_profile_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Linkedin Profile Url"
+          },
+          "technical_proficiency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Technical Proficiency"
+          },
+          "upload_your_latest_resume": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "Upload Your Latest Resume"
+          }
+        },
+        "type": "object",
+        "required": [
+          "candidate_name",
+          "enter_email",
+          "country_code",
+          "phone_number",
+          "total_experience",
+          "relevant_experience",
+          "current_location",
+          "current_ctc",
+          "expected_ctc",
+          "upload_your_latest_resume"
+        ],
+        "title": "Body_submit_application_job_applications__post"
+      },
+      "Body_update_blog_blogs__blog_id__patch": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "category": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Category"
+          },
+          "author": {
+            "type": "string",
+            "title": "Author"
+          },
+          "status": {
+            "$ref": "#/components/schemas/BlogStatus"
+          }
+        },
+        "type": "object",
+        "required": [
+          "category"
+        ],
+        "title": "Body_update_blog_blogs__blog_id__patch"
+      },
+      "Body_update_content_section_blogs_sections__section_id__patch": {
+        "properties": {
+          "order_index": {
+            "type": "integer",
+            "title": "Order Index"
+          },
+          "section_title": {
+            "type": "string",
+            "title": "Section Title"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "image_alt_text": {
+            "type": "string",
+            "title": "Image Alt Text"
+          },
+          "image_caption": {
+            "type": "string",
+            "title": "Image Caption"
+          },
+          "image_position": {
+            "$ref": "#/components/schemas/ImagePosition"
+          },
+          "section_image": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "Section Image"
+          }
+        },
+        "type": "object",
+        "title": "Body_update_content_section_blogs_sections__section_id__patch"
+      },
+      "Body_update_hero_section_blogs__blog_id__hero_patch": {
+        "properties": {
+          "badge_text": {
+            "type": "string",
+            "title": "Badge Text"
+          },
+          "reading_time": {
+            "type": "string",
+            "title": "Reading Time"
+          },
+          "hero_title": {
+            "type": "string",
+            "title": "Hero Title"
+          },
+          "short_description": {
+            "type": "string",
+            "title": "Short Description"
+          },
+          "author_name": {
+            "type": "string",
+            "title": "Author Name"
+          },
+          "hero_banner": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "Hero Banner"
+          },
+          "author_image": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "Author Image"
+          }
+        },
+        "type": "object",
+        "title": "Body_update_hero_section_blogs__blog_id__hero_patch"
+      },
+      "BookAppointmentCreate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          },
+          "country_code": {
+            "type": "string",
+            "title": "Country Code"
+          },
+          "phone_number": {
+            "type": "string",
+            "title": "Phone Number"
+          },
+          "service_type": {
+            "type": "string",
+            "title": "Service Type"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "email",
+          "country_code",
+          "phone_number",
+          "service_type"
+        ],
+        "title": "BookAppointmentCreate"
+      },
+      "ContactUsResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          },
+          "purpose": {
+            "$ref": "#/components/schemas/PurposeEnum"
+          },
+          "phone_number": {
+            "type": "string",
+            "title": "Phone Number"
+          },
+          "location": {
+            "type": "string",
+            "title": "Location"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "email",
+          "purpose",
+          "phone_number",
+          "location",
+          "message",
+          "created_at"
+        ],
+        "title": "ContactUsResponse"
+      },
+      "CreateAdminRequest": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "email",
+          "password"
+        ],
+        "title": "CreateAdminRequest"
+      },
+      "CreateUserRequest": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "email",
+          "password"
+        ],
+        "title": "CreateUserRequest"
+      },
+      "DemoBookingCreate": {
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "title": "Full Name"
+          },
+          "product_name": {
+            "type": "string",
+            "title": "Product Name"
+          },
+          "email_address": {
+            "type": "string",
+            "format": "email",
+            "title": "Email Address"
+          },
+          "enter_company_details": {
+            "type": "string",
+            "title": "Enter Company Details"
+          },
+          "enter_contact_details": {
+            "type": "string",
+            "title": "Enter Contact Details"
+          },
+          "booking_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Booking Date"
+          },
+          "booking_time": {
+            "type": "string",
+            "format": "time",
+            "title": "Booking Time"
+          }
+        },
+        "type": "object",
+        "required": [
+          "full_name",
+          "product_name",
+          "email_address",
+          "enter_company_details",
+          "enter_contact_details",
+          "booking_date",
+          "booking_time"
+        ],
+        "title": "DemoBookingCreate"
+      },
+      "DemoRequestCreate": {
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "title": "Full Name"
+          },
+          "company_name": {
+            "type": "string",
+            "title": "Company Name"
+          },
+          "work_email": {
+            "type": "string",
+            "format": "email",
+            "title": "Work Email"
+          },
+          "country_code": {
+            "type": "string",
+            "title": "Country Code"
+          },
+          "phone_number": {
+            "type": "string",
+            "title": "Phone Number"
+          },
+          "business_need": {
+            "type": "string",
+            "title": "Business Need"
+          }
+        },
+        "type": "object",
+        "required": [
+          "full_name",
+          "company_name",
+          "work_email",
+          "country_code",
+          "phone_number",
+          "business_need"
+        ],
+        "title": "DemoRequestCreate"
+      },
+      "DemoRequestResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "full_name": {
+            "type": "string",
+            "title": "Full Name"
+          },
+          "company_name": {
+            "type": "string",
+            "title": "Company Name"
+          },
+          "work_email": {
+            "type": "string",
+            "format": "email",
+            "title": "Work Email"
+          },
+          "phone_number": {
+            "type": "string",
+            "title": "Phone Number"
+          },
+          "business_need": {
+            "type": "string",
+            "title": "Business Need"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "full_name",
+          "company_name",
+          "work_email",
+          "phone_number",
+          "business_need",
+          "created_at"
+        ],
+        "title": "DemoRequestResponse"
+      },
+      "EmploymentTypeEnum": {
+        "type": "string",
+        "enum": [
+          "Full-Time",
+          "Part-Time",
+          "Contract",
+          "Internship",
+          "Freelance"
+        ],
+        "title": "EmploymentTypeEnum"
+      },
+      "ExperienceLevelEnum": {
+        "type": "string",
+        "enum": [
+          "Entry",
+          "Mid",
+          "Senior",
+          "Lead",
+          "Manager"
+        ],
+        "title": "ExperienceLevelEnum"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ImagePosition": {
+        "type": "string",
+        "enum": [
+          "left",
+          "right",
+          "full_width"
+        ],
+        "title": "ImagePosition"
+      },
+      "JobApplicationOut": {
+        "properties": {
+          "candidate_name": {
+            "type": "string",
+            "title": "Candidate Name"
+          },
+          "enter_email": {
+            "type": "string",
+            "format": "email",
+            "title": "Enter Email"
+          },
+          "contact_number": {
+            "type": "string",
+            "title": "Contact Number"
+          },
+          "total_experience": {
+            "type": "number",
+            "minimum": 0,
+            "title": "Total Experience"
+          },
+          "relevant_experience": {
+            "type": "number",
+            "minimum": 0,
+            "title": "Relevant Experience"
+          },
+          "current_location": {
+            "type": "string",
+            "title": "Current Location"
+          },
+          "current_ctc": {
+            "type": "number",
+            "minimum": 0,
+            "title": "Current Ctc"
+          },
+          "expected_ctc": {
+            "type": "number",
+            "minimum": 0,
+            "title": "Expected Ctc"
+          },
+          "linkedin_profile_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Linkedin Profile Url"
+          },
+          "technical_proficiency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Technical Proficiency"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "upload_your_latest_resume": {
+            "type": "string",
+            "title": "Upload Your Latest Resume"
+          }
+        },
+        "type": "object",
+        "required": [
+          "candidate_name",
+          "enter_email",
+          "contact_number",
+          "total_experience",
+          "relevant_experience",
+          "current_location",
+          "current_ctc",
+          "expected_ctc",
+          "id",
+          "upload_your_latest_resume"
+        ],
+        "title": "JobApplicationOut"
+      },
+      "JobCompleteResponse": {
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/JobResponse"
+          },
+          "hero_section": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/JobHeroSectionResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "description": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/JobDescriptionResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "preferred_qualifications": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PreferredQualificationResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "responsibilities": {
+            "items": {
+              "$ref": "#/components/schemas/JobResponsibilityResponse"
+            },
+            "type": "array",
+            "title": "Responsibilities",
+            "default": []
+          },
+          "requirements": {
+            "items": {
+              "$ref": "#/components/schemas/JobRequirementResponse"
+            },
+            "type": "array",
+            "title": "Requirements",
+            "default": []
+          },
+          "resume_settings": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/JobResumeSettingsResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "job"
+        ],
+        "title": "JobCompleteResponse"
+      },
+      "JobCreate": {
+        "properties": {
+          "job_title": {
+            "type": "string",
+            "title": "Job Title"
+          },
+          "job_category": {
+            "type": "string",
+            "title": "Job Category"
+          },
+          "department": {
+            "type": "string",
+            "title": "Department"
+          },
+          "employment_type": {
+            "$ref": "#/components/schemas/EmploymentTypeEnum"
+          },
+          "job_location": {
+            "type": "string",
+            "title": "Job Location"
+          },
+          "work_mode": {
+            "$ref": "#/components/schemas/WorkModeEnum"
+          },
+          "experience_level": {
+            "$ref": "#/components/schemas/ExperienceLevelEnum"
+          },
+          "years_of_experience": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Years Of Experience"
+          },
+          "number_of_openings": {
+            "type": "integer",
+            "title": "Number Of Openings",
+            "default": 1
+          },
+          "job_status": {
+            "$ref": "#/components/schemas/JobStatusEnum",
+            "default": "Draft"
+          },
+          "job_expiry_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Expiry Date"
+          }
+        },
+        "type": "object",
+        "required": [
+          "job_title",
+          "job_category",
+          "department",
+          "employment_type",
+          "job_location",
+          "work_mode",
+          "experience_level",
+          "years_of_experience"
+        ],
+        "title": "JobCreate"
+      },
+      "JobDescriptionCreate": {
+        "properties": {
+          "job_description": {
+            "type": "string",
+            "title": "Job Description"
+          }
+        },
+        "type": "object",
+        "required": [
+          "job_description"
+        ],
+        "title": "JobDescriptionCreate"
+      },
+      "JobDescriptionResponse": {
+        "properties": {
+          "job_id": {
+            "type": "integer",
+            "title": "Job Id"
+          },
+          "job_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Description"
+          }
+        },
+        "type": "object",
+        "required": [
+          "job_id",
+          "job_description"
+        ],
+        "title": "JobDescriptionResponse"
+      },
+      "JobDescriptionUpdate": {
+        "properties": {
+          "job_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Description"
+          }
+        },
+        "type": "object",
+        "title": "JobDescriptionUpdate"
+      },
+      "JobHeroSectionCreate": {
+        "properties": {
+          "hero_title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hero Title",
+            "description": "Leave empty to use job title"
+          },
+          "card_order": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Card Order"
+          }
+        },
+        "type": "object",
+        "title": "JobHeroSectionCreate"
+      },
+      "JobHeroSectionResponse": {
+        "properties": {
+          "hero_title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hero Title",
+            "description": "Leave empty to use job title"
+          },
+          "card_order": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Card Order"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "job_id": {
+            "type": "integer",
+            "title": "Job Id"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "job_id",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "JobHeroSectionResponse"
+      },
+      "JobHeroSectionUpdate": {
+        "properties": {
+          "hero_title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hero Title"
+          },
+          "card_order": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Card Order"
+          }
+        },
+        "type": "object",
+        "title": "JobHeroSectionUpdate"
+      },
+      "JobListResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "job_title": {
+            "type": "string",
+            "title": "Job Title"
+          },
+          "job_category": {
+            "type": "string",
+            "title": "Job Category"
+          },
+          "department": {
+            "type": "string",
+            "title": "Department"
+          },
+          "employment_type": {
+            "$ref": "#/components/schemas/EmploymentTypeEnum"
+          },
+          "job_location": {
+            "type": "string",
+            "title": "Job Location"
+          },
+          "work_mode": {
+            "$ref": "#/components/schemas/WorkModeEnum"
+          },
+          "experience_level": {
+            "$ref": "#/components/schemas/ExperienceLevelEnum"
+          },
+          "number_of_openings": {
+            "type": "integer",
+            "title": "Number Of Openings"
+          },
+          "job_status": {
+            "$ref": "#/components/schemas/JobStatusEnum"
+          },
+          "job_expiry_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Expiry Date"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "job_title",
+          "job_category",
+          "department",
+          "employment_type",
+          "job_location",
+          "work_mode",
+          "experience_level",
+          "number_of_openings",
+          "job_status",
+          "job_expiry_date",
+          "created_at"
+        ],
+        "title": "JobListResponse"
+      },
+      "JobRequirementCreate": {
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "title": "Skill Name",
+            "example": "Python"
+          },
+          "skill_type": {
+            "$ref": "#/components/schemas/SkillTypeEnum"
+          }
+        },
+        "type": "object",
+        "required": [
+          "skill_name",
+          "skill_type"
+        ],
+        "title": "JobRequirementCreate"
+      },
+      "JobRequirementResponse": {
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "title": "Skill Name",
+            "example": "Python"
+          },
+          "skill_type": {
+            "$ref": "#/components/schemas/SkillTypeEnum"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "job_id": {
+            "type": "integer",
+            "title": "Job Id"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "skill_name",
+          "skill_type",
+          "id",
+          "job_id",
+          "created_at"
+        ],
+        "title": "JobRequirementResponse"
+      },
+      "JobResponse": {
+        "properties": {
+          "job_title": {
+            "type": "string",
+            "title": "Job Title"
+          },
+          "job_category": {
+            "type": "string",
+            "title": "Job Category"
+          },
+          "department": {
+            "type": "string",
+            "title": "Department"
+          },
+          "employment_type": {
+            "$ref": "#/components/schemas/EmploymentTypeEnum"
+          },
+          "job_location": {
+            "type": "string",
+            "title": "Job Location"
+          },
+          "work_mode": {
+            "$ref": "#/components/schemas/WorkModeEnum"
+          },
+          "experience_level": {
+            "$ref": "#/components/schemas/ExperienceLevelEnum"
+          },
+          "years_of_experience": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Years Of Experience"
+          },
+          "number_of_openings": {
+            "type": "integer",
+            "title": "Number Of Openings",
+            "default": 1
+          },
+          "job_status": {
+            "$ref": "#/components/schemas/JobStatusEnum",
+            "default": "Draft"
+          },
+          "job_expiry_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Expiry Date"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "job_title",
+          "job_category",
+          "department",
+          "employment_type",
+          "job_location",
+          "work_mode",
+          "experience_level",
+          "years_of_experience",
+          "id",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "JobResponse"
+      },
+      "JobResponsibilityCreate": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "example": "Automation Framework Development"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "display_order": {
+            "type": "integer",
+            "title": "Display Order",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "title"
+        ],
+        "title": "JobResponsibilityCreate"
+      },
+      "JobResponsibilityResponse": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "example": "Automation Framework Development"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "display_order": {
+            "type": "integer",
+            "title": "Display Order",
+            "default": 0
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "job_id": {
+            "type": "integer",
+            "title": "Job Id"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "id",
+          "job_id",
+          "created_at"
+        ],
+        "title": "JobResponsibilityResponse"
+      },
+      "JobResponsibilityUpdate": {
+        "properties": {
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "display_order": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Display Order"
+          }
+        },
+        "type": "object",
+        "title": "JobResponsibilityUpdate"
+      },
+      "JobResumeSettingsCreate": {
+        "properties": {
+          "allowed_formats": {
+            "items": {
+              "$ref": "#/components/schemas/ResumeFormatEnum"
+            },
+            "type": "array",
+            "title": "Allowed Formats",
+            "default": [
+              "pdf",
+              "doc",
+              "docx"
+            ]
+          },
+          "max_file_size_mb": {
+            "type": "number",
+            "maximum": 20,
+            "minimum": 1,
+            "title": "Max File Size Mb",
+            "default": 5
+          },
+          "resume_upload_mandatory": {
+            "type": "boolean",
+            "title": "Resume Upload Mandatory",
+            "default": true
+          }
+        },
+        "type": "object",
+        "title": "JobResumeSettingsCreate"
+      },
+      "JobResumeSettingsResponse": {
+        "properties": {
+          "allowed_formats": {
+            "items": {
+              "$ref": "#/components/schemas/ResumeFormatEnum"
+            },
+            "type": "array",
+            "title": "Allowed Formats",
+            "default": [
+              "pdf",
+              "doc",
+              "docx"
+            ]
+          },
+          "max_file_size_mb": {
+            "type": "number",
+            "maximum": 20,
+            "minimum": 1,
+            "title": "Max File Size Mb",
+            "default": 5
+          },
+          "resume_upload_mandatory": {
+            "type": "boolean",
+            "title": "Resume Upload Mandatory",
+            "default": true
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "job_id": {
+            "type": "integer",
+            "title": "Job Id"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "job_id",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "JobResumeSettingsResponse"
+      },
+      "JobResumeSettingsUpdate": {
+        "properties": {
+          "allowed_formats": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ResumeFormatEnum"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Allowed Formats"
+          },
+          "max_file_size_mb": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 20,
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max File Size Mb"
+          },
+          "resume_upload_mandatory": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resume Upload Mandatory"
+          }
+        },
+        "type": "object",
+        "title": "JobResumeSettingsUpdate"
+      },
+      "JobStatusEnum": {
+        "type": "string",
+        "enum": [
+          "Draft",
+          "Active",
+          "Closed",
+          "Paused"
+        ],
+        "title": "JobStatusEnum"
+      },
+      "JobUpdate": {
+        "properties": {
+          "job_title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Title"
+          },
+          "job_category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Category"
+          },
+          "department": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Department"
+          },
+          "employment_type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EmploymentTypeEnum"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "job_location": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Location"
+          },
+          "work_mode": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WorkModeEnum"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "experience_level": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ExperienceLevelEnum"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "years_of_experience": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Years Of Experience"
+          },
+          "number_of_openings": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Number Of Openings"
+          },
+          "job_status": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/JobStatusEnum"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "job_expiry_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Expiry Date"
+          }
+        },
+        "type": "object",
+        "required": [
+          "years_of_experience"
+        ],
+        "title": "JobUpdate"
+      },
+      "LoginRequest": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": [
+          "email",
+          "password"
+        ],
+        "title": "LoginRequest"
+      },
+      "PreferredQualificationCreate": {
+        "properties": {
+          "preferred_qualifications": {
+            "type": "string",
+            "title": "Preferred Qualifications"
+          }
+        },
+        "type": "object",
+        "required": [
+          "preferred_qualifications"
+        ],
+        "title": "PreferredQualificationCreate"
+      },
+      "PreferredQualificationResponse": {
+        "properties": {
+          "job_id": {
+            "type": "integer",
+            "title": "Job Id"
+          },
+          "preferred_qualifications": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preferred Qualifications"
+          }
+        },
+        "type": "object",
+        "required": [
+          "job_id",
+          "preferred_qualifications"
+        ],
+        "title": "PreferredQualificationResponse"
+      },
+      "PreferredQualificationUpdate": {
+        "properties": {
+          "preferred_qualifications": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preferred Qualifications"
+          }
+        },
+        "type": "object",
+        "title": "PreferredQualificationUpdate"
+      },
+      "PurposeEnum": {
+        "type": "string",
+        "enum": [
+          "Business Enquiry",
+          "Partnership",
+          "Support",
+          "Careers",
+          "Other"
+        ],
+        "title": "PurposeEnum"
+      },
+      "ResumeFormatEnum": {
+        "type": "string",
+        "enum": [
+          "pdf",
+          "doc",
+          "docx",
+          "rtf",
+          "txt"
+        ],
+        "title": "ResumeFormatEnum"
+      },
+      "SkillTypeEnum": {
+        "type": "string",
+        "enum": [
+          "technical",
+          "soft"
+        ],
+        "title": "SkillTypeEnum"
+      },
+      "UserResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          },
+          "role": {
+            "$ref": "#/components/schemas/UserRole"
+          },
+          "is_active": {
+            "type": "boolean",
+            "title": "Is Active"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "username",
+          "email",
+          "role",
+          "is_active"
+        ],
+        "title": "UserResponse"
+      },
+      "UserRole": {
+        "type": "string",
+        "enum": [
+          "SUPER_ADMIN",
+          "ADMIN"
+        ],
+        "title": "UserRole"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "WorkModeEnum": {
+        "type": "string",
+        "enum": [
+          "Onsite",
+          "Remote",
+          "Hybrid"
+        ],
+        "title": "WorkModeEnum"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

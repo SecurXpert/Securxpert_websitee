@@ -23,7 +23,7 @@ export default function Cta() {
   ];
 
   return (
-    <section 
+    <section
       className="w-full relative overflow-hidden bg-cover bg-center py-16 sm:py-20 lg:py-18"
       style={{
         backgroundImage: "url('/about-us/cta.png')",

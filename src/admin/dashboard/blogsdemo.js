@@ -17,7 +17,7 @@ export default function BlogsDemoDashboard() {
   const fetchDemos = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(API_BASE_URL + "/blogs/get-blogs-demo", {
+      const res = await fetch(API_BASE_URL + "/blogs-demo/", {
         headers: {
           "accept": "application/json",
           "ngrok-skip-browser-warning": "true",
@@ -27,7 +27,6 @@ export default function BlogsDemoDashboard() {
       if (res.ok) {
         const data = await res.json();
         const rawList = Array.isArray(data) ? data : (data?.data || []);
-        // Reverse to show latest first
         setDemos(rawList.sort((a, b) => b.id - a.id));
       } else {
         setDemos([]);
@@ -45,7 +44,7 @@ export default function BlogsDemoDashboard() {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(`${API_BASE_URL}/blogs/blogs-demo/${deleteItem.id}`, {
+      const res = await fetch(`${API_BASE_URL}/blogs-demo/${deleteItem.id}`, {
         method: "DELETE",
         headers: { ...(token && { "Authorization": `Bearer ${token}` }) }
       });
@@ -76,11 +75,11 @@ export default function BlogsDemoDashboard() {
   );
 
   return (
-    <div className="flex-1 flex flex-col h-full overflow-hidden">
-      <header className="bg-white border-b border-slate-100 px-8 py-5 flex items-center justify-between shadow-sm shrink-0 sticky top-0 z-20">
+    <div className="flex-1 flex flex-col h-full overflow-hidden bg-slate-50">
+      <header className="bg-white border-b border-slate-100 px-6 py-3 flex items-center justify-between shadow-sm shrink-0 sticky top-0 z-20">
         <div>
-          <h1 className="text-xl font-bold text-slate-800 capitalize">Blog Demo Requests</h1>
-          <p className="text-sm text-slate-400">{filteredDemos.length} records found</p>
+          <h1 className="text-lg font-bold text-slate-800 capitalize">Blog Demo Requests</h1>
+          <p className="text-xs text-slate-400">{filteredDemos.length} records found</p>
         </div>
         
         {/* Search Bar */}
@@ -91,46 +90,49 @@ export default function BlogsDemoDashboard() {
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
-              setCurrentPage(1); // Reset to first page on search
+              setCurrentPage(1);
             }}
-            className="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-sm outline-none focus:border-blue-500 focus:bg-white transition-all w-[300px] text-slate-700" 
+            className="pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-xs outline-none focus:border-blue-500 focus:bg-white transition-all w-[260px] text-slate-700" 
           />
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto p-8 flex flex-col">
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex-1 flex flex-col">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 border-b border-slate-100">
+      <div className="flex-1 overflow-y-auto p-5 flex flex-col">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex-1 flex flex-col">
+          <div className="overflow-x-auto flex-1">
+            <table className="w-full text-xs text-left border-collapse border border-slate-200">
+              <thead className="bg-slate-50">
                 <tr>
-                  {["full_name", "company_name", "work_email", "phone_number", "business_need", "created_at", "Actions"].map(h => (
-                    <th key={h} className="py-4 px-6 text-xs font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">{h}</th>
+                  {["S.No.", "Full Name", "Company Name", "Work Email", "Phone Number", "Business Need", "Created At", "Actions"].map(h => (
+                    <th key={h} className="py-2 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap border border-slate-200">{h}</th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-50">
+              <tbody>
                 {paginatedDemos.length > 0 ? (
-                  paginatedDemos.map(d => (
+                  paginatedDemos.map((d, i) => (
                     <tr key={d.id} className="hover:bg-slate-50/60 transition-colors">
-                      <td className="py-4 px-6 font-semibold text-slate-800 whitespace-nowrap">{d.full_name}</td>
-                      <td className="py-4 px-6 text-slate-600">{d.company_name}</td>
-                      <td className="py-4 px-6 text-slate-600">{d.work_email}</td>
-                      <td className="py-4 px-6 text-slate-500 whitespace-nowrap">{d.phone_number || "N/A"}</td>
-                      <td className="py-4 px-6 text-slate-500 max-w-[200px] truncate">{d.business_need || "N/A"}</td>
-                      <td className="py-4 px-6 text-slate-500 whitespace-nowrap">{d.created_at ? new Date(d.created_at).toLocaleDateString() : "N/A"}</td>
-                      <td className="py-4 px-6 whitespace-nowrap">
-                        <div className="flex items-center gap-1">
-                          <button onClick={() => setViewItem(d)} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="View Details"><Eye className="w-4 h-4" /></button>
-                          <button onClick={() => setDeleteItem(d)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="Delete"><Trash2 className="w-4 h-4" /></button>
+                      <td className="py-2 px-3 text-slate-400 font-medium text-[11px] border border-slate-200">
+                        {(currentPage - 1) * itemsPerPage + i + 1}
+                      </td>
+                      <td className="py-2 px-3 font-semibold text-slate-800 whitespace-nowrap border border-slate-200">{d.full_name}</td>
+                      <td className="py-2 px-3 text-slate-600 font-medium border border-slate-200">{d.company_name}</td>
+                      <td className="py-2 px-3 text-slate-600 font-medium border border-slate-200">{d.work_email}</td>
+                      <td className="py-2 px-3 text-slate-500 whitespace-nowrap border border-slate-200">{(d.country_code || "") + " " + (d.phone_number || "N/A")}</td>
+                      <td className="py-2 px-3 text-slate-500 max-w-[150px] truncate border border-slate-200">{d.business_need || "N/A"}</td>
+                      <td className="py-2 px-3 text-slate-500 whitespace-nowrap border border-slate-200">{d.created_at ? new Date(d.created_at).toLocaleDateString() : "N/A"}</td>
+                      <td className="py-2 px-3 whitespace-nowrap border border-slate-200">
+                        <div className="flex items-center gap-0.5">
+                          <button onClick={() => setViewItem(d)} className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-all cursor-pointer" title="View Details"><Eye className="w-3.5 h-3.5" /></button>
+                          <button onClick={() => setDeleteItem(d)} className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-all cursor-pointer" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
                         </div>
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="6" className="py-12 text-center text-slate-500">
+                    <td colSpan="8" className="py-8 text-center text-slate-500 border border-slate-200">
                       No blog demo requests found.
                     </td>
                   </tr>
@@ -141,27 +143,27 @@ export default function BlogsDemoDashboard() {
           
           {/* Pagination Controls */}
           {totalPages > 1 && (
-            <div className="mt-auto border-t border-slate-100 p-4 flex items-center justify-between bg-slate-50/50">
-              <span className="text-xs font-medium text-slate-500">
+            <div className="mt-auto border-t border-slate-200 p-3.5 flex items-center justify-between bg-slate-50/50">
+              <span className="text-[11px] font-medium text-slate-500">
                 Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredDemos.length)} of {filteredDemos.length} entries
               </span>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <button 
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="p-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  className="p-1 rounded-md border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <ChevronLeft className="w-3.5 h-3.5" />
                 </button>
-                <span className="text-sm font-semibold text-slate-700 px-2">
+                <span className="text-xs font-semibold text-slate-700 px-1">
                   Page {currentPage} of {totalPages}
                 </span>
                 <button 
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="p-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  className="p-1 rounded-md border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
@@ -171,25 +173,25 @@ export default function BlogsDemoDashboard() {
 
       {viewItem && (
         <Modal title="Blog Demo Request Details" onClose={() => setViewItem(null)}>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
               {[
                 ["Name", viewItem.full_name], 
                 ["Company", viewItem.company_name], 
                 ["Email", viewItem.work_email], 
-                ["Phone", viewItem.phone_number || "N/A"], 
+                ["Phone", (viewItem.country_code || "") + " " + (viewItem.phone_number || "N/A")], 
                 ["Date", viewItem.created_at ? new Date(viewItem.created_at).toLocaleString() : "N/A"]
               ].map(([k, v]) => (
-                <div key={k} className="bg-slate-50 p-3 rounded-xl">
-                  <p className="text-xs text-slate-400 uppercase font-bold mb-1">{k}</p>
-                  <p className="text-sm font-semibold text-slate-700">{v}</p>
+                <div key={k} className="bg-slate-50 p-2.5 rounded-lg">
+                  <p className="text-[10px] text-slate-400 uppercase font-bold mb-0.5">{k}</p>
+                  <p className="text-xs font-semibold text-slate-700">{v}</p>
                 </div>
               ))}
             </div>
             
-            <div className="bg-slate-50 p-4 rounded-xl">
-              <p className="text-xs text-slate-400 uppercase font-bold mb-2">Business Need</p>
-              <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-wrap">{viewItem.business_need || "N/A"}</p>
+            <div className="bg-slate-50 p-3 rounded-lg">
+              <p className="text-[10px] text-slate-400 uppercase font-bold mb-1.5">Business Need</p>
+              <p className="text-xs text-slate-600 leading-relaxed whitespace-pre-wrap">{viewItem.business_need || "N/A"}</p>
             </div>
           </div>
         </Modal>

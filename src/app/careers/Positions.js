@@ -84,16 +84,40 @@ export default function Positions() {
           const data = await res.json();
           const rawList = Array.isArray(data) ? data : (data?.data || []);
           
-          const activeJobs = rawList
+          const activeJobsRaw = rawList
             .filter(j => j.job_status?.toLowerCase() === "active" || j.job_status?.toLowerCase() === "published")
-            .sort((a, b) => b.id - a.id)
-            .map((j, idx) => ({
-              id: j.id,
-              title: j.job_title || "Untitled Position",
-              category: j.job_category || "Engineering",
-              tags: [j.job_location || "Remote", j.employment_type || "Full-Time", j.experience_level || "Entry Level"],
-              description: j.job_description ? (j.job_description.slice(0, 150) + "...") : "Join our team in this exciting role to help build the future of our platform.",
-            }));
+            .sort((a, b) => b.id - a.id);
+
+          const activeJobs = await Promise.all(
+            activeJobsRaw.map(async (j) => {
+              let desc = "Join our team in this exciting role to help build the future of our platform.";
+              try {
+                const descRes = await fetch(`https://poise-crouch-plating.ngrok-free.dev/jobs/${j.id}/description`, {
+                  headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "ngrok-skip-browser-warning": "true"
+                  }
+                });
+                if (descRes.ok) {
+                  const descData = await descRes.json();
+                  const actualDesc = descData.job_description || descData;
+                  if (actualDesc) {
+                    desc = actualDesc;
+                  }
+                }
+              } catch (e) {
+                console.error("Failed to fetch description for job", j.id);
+              }
+
+              return {
+                id: j.id,
+                title: j.job_title || "Untitled Position",
+                category: j.job_category || "Engineering",
+                tags: [j.job_location || "Remote", j.employment_type || "Full-Time", j.experience_level || "Entry Level"],
+                description: desc.length > 180 ? (desc.slice(0, 180) + "...") : desc,
+              };
+            })
+          );
 
           setPositionsData(activeJobs);
 

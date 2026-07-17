@@ -95,9 +95,9 @@ const HeroSection = () => {
                         <div
                             className="relative lg:absolute bottom-auto lg:bottom-32 xl:bottom-36 2xl:bottom-48 left-auto lg:left-20 mt-8 lg:mt-0 p-0 lg:p-1.5 lg:sm:p-2 lg:rounded-2xl border-none lg:border lg:border-white/20 lg:shadow-lg flex lg:inline-flex flex-row items-center justify-center gap-3 sm:gap-4 animate-fade-in z-20 self-center lg:self-start bg-transparent lg:bg-slate-100/90 lg:bg-white/70 lg:backdrop-blur-md w-full lg:w-auto"
                         >
-                            <button className="bg-[#2956E6] lg:bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-2.5 sm:px-8 sm:py-2.5 rounded-xl lg:rounded-2xl text-[14px] sm:text-[15px] lg:text-lg shadow-md transition-all active:scale-95 duration-150">
+                            <Link href="/contact" className="bg-[#2956E6] lg:bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-2.5 sm:px-8 sm:py-2.5 rounded-xl lg:rounded-2xl text-[14px] sm:text-[15px] lg:text-lg shadow-md transition-all active:scale-95 duration-150 whitespace-nowrap inline-block text-center">
                                 Let’s Start
-                            </button>
+                            </Link>
 
                             <Link href="/contact" className="border border-white lg:border-[#3E66F3]/70 hover:bg-white/10 lg:hover:bg-blue-600/10 text-white lg:text-[#3E66F3] font-medium px-5 py-2.5 sm:px-8 sm:py-2.5 rounded-xl lg:rounded-2xl text-[14px] sm:text-[15px] lg:text-lg transition-all active:scale-95 duration-150 whitespace-nowrap inline-block text-center">
                                 Partner with us

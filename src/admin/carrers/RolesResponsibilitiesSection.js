@@ -13,40 +13,43 @@ const parseInitialResponsibilities = (data) => {
   }
   
   if (!list || list.length === 0) {
-    return [{ id: Date.now(), title: "", description: "" }];
+    return [{ id: Date.now(), title: "", description: "", dbId: null }];
   }
   return list.map((item, i) => {
     if (typeof item === "string") {
-      return { id: i, title: item, description: "" };
+      return { id: i, title: item, description: "", dbId: null };
     }
     return {
       id: item.id || i,
       title: item.title || "",
-      description: item.description || ""
+      description: item.description || "",
+      dbId: item.id || null
     };
   });
 };
 
 export default function RolesResponsibilitiesSection({ isExpanded, onToggle, initialData, jobId, onSaveSection, isReadOnly = false }) {
   const [responsibilities, setResponsibilities] = useState(parseInitialResponsibilities(initialData));
-  const [sectionId, setSectionId] = useState(initialData?.id || null);
   const [isSaved, setIsSaved] = useState(!!initialData);
   const [isLoading, setIsLoading] = useState(false);
+  const [deletedRespIds, setDeletedRespIds] = useState([]);
 
   React.useEffect(() => {
     if (initialData) {
       setResponsibilities(parseInitialResponsibilities(initialData));
-      setSectionId(initialData.id || null);
       setIsSaved(true);
     }
   }, [initialData]);
 
   const addResponsibility = () => {
-    setResponsibilities([...responsibilities, { id: Date.now(), title: "", description: "" }]);
+    setResponsibilities([...responsibilities, { id: Date.now(), title: "", description: "", dbId: null }]);
     setIsSaved(false);
   };
 
-  const removeResponsibility = (id) => {
+  const removeResponsibility = (id, dbId) => {
+    if (dbId) {
+      setDeletedRespIds(prev => [...prev, dbId]);
+    }
     setResponsibilities(responsibilities.filter(r => r.id !== id));
     setIsSaved(false);
   };
@@ -70,31 +73,62 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
             "")
           : "";
 
-      const payload = {
-        responsibilities: responsibilities.map(r => ({
-          title: r.title.trim(),
-          description: r.description?.trim() || ""
-        }))
+      const headers = { 
+        "accept": "application/json", 
+        "Content-Type": "application/json", 
+        "Authorization": `Bearer ${token}` 
       };
 
-      let res;
-      if (sectionId) {
-        res = await axios.patch(`${API_BASE_URL}/jobs/${jobId}/responsibilities/${sectionId}`, payload, {
-          headers: { "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
-        });
-      } else {
-        res = await axios.post(`${API_BASE_URL}/jobs/${jobId}/responsibilities`, payload, {
-          headers: { "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
-        });
+      // 1. Delete removed responsibilities
+      if (deletedRespIds.length > 0) {
+        console.log("Deleting removed responsibilities:", deletedRespIds);
+        await Promise.all(
+          deletedRespIds.map(dbId =>
+            axios.delete(`${API_BASE_URL}/jobs/${jobId}/responsibilities/${dbId}`, { headers })
+          )
+        );
+        setDeletedRespIds([]);
       }
 
-      const updatedData = res.data;
-      if (updatedData?.id) setSectionId(updatedData.id);
-      
-      const newResps = parseInitialResponsibilities(updatedData);
-      setResponsibilities(newResps);
+      // 2. Save/Update current responsibilities
+      const savedResps = [];
+      await Promise.all(
+        responsibilities.map(async (r) => {
+          const payload = {
+            title: r.title.trim(),
+            description: r.description?.trim() || ""
+          };
+
+          if (r.dbId) {
+            console.log(`Updating responsibility ${r.dbId}...`, payload);
+            const res = await axios.patch(
+              `${API_BASE_URL}/jobs/${jobId}/responsibilities/${r.dbId}`,
+              payload,
+              { headers }
+            );
+            savedResps.push({ ...r, dbId: res.data?.id || r.dbId });
+          } else {
+            console.log("Creating new responsibility...", payload);
+            const res = await axios.post(
+              `${API_BASE_URL}/jobs/${jobId}/responsibilities`,
+              payload,
+              { headers }
+            );
+            savedResps.push({ ...r, id: res.data?.id || r.id, dbId: res.data?.id });
+          }
+        })
+      );
+
+      // Sort to preserve stable visual order
+      savedResps.sort((a, b) => {
+        const idxA = responsibilities.findIndex(r => r.id === a.id);
+        const idxB = responsibilities.findIndex(r => r.id === b.id);
+        return idxA - idxB;
+      });
+
+      setResponsibilities(savedResps);
       setIsSaved(true);
-      if (onSaveSection) onSaveSection('rolesAndResponsibilities', updatedData);
+      if (onSaveSection) onSaveSection('rolesAndResponsibilities', savedResps);
     } catch (err) {
       const details = err.response?.data?.detail;
       let errorMsg = "Failed to save roles & responsibilities to the server.";
@@ -136,7 +170,7 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
               {responsibilities.length > 1 && (
                 <button
                   type="button"
-                  onClick={() => removeResponsibility(resp.id)}
+                  onClick={() => removeResponsibility(resp.id, resp.dbId)}
                   className="absolute top-4 right-4 text-slate-400 hover:text-red-500 transition-colors p-1"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -194,4 +228,3 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
     </div>
   );
 }
-

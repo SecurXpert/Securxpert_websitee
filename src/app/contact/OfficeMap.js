@@ -19,8 +19,13 @@ const offices = [
   },
 ];
 
-export default function OfficeMap() {
-  const [activeOffice, setActiveOffice] = useState(offices[0]);
+export default function OfficeMap({ activeOfficeId: propActiveOfficeId, setActiveOfficeId: propSetActiveOfficeId }) {
+  const [localActiveOfficeId, setLocalActiveOfficeId] = useState(1);
+
+  const activeOfficeId = propActiveOfficeId !== undefined ? propActiveOfficeId : localActiveOfficeId;
+  const setActiveOfficeId = propSetActiveOfficeId !== undefined ? propSetActiveOfficeId : setLocalActiveOfficeId;
+
+  const activeOffice = offices.find(o => o.id === activeOfficeId) || offices[0];
 
   // Use the latitude and longitude to build the Google Maps embed URL
   const mapUrl = `https://maps.google.com/maps?q=${activeOffice.lat},${activeOffice.lng}&t=&z=15&ie=UTF-8&iwloc=&output=embed`;
@@ -32,8 +37,8 @@ export default function OfficeMap() {
         {offices.map((office) => (
           <button
             key={office.id}
-            onClick={() => setActiveOffice(office)}
-            className={`px-6 py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-md active:scale-95 ${activeOffice.id === office.id
+            onClick={() => setActiveOfficeId(office.id)}
+            className={`px-6 py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-md active:scale-95 ${activeOfficeId === office.id
                 ? "bg-[#3D62EB] text-white shadow-lg shadow-blue-500/30 hover:brightness-110"
                 : "bg-white text-slate-600 hover:text-[#3D62EB] hover:border-[#3D62EB]/30 hover:bg-slate-50 shadow-sm border border-slate-200"
               }`}

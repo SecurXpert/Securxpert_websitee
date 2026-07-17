@@ -173,7 +173,7 @@ export default function ViewCareer({ jobId, onBack }) {
                       {requirements.technical_skills.map((req, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-[15px] text-slate-600">
                           <span className="text-blue-500 font-bold">•</span>
-                          <span>{req.skill || req}</span>
+                          <span>{typeof req === 'object' ? (req.skill_name || req.skill || "") : req}</span>
                         </li>
                       ))}
                     </ul>
@@ -184,13 +184,13 @@ export default function ViewCareer({ jobId, onBack }) {
                 {requirements.soft_skills && requirements.soft_skills.length > 0 && (
                   <div>
                     <h3 className="font-semibold text-slate-800 mb-3 flex items-center gap-2">
-                      <span className="p-1 bg-slate-100 rounded-md">💬</span> Soft Skills
+                       <span className="p-1 bg-slate-100 rounded-md">💬</span> Soft Skills
                     </h3>
                     <ul className="space-y-2">
                       {requirements.soft_skills.map((req, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-[15px] text-slate-600">
                           <span className="text-emerald-500 font-bold">•</span>
-                          <span>{req.skill || req}</span>
+                          <span>{typeof req === 'object' ? (req.skill_name || req.skill || "") : req}</span>
                         </li>
                       ))}
                     </ul>

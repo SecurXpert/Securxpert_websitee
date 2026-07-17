@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export default function WhyChooseUs() {
     return (
@@ -18,12 +19,12 @@ export default function WhyChooseUs() {
                         </h3>
 
                         {/* CTA Button */}
-                        <button className="bg-black hover:bg-slate-900 text-white font-semibold tracking-wider text-xs sm:text-sm py-3.5 px-7 rounded-full flex items-center justify-center gap-2 cursor-pointer uppercase transition-all duration-300 w-fit mb-16 shadow-[0_6px_12px_rgba(0,0,0,0.08)]">
+                        <Link href="/about-us" className="bg-black hover:bg-slate-900 text-white font-semibold tracking-wider text-xs sm:text-sm py-3.5 px-7 rounded-full flex items-center justify-center gap-2 cursor-pointer uppercase transition-all duration-300 w-fit mb-16 shadow-[0_6px_12px_rgba(0,0,0,0.08)] text-center">
                             Learn More
                             <svg className="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                             </svg>
-                        </button>
+                        </Link>
 
                         {/* Feature Cards Stack */}
                         <div className="flex flex-col gap-5 max-w-sm w-full">

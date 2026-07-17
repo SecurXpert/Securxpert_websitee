@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { LuCheck, LuPhone } from "react-icons/lu";
-import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 
 export default function Hero() {
@@ -16,7 +16,7 @@ export default function Hero() {
           {/* Left Column: Heading */}
           <div className="w-full lg:w-[38%] flex flex-col items-start justify-center space-y-6  z-20 text-left">
             {/* Category Tag */}
-            <div className="inline-flex items-center gap-2.5 bg-[#0000000D] text-[#000000] px-5 py-2 rounded-[4px] border-l-4 border-[#3B30DB] text-xs sm:text-sm font-semibold tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2.5 bg-[#0000000D] text-[#000000] px-5 py-2 rounded-[4px] border-l-4 border-[#3B30DB] text-xs sm:text-sm font-semibold tracking-wide uppercase mt-8 sm:mt-0">
               <span className="w-2 h-2 rounded-full border border-[#3E66F3] bg-transparent" />
               ABOUT US
             </div>
@@ -30,7 +30,7 @@ export default function Hero() {
           </div>
 
           {/* Middle Column: Cutout Characters overlapping bottom */}
-          <div className="w-full lg:w-[42%] flex justify-center items-end relative z-30 -mb-24 sm:-mb-32 lg:-mb-[260px] xl:-mb-[380px] 2xl:-mb-[380px] mt-4 lg:mt-0">
+          <div className="w-full lg:w-[42%] flex justify-center items-end relative z-30 -mb-24 sm:-mb-32 lg:-mb-[260px] xl:-mb-[380px] 2xl:-mb-[380px] -mt-6 sm:mt-4 lg:mt-0">
             <img
               src="/about-us/Aboutus.png"
               alt="SecurXpert About Us Team"
@@ -43,7 +43,7 @@ export default function Hero() {
             {/* Get Started Button */}
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center text-white font-medium px-8 py-3.5 rounded-2xl text-base shadow-lg shadow-[#364CC4]/20 hover:scale-105 active:scale-95 transition-all duration-200"
+              className="inline-flex items-center justify-center text-white font-medium px-8 py-3.5 rounded-2xl text-base shadow-lg shadow-[#364CC4]/20 hover:scale-105 active:scale-95 transition-all duration-200 mt-12 sm:mt-0"
               style={{ background: "linear-gradient(180deg, #364CC4 0%, #2C2D89 100%)" }}
             >
               Get Started &rarr;
@@ -57,19 +57,25 @@ export default function Hero() {
             {/* Social Media Icons */}
             <div className="flex items-center gap-3">
               <a
-                href="#"
+                href="https://facebook.com/profile.php?id=61576099186187"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-[#3E66F3] hover:bg-[#4F46E5] text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-sm"
               >
                 <FaFacebookF className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/securxpert"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-[#3E66F3] hover:bg-[#4F46E5] text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-sm"
               >
-                <FaTwitter className="w-4 h-4" />
+                <FaInstagram className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/@securxpert"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-[#3E66F3] hover:bg-[#4F46E5] text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-sm"
               >
                 <FaYoutube className="w-4 h-4" />
