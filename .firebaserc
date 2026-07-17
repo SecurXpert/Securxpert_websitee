@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "website-fa625"
-  }
+    "default": "website-fa625",
+    "staging": "securxperts-website-5eda1"
+  },
+  "targets": {},
+  "etags": {}
 }

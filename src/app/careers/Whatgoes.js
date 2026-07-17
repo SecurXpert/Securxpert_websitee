@@ -29,7 +29,7 @@ export default function Whatgoes() {
             {/* Top Big Image (Landscape) */}
             <div className="w-full h-[250px] lg:h-[64%] overflow-hidden group">
               <img
-                src="/Carrers/whatgoeson/one.png"
+                src="/careers/whatgoeson/one.png"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 alt="Office workspace"
               />
@@ -38,14 +38,14 @@ export default function Whatgoes() {
             <div className="w-full h-[120px] lg:h-[36%] grid grid-cols-2 gap-3">
               <div className="w-full h-full overflow-hidden group">
                 <img
-                  src="/Carrers/whatgoeson/two.png"
+                  src="/careers/whatgoeson/two.png"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   alt="Colleague conversation"
                 />
               </div>
               <div className="w-full h-full overflow-hidden group">
                 <img
-                  src="/Carrers/whatgoeson/three.png"
+                  src="/careers/whatgoeson/three.png"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   alt="Workdesk concentration"
                 />
@@ -58,7 +58,7 @@ export default function Whatgoes() {
             {/* Top Image (Floral shirt woman) */}
             <div className="w-full h-[130px] lg:h-[33%] overflow-hidden group">
               <img
-                src="/Carrers/workplace/work.3.png"
+                src="/careers/workplace/work.3.png"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 alt="Meeting room discussion"
               />
@@ -66,7 +66,7 @@ export default function Whatgoes() {
             {/* Bottom Image (Patchwork lounge armchair) */}
             <div className="w-full h-[240px] lg:h-[67%] overflow-hidden group">
               <img
-                src="/Carrers/whatgoeson/four.png"
+                src="/careers/whatgoeson/four.png"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 alt="Patchwork armchair lounge"
               />
@@ -78,7 +78,7 @@ export default function Whatgoes() {
             {/* Full Height Tall Image (Maroon shirt colleague smiling) */}
             <div className="w-full h-[370px] lg:h-full overflow-hidden group">
               <img
-                src="/Carrers/whatgoeson/five.png"
+                src="/careers/whatgoeson/five.png"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 alt="Colleague smiling"
               />

@@ -18,6 +18,7 @@ export default function BlogDashboard() {
       const token = localStorage.getItem("access_token");
       const res = await fetch(API_BASE_URL + "/blogs/", {
         headers: {
+          "ngrok-skip-browser-warning": "true",
           ...(token && { "Authorization": `Bearer ${token}` })
         }
       });
@@ -39,7 +40,7 @@ export default function BlogDashboard() {
         setBlogs(formatted);
       }
     } catch (err) {
-      console.error("Failed to fetch blogs", err);
+      console.warn("Failed to fetch blogs", err);
     }
   };
 
@@ -57,7 +58,10 @@ export default function BlogDashboard() {
       const token = localStorage.getItem("access_token");
       const res = await fetch(`${API_BASE_URL}/blogs/${deleteItem.id}/all`, {
         method: "DELETE",
-        headers: { ...(token && { "Authorization": `Bearer ${token}` }) }
+        headers: { 
+          "ngrok-skip-browser-warning": "true",
+          ...(token && { "Authorization": `Bearer ${token}` }) 
+        }
       });
       if (res.ok) {
         setBlogs(p => p.filter(b => b.id !== deleteItem.id));

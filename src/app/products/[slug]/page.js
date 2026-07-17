@@ -105,7 +105,7 @@ export default async function ProductDetailPage({ params }) {
           {/* Metadata Row */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-white/90">
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
-              <span className="text-sm font-medium  tracking-wider opacity-60">Industries</span>
+              <span className="text-sm font-medium  tracking-wider opacity-60">Industry</span>
               <span className="text-sm sm:text-[15px] font-medium">{product.industry}</span>
             </div>
             <div className="flex flex-col gap-1.5 border-l border-white/20 pl-4">
@@ -178,12 +178,12 @@ export default async function ProductDetailPage({ params }) {
       <section className="relative w-full bg-white overflow-hidden  pb-8 lg:py-8 text-slate-800">
         {/* Background Wave Shapes */}
         <img
-          src="/BPO/AboutUs/aboutus3.svg"
+          src="/bpo/about-us/aboutus3.svg"
           alt="Bottom Right Wave"
           className="absolute right-10 bottom-5 h-[50px] w-auto pointer-events-none select-none z-0 hidden lg:block"
         />
         <img
-          src="/BPO/AboutUs/aboutus3.svg"
+          src="/bpo/about-us/aboutus3.svg"
           alt="Top Left Wave"
           className="absolute left-20 top-50 h-[50px] w-auto pointer-events-none select-none z-0 hidden lg:block"
         />
@@ -213,7 +213,7 @@ export default async function ProductDetailPage({ params }) {
                   className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-5 sm:p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-transparent hover:border-transparent hover:bg-[#3D62EB] group z-10"
                 >
                   <img
-                    src={product.bannerImage || product.image || "/BPO/FeauturedServices/Business Audit.jpg.jpeg"}
+                    src={product.bannerImage || product.image || "/bpo/FeauturedServices/Business Audit.jpg.jpeg"}
                     alt="Hover Background"
                     className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none select-none z-0"
                   />

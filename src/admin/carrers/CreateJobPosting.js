@@ -21,7 +21,7 @@ import JobDescriptionSection from "./JobDescriptionSection";
 import RolesResponsibilitiesSection from "./RolesResponsibilitiesSection";
 import RequirementsSection from "./RequirementsSection";
 
-export default function CreateJobPosting({ job, onSave, onCancel }) {
+export default function CreateJobPosting({ job, onSave, onCancel, isReadOnly = false }) {
   const [jobData, setJobData] = useState(job || {
     id: "",
     basicInfo: null,
@@ -58,7 +58,10 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
               localStorage.getItem("token") ||
               "")
             : "";
-        const headers = { "Authorization": `Bearer ${token}` };
+        const headers = { 
+          "Authorization": `Bearer ${token}`,
+          "ngrok-skip-browser-warning": "true"
+        };
 
         // We fetch the basic info to get all fields accurately instead of relying on the dashboard's table mapping
         let basicInfo = job.basicInfo || null;
@@ -82,32 +85,41 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
             };
           }
         } catch (e) {
-          console.error("Failed to fetch basic info:", e);
+          // ignore basic info fetch error if relying on table data
         }
 
+        const axiosConfig = { headers, validateStatus: (status) => status < 500 }; // Prevent 404 from throwing a loud console error
+
         let hero = null;
-        try {
-          const resHero = await axios.get(`${API_BASE_URL}/jobs/${job.id}/hero-section`, { headers });
-          if (resHero.data) hero = resHero.data;
-        } catch (e) { console.log("No hero section found"); }
+        const resHero = await axios.get(`${API_BASE_URL}/jobs/${job.id}/hero-section`, axiosConfig);
+        if (resHero.status === 200 && resHero.data) hero = resHero.data;
 
         let jobDescription = "";
-        try {
-          const resDesc = await axios.get(`${API_BASE_URL}/jobs/${job.id}/description`, { headers });
-          if (resDesc.data) jobDescription = resDesc.data.job_description || resDesc.data;
-        } catch (e) { console.log("No job description found"); }
+        const resDesc = await axios.get(`${API_BASE_URL}/jobs/${job.id}/description`, axiosConfig);
+        if (resDesc.status === 200 && resDesc.data) jobDescription = resDesc.data.job_description || resDesc.data;
 
         let rolesAndResponsibilities = null;
-        try {
-          const resRoles = await axios.get(`${API_BASE_URL}/jobs/${job.id}/responsibilities`, { headers });
-          if (resRoles.data) rolesAndResponsibilities = resRoles.data;
-        } catch (e) { console.log("No roles found"); }
+        const resRoles = await axios.get(`${API_BASE_URL}/jobs/${job.id}/responsibilities`, axiosConfig);
+        if (resRoles.status === 200 && resRoles.data) rolesAndResponsibilities = resRoles.data;
 
         let requirements = null;
-        try {
-          const resReq = await axios.get(`${API_BASE_URL}/jobs/${job.id}/requirements`, { headers });
-          if (resReq.data) requirements = resReq.data;
-        } catch (e) { console.log("No requirements found"); }
+        const resReq = await axios.get(`${API_BASE_URL}/jobs/${job.id}/requirements`, axiosConfig);
+        if (resReq.status === 200 && resReq.data) requirements = resReq.data;
+
+        let qualificationsData = "";
+        const resQuals = await axios.get(`${API_BASE_URL}/jobs/${job.id}/qualifications`, axiosConfig);
+        if (resQuals.status === 200 && resQuals.data) {
+          qualificationsData = resQuals.data.preferred_qualifications || resQuals.data.qualifications || resQuals.data;
+        }
+
+        let mergedRequirements = null;
+        if (requirements || qualificationsData) {
+          mergedRequirements = {
+            techSkills: Array.isArray(requirements) ? requirements.filter(r => r.skill_type === 'technical') : (requirements?.techSkills || []),
+            softSkills: Array.isArray(requirements) ? requirements.filter(r => r.skill_type === 'soft') : (requirements?.softSkills || []),
+            qualifications: qualificationsData
+          };
+        }
 
         setJobData(prev => ({
           ...prev,
@@ -115,7 +127,7 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
           hero,
           jobDescription,
           rolesAndResponsibilities,
-          requirements
+          requirements: mergedRequirements
         }));
       } catch (err) {
         console.error("Error fetching job details:", err);
@@ -205,7 +217,8 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
         headers: {
           "accept": "application/json",
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          "Authorization": `Bearer ${token}`,
+          "ngrok-skip-browser-warning": "true"
         }
       });
 
@@ -241,46 +254,70 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
           </button>
           <div className="flex flex-col">
             <h1 className="text-[18px] font-bold text-[#1E1B4B] leading-tight">
-              {job ? "Edit Job Posting" : "Create Job Posting"}
+              {isReadOnly ? "View Job Posting" : (job ? "Edit Job Posting" : "Create Job Posting")}
             </h1>
             <span className="text-[12px] text-slate-500">SecurXpert Technologies</span>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => handlePublish("Draft")}
-            className="text-[13px] font-medium text-[#64748B] hover:text-[#2c286b] transition-colors px-3"
-          >
-            Save Draft
-          </button>
-          <button className="px-4 py-2 text-[13px] font-medium bg-white border border-[#E2E8F0] text-[#2B0A5A] rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2 shadow-sm">
-            <Eye className="w-4 h-4" />
-            Show Preview
-          </button>
-          <button className="px-4 py-2 text-[13px] font-medium bg-white border border-[#E2E8F0] text-[#2B0A5A] rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2 shadow-sm">
-            <Calendar className="w-4 h-4" />
-            Schedule
-          </button>
-          <button
-            onClick={() => handlePublish("Published")}
-            className="px-5 py-2 text-[13px] font-medium bg-[#2B0A5A] text-white rounded-lg hover:bg-[#2c286b] transition-colors shadow-md"
-          >
-            Publish Job
-          </button>
+          {!isReadOnly && (
+            <>
+              <button
+                onClick={() => handlePublish("Draft")}
+                className="text-[13px] font-medium text-[#64748B] hover:text-[#2c286b] transition-colors px-3"
+              >
+                Save Draft
+              </button>
+              <button className="px-4 py-2 text-[13px] font-medium bg-white border border-[#E2E8F0] text-[#2B0A5A] rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2 shadow-sm">
+                <Eye className="w-4 h-4" />
+                Show Preview
+              </button>
+              <button className="px-4 py-2 text-[13px] font-medium bg-white border border-[#E2E8F0] text-[#2B0A5A] rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2 shadow-sm">
+                <Calendar className="w-4 h-4" />
+                Schedule
+              </button>
+              <button
+                onClick={() => handlePublish("Published")}
+                className="px-5 py-2 text-[13px] font-medium bg-[#2B0A5A] text-white rounded-lg hover:bg-[#2c286b] transition-colors shadow-md"
+              >
+                Publish Job
+              </button>
+            </>
+          )}
         </div>
       </header>
 
       {/* Main Layout */}
       <div className="flex-1 flex max-w-4xl mx-auto w-full p-6 lg:p-8 items-start justify-center">
 
+        {isReadOnly && (
+          <style>{`
+            .read-only-job-form input,
+            .read-only-job-form textarea,
+            .read-only-job-form select {
+              pointer-events: none !important;
+              background-color: #f8fafc !important;
+              color: #64748b !important;
+            }
+            .read-only-job-form .w-11.h-6.rounded-full {
+              pointer-events: none !important;
+            }
+            .read-only-job-form .lucide-trash2,
+            .read-only-job-form .lucide-plus {
+              display: none !important;
+            }
+          `}</style>
+        )}
+
         {/* Form Area */}
-        <main className="w-full flex flex-col gap-6">
+        <main className={`w-full flex flex-col gap-6 ${isReadOnly ? 'read-only-job-form' : ''}`}>
           <BasicInfoSection
             isExpanded={expandedSections.basicInfo}
             onToggle={() => toggleSection('basicInfo')}
             initialData={jobData.basicInfo}
             onSaveSection={handleSaveSection}
+            isReadOnly={isReadOnly}
           />
 
           <HeroSectionBuilder
@@ -289,6 +326,7 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
             initialData={jobData.hero}
             jobId={jobData.id}
             onSaveSection={handleSaveSection}
+            isReadOnly={isReadOnly}
           />
 
           <JobDescriptionSection
@@ -297,6 +335,7 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
             initialData={jobData.jobDescription}
             jobId={jobData.id}
             onSaveSection={handleSaveSection}
+            isReadOnly={isReadOnly}
           />
 
           <RolesResponsibilitiesSection
@@ -305,6 +344,7 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
             initialData={jobData.rolesAndResponsibilities}
             jobId={jobData.id}
             onSaveSection={handleSaveSection}
+            isReadOnly={isReadOnly}
           />
 
           <RequirementsSection
@@ -313,6 +353,7 @@ export default function CreateJobPosting({ job, onSave, onCancel }) {
             initialData={jobData.requirements}
             jobId={jobData.id}
             onSaveSection={handleSaveSection}
+            isReadOnly={isReadOnly}
           />
         </main>
       </div>

@@ -42,7 +42,7 @@ const mapJobStatus = (status) => {
   return "Draft";
 };
 
-export default function BasicInfoSection({ isExpanded, onToggle, initialData, onSaveSection }) {
+export default function BasicInfoSection({ isExpanded, onToggle, initialData, onSaveSection, isReadOnly = false }) {
   const [formData, setFormData] = useState(initialData || {
     id: "",
     jobTitle: "",
@@ -193,7 +193,7 @@ export default function BasicInfoSection({ isExpanded, onToggle, initialData, on
           </div>
 
           <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
-            <button
+            {!isReadOnly && <button
               onClick={handleSave}
               disabled={!isFormValid || isLoading}
               className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 ${isFormValid && !isLoading
@@ -202,10 +202,11 @@ export default function BasicInfoSection({ isExpanded, onToggle, initialData, on
                 }`}
             >
               {isLoading ? "Saving..." : isSaved ? <><CheckCircle2 className="w-4 h-4" />Saved</> : "Save Section"}
-            </button>
+            </button>}
           </div>
         </div>
       )}
     </div>
   );
 }
+

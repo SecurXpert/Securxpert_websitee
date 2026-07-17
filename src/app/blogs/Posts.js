@@ -19,7 +19,7 @@ export default function Posts() {
                     {/* LEFT COLUMN: Large Featured Blog */}
                     <div className="flex flex-col group cursor-pointer">
                         <img
-                            src="/Blogs/BlogPosts/Image (1).png"
+                            src="/blogs/BlogPosts/Image (1).png"
                             alt="UX review presentations"
                             className="w-full h-[240px] sm:h-[250px] object-cover shadow-sm border border-slate-100 transition-transform duration-500 group-hover:scale-[1.005]"
                         />
@@ -59,7 +59,7 @@ export default function Posts() {
                         {/* Right Post Card 1 */}
                         <div className="flex flex-col sm:flex-row gap-6 group cursor-pointer">
                             <img
-                                src="/Blogs/BlogPosts/Image (2).png"
+                                src="/blogs/BlogPosts/Image (2).png"
                                 alt="Migrating to Linear 101"
                                 className="w-full sm:w-[360px] h-[220px] object-cover  flex-shrink-0 shadow-sm border border-slate-100 transition-transform duration-500 group-hover:scale-[1.005]"
                             />
@@ -94,7 +94,7 @@ export default function Posts() {
                         {/* Right Post Card 2 */}
                         <div className="flex flex-col sm:flex-row gap-6 group cursor-pointer">
                             <img
-                                src="/Blogs/BlogPosts/Image (3).png"
+                                src="/blogs/BlogPosts/Image (3).png"
                                 alt="Building your API Stack"
                                 className="w-full sm:w-[360px] h-[220px] object-cover  flex-shrink-0 shadow-sm border border-slate-100 transition-transform duration-500 group-hover:scale-[1.005]"
                             />
@@ -135,7 +135,7 @@ export default function Posts() {
                     
                     {/* Left Side: Image */}
                     <img
-                        src="/Blogs/BlogPosts/Image (4).png"
+                        src="/blogs/BlogPosts/Image (4).png"
                         alt="Grid system for better Design User Interface"
                         className="w-full lg:w-[590px] h-[240px] lg:h-[280px] object-cover shadow-sm border border-slate-100 transition-transform duration-500 group-hover:scale-[1.005] flex-shrink-0"
                     />

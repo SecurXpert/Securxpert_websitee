@@ -8,7 +8,7 @@ export default function Hero() {
 
     const slides = [
         {
-            subheading: "EMPOWERING DIGITAL TRANSFORMATION",
+            subheading: "EMPOWERING DIGITAL TRANSFORMATION", 
             headingLine1: "TECH",
             headingLine2: "CONSULTING",
             btn1Text: "About Company",

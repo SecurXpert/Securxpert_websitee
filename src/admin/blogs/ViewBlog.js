@@ -42,6 +42,7 @@ export default function ViewBlog({ blogId, onBack }) {
         const token = localStorage.getItem("access_token");
         const res = await fetch(`${API_BASE_URL}/blogs/${blogId}/all`, {
           headers: {
+            "ngrok-skip-browser-warning": "true",
             ...(token && { "Authorization": `Bearer ${token}` })
           }
         });

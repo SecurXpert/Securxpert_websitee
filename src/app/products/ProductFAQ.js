@@ -12,7 +12,7 @@ export default function ProductFAQ() {
       answer: "AI isn't here to replace human creativity but it can amplify it and take it even further. So whether you're creating fanart of your favorite anime. Effortlessly creates.",
     },
     {
-      question: "What is the cost of this platform?",
+      question: "What is the cost of this platform?", 
       answer: "Our pricing scales with your business needs. Please reach out to our sales team for a custom quote tailored exactly to your requirements.",
     },
     {

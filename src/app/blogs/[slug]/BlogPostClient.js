@@ -134,7 +134,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                     } catch (e) { }
                 }
 
-                let bannerUrl = "/Blogs/AllPosts/Image (5).png";
+                let bannerUrl = "/blogs/AllPosts/Image (5).png";
                 const bannerPath = heroData.hero_banner_url || heroData.hero_banner || matchedBlog.hero_banner;
                 if (bannerPath) {
                     bannerUrl = (bannerPath.startsWith("http://") || bannerPath.startsWith("https://"))
@@ -142,7 +142,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                         : `http://192.168.0.125:8000${bannerPath}`;
                 }
 
-                let authorAvatarUrl = "/Blogs/AllPosts/Image (5).png";
+                let authorAvatarUrl = "/blogs/AllPosts/Image (5).png";
                 const authorAvatarPath = heroData.author_image_url || heroData.author_image;
                 if (authorAvatarPath) {
                     authorAvatarUrl = (authorAvatarPath.startsWith("http://") || authorAvatarPath.startsWith("https://"))
@@ -249,7 +249,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 <div className="relative px-6 md:px-20 pt-28 sm:pt-35 pb-20 sm:pb-20 flex flex-col justify-center bg-gradient-to-r from-[#172E9D] to-[#2541C5] md:bg-none rounded-[24px] overflow-hidden">
                     {/* Background Image Graphic */}
                     <img
-                        src="/Blogs/hero/blogs-herobg.png"
+                        src="/blogs/hero/blogs-herobg.png"
                         alt="Blog Hero Background"
                         className="hidden md:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-6 md:mt-6 rounded-[24px]"
                     />

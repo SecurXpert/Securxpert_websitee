@@ -1,15 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
+import { API_BASE_URL } from "@/admin/config";
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 export default function Appointment() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    countryCode: "+91",
     serviceType: "",
     message: ""
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const handlesubmit = async (e) => {
     e.preventDefault();
@@ -21,29 +26,33 @@ export default function Appointment() {
     }
 
     try {
-      const res = await fetch("http://192.168.0.125:8000/book-appointment/", {
+      const res = await fetch(`${API_BASE_URL}/book-appointment/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "true"
         },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          phone_number: formData.phone,
+          country_code: formData.countryCode,
+          phone_number: formData.phone.replace(formData.countryCode, "") || formData.phone,
           service_type: formData.serviceType,
           message: formData.message || "No message provided",
         }),
       });
 
       if (res.ok) {
-        alert("Form submitted successfully! We will contact you soon.");
+        setSubmitted(true);
         setFormData({
           name: "",
           email: "",
           phone: "",
+          countryCode: "+91",
           serviceType: "",
           message: ""
         });
+        setTimeout(() => setSubmitted(false), 7000);
       } else {
         const errorData = await res.json();
         alert("Failed to submit form: " + (errorData.detail?.[0]?.msg || "Please try again."));
@@ -61,71 +70,86 @@ export default function Appointment() {
         {/* LIGHT CARD BLOCK CONTAINER */}
         <div className="w-full bg-[#F7F9FB] rounded-[16px] p-8 sm:p-12 md:p-14 border border-slate-100/50">
 
-          <form onSubmit={handlesubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-
-            {/* COLUMN 1: TITLE AND INTRO (Takes 4 cols) */}
-            <div className="lg:col-span-4 text-left pt-2 relative z-10 pr-0 lg:pr-6">
-              <h3 className="text-[#100D35] text-2xl sm:text-3xl font-semibold leading-[1.2] font-inter mb-4">
-                Book a Appointment
+          {submitted ? (
+            <div className="text-center py-10 md:py-16 space-y-6 max-w-lg mx-auto flex flex-col items-center justify-center">
+              <div className="text-6xl animate-bounce">😊</div>
+              <h3 className="text-[#100D35] text-2xl sm:text-3xl font-semibold font-inter">
+                Thanks for contacting us.
               </h3>
-              <p className="text-[#555555] text-sm sm:text-[15px] leading-relaxed font-normal max-w-sm">
-                Tell us a bit about what you need handled, and we'll get back to you within one business day with next steps.
+              <p className="text-[#555555] text-sm sm:text-base leading-relaxed font-normal">
+                We've received your message and will be in touch soon.
               </p>
             </div>
+          ) : (
+            <form onSubmit={handlesubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-            {/* COLUMN 2: ALL FORM INPUTS (Takes 8 cols, divided into 2 horizontal sub-columns) */}
-            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* COLUMN 1: TITLE AND INTRO (Takes 4 cols) */}
+              <div className="lg:col-span-4 text-left pt-2 relative z-10 pr-0 lg:pr-6">
+                <h3 className="text-[#100D35] text-2xl sm:text-3xl font-semibold leading-[1.2] font-inter mb-4">
+                  Book a Appointment
+                </h3>
+                <p className="text-[#555555] text-sm sm:text-[15px] leading-relaxed font-normal max-w-sm">
+                  Tell us a bit about what you need handled, and we'll get back to you within one business day with next steps.
+                </p>
+              </div>
 
-              {/* Form Sub-Column A: Name, Email, Phone, and Submit */}
-              <div className="space-y-6">
+              {/* COLUMN 2: ALL FORM INPUTS (Takes 8 cols, divided into 2 horizontal sub-columns) */}
+              <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                {/* Name Field */}
-                <div className="flex flex-col">
-                  <label className="text-slate-800 text-[13px] font-semibold tracking-wider mb-2 font-inter">
-                    NAME *
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="John Smith"
-                    className="w-full bg-transparent border-b border-slate-200 hover:border-blue-900 focus:border-blue-900 focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans transition-all"
-                    required
-                  />
-                </div>
+                {/* Form Sub-Column A: Name, Email, Phone, and Submit */}
+                <div className="space-y-6">
 
-                {/* Email Field */}
-                <div className="flex flex-col">
-                  <label className="text-slate-800 text-[13px] font-semibold tracking-wider mb-2 font-inter">
-                    EMAIL *
-                  </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="john@example.com"
-                    className="w-full bg-transparent border-b border-slate-200 hover:border-slate-400 focus:border-[#3D62EB] focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans transition-all"
-                    required
-                  />
-                </div>
+                  {/* Name Field */}
+                  <div className="flex flex-col">
+                    <label className="text-slate-800 text-[13px] font-semibold tracking-wider mb-2 font-inter">
+                      NAME *
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="John Smith"
+                      className="w-full bg-transparent border-b border-slate-200 hover:border-blue-900 focus:border-blue-900 focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans transition-all"
+                      required
+                    />
+                  </div>
 
-                {/* Phone Field */}
-                <div className="flex flex-col">
-                  <label className="text-slate-800 text-[13px] font-semibold tracking-wider mb-2 font-inter">
-                    PHONE NUMBER *
-                  </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => {
-                      const val = e.target.value.replace(/\D/g, '').slice(0, 10);
-                      setFormData({ ...formData, phone: val });
+                  {/* Email Field */}
+                  <div className="flex flex-col">
+                    <label className="text-slate-800 text-[13px] font-semibold tracking-wider mb-2 font-inter">
+                      EMAIL * 
+                    </label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="john@example.com"
+                      className="w-full bg-transparent border-b border-slate-200 hover:border-slate-400 focus:border-[#3D62EB] focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans transition-all"
+                      required
+                    />
+                  </div>
+
+                  {/* Phone Field */}
+                  <div className="flex flex-col">
+                    <label className="text-slate-800 text-[13px] font-semibold tracking-wider mb-2 font-inter">
+                      PHONE NUMBER *
+                    </label>
+                    <PhoneInput
+                      defaultCountry="in"
+                      value={formData.phone || ""}
+                      onChange={(phone, meta) => setFormData({ ...formData, phone, countryCode: meta?.country?.dialCode ? `+${meta.country.dialCode}` : "+91" })}
+                      placeholder="Enter phone number"
+                      inputClassName="!w-full !bg-transparent !py-2 !text-sm !font-semibold !text-slate-800 placeholder-slate-400 focus:!outline-none font-sans !border-none !ring-0"
+                      className="flex items-center w-full bg-transparent border-b border-slate-200 hover:border-slate-400 focus-within:border-[#3D62EB] transition-all"
+                      countrySelectorStyleProps={{
+                        buttonClassName: "!bg-transparent !py-2 !pr-2 !text-sm !font-semibold !text-slate-800 !h-full !border-none",
+                        dropdownStyleProps: {
+                          className: "!z-50",
+                          style: {
+                            width: "250px"
+                        }
+                      }
                     }}
-                    pattern="[0-9]{10}"
-                    maxLength="10"
-                    placeholder="1234567890"
-                    title="Please enter exactly 10 digits"
-                    className="w-full bg-transparent border-b border-slate-200 hover:border-slate-400 focus:border-[#3D62EB] focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans transition-all"
                     required
                   />
                 </div>
@@ -183,7 +207,7 @@ export default function Appointment() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Type here..."
-                    className="w-full bg-transparent border-b border-slate-200 hover:border-slate-400 focus:border-[#3D62EB] focus:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans resize-none min-h-[96px] transition-all"
+                    className="w-full bg-transparent border-b border-slate-200 hover:border-slate-400 focus:border-[#3D62EB] focus-within:border-b-2 focus:outline-none pb-2 text-sm text-slate-800 placeholder-slate-400 font-sans resize-none min-h-[96px] transition-all"
                   />
                 </div>
 
@@ -202,6 +226,7 @@ export default function Appointment() {
             </div>
 
           </form>
+          )}
 
         </div>
 

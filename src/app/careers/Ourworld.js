@@ -8,7 +8,7 @@ const testimonials = [
     id: 1,
     name: "James Olson",
     role: "Product Designer",
-    image: "/Carrers/ourworld/james.png",
+    image: "/careers/ourworld/james.png",
     quote: "I do admire the company culture and, I like that. Visioncraft is truly the place where good attitudes have blended with proficiency. If you're going to craft something great and you have a strong eagerness to do that, Visioncraft will remove all hassles in your journey.",
     linkedin: "https://linkedin.com/",
   },
@@ -16,7 +16,7 @@ const testimonials = [
     id: 2,
     name: "Marcus Vance",
     role: "Frontend Developer",
-    image: "/Carrers/ourworld/bearded.png",
+    image: "/careers/ourworld/bearded.png",
     quote: "Collaborating with such a talented group of engineers has elevated my work to new heights. The focus on continuous learning and the support for creative problem-solving makes every day exciting and rewarding.",
     linkedin: "https://linkedin.com/",
   },
@@ -24,7 +24,7 @@ const testimonials = [
     id: 3,
     name: "David Kim",
     role: "Security Analyst",
-    image: "/Carrers/ourworld/man_asian.png",
+    image: "/careers/ourworld/man_asian.png",
     quote: "At SecurXpert, security isn't just a department—it's in our DNA. We are given the autonomy to design robust architectures and implement cutting-edge defense mechanisms. It's the ultimate playground for security specialists.",
     linkedin: "https://linkedin.com/",
   },
@@ -32,7 +32,7 @@ const testimonials = [
     id: 4,
     name: "Aaliyah Jackson",
     role: "DevSecOps Lead",
-    image: "/Carrers/ourworld/woman_glasses.png",
+    image: "/careers/ourworld/woman_glasses.png",
     quote: "The remote-first culture is implemented flawlessly here. We have seamless communication, high trust, and state-of-the-art tools that allow us to deploy secure software globally without any friction.",
     linkedin: "https://linkedin.com/",
   },
@@ -40,7 +40,7 @@ const testimonials = [
     id: 5,
     name: "Elena Rodriguez",
     role: "Backend Engineer",
-    image: "/Carrers/ourworld/james.png",
+    image: "/careers/ourworld/james.png",
     quote: "The challenges we tackle here are genuinely complex and push you to grow. Leadership is incredibly supportive, constantly ensuring we have the resources needed to build scalable and highly reliable systems.",
     linkedin: "https://linkedin.com/",
   },
@@ -48,7 +48,7 @@ const testimonials = [
     id: 6,
     name: "Michael Chen",
     role: "Cloud Architect",
-    image: "/Carrers/ourworld/man_asian.png",
+    image: "/careers/ourworld/man_asian.png",
     quote: "I’ve never worked anywhere else where innovation is so deeply ingrained in everyday tasks. We are encouraged to experiment, fail fast, and eventually deploy transformative cloud solutions.",
     linkedin: "https://linkedin.com/",
   },
@@ -154,7 +154,7 @@ export default function Ourworld() {
                 {/* Large Quote Mark Image */}
                 <div className="flex-shrink-0 mt-1">
                   <img 
-                    src="/Carrers/ourworld/quotes.png"
+                    src="/careers/ourworld/quotes.png"
                     alt="Quote Mark"
                     className="w-[46px] h-[50px] opacity-30"        
                   />

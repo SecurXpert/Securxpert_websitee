@@ -11,16 +11,16 @@ export async function generateStaticParams() {
     const guestEmail = "guest_visitor_securxpert@gmail.com";
     const guestPassword = "VisitorPass123";
     
-    const loginRes = await axios.post('http://192.168.0.125:8000/auth/login', {
+    const loginRes = await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/login', {
       email: guestEmail,
       password: guestPassword
-    });
+    }, { headers: { "ngrok-skip-browser-warning": "true" } });
     
     if (loginRes.status === 200) {
       const token = loginRes.data?.access_token;
       
-      const jobsRes = await axios.get("http://192.168.0.125:8000/jobs/", {
-        headers: { "Authorization": `Bearer ${token}` }
+      const jobsRes = await axios.get("https://poise-crouch-plating.ngrok-free.dev/jobs/", {
+        headers: { "Authorization": `Bearer ${token}`, "ngrok-skip-browser-warning": "true" }
       });
       
       if (jobsRes.status === 200) {

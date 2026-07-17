@@ -11,48 +11,56 @@ export default function HomeServices() {
             desc: "Custom web, mobile, and enterprise applications built to scale with your business.",
             img: "/Home/OurServices/Services.1.png",
             gridClass: "md:col-span-7 aspect-[16/9.5] w-full",
+            slug: "software-development",
         },
         {
             title: "AI Automation",
             desc: "Smart chatbots and workflow automation that cut manual work and response times. ",
             img: "/Home/OurServices/Services.2.png",
             gridClass: "md:col-span-5 aspect-[16/13.3] w-full",
+            slug: "ai-chatbots",
         },
         {
             title: "Cloud & Devops",
             desc: "Migration, management, and cost optimisation across AWS, Azure, and GCP. ",
             img: "/Home/OurServices/Services.3.png",
             gridClass: "md:col-span-5 aspect-[16/11.5] w-full",
+            slug: "cloud-services",
         },
         {
             title: "CyberSecurity",
             desc: "Penetration testing, threat monitoring, and compliance for GDPR, HIPAA, and ISO 27001. ",
             img: "/Home/OurServices/Services.4.png",
             gridClass: "md:col-span-4 aspect-[16/14.5] w-full",
+            slug: "cybersecurity",
         },
         {
             title: "Managed IT Services",
             desc: "24/7 help desk, network management, and proactive monitoring with SLA-backed response times. ",
             img: "/Home/OurServices/Services.5.png",
             gridClass: "md:col-span-3 aspect-[16/19.5] w-full",
+            slug: "it-support",
         },
         {
             title: "UI/UX Design",
             desc: "Research-led design systems and prototypes that turn visitors into customers. ",
             img: "/Home/OurServices/Services.6.png",
             gridClass: "md:col-span-4 aspect-[16/14.5] w-full",
+            slug: "ui-ux-design",
         },
         {
             title: "IT Staffing",
             desc: "Pre-vetted technical talent, deployed fast, for teams that need to scale without the hiring overhead. ",
             img: "/Home/OurServices/Services.7.png",
             gridClass: "md:col-span-8 aspect-[16/7.2] w-full",
+            slug: "bpo-services",
         },
         {
             title: "Digital Marketing",
             desc: "SEO, paid media, and content strategy built to compound, not just spike. ",
             img: "/Home/OurServices/Services.8.png",
             gridClass: "md:col-span-12 aspect-[16/4.2] w-full",
+            slug: "digital-marketing",
         },
     ];
 
@@ -88,8 +96,9 @@ export default function HomeServices() {
             <div className="relative max-w-[1540px] mx-auto px-8 md:px-20 z-10">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
                     {services.map((service, index) => (
-                        <div
+                        <Link
                             key={index}
+                            href={`/services/${service.slug}`}
                             className={`group relative rounded-3xl overflow-hidden cursor-pointer mobile-services-aspect ${service.gridClass}`}
                         >
                             <img
@@ -111,7 +120,7 @@ export default function HomeServices() {
 
                             {/* HOVER OVERLAY (The Reverse Card State matching the mockup image) */}
                             <div
-                                className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out transform scale-95 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto"
+                                className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out transform scale-95 group-hover:scale-100"
                                 style={{ background: "linear-gradient(180deg, #302C8C 0%, #3E66F3 100%)" }}
                             >
                                 <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-3">
@@ -120,11 +129,11 @@ export default function HomeServices() {
                                 <p className="text-[13px] sm:text-[14px] text-white/90 max-w-[85%] mb-6 leading-relaxed">
                                     {service.desc}
                                 </p>
-                                <button className="bg-white text-[#302C8C] font-semibold px-6 py-2.5 rounded-full text-sm shadow-md hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer">
+                                <div className="bg-white text-[#302C8C] font-semibold px-6 py-2.5 rounded-full text-sm shadow-md hover:scale-105 active:scale-95 transition-all duration-150">
                                     Read More
-                                </button>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 

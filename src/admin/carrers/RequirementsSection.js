@@ -17,7 +17,7 @@ const parseSkills = (skillsList) => {
   });
 };
 
-export default function RequirementsSection({ isExpanded, onToggle, initialData, jobId, onSaveSection }) {
+export default function RequirementsSection({ isExpanded, onToggle, initialData, jobId, onSaveSection, isReadOnly = false }) {
   const [techInput, setTechInput] = useState("");
   const [softInput, setSoftInput] = useState("");
 
@@ -417,7 +417,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
             </div>
 
             <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
-              <button
+              {!isReadOnly && <button
                 onClick={handleSave}
                 disabled={!isFormValid || isLoading}
                 className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 ${isFormValid && !isLoading
@@ -435,7 +435,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
                 ) : (
                   "Save Section"
                 )}
-              </button>
+              </button>}
             </div>
           </div>
         )}
@@ -477,7 +477,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
             </div>
 
             <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
-              <button
+              {!isReadOnly && <button
                 onClick={handleSaveQualifications}
                 disabled={isQualsLoading}
                 className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 bg-[#5A73FF] text-white hover:bg-blue-600 ${isQualsLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
@@ -492,7 +492,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
                 ) : (
                   "Save Section"
                 )}
-              </button>
+              </button>}
             </div>
           </div>
         )}
@@ -500,3 +500,4 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
     </>
   );
 }
+

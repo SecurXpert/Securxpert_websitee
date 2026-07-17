@@ -32,12 +32,12 @@ export default function Vision() {
           </div>
 
           {/* Right Column: Vision Highlights Checklist */}
-          <div className="flex flex-col space-y-6 lg:pl-6">
-            <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-semibold font-Plus Jakarta Sans leading-tight">
+          <div className="flex flex-col space-y-6 lg:pl-10 pt-8">
+            <h2 className="text-2xl sm:text-3xl lg:text-[28px] font-semibold font-Plus Jakarta Sans leading-tight">
               Vision Highlights
             </h2>
 
-            <div className="flex flex-col space-y-4 pt-4">
+            <div className="flex flex-col space-y-8 pt-8">
               <div className="flex items-center gap-3">
                 <LuCheck className="text-[#00F2FE] w-6 h-6 stroke-[3px] shrink-0" />
                 <span className="text-sm sm:text-base font-semibold">Deliver Innovative And Scalable IT Solutions</span>
@@ -66,7 +66,7 @@ export default function Vision() {
           <div className="w-full flex justify-center items-center">
             <div className="w-full max-w-[580px] aspect-[4/3] rounded-[5px] overflow-hidden ">
               <img
-                src="/AboutUs/mission.jpg"
+                src="/about-us/mission.jpg"
                 alt="Our Mission"
                 className="w-full h-full object-cover"
               />

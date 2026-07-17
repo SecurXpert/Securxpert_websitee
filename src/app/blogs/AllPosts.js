@@ -9,7 +9,7 @@ const allPostsData = [
     {
         id: 1,
         slug: "bill-walsh-leadership-lessons",
-        image: "/Blogs/AllPosts/Image (5).png",
+        image: "/blogs/AllPosts/Image (5).png",
         author: "Alec Whitten",
         date: "1 Jan 2023",
         title: "Bill Walsh leadership lessons",
@@ -22,7 +22,7 @@ const allPostsData = [
     {
         id: 2,
         slug: "pm-mental-models",
-        image: "/Blogs/AllPosts/Image (6).png",
+        image: "/blogs/AllPosts/Image (6).png",
         author: "Demi Wilkinson",
         date: "1 Jan 2023",
         title: "PM mental models",
@@ -36,7 +36,7 @@ const allPostsData = [
     {
         id: 3,
         slug: "what-is-wireframing",
-        image: "/Blogs/AllPosts/Image (7).png",
+        image: "/blogs/AllPosts/Image (7).png",
         author: "Candice Wu",
         date: "1 Jan 2023",
         title: "What is Wireframing?",
@@ -49,7 +49,7 @@ const allPostsData = [
     {
         id: 4,
         slug: "how-collaboration-makes-us-better-designers",
-        image: "/Blogs/AllPosts/Image (8).png",
+        image: "/blogs/AllPosts/Image (8).png",
         author: "Natali Craig",
         date: "1 Jan 2023",
         title: "How collaboration makes us better designers",
@@ -62,7 +62,7 @@ const allPostsData = [
     {
         id: 5,
         slug: "our-top-10-javascript-frameworks",
-        image: "/Blogs/AllPosts/Image (9).png",
+        image: "/blogs/AllPosts/Image (9).png",
         author: "Drew Cano",
         date: "1 Jan 2023",
         title: "Our top 10 Javascript frameworks to use",
@@ -76,7 +76,7 @@ const allPostsData = [
     {
         id: 6,
         slug: "podcast-creating-a-better-cx-community",
-        image: "/Blogs/AllPosts/Image (10).png",
+        image: "/blogs/AllPosts/Image (10).png",
         author: "Orlando Diggs",
         date: "1 Jan 2023",
         title: "Podcast: Creating a better CX Community",
@@ -174,7 +174,7 @@ export default function AllPosts() {
                                 } catch (e) { }
                             }
 
-                            let bannerUrl = "/Blogs/AllPosts/Image (5).png";
+                            let bannerUrl = "/blogs/AllPosts/Image (5).png";
                             const bannerPath = heroData.hero_banner_url || heroData.hero_banner || blog.hero_banner || blog.hero?.hero_banner;
                             if (bannerPath) {
                                 bannerUrl = (bannerPath.startsWith("http://") || bannerPath.startsWith("https://"))

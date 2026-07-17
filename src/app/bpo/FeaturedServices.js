@@ -7,20 +7,20 @@ export default function FeaturedServices() {
         {
             title: "Business Advice",
             desc: "Strategic guidance on operational structure, vendor selection, and process design before you outsource a single task. ",
-            icon: "/BPO/FeauturedServices/Symbol.svg",
-            bgImage: "/BPO/FeauturedServices/Business Audit.jpg.jpeg"
+            icon: "/bpo/FeauturedServices/Symbol.svg",
+            bgImage: "/bpo/FeauturedServices/Business Audit.jpg.jpeg"
         },
         {
             title: "Financial Advice",
             desc: "Support on cost modelling and ROI forecasting for outsourcing decisions, so the business case is clear before you commit. ",
-            icon: "/BPO/FeauturedServices/Symbol (1).svg",
-            bgImage: "/BPO/FeauturedServices/Financial Advice.jpg.jpeg"
+            icon: "/bpo/FeauturedServices/Symbol (1).svg",
+            bgImage: "/bpo/FeauturedServices/Financial Advice.jpg.jpeg"
         },
         {
             title: "Risk Management",
-            desc: "Process-level risk assessment and mitigation planning built into every engagement, not bolted on after something goes wrong. ",
-            icon: "/BPO/FeauturedServices/Symbol (2).svg",
-            bgImage: "/BPO/FeauturedServices/Insurance Strategy.jpg.jpeg"
+            desc: "Process-level risk assessment and mitigation planning built into every engagement, not bolted on after goes wrong. ",
+            icon: "/bpo/FeauturedServices/Symbol (2).svg",
+            bgImage: "/bpo/FeauturedServices/Insurance Strategy.jpg.jpeg"
         }
     ];
 
@@ -29,7 +29,7 @@ export default function FeaturedServices() {
 
             {/* RIGHT SIDE SVG SHAPE */}
             <img
-                src="/BPO/FeauturedServices/shape.svg"
+                src="/bpo/FeauturedServices/shape.svg"
                 alt="Background Shape"
                 className="absolute right-[-10rem] top-0 h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block opacity-100"
             />
@@ -46,7 +46,7 @@ export default function FeaturedServices() {
                         <div className="relative inline-flex items-center mb-6 pt-5">
                             {/* Starry Vector Shape Backdrop */}
                             <img
-                                src="/BPO/FeauturedServices/Vector.svg"
+                                src="/bpo/FeauturedServices/Vector.svg"
                                 alt="Star Background"
                                 className="absolute -top-3 -left-4 w-12 h-12 opacity-95 pointer-events-none z-0"
                             />
@@ -66,25 +66,24 @@ export default function FeaturedServices() {
 
                     {/* RIGHT CARDS */}
                     <div className="lg:col-span-6 lg:col-start-6 lg:translate-y-8">
-
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
                             {services.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-4  transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-[#F1EEEE] hover:border-transparent hover:bg-[#3D62EB] group z-10"
+                                    className="relative overflow-hidden bg-[#F7F4F4] rounded-[8px] p-4 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-[#F1EEEE] hover:border-transparent hover:bg-[#3D62EB] group z-10"
                                 >
                                     {/* Hover Background Image Overlay */}
                                     <img
                                         src={item.bgImage}
                                         alt="Hover Background"
+                                        loading="eager"
                                         className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none z-0"
                                     />
 
                                     {/* Card Content Container */}
                                     <div className="relative z-10 flex flex-col justify-between h-full">
                                         {/* ICON */}
-                                        <div className="mb-3">
+                                        <div className="mb-4">
                                             <img
                                                 src={item.icon}
                                                 alt={item.title}
@@ -95,7 +94,7 @@ export default function FeaturedServices() {
                                         {/* TEXT DETAILS */}
                                         <div>
                                             {/* TITLE */}
-                                            <h3 className="text-[#0D121E] text-[18px] leading-tight  font-semibold whitespace-nowrap mb-1 font-inter group-hover:text-white transition-colors">
+                                            <h3 className="text-[#0D121E] text-[18px] leading-tight font-semibold whitespace-nowrap mb-1 font-inter group-hover:text-white transition-colors">
                                                 {item.title}
                                             </h3>
 
@@ -109,6 +108,13 @@ export default function FeaturedServices() {
                             ))}
                         </div>
                     </div>
+                </div>
+
+                {/* Preload hover images off-screen */}
+                <div className="absolute w-0 h-0 opacity-0 overflow-hidden pointer-events-none" aria-hidden="true">
+                    {services.map((item, index) => (
+                        <img key={index} src={item.bgImage} alt="" loading="eager" />
+                    ))}
                 </div>
             </div>
         </section>

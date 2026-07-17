@@ -6,7 +6,7 @@ const shrava360 = {
   title: "Shrava360",
   headline: "360° Data Analytics & Visualization",
   desc: "An immersive data visualization platform that aggregates information from multiple sources, providing executives with a comprehensive 360-degree view of their organization's health.",
-  introduction: "shrava360 is an immersive data visualisation platform that aggregates information from multiple sources, giving executives a comprehensive, real-time view of their organisation's health — without needing a data analyst to build a custom report every time a question comes up. ",
+  introduction: "Shrava360 is an immersive data visualisation platform that aggregates information from multiple sources, giving executives a comprehensive, real-time view of their organisation's health — without needing a data analyst to build a custom report every time a question comes up. ",
   bg: "linear-gradient(135deg, #B45309 0%, #78350F 100%)",
   bannerImage: "/products/banners/shrava360banner.png",
   videoUrl: "/products/banners/Shrava360_video.mp4",

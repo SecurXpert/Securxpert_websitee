@@ -12,7 +12,7 @@ const categoriesTemplate = [
   { name: "Engineering", count: 0 },
   { name: "Product", count: 0 },
   { name: "Design", count: 0 },
-  { name: "Operation", count: 0 },
+  { name: "Operations", count: 0 },
   { name: "Marketing", count: 0 },
 ];
 
@@ -43,25 +43,25 @@ export default function Positions() {
             const guestPassword = "VisitorPass123";
 
             try {
-              const loginRes = await axios.post('http://192.168.0.125:8000/auth/login', {
+              const loginRes = await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/login', {
                 email: guestEmail,
                 password: guestPassword
-              });
+              }, { headers: { "ngrok-skip-browser-warning": "true" } });
               token = loginRes.data?.access_token || "";
               if (token) {
                 localStorage.setItem("access_token", token);
               }
             } catch (err) {
               if (err.response && err.response.status === 401) {
-                await axios.post('http://192.168.0.125:8000/auth/register-admin', {
+                await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/register-admin', {
                   username: guestUsername,
                   email: guestEmail,
                   password: guestPassword
-                });
-                const loginRes2 = await axios.post('http://192.168.0.125:8000/auth/login', {
+                }, { headers: { "ngrok-skip-browser-warning": "true" } });
+                const loginRes2 = await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/login', {
                   email: guestEmail,
                   password: guestPassword
-                });
+                }, { headers: { "ngrok-skip-browser-warning": "true" } });
                 token = loginRes2.data?.access_token || "";
                 if (token) {
                   localStorage.setItem("access_token", token);
@@ -73,9 +73,10 @@ export default function Positions() {
           }
         }
 
-        const res = await fetch("http://192.168.0.125:8000/jobs/", {
+        const res = await fetch("https://poise-crouch-plating.ngrok-free.dev/jobs/", {
           headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+            "ngrok-skip-browser-warning": "true"
           }
         });
         
@@ -141,7 +142,7 @@ export default function Positions() {
 
         {/* Main Section Header */}
         <div className="text-center mb-12 max-w-4xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-regular text-[#090808] tracking-tight leading-tight font-sans">
+          <h2 className="text-4xl sm:text-5xl md:text-5xl font-regular text-[#090808] tracking-tight leading-tight font-sans">
             We have {positionsData.length} open position{positionsData.length !== 1 ? 's' : ''} now!
           </h2>
         </div>
@@ -170,16 +171,6 @@ export default function Positions() {
                   </button>
                 );
               })}
-            </div>
-
-            {/* LinkedIn callout box */}
-            <div className="border-t border-slate-200/60 pt-8 flex flex-col gap-4">
-              <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-                We are always seeking talented people. In case you cannot find your desired position here, please send us your LinkedIn profile and give us your contact information. We will be in touch.
-              </p>
-              <button className="w-full sm:w-auto self-start border border-slate-900 rounded-full px-5 py-2.5 text-xs font-semibold text-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300">
-                Share your LinkedIn profile
-              </button>
             </div>
           </div>
 

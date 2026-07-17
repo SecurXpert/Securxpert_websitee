@@ -8,8 +8,8 @@ const storiesData = [
     title: "How we build the Dagmarket on 6 months",
     author: "Kaur Kaljuma",
     date: "May 20th 2020",
-    avatar: "/BPO/TeamMembers/member1.jpg",
-    image: "/Carrers/stories/story 1.png",
+    avatar: "/bpo/TeamMembers/member1.jpg",
+    image: "/careers/stories/story 1.png",
     description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
   },
   {
@@ -17,8 +17,8 @@ const storiesData = [
     title: "The last anoncement for success factory",
     author: "Raigo Tuulik",
     date: "May 20th 2020",
-    avatar: "/BPO/TeamMembers/member2.jpg",
-    image: "/Carrers/stories/story 2.png",
+    avatar: "/bpo/TeamMembers/member2.jpg",
+    image: "/careers/stories/story 2.png",
     description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
   },
   {
@@ -26,8 +26,8 @@ const storiesData = [
     title: "The Role of Repetition in Conversation Design",
     author: "Jüri Siilivask",
     date: "May 20th 2020",
-    avatar: "/BPO/TeamMembers/member3.jpg",
-    image: "/Carrers/stories/story 3.png",
+    avatar: "/bpo/TeamMembers/member3.jpg",
+    image: "/careers/stories/story 3.png",
     description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
   },
   {
@@ -35,8 +35,8 @@ const storiesData = [
     title: "What I Learned Getting Hired",
     author: "Mazdak Shakiba",
     date: "May 20th 2020",
-    avatar: "/BPO/TeamMembers/member4.jpg",
-    image: "/Carrers/stories/story 4.png",
+    avatar: "/bpo/TeamMembers/member4.jpg",
+    image: "/careers/stories/story 4.png",
     description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
   },
 ];

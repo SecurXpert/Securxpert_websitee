@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Hero from "./Hero";
+
 import Partners from "./Partners";
 import HomeServices from "./HomeServices";
 import OurProducts from "./OurProducts";

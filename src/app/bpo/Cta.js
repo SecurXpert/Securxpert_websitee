@@ -9,20 +9,20 @@ export default function Cta() {
       
       {/* Background Curve Left */}
       <img
-        src="/BPO/cta/cta.svg"
+        src="/bpo/cta/cta.svg"
         alt="Curve Backdrop Left"
         className="absolute left-[-5rem] top-[5rem] w-[420px] h-auto opacity-[0.15] pointer-events-none select-none z-0 hidden md:block rotate-210"
       />
 
       {/* Background Curve Right */}
       <img
-        src="/BPO/Cta/cta.svg"
+        src="/bpo/Cta/cta.svg"
         alt="Curve Backdrop Right"
         className="absolute right-[-2rem] bottom-[8rem] w-[340px] h-auto opacity-[0.15] pointer-events-none select-none z-0 hidden md:block"
       />
       {/* Background Curve Right */}
       <img
-        src="/BPO/Cta/cta.svg"
+        src="/bpo/Cta/cta.svg"
         alt="Curve Backdrop Right"
         className="absolute left-[10rem] bottom-[16rem] w-[120px] h-auto opacity-[0.15] pointer-events-none select-none z-0 hidden md:block rotate-250"
       />

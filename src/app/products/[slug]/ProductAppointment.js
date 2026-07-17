@@ -15,6 +15,7 @@ export default function ProductAppointment({ product }) {
     companyDetails: "",
     contactDetails: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const availableTimes = [
     "09:00", "09:30", "10:00", "10:30", 
@@ -57,32 +58,55 @@ export default function ProductAppointment({ product }) {
     if (step === 2 && selectedTime) setStep(3);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.companyDetails || !formData.contactDetails) {
       alert("Please fill in all required fields.");
       return;
     }
+
+    setIsSubmitting(true);
     try {
-      const existing = JSON.parse(localStorage.getItem("product_appointments") || "[]");
-      const newAppointment = {
-        id: Date.now(),
-        product: product.title,
-        date: formatDate(selectedDate),
-        time: selectedTime,
-        name: formData.name,
-        email: formData.email,
-        companyDetails: formData.companyDetails,
-        contactDetails: formData.contactDetails,
-        status: "Pending",
-        bookedAt: new Date().toISOString()
+      // Format date to YYYY-MM-DD
+      const year = selectedDate.getFullYear();
+      const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      const day = String(selectedDate.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+
+      // Format time to HH:MM:SS for the API time field
+      const formattedTime = `${selectedTime}:00`;
+
+      const payload = {
+        product_name: product.title,
+        full_name: formData.name,
+        email_address: formData.email,
+        enter_company_details: formData.companyDetails,
+        enter_contact_details: formData.contactDetails,
+        booking_date: formattedDate,
+        booking_time: formattedTime
       };
-      localStorage.setItem("product_appointments", JSON.stringify([newAppointment, ...existing]));
+
+      const response = await fetch("https://poise-crouch-plating.ngrok-free.dev/products/create-booking", {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "true"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create booking");
+      }
+
+      setStep(4);
     } catch (err) {
       console.error("Failed to save appointment", err);
+      alert("Failed to save appointment. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setStep(4);
   };
 
   const handleReset = () => {
@@ -98,7 +122,7 @@ export default function ProductAppointment({ product }) {
   };
 
   return (
-    <section id="appointment" className="relative w-full bg-[#f8fafc] overflow-hidden py-12 lg:py-20 text-slate-800">
+    <section id="appointment" className="relative w-full bg-[#f8fafc] overflow-hidden py-12 lg:py-8 text-slate-800">
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6 relative z-10">
 
         {/* Multi-step Container */}
@@ -253,11 +277,23 @@ export default function ProductAppointment({ product }) {
                 <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
                   <div className="space-y-5 mb-8">
                     <div className="flex flex-col">
+                      <label className="text-slate-800 text-[12px] font-semibold tracking-wider mb-1.5">Product Name</label>
+                      <input
+                        type="text"
+                        value={product.title}
+                        readOnly
+                        disabled
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm text-slate-500 cursor-not-allowed"
+                      />
+                    </div>
+
+                    <div className="flex flex-col">
                       <label className="text-slate-800 text-[12px] font-semibold tracking-wider mb-1.5">Full name *</label>
                       <input
                         type="text"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="Enter your full name"
                         className="w-full bg-white border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:border-[#3D62EB] focus:ring-1 focus:ring-[#3D62EB] focus:outline-none transition-colors"
                         required
                       />
@@ -269,16 +305,18 @@ export default function ProductAppointment({ product }) {
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="Enter your email address"
                         className="w-full bg-white border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:border-[#3D62EB] focus:ring-1 focus:ring-[#3D62EB] focus:outline-none transition-colors"
                         required
                       />
                     </div>
                     
                     <div className="flex flex-col">
-                      <label className="text-slate-800 text-[12px] font-semibold tracking-wider mb-1.5">Please share your company details that will help prepare for our meeting *</label>
+                      <label className="text-slate-800 text-[12px] font-semibold tracking-wider mb-1.5">Enter Company details *</label>
                       <textarea
                         value={formData.companyDetails}
                         onChange={(e) => setFormData({ ...formData, companyDetails: e.target.value })}
+                        placeholder="Enter your company name & details"
                         rows="2"
                         className="w-full bg-white border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:border-[#3D62EB] focus:ring-1 focus:ring-[#3D62EB] focus:outline-none transition-colors resize-none"
                         required
@@ -286,10 +324,11 @@ export default function ProductAppointment({ product }) {
                     </div>
 
                     <div className="flex flex-col">
-                      <label className="text-slate-800 text-[12px] font-semibold tracking-wider mb-1.5">Please share your contact details and the company size *</label>
+                      <label className="text-slate-800 text-[12px] font-semibold tracking-wider mb-1.5">Enter your contact details *</label>
                       <textarea
                         value={formData.contactDetails}
                         onChange={(e) => setFormData({ ...formData, contactDetails: e.target.value })}
+                        placeholder="Enter your contact details"
                         rows="2"
                         className="w-full bg-white border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:border-[#3D62EB] focus:ring-1 focus:ring-[#3D62EB] focus:outline-none transition-colors resize-none"
                         required
@@ -322,9 +361,24 @@ export default function ProductAppointment({ product }) {
                     </button>
                     <button
                       type="submit"
-                      className="px-8 py-2.5 rounded-lg font-semibold bg-[#3D62EB] hover:bg-blue-700 text-white shadow-md transition-all active:scale-95"
+                      disabled={isSubmitting}
+                      className={`px-8 py-2.5 rounded-lg font-semibold shadow-md transition-all active:scale-95 flex items-center justify-center min-w-[170px] ${
+                        isSubmitting 
+                          ? 'bg-blue-400 text-white cursor-not-allowed' 
+                          : 'bg-[#3D62EB] hover:bg-blue-700 text-white'
+                      }`}
                     >
-                      Book Appointment
+                      {isSubmitting ? (
+                        <>
+                          <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          Booking...
+                        </>
+                      ) : (
+                        "Book Appointment"
+                      )}
                     </button>
                   </div>
                 </form>

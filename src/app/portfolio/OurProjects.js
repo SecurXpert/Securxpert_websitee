@@ -19,7 +19,7 @@ const projectsData = [
     desc: "AI-powered recruitment platform with smart hiring and automated outreach. ",
     image: "/products/Projects/project2.png",
     category: "HR",
-    slug: "grabjobz",
+    slug: "grabjobz", 
   },
   {
     id: 3,

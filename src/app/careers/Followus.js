@@ -28,7 +28,7 @@ export default function FollowUs() {
             {/* Group Photo */}
             <div className=" overflow-hidden aspect-[1.35] w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
-                src="/Carrers/Followus/us 1.png" 
+                src="/careers/Followus/us 1.png" 
                 alt="Securxpert team gathering" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -40,7 +40,7 @@ export default function FollowUs() {
             {/* Christmas Tree */}
             <div className="overflow-hidden aspect-[3/4] w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
-                src="/Carrers/Followus/us 2.png" 
+                src="/careers/Followus/us 2.png" 
                 alt="Holiday tree at office" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -49,7 +49,7 @@ export default function FollowUs() {
             {/* Dots Graphic */}
             <div className=" overflow-hidden aspect-square w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
-                src="/Carrers/Followus/us 3.png" 
+                src="/careers/Followus/us 3.png" 
                 alt="Colorful dots decoration" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -61,7 +61,7 @@ export default function FollowUs() {
             {/* Ping Pong (Tall Vertical image) */}
             <div className=" overflow-hidden aspect-[1003/2784] lg:aspect-auto lg:h-[530px] w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
-                src="/Carrers/Followus/us 4.png" 
+                src="/careers/Followus/us 4.png" 
                 alt="Team member playing ping pong" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -73,7 +73,7 @@ export default function FollowUs() {
             {/* Logo Graphic */}
             <div className="overflow-hidden aspect-square w-full shadow-sm hover:shadow-md transition-shadow duration-300">
               <img 
-                src="/Carrers/Followus/us 5.png" 
+                src="/careers/Followus/us 5.png" 
                 alt="Securxpert branding artwork" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -88,7 +88,7 @@ export default function FollowUs() {
               <div className="grid grid-cols-2 gap-y-4 gap-x-4">
                 {/* Facebook */}
                 <a 
-                  href="https://facebook.com" 
+                  href="https://facebook.com/profile.php?id=61576099186187" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"
@@ -103,7 +103,7 @@ export default function FollowUs() {
                 
                 {/* Youtube */}
                 <a 
-                  href="https://youtube.com" 
+                  href="https://www.youtube.com/@securxpert" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"
@@ -115,25 +115,10 @@ export default function FollowUs() {
                   </div>
                   <span className="text-sm font-semibold border-b border-slate-300 hover:border-blue-600 pb-0.5 leading-none">Youtube</span>
                 </a>
-                
-                {/* Twitter */}
-                <a 
-                  href="https://twitter.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"
-                >
-                  <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-sm shrink-0 group-hover:scale-105 transition-transform">
-                    <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                    </svg>
-                  </div>
-                  <span className="text-sm font-semibold border-b border-slate-300 hover:border-blue-600 pb-0.5 leading-none">Twitter</span>
-                </a>
 
                 {/* Instagram */}
                 <a 
-                  href="https://instagram.com" 
+                  href="https://instagram.com/securxpert" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"
@@ -148,7 +133,7 @@ export default function FollowUs() {
 
                 {/* LinkedIn */}
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://linkedin.com/company/105954837" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center gap-3 text-[#090808] hover:text-[#3D62EB] transition-colors group"

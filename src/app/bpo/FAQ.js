@@ -64,7 +64,7 @@ export default function FAQ() {
             {/* Collage/Illustration Image */}
             <div className="w-full rounded-[12px] overflow-hidden shadow-sm relative z-10 border border-slate-100/50">
               <img
-                src="/BPO/Faq.jpg"
+                src="/bpo/Faq.jpg"
                 alt="Business collaboration in office meeting"
                 className="w-full h-auto object-cover max-h-[350px] lg:max-h-[380px]"
               />

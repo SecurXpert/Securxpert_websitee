@@ -18,6 +18,7 @@ export default function CareersDashboard() {
       const token = localStorage.getItem("access_token");
       const res = await fetch(API_BASE_URL + "/jobs/", {
         headers: {
+          "ngrok-skip-browser-warning": "true",
           ...(token && { "Authorization": `Bearer ${token}` })
         }
       });
@@ -42,7 +43,7 @@ export default function CareersDashboard() {
         setCareers(formatted);
       }
     } catch (err) {
-      console.error("Failed to fetch careers", err);
+      console.warn("Failed to fetch careers", err);
     }
   };
 
@@ -50,8 +51,25 @@ export default function CareersDashboard() {
     fetchCareers();
   }, []);
 
-  const handleDelete = () => {
-    setCareers(p => p.filter(c => c.id !== deleteItem.id));
+  const handleDelete = async () => {
+    try {
+      const token = localStorage.getItem("access_token");
+      const res = await fetch(`${API_BASE_URL}/jobs/${deleteItem.id}/complete`, {
+        method: "DELETE",
+        headers: { 
+          "ngrok-skip-browser-warning": "true",
+          ...(token && { "Authorization": `Bearer ${token}` }) 
+        }
+      });
+      if (res.ok) {
+        setCareers(p => p.filter(c => c.id !== deleteItem.id));
+        alert("Job deleted successfully!");
+      } else {
+        alert("Failed to delete the job from the server.");
+      }
+    } catch (error) {
+      alert("Network error while trying to delete.");
+    }
     setDeleteItem(null);
   };
 
@@ -62,8 +80,27 @@ export default function CareersDashboard() {
 
   const openEdit = (item) => {
     setEditItem(item);
-    setEditForm(item);
+    setShowCareerForm(true);
   };
+
+  if (viewItem) {
+    return (
+      <div className="flex-1 overflow-y-auto">
+        <CreateJobPosting
+          job={viewItem ? {
+            id: viewItem.id,
+            basicInfo: viewItem,
+            hero: null,
+            jobDescription: viewItem.description || "",
+            rolesAndResponsibilities: null,
+            requirements: null
+          } : null}
+          isReadOnly={true}
+          onCancel={() => { setViewItem(null); }}
+        />
+      </div>
+    );
+  }
 
   if (showCareerForm) {
     return (
@@ -138,44 +175,8 @@ export default function CareersDashboard() {
         </div>
       </div>
 
-      {viewItem && (
-        <Modal title="Details" onClose={() => setViewItem(null)}>
-          <div className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-800">{viewItem.title}</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {[["Department", viewItem.department], ["Type", viewItem.type], ["Location", viewItem.location], ["Mode", viewItem.mode], ["Status", viewItem.status], ["Openings", viewItem.openings], ["Experience", viewItem.experience], ["Category", viewItem.category]].map(([k, v]) => (
-                <div key={k} className="bg-slate-50 p-3 rounded-xl"><p className="text-xs text-slate-400 uppercase font-bold mb-1">{k}</p><p className="text-sm font-semibold text-slate-700">{v}</p></div>
-              ))}
-            </div>
-            <div className="bg-slate-50 p-4 rounded-xl"><p className="text-xs text-slate-400 uppercase font-bold mb-2">Description</p><p className="text-sm text-slate-600 leading-relaxed">{viewItem.description}</p></div>
-          </div>
-        </Modal>
-      )}
 
-      {editItem && !showCareerForm && (
-        <Modal title="Edit Record" onClose={() => setEditItem(null)}>
-          <div className="space-y-4">
-            <>
-              {[["title", "Title"], ["department", "Department"], ["type", "Employment Type"], ["location", "Location"], ["mode", "Work Mode"], ["status", "Status"], ["openings", "Openings"], ["experience", "Experience"]].map(([k, l]) => (
-                <div key={k}>
-                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">{l}</label>
-                  <input value={editForm[k] || ""} onChange={e => setEditForm(p => ({ ...p, [k]: e.target.value }))}
-                    className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200 transition-all" />
-                </div>
-              ))}
-              <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Description</label>
-                <textarea value={editForm.description || ""} onChange={e => setEditForm(p => ({ ...p, description: e.target.value }))} rows={3}
-                  className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200 transition-all resize-none" />
-              </div>
-            </>
-            <div className="flex gap-3 justify-end pt-2">
-              <button onClick={() => setEditItem(null)} className="px-4 py-2 text-sm font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">Cancel</button>
-              <button onClick={handleEditSave} className="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors">Save Changes</button>
-            </div>
-          </div>
-        </Modal>
-      )}
+
 
       {deleteItem && <DeleteConfirm item={deleteItem} type="careers" onConfirm={handleDelete} onClose={() => setDeleteItem(null)} />}
     </div>

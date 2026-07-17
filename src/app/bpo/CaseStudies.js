@@ -5,16 +5,16 @@ import Link from "next/link";
 
 export default function CaseStudies() {
   const cases = [
-    { id: 1, image: "/BPO/CaseStudies/casestudies1.jpg", alt: "Consulting Case 1" },
-    { id: 2, image: "/BPO/CaseStudies/casestudies2.jpg", alt: "Consulting Case 2" },
-    { id: 3, image: "/BPO/CaseStudies/casestudies3.jpg", alt: "Consulting Case 3" },
-    { id: 4, image: "/BPO/CaseStudies/casestudies4.jpg", alt: "Consulting Case 4" }
+    { id: 1, image: "/bpo/CaseStudies/casestudies1.jpg", alt: "Consulting Case 1" },
+    { id: 2, image: "/bpo/CaseStudies/casestudies2.jpg", alt: "Consulting Case 2" },
+    { id: 3, image: "/bpo/CaseStudies/casestudies3.jpg", alt: "Consulting Case 3" },
+    { id: 4, image: "/bpo/CaseStudies/casestudies4.jpg", alt: "Consulting Case 4" }
   ];
 
   const stats = [
     {
       id: 1,
-      number: "500+",
+      number: "500+", 
       label: "Projects Delivered",
       icon: (
         <svg width="50" height="40" viewBox="0 0 57 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,14 +64,14 @@ export default function CaseStudies() {
       {/* BACKGROUND ACCENT GRAPHICS */}
       {/* Top Left Swirl Graphic */}
       <img
-        src="/BPO/CaseStudies/design.png"
+        src="/bpo/CaseStudies/design.png"
         alt="Top Left Graphic"
         className="absolute top-0 left-0 w-[140px] sm:w-[180px] h-auto select-none pointer-events-none  z-0 rotate-0"
       />
      
       {/* Floating Sparkle on Right */}
       <img
-        src="/BPO/AboutUs/aboutus3.svg"
+        src="/bpo/about-us/aboutus3.svg"
         alt="Right Sparkle Accent"
         className="absolute right-30 top-1/2 w-10 h-10  pointer-events-none select-none z-0 animate-pulse hidden xl:block"
       />
@@ -125,7 +125,7 @@ export default function CaseStudies() {
            ======================================================== */}
         <div
           className="w-full max-w-[1000px] mx-auto rounded-[20px] bg-cover bg-center overflow-hidden shadow-lg border border-slate-100/10 relative z-10"
-          style={{ backgroundImage: `url('/BPO/CaseStudies/casestudies-bg.png')` }}
+          style={{ backgroundImage: `url('/bpo/CaseStudies/casestudies-bg.png')` }}
         >
           {/* Subtle dark tint layer */}
           <div className="absolute inset-0 bg-blue-900/10 mix-blend-multiply z-0 pointer-events-none" />

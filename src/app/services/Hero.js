@@ -36,8 +36,8 @@ export default function ServicesHero() {
                     </h1>
 
                     {/* Description */}
-                    <p className="relative z-10 text-left lg:text-center mt-4 lg:mt-4 text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-tight text-[#FFFFFF] max-w-5xl mx-auto px-6 font-normal opacity-90">
-                       SecurXpert provides end-to-end digital transformation services — software development, AI automation, cloud infrastructure, and cybersecurity — built to help businesses scale securely and efficiently. 
+                    <p className="relative z-10 text-left lg:text-center mt-4 lg:mt-4 text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-relaxed text-[#FFFFFF] max-w-5xl mx-auto px-6 font-normal opacity-90">
+                        SecurXpert provides end-to-end digital transformation services — software development, AI automation, cloud infrastructure, and cybersecurity — built to help businesses scale securely and efficiently.
                     </p>
 
                     {/* CTA Button, Avatars, and Subtext - Balanced Columns */}
@@ -99,7 +99,7 @@ export default function ServicesHero() {
 
                             </div>
                             <p className="text-white font-normal text-sm sm:text-base tracking-tight">
-                                Trusted by 500+ businesses worldwide 
+                                Trusted by 500+ businesses worldwide
                             </p>
                         </div>
 

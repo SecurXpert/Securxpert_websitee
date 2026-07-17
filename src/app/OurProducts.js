@@ -122,7 +122,7 @@ export default function OurProducts() {
             </div>
 
             {/* MIDDLE BODY CONTAINER: Split Columns */}
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto w-full max-lg:flex max-lg:flex-row max-lg:bg-[#232323] max-lg:rounded-[28px] max-lg:p-5 max-lg:shadow-2xl max-lg:gap-3 max-lg:mt-4">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto w-full max-lg:flex max-lg:flex-row max-lg:bg-transparent max-lg:border max-lg:border-white/40 max-lg:rounded-[28px] max-lg:p-5 max-lg:shadow-2xl max-lg:gap-3 max-lg:mt-4">
 
                 {/* LEFT CONTENT (Product Title, Paragraph, Button) */}
                 {/* Kept your precise desktop translate transforms completely intact */}

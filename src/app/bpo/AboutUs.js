@@ -9,14 +9,14 @@ export default function AboutUs() {
 
       {/* Far Left Wave Shape */}
       <img
-        src="/BPO/AboutUs/aboutus.svg"
+        src="/bpo/about-us/aboutus.svg"
         alt="Left Wave"
         className="absolute left-[-2%] xl:left-[10%] 2xl:left-[15%] top-32 h-[220px] lg:h-[260px] xl:h-[320px] w-auto pointer-events-none z-0 hidden lg:block opacity-50 xl:opacity-100"
       />
 
       {/* Bottom Right Wave Shape */}
       <img
-        src="/BPO/AboutUs/aboutus3.svg"
+        src="/bpo/about-us/aboutus3.svg"
         alt="Bottom Right Wave"
         className="absolute right-10 bottom-5 h-[100px] w-auto pointer-events-none z-0 hidden lg:block"
       />
@@ -30,14 +30,14 @@ export default function AboutUs() {
 
             {/* Radial sunburst backdrop behind collage */}
             <img
-              src="/BPO/AboutUs/aboutus2.svg"
+              src="/bpo/about-us/aboutus2.svg"
               alt="Backdrop Radial Rays"
               className="absolute top-[-84px] left-[-125px] lg:left-[-60px] xl:left-[-100px] 2xl:left-[-125px] w-[42%] sm:w-[38%] h-auto pointer-events-none z-0"
             />
 
             {/* Dot Grid backdrop around lower right of collage */} 
             <img
-              src="/BPO/AboutUs/a3.png"
+              src="/bpo/about-us/a3.png"
               alt="Backdrop Dots"
               className="absolute bottom-[2%] right-[4%] w-[20%] h-auto pointer-events-none z-0"
             />
@@ -45,7 +45,7 @@ export default function AboutUs() {
             {/* Main Upper Right Image (a1.jpg) */}
             <div className="absolute top-[2%] right-[8%] w-[48%] z-10 overflow-hidden rounded-[1px] shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:scale-[1.02] transition-transform duration-500">
               <img
-                src="/BPO/AboutUs/a1.jpg"
+                src="/bpo/about-us/a1.jpg"
                 alt="Businesswomen Collaborating"
                 className="w-full h-auto object-cover pointer-events-none"
               />
@@ -54,9 +54,9 @@ export default function AboutUs() {
             {/* Overlapping Lower Left Image (a2.jpg) */}
             <div className="absolute bottom-[-30px] left-[24%] w-[35%] z-20 overflow-hidden rounded-[2px] border-[7px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.18)] hover:scale-[1.02] transition-transform duration-500">
               <img
-                src="/BPO/AboutUs/a2.jpg"
+                src="/bpo/about-us/a2.jpg"
                 alt="Team Specialists Consulting"
-                className="w-full h-auto object-cover pointer-events-none"
+                className="w-full h-auto object-cover pointer-events-none" 
               />
             </div>
 

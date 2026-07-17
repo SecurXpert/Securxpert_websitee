@@ -5,42 +5,48 @@ import axios from "axios";
 import { API_BASE_URL } from "../config";
 
 const parseInitialResponsibilities = (data) => {
-  if (!data || data.length === 0) {
-    return [{ id: Date.now(), title: "", description: "", dbId: null }];
+  let list = [];
+  if (Array.isArray(data)) {
+    list = data;
+  } else if (data && data.responsibilities) {
+    list = data.responsibilities;
   }
-  return data.map((item, i) => {
+  
+  if (!list || list.length === 0) {
+    return [{ id: Date.now(), title: "", description: "" }];
+  }
+  return list.map((item, i) => {
     if (typeof item === "string") {
-      return { id: i, title: item, description: "", dbId: null };
+      return { id: i, title: item, description: "" };
     }
     return {
       id: item.id || i,
       title: item.title || "",
-      description: item.description || "",
-      dbId: item.id || null
+      description: item.description || ""
     };
   });
 };
 
-export default function RolesResponsibilitiesSection({ isExpanded, onToggle, initialData, jobId, onSaveSection }) {
+export default function RolesResponsibilitiesSection({ isExpanded, onToggle, initialData, jobId, onSaveSection, isReadOnly = false }) {
   const [responsibilities, setResponsibilities] = useState(parseInitialResponsibilities(initialData));
+  const [sectionId, setSectionId] = useState(initialData?.id || null);
   const [isSaved, setIsSaved] = useState(!!initialData);
   const [isLoading, setIsLoading] = useState(false);
-  const [deletedRespIds, setDeletedRespIds] = useState([]);
 
   React.useEffect(() => {
     if (initialData) {
       setResponsibilities(parseInitialResponsibilities(initialData));
+      setSectionId(initialData.id || null);
       setIsSaved(true);
     }
   }, [initialData]);
 
   const addResponsibility = () => {
-    setResponsibilities([...responsibilities, { id: Date.now(), title: "", description: "", dbId: null }]);
+    setResponsibilities([...responsibilities, { id: Date.now(), title: "", description: "" }]);
     setIsSaved(false);
   };
 
-  const removeResponsibility = (id, dbId) => {
-    if (dbId) setDeletedRespIds(prev => [...prev, dbId]);
+  const removeResponsibility = (id) => {
     setResponsibilities(responsibilities.filter(r => r.id !== id));
     setIsSaved(false);
   };
@@ -64,44 +70,31 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
             "")
           : "";
 
-      if (deletedRespIds.length > 0) {
-        await Promise.all(
-          deletedRespIds.map(dbId =>
-            axios.delete(`${API_BASE_URL}/jobs/${jobId}/responsibilities/${dbId}`, {
-              headers: { "accept": "application/json", "Authorization": `Bearer ${token}` }
-            })
-          )
-        );
-        setDeletedRespIds([]);
+      const payload = {
+        responsibilities: responsibilities.map(r => ({
+          title: r.title.trim(),
+          description: r.description?.trim() || ""
+        }))
+      };
+
+      let res;
+      if (sectionId) {
+        res = await axios.patch(`${API_BASE_URL}/jobs/${jobId}/responsibilities/${sectionId}`, payload, {
+          headers: { "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
+        });
+      } else {
+        res = await axios.post(`${API_BASE_URL}/jobs/${jobId}/responsibilities`, payload, {
+          headers: { "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
+        });
       }
 
-      const savedResps = [];
-      await Promise.all(
-        responsibilities.map(async (resp, index) => {
-          const payload = { title: resp.title.trim(), description: resp.description?.trim() || "", display_order: index };
-          if (resp.dbId) {
-            const res = await axios.patch(`${API_BASE_URL}/jobs/${jobId}/responsibilities/${resp.dbId}`, payload, {
-              headers: { "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
-            });
-            savedResps.push({ ...resp, dbId: res.data?.id || resp.dbId });
-          } else {
-            const res = await axios.post(`${API_BASE_URL}/jobs/${jobId}/responsibilities`, payload, {
-              headers: { "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
-            });
-            savedResps.push({ ...resp, id: res.data?.id || resp.id, dbId: res.data?.id });
-          }
-        })
-      );
-
-      savedResps.sort((a, b) => {
-        const idxA = responsibilities.findIndex(r => r.id === a.id);
-        const idxB = responsibilities.findIndex(r => r.id === b.id);
-        return idxA - idxB;
-      });
-
-      setResponsibilities(savedResps);
+      const updatedData = res.data;
+      if (updatedData?.id) setSectionId(updatedData.id);
+      
+      const newResps = parseInitialResponsibilities(updatedData);
+      setResponsibilities(newResps);
       setIsSaved(true);
-      if (onSaveSection) onSaveSection('rolesAndResponsibilities', savedResps.map(r => r.title));
+      if (onSaveSection) onSaveSection('rolesAndResponsibilities', updatedData);
     } catch (err) {
       const details = err.response?.data?.detail;
       let errorMsg = "Failed to save roles & responsibilities to the server.";
@@ -143,7 +136,7 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
               {responsibilities.length > 1 && (
                 <button
                   type="button"
-                  onClick={() => removeResponsibility(resp.id, resp.dbId)}
+                  onClick={() => removeResponsibility(resp.id)}
                   className="absolute top-4 right-4 text-slate-400 hover:text-red-500 transition-colors p-1"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -185,7 +178,7 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
               <Plus className="w-4 h-4" />
               Add Responsibility
             </button>
-            <button
+            {!isReadOnly && <button
               onClick={handleSave}
               disabled={!isFormValid || isLoading}
               className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 ${isFormValid && !isLoading
@@ -194,10 +187,11 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
                 }`}
             >
               {isLoading ? "Saving..." : isSaved ? <><CheckCircle2 className="w-4 h-4" />Saved</> : "Save Section"}
-            </button>
+            </button>}
           </div>
         </div>
       )}
     </div>
   );
 }
+

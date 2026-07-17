@@ -92,7 +92,7 @@ export default function AboutUs() {
         <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-indigo-200 rounded-full blur-[120px]" />
       </div>
 
-      <div className="relative z-10 max-w-[1140px] mx-auto w-full flex flex-col">
+      <div className="relative z-10 max-w-[1140px] mx-auto w-full flex flex-col"> 
 
         {/* HEADER BLOCK */}
         <div className="text-left w-full mb-8 select-none">

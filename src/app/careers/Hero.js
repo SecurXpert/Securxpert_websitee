@@ -43,7 +43,7 @@ export default function CareersHero() {
 
                     {/* High-Performance Clipped Background Image Tag matching Blogs Hero height and width */}
                     <img
-                        src="/Blogs/hero/blogs-herobg.png"
+                        src="/blogs/hero/blogs-herobg.png"
                         alt="Careers Hero Curved Background"
                         className="hidden lg:block absolute inset-0 w-full h-full object-fill z-0 pointer-events-none mt-6 lg:mt-1 rounded-[30px]"
                     />
@@ -68,7 +68,7 @@ export default function CareersHero() {
                                 href="#positions"
                                 className="bg-[#3E66F3] hover:bg-blue-600 text-white font-semibold px-8 py-3.5 rounded-full text-sm sm:text-base shadow-lg transition-all active:scale-95 duration-150 flex items-center gap-2"
                             >
-                                <span>view Open Positions</span>
+                                <span>View Open Positions</span>
                                 <svg
                                     className="w-4 h-4"
                                     fill="none"
@@ -88,7 +88,7 @@ export default function CareersHero() {
                     <div className="relative z-10 w-full lg:w-1/2 h-[320px] sm:h-[420px] lg:h-[490px] xl:h-[400px] 2xl:h-[502px] flex items-end justify-center overflow-visible mt-8 lg:mt-0">
                         {/* Main Character Careers Portrait sitting gracefully on the curve bottom */}
                         <img
-                            src="/Carrers/hero.png"
+                            src="/careers/hero.png"
                             alt="Join The Team - Securxpert Careers"
                             className="relative lg:absolute z-10 w-auto h-[95%] sm:h-[100%] lg:h-[148%] xl:h-[125%] 2xl:h-[120%] max-h-[300px] sm:max-h-[400px] lg:max-h-none object-contain object-bottom pointer-events-none select-none transition-transform duration-500 hover:scale-[1.02] translate-y-4 sm:translate-y-4 lg:translate-y-16 lg:right-[14px] xl:translate-y-[52px] 2xl:translate-y-8 xl:right-[-10px] bottom-0 right-0"
                         />

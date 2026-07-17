@@ -31,7 +31,9 @@ export default function Footer() {
             <div className="flex items-center gap-6 pt-2">
               {/* LinkedIn */}
               <a
-                href="#"
+                href="https://linkedin.com/company/105954837"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[#0077B5] hover:opacity-80 transition-opacity duration-200"
                 aria-label="LinkedIn"
               >
@@ -40,32 +42,24 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Twitter / X */}
+              {/* Facebook */}
               <a
-                href="#"
-                className="text-black hover:opacity-80 transition-opacity duration-200"
-                aria-label="Twitter"
+                href="https://facebook.com/profile.php?id=61576099186187"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#1877F2] hover:opacity-80 transition-opacity duration-200"
+                aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-
-              {/* Dribbble / Product Hunt */}
-              <a
-                href="#"
-                className="text-[#EA4C89] hover:opacity-80 transition-opacity duration-200"
-                aria-label="Community"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.49-11.05 1-11.6 8.56" />
+                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
                 </svg>
               </a>
 
               {/* Instagram */}
               <a
-                href="#"
+                href="https://instagram.com/securxpert"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[#E4405F] hover:opacity-80 transition-opacity duration-200"
                 aria-label="Instagram"
               >
@@ -73,6 +67,19 @@ export default function Footer() {
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+
+              {/* Youtube */}
+              <a
+                href="https://www.youtube.com/@securxpert"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#FF0000] hover:opacity-80 transition-opacity duration-200"
+                aria-label="Youtube"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.517 0-9.388.553a3.002 3.002 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.002 3.002 0 0 0 2.11 2.11C4.483 20.5 12 20.5 12 20.5s7.518 0 9.388-.553a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </a>
             </div>
@@ -95,7 +102,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                <Link href="/products" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
                   <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> Products
                 </Link>
               </li>
@@ -139,7 +146,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services/ui-ux" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
+                <Link href="/services/ui-ux-design" className="flex items-center gap-1.5 text-[#4f5b76] hover:text-[#3b82f6] transition-colors duration-200 text-[15px] font-medium group">
                   <LuChevronRight className="w-4 h-4 text-[#3b82f6] transition-transform group-hover:translate-x-1" /> UI/UX Design
                 </Link>
               </li>

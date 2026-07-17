@@ -67,7 +67,7 @@ export default function Benifits() {
     { title: "Health care Insurance", icon: ShieldIcon },
     { title: "Fun team events", icon: PartyIcon },
     { title: "Professional growth budget", icon: RocketIcon },
-    { title: "paid vacation", icon: CalendarIcon },
+    { title: "Paid vacation", icon: CalendarIcon },
     { title: "Competitive salary", icon: WalletIcon },
     { title: "Employee referral bonus", icon: ReferralIcon },
     { title: "Birthday celebration", icon: CakeIcon },

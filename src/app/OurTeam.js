@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 const teamData = [
     {
@@ -8,7 +9,7 @@ const teamData = [
         firstName: "sathwika",
         lastName: "kalwakuntla",
         role: "Front-End Developer",
-        employee: "/AboutUs/ourteam/members1.png",
+        employee: "/about-us/ourteam/members1.png",
         imgClasses: "h-[320px] w-auto object-contain object-bottom scale-[1.35] group-hover:scale-[1.42]"
     },
     {
@@ -130,9 +131,12 @@ export default function OurTeam() {
 
                 {/* Centered View All Members Button */}
                 <div className="flex justify-center mt-12 lg:mt-18 relative z-20">
-                    <button className="bg-[#FEFEFE] hover:bg-slate-50 text-[#384DE4] font-medium text-[15px] lg:text-[17px] py-3 px-8 lg:py-4 lg:px-10 rounded-full cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
-                        View All Team Memebers
-                    </button>
+                    <Link
+                        href="/about-us/team"
+                        className="bg-[#FEFEFE] hover:bg-slate-50 text-[#384DE4] font-medium text-[15px] lg:text-[17px] py-3 px-8 lg:py-4 lg:px-10 rounded-full cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 inline-block"
+                    >
+                        View All Team Members
+                    </Link>
                 </div>
             </div>
 

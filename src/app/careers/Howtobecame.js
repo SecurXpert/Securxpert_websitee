@@ -81,10 +81,10 @@ export default function Howtobecame() {
               return (
                 <div
                   key={idx}
-                  className="relative flex flex-row lg:flex-row items-start lg:items-center justify-start lg:justify-center mb-10 lg:mb-2 last:mb-0 group cursor-default"
+                  className="relative flex flex-row lg:flex-row items-start justify-start lg:justify-center mb-10 lg:mb-6 last:mb-0 group cursor-default"
                 >
                   {/* Left Side Content (Desktop Only: aligned right) */}
-                  <div className={`hidden lg:block w-[42%] px-6 text-right ${!isLeft ? "lg:opacity-0 lg:pointer-events-none" : ""}`}>
+                  <div className={`hidden lg:block w-[42%] px-6 pt-3 text-right ${!isLeft ? "lg:opacity-0 lg:pointer-events-none" : ""}`}>
                     <h3 className="text-lg sm:text-xl font-bold text-[#090808] mb-2 font-sans">
                       {step.title}
                     </h3>
@@ -105,7 +105,7 @@ export default function Howtobecame() {
                   </div>
 
                   {/* Right Side Content (Desktop: active for isRight; Mobile: active for all) */}
-                  <div className={`w-full lg:w-[42%] px-6 text-left ${isLeft ? "lg:opacity-0 lg:pointer-events-none" : ""}`}>
+                  <div className={`w-full lg:w-[42%] px-6 pt-3 text-left ${isLeft ? "lg:opacity-0 lg:pointer-events-none" : ""}`}>
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 font-sans">
                       {step.title}
                     </h3>
@@ -118,7 +118,7 @@ export default function Howtobecame() {
             })}
 
             {/* Bottom Target Node: Start a new journey! */}
-            <div className="relative flex flex-row lg:flex-row items-start lg:items-center justify-start lg:justify-center mt-6">
+            <div className="relative flex flex-row lg:flex-row items-center justify-start lg:justify-center mt-6">
               {/* Left Side (Desktop Only) */}
               <div className="hidden lg:block w-[42%] px-6 text-right">
                 <h3 className="text-xl font-bold text-slate-800 font-sans">

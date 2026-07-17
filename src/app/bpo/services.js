@@ -8,38 +8,38 @@ export default function BPOServices() {
     {
       title: "Business Audit",
       desc: "A structured review of your current processes to identify what can be automated, outsourced, or eliminated entirely. ",
-      icon: "/BPO/FeauturedServices/Symbol.svg",
-      bgImage: "/BPO/FeauturedServices/Business Audit.jpg.jpeg"
+      icon: "/bpo/FeauturedServices/Symbol.svg",
+      bgImage: "/bpo/FeauturedServices/Business Audit.jpg.jpeg"
     },
     {
       title: "Tax Strategy",
       desc: "Process and compliance support for finance and accounting outsourcing engagements. ",
-      icon: "/BPO/FeauturedServices/Symbol3.svg",
-      bgImage: "/BPO/FeauturedServices/Tax strategy.jpg.jpeg"
+      icon: "/bpo/FeauturedServices/Symbol3.svg",
+      bgImage: "/bpo/FeauturedServices/Tax strategy.jpg.jpeg"
     },
     {
       title: "Financial Advices",
       desc: "Cost modelling and reporting support so outsourcing decisions are backed by real numbers. ",
-      icon: "/BPO/FeauturedServices/Symbol (1).svg",
-      bgImage: "/BPO/FeauturedServices/Financial Advice.jpg.jpeg"
+      icon: "/bpo/FeauturedServices/Symbol (1).svg",
+      bgImage: "/bpo/FeauturedServices/Financial Advice.jpg.jpeg"
     },
     {
       title: "Insurance Strategy",
       desc: "Risk-coverage guidance for outsourced operations, where relevant to your industry.",
-      icon: "/BPO/FeauturedServices/Symbol4.svg",
-      bgImage: "/BPO/FeauturedServices/Insurance Strategy.jpg.jpeg",
+      icon: "/bpo/FeauturedServices/Symbol4.svg",
+      bgImage: "/bpo/FeauturedServices/Insurance Strategy.jpg.jpeg",
     },
     {
       title: "Start Ups",
       desc: "Lean, scalable BPO support for early-stage companies that need back-office capacity without early hires. ",
-      icon: "/BPO/FeauturedServices/Symbol5.svg",
-      bgImage: "/BPO/FeauturedServices/start ups.jpg.jpeg",
+      icon: "/bpo/FeauturedServices/Symbol5.svg",
+      bgImage: "/bpo/FeauturedServices/start ups.jpg.jpeg",
     },
     {
       title: "Manage Investment",
       desc: "Operational support for finance teams managing outsourced reporting and reconciliation work",
-      bgImage: "/BPO/FeauturedServices/Manage investments.jpg.jpeg",
-      icon: "/BPO/FeauturedServices/Symbol6.svg",
+      bgImage: "/bpo/FeauturedServices/Manage investments.jpg.jpeg",
+      icon: "/bpo/FeauturedServices/Symbol6.svg",
     }
   ];
 
@@ -50,14 +50,14 @@ export default function BPOServices() {
 
       {/* Bottom Right Wave Shape */}
       <img
-        src="/BPO/AboutUs/aboutus3.svg"
+        src="/bpo/about-us/aboutus3.svg"
         alt="Bottom Right Wave"
         className="absolute right-10 bottom-5 h-[50px] w-auto  pointer-events-none select-none z-0 hidden lg:block"
       />
 
       {/* Bottom Right Wave Shape */}
       <img
-        src="/BPO/AboutUs/aboutus3.svg"
+        src="/bpo/about-us/aboutus3.svg"
         alt="Bottom Right Wave"
         className="absolute left-20 top-50 h-[50px] w-auto  pointer-events-none select-none z-0 hidden lg:block"
       />

@@ -100,7 +100,7 @@ const projectsData = [
     title: "Lauratek 2.0",
     tags: "DESIGN WOK, ILLUSUTRATION",
     desc: "AI-driven evolution of Lauratek with predictive analytics and modern architecture",
-    image: "/products/Projects/project7.png",
+    image: "/products/Projects/project7.png", 
     category: "All",
     slug: "lauratek-2-0",
   },

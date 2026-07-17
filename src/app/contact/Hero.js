@@ -45,6 +45,7 @@ export default function Hero() {
         name: "",
         email: "",
         phone: "",
+        countryCode: "+91", // Default country code
         purpose: "",
         message: "",
         location: ""
@@ -52,24 +53,53 @@ export default function Hero() {
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        // Simulate API request delay
-        setTimeout(() => {
-            setLoading(false);
-            setSubmitted(true);
-            setFormData({
-                name: "",
-                email: "",
-                phone: "",
-                purpose: "",
-                message: "",
-                location: ""
+
+        const urlencoded = new URLSearchParams();
+        urlencoded.append("name", formData.name);
+        urlencoded.append("email", formData.email);
+        urlencoded.append("purpose", formData.purpose);
+        urlencoded.append("country_code", formData.countryCode);
+        urlencoded.append("phone_number", formData.phone.replace(formData.countryCode, "") || formData.phone);
+        urlencoded.append("location", formData.location);
+        urlencoded.append("message", formData.message);
+
+        try {
+            const response = await fetch("https://poise-crouch-plating.ngrok-free.dev/contact/contact-us", {
+                method: "POST",
+                headers: {
+                    "accept": "application/json",
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: urlencoded
             });
-            // Clear success message after 5 seconds
-            setTimeout(() => setSubmitted(false), 5000);
-        }, 1500);
+
+            if (response.ok) {
+                setSubmitted(true);
+                setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    countryCode: "+91",
+                    purpose: "",
+                    message: "",
+                    location: ""
+                });
+                // Clear success message after 5 seconds
+                setTimeout(() => setSubmitted(false), 5000);
+            } else {
+                const errData = await response.json().catch(() => ({}));
+                console.error("Submission failed", errData);
+                alert("Failed to send message. " + (errData.detail || ""));
+            }
+        } catch (error) {
+            console.error("Network Error", error);
+            alert("Network Error: Could not connect to the server.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleInputChange = (e) => {
@@ -236,14 +266,17 @@ export default function Hero() {
                                         <PhoneInput
                                             defaultCountry="in"
                                             value={formData.phone || ""}
-                                            onChange={(phone) => setFormData({ ...formData, phone })}
+                                            onChange={(phone, meta) => setFormData({ ...formData, phone, countryCode: meta?.country?.dialCode ? `+${meta.country.dialCode}` : "+91" })}
                                             placeholder="Enter your phone number"
                                             inputClassName="!w-full !bg-transparent !py-2.5 !text-[15px] !font-semibold !text-slate-900 placeholder-slate-400 focus:!outline-none font-sans !border-none !ring-0"
                                             className="flex items-center w-full bg-transparent border-b border-slate-200 hover:border-blue-600 focus-within:border-blue-600 transition-all"
                                             countrySelectorStyleProps={{
                                                 buttonClassName: "!bg-transparent !py-2.5 !pr-2 !text-[15px] !font-semibold !text-slate-900 !h-full !border-none",
                                                 dropdownStyleProps: {
-                                                    className: "!z-50"
+                                                    className: "!z-50",
+                                                    style: {
+                                                        width: "250px"
+                                                    }
                                                 }
                                             }}
                                         />

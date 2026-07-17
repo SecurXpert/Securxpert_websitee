@@ -81,7 +81,7 @@ export default async function AboutUsSubPage({ params }) {
 
                     <div className="flex-1 w-full flex justify-center lg:justify-end">
                         <img
-                            src="/AboutUs/founders1.jpg"
+                            src="/about-us/founders1.jpg"
                             alt="G. Sri Manasa"
                             className="w-full max-h-[550px] rounded-lg shadow-sm object-cover"
                         />
@@ -92,7 +92,7 @@ export default async function AboutUsSubPage({ params }) {
                 <div className="relative max-w-[1200px] mx-auto px-6 md:px-12 z-10 flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-14 mt-20">
                     <div className="flex-1 w-full flex justify-center lg:justify-start">
                         <img
-                            src="/AboutUs/founders2.jpg"
+                            src="/about-us/founders2.jpg"
                             alt="G. Praveen Kumar"
                             className="w-full max-h-[550px] rounded-lg shadow-sm object-cover"
                         />

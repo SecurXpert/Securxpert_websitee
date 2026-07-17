@@ -6,7 +6,7 @@ export default function Testimonials() {
     const list = [
         {
             logo: (
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2.5"> 
                     {/* Feedspace Custom Logo */}
                     <div className="w-8 h-8 rounded bg-[#2563EB] flex items-center justify-center text-white font-black text-sm shadow-sm">
                         F

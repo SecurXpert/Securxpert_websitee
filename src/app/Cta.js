@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export default function Cta() {
     return (
@@ -13,7 +14,7 @@ export default function Cta() {
             <div className="max-w-4xl mx-auto flex flex-col items-center justify-center">
                 {/* Title */}
                 <h2 className="text-4xl sm:text-5xl md:text-5xl text-white font-medium mb-6 tracking-tight leading-tight">
-                    Ready to Transform Your Business?
+                    Ready to Transform Your Business? 
                 </h2>
 
                 {/* Subtitle / Description */}
@@ -23,12 +24,18 @@ export default function Cta() {
 
                 {/* Interactive Action Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-                    <button className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#4F46E5] font-medium px-6 py-2.5 rounded-full text-base sm:text-lg shadow-lg shadow-black/10 transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer">
+                    <Link
+                        href="/contact"
+                        className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#4F46E5] font-medium px-6 py-2.5 rounded-full text-base sm:text-lg shadow-lg shadow-black/10 transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer text-center inline-block"
+                    >
                         Schedule a Free Consultation
-                    </button>
-                    <button className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-[#FFFFFF33] hover:border-white/30 text-white font-medium px-6 py-2.5 rounded-full text-base sm:text-lg transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer">
+                    </Link>
+                    <Link
+                        href="/contact"
+                        className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-[#FFFFFF33] hover:border-white/30 text-white font-medium px-6 py-2.5 rounded-full text-base sm:text-lg transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer text-center inline-block"
+                    >
                         Get a Custom Quote
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

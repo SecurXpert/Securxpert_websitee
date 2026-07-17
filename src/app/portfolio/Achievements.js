@@ -5,7 +5,7 @@ import React from "react";
 const milestonesData = [
   {
     year: "2020",
-    title: "Creative Excellence Award",
+    title: "Creative Excellence Award", 
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
   },

@@ -13,7 +13,7 @@ export default function Cta() {
           backgroundImage: "url('/products/cta-bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
+          backgroundRepeat: "no-repeat" 
         }}
       >
         <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">

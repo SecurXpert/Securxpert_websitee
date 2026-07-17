@@ -5,10 +5,10 @@ import Link from "next/link";
 
 export default function TeamMembers() {
   const members = [
-    { id: 1, image: "/BPO/TeamMembers/member1.jpg", alt: "Team Member 1" },
-    { id: 2, image: "/BPO/TeamMembers/member2.jpg", alt: "Team Member 2" },
-    { id: 3, image: "/BPO/TeamMembers/member3.jpg", alt: "Team Member 3" },
-    { id: 4, image: "/BPO/TeamMembers/member4.jpg", alt: "Team Member 4" },
+    { id: 1, image: "/bpo/TeamMembers/member1.jpg", alt: "Team Member 1" },
+    { id: 2, image: "/bpo/TeamMembers/member2.jpg", alt: "Team Member 2" },
+    { id: 3, image: "/bpo/TeamMembers/member3.jpg", alt: "Team Member 3" },
+    { id: 4, image: "/bpo/TeamMembers/member4.jpg", alt: "Team Member 4" },
   ];
 
   return (
@@ -17,13 +17,13 @@ export default function TeamMembers() {
       {/* BACKGROUND ACCENT GRAPHICS */}
       {/* Bottom Left Stripe Accent */}
       <img
-        src="/BPO/Blogs/blogdesign1.png"
+        src="/bpo/blogs/blogdesign1.png"
         alt="Bottom Left Stripe Accent"
         className="absolute bottom-[1px] left-[-14px] w-[180px] sm:w-[200px] h-auto select-none pointer-events-none z-0 hidden sm:block"
       />
       {/* Top Right Violet Accent */}
       <img
-        src="/BPO/AboutUs/aboutus3.svg"
+        src="/bpo/about-us/aboutus3.svg"
         alt="Top Right Accent"
         className="absolute right-12 top-[15%] w-11 h-11 pointer-events-none select-none z-0 animate-pulse hidden xl:block"
       />
@@ -62,9 +62,8 @@ export default function TeamMembers() {
 
         {/* View All Button */}
         <div className="flex justify-center">
-          <Link
-            href="/team"
-            className="inline-flex bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-8 py-3 rounded-[4px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 items-center justify-center gap-2 group relative z-10"
+          <div
+            className="inline-flex bg-[#3D62EB] hover:bg-[#2C48B1] text-white font-medium px-8 py-3 rounded-[4px] text-[15px] shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-300 items-center justify-center gap-2 group relative z-10 cursor-default"
           >
             View All
             <svg
@@ -76,7 +75,7 @@ export default function TeamMembers() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
-          </Link>
+          </div>
         </div>
 
       </div>

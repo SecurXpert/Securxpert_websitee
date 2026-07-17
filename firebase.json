@@ -40,6 +40,21 @@
         "type": 301
       },
       {
+        "source": "/Blogs",
+        "destination": "/blogs",
+        "type": 301
+      },
+      {
+        "source": "/Bpo",
+        "destination": "/bpo",
+        "type": 301
+      },
+      {
+        "source": "/BPO",
+        "destination": "/bpo",
+        "type": 301
+      },
+      {
         "source": "/Services/:slug*",
         "destination": "/services/:slug*",
         "type": 301

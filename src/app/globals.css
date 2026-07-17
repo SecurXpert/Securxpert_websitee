@@ -122,22 +122,22 @@ h6,
   box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.15);
 }
 
-/* Custom Scrollbar */
+/* Ultra-thin Transparent Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 2x;
 }
 
 ::-webkit-scrollbar-track {
-  background: #060913;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 2x;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: rgba(148, 163, 184, 0.5);
 }
 
 /* Bobbing/Floating Animation for Premium UI Cards */
@@ -215,7 +215,9 @@ h6,
 
 .font-space-grotesk {
   font-family: var(--font-space-grotesk), sans-serif !important;
-}.blog-admin-theme {
+}
+
+.blog-admin-theme {
   --background: #f1f4f8;
   --foreground: #111827;
   --card: #ffffff;

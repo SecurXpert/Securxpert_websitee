@@ -10,8 +10,8 @@ const teamData = [
         firstName: "Sarah",
         lastName: "Aileah",
         role: ["Chief Creative Officer"],
-        employee: "/AboutUs/ourteam/members1.png",
-        hoverImage: "/AboutUs/ourteam/members2.png",
+        employee: "/about-us/ourteam/members1.png",
+        hoverImage: "/about-us/ourteam/members2.png",
         imgpos: "bottom-[64px] left-1/2 -translate-x-1/2 w-[130%] max-w-none h-[340px]"
     },
     {
@@ -84,7 +84,7 @@ const teamData = [
         firstName: "David",
         lastName: "Smith",
         role: ["Technical Director"],
-        employee: "/AboutUs/ourteam/members1.png",
+        employee: "/about-us/ourteam/members1.png",
         imgpos: "bottom-[64px] left-1/2 -translate-x-1/2 w-auto max-w-none h-[260px]"
     },
     {
@@ -92,7 +92,7 @@ const teamData = [
         firstName: "Emma",
         lastName: "Johnson",
         role: ["Lead Developer"],
-        employee: "/AboutUs/ourteam/members2.png",
+        employee: "/about-us/ourteam/members2.png",
         imgpos: "bottom-[64px] left-1/2 -translate-x-1/2 w-auto max-w-none h-[260px]"
     }
 ];
@@ -125,16 +125,16 @@ export default function TeamSection() {
                 {/* Filter Navigation Tabs */}
                 <div className="flex flex-wrap items-center justify-center gap-4 mb-20">
                     <button className="bg-[#384DE4] text-white px-6 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer">
-                        Tecnology & Development
+                        Technology & Development
                     </button>
                     <button className="bg-transparent text-[#19085F] border border-[#19085F]/30 hover:bg-[#384DE4]/10 px-6 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer">
-                        Operation & Management
+                        Operations & Management
                     </button>
                     <button className="bg-transparent text-[#19085F] border border-[#19085F]/30 hover:bg-[#384DE4]/10 px-6 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer">
-                        Strategy & Buisness
+                        Strategy & Business
                     </button>
                     <button className="bg-transparent text-[#19085F] border border-[#19085F]/30 hover:bg-[#384DE4]/10 px-6 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer">
-                        Marketting & Content
+                        Marketing & Content
                     </button>
                     <button className="bg-transparent text-[#19085F] border border-[#19085F]/30 hover:bg-[#384DE4]/10 px-6 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer">
                         School Management

@@ -110,7 +110,7 @@ export default function ProductPageFAQ({ product }) {
 
             <div className="mt-4 flex justify-start">
               <Link 
-                href="/contact" 
+                href="#appointment" 
                 className="inline-flex items-center justify-center bg-[#3D62EB] text-white font-medium px-8 py-3 rounded-lg hover:bg-blue-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 active:scale-95 shadow-md"
               >
                 {product?.faqButtonText || `Request a ${product?.title || "Product"} Demo`}

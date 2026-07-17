@@ -43,7 +43,10 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
           let heroData = null;
           try {
             const hRes = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
-              headers: { ...(token && { "Authorization": `Bearer ${token}` }) }
+              headers: { 
+                "ngrok-skip-browser-warning": "true",
+                ...(token && { "Authorization": `Bearer ${token}` }) 
+              }
             });
             if (hRes.ok) {
               const resData = await hRes.json();
@@ -56,7 +59,10 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
           try {
             // The backend provides a /blogs/{blogId}/all endpoint which returns the full blog including its sections!
             const bRes = await fetch(`${API_BASE_URL}/blogs/${blogId}/all`, {
-              headers: { ...(token && { "Authorization": `Bearer ${token}` }) }
+              headers: { 
+                "ngrok-skip-browser-warning": "true",
+                ...(token && { "Authorization": `Bearer ${token}` }) 
+              }
             });
             
             if (bRes.ok) {
@@ -133,6 +139,7 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
       const res = await fetch(`${API_BASE_URL}/blogs/${blogId}`, {
         method: "PATCH",
         headers: {
+          "ngrok-skip-browser-warning": "true",
           "Content-Type": "application/x-www-form-urlencoded",
           ...(token && { "Authorization": `Bearer ${token}` })
         },

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export default function Cta() {
     return (
@@ -23,12 +24,18 @@ export default function Cta() {
 
                 {/* Interactive Action Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-                    <button className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#4F46E5] font-medium px-6 py-3 rounded-full text-base sm:text-[15px] shadow-lg shadow-black/10 transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer">
+                    <Link
+                        href="/contact"
+                        className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#4F46E5] font-medium px-6 py-3 rounded-full text-base sm:text-[15px] shadow-lg shadow-black/10 transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer text-center inline-block"
+                    >
                         Schedule a Free Consultation Today
-                    </button>
-                    <button className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-[#FFFFFF33] hover:border-white/30 text-white font-medium px-6 py-3 rounded-full text-base sm:text-[15px] transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer">
+                    </Link>
+                    <Link
+                        href="/contact"
+                        className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-[#FFFFFF33] hover:border-white/30 text-white font-medium px-6 py-3 rounded-full text-base sm:text-[15px] transition-all hover:scale-[1.02] active:scale-95 duration-150 cursor-pointer text-center inline-block"
+                    >
                        Get a Custom Business Solution
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

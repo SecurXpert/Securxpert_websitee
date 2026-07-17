@@ -55,7 +55,7 @@ const servicesData = [
 
 export default function OurServices() {
     return (
-        <section className="relative w-full bg-white py-18 overflow-hidden text-slate-800">
+        <section className="relative w-full bg-white py-10 overflow-hidden text-slate-800">
 
 
             {/* Main Container */}
@@ -65,7 +65,7 @@ export default function OurServices() {
                 <div className="flex flex-col items-center justify-center text-center mb-16 lg:mb-8">
 
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 font-sans">
-                        Core Services
+                        Core Services 
                     </h2>
 
                     {/* Symmetrical Tech Pill Button with SVG Background Design overlay */}

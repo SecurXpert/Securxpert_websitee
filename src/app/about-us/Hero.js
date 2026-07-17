@@ -32,7 +32,7 @@ export default function Hero() {
           {/* Middle Column: Cutout Characters overlapping bottom */}
           <div className="w-full lg:w-[42%] flex justify-center items-end relative z-30 -mb-24 sm:-mb-32 lg:-mb-[260px] xl:-mb-[380px] 2xl:-mb-[380px] mt-4 lg:mt-0">
             <img
-              src="/AboutUs/Aboutus.png"
+              src="/about-us/Aboutus.png"
               alt="SecurXpert About Us Team"
               className="h-[360px] sm:h-[540px] lg:h-[580px] xl:h-[780px] 2xl:h-[860px] w-auto object-contain select-none "
             />
@@ -85,7 +85,7 @@ export default function Hero() {
         <div
           className="w-full rounded-[30px] overflow-hidden relative border border-white/40 bg-cover bg-center py-16 sm:py-20 lg:py-24 px-6 sm:px-12 md:px-16"
           style={{
-            backgroundImage: "url('/AboutUs/Aboutus2.png')"
+            backgroundImage: "url('/about-us/Aboutus2.png')"
           }}
         >
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10">

@@ -29,7 +29,7 @@ const getInitialToggles = (data) => {
   return defaultToggles;
 };
 
-export default function HeroSectionBuilder({ isExpanded, onToggle, initialData, jobId, onSaveSection }) {
+export default function HeroSectionBuilder({ isExpanded, onToggle, initialData, jobId, onSaveSection, isReadOnly = false }) {
   const [toggles, setToggles] = useState(getInitialToggles(initialData));
   const [isSaved, setIsSaved] = useState(!!initialData);
   const [heroTitle, setHeroTitle] = useState(initialData?.heroTitle || initialData?.hero_title || "");
@@ -197,16 +197,17 @@ export default function HeroSectionBuilder({ isExpanded, onToggle, initialData, 
           </div>
 
           <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
-            <button
+            {!isReadOnly && <button
               onClick={handleSave}
               disabled={isLoading}
               className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 bg-[#5A73FF] text-white hover:bg-blue-600 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
               {isLoading ? "Saving..." : isSaved ? <><CheckCircle2 className="w-4 h-4" />Saved</> : "Save Section"}
-            </button>
+            </button>}
           </div>
         </div>
       )}
     </div>
   );
 }
+

@@ -9,7 +9,7 @@ export default function WhyChooseUs() {
       
       {/* Floating Sparkle Left */}
       <img
-        src="/BPO/AboutUs/aboutus.svg"
+        src="/bpo/about-us/aboutus.svg" 
         alt="Left Sparkle"
         className="absolute left-10 top-1/3 w-8 h-8 opacity-45 pointer-events-none select-none z-0 animate-pulse hidden xl:block"
       />
@@ -92,7 +92,7 @@ export default function WhyChooseUs() {
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
             <div className="w-full max-w-[6500px] lg:translate-x-10">
               <img
-                src="/BPO/whychoose.png"
+                src="/bpo/whychoose.png"
                 alt="Why Choose Us"
                 className="w-full h-auto object-contain rounded-[4px]"
               />

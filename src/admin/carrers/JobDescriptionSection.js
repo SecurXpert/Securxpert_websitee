@@ -3,7 +3,7 @@ import { ChevronDown, ChevronUp, Eye, Bold, Italic, Link2, List, ListOrdered, Ch
 import axios from "axios";
 import { API_BASE_URL } from "../config";
 
-export default function JobDescriptionSection({ isExpanded, onToggle, initialData, jobId, onSaveSection }) {
+export default function JobDescriptionSection({ isExpanded, onToggle, initialData, jobId, onSaveSection, isReadOnly = false }) {
   const [description, setDescription] = useState("");
   const [isSaved, setIsSaved] = useState(!!initialData);
   const [isLoading, setIsLoading] = useState(false);
@@ -122,7 +122,7 @@ export default function JobDescriptionSection({ isExpanded, onToggle, initialDat
           </div>
 
           <div className="flex justify-end mt-8 pt-6 border-t border-slate-100">
-            <button
+            {!isReadOnly && <button
               onClick={handleSave}
               disabled={!isFormValid || isLoading}
               className={`px-6 py-2.5 rounded-xl text-[14px] font-bold shadow-sm transition-all flex items-center gap-2 ${isFormValid && !isLoading
@@ -131,10 +131,11 @@ export default function JobDescriptionSection({ isExpanded, onToggle, initialDat
                 }`}
             >
               {isLoading ? "Saving..." : isSaved ? <><CheckCircle2 className="w-4 h-4" />Saved</> : "Save Section"}
-            </button>
+            </button>}
           </div>
         </div>
       )}
     </div>
   );
 }
+

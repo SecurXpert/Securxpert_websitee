@@ -52,7 +52,7 @@ const stepAngles = {
     5: 54   // Bottom-right
 };
 
-export default function WeWork() {
+export default function WeWork() { 
     return (
         <section className="relative w-full bg-white py-4 sm:py-14 overflow-hidden text-slate-800 border-t border-slate-100">
             {/* Header Block */}
@@ -60,7 +60,7 @@ export default function WeWork() {
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 font-sans">
                     How We work 
                 </h2>
-                <p className="text-slate-800 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">
+                <p className="text-slate-800 text-sm sm:text-base mt-4 max-w-xl leading-relaxed mb-4">
                    We have a structured and transparent development process to ensure quality delivery: 
                 </p>
             </div>

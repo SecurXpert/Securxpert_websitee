@@ -83,9 +83,9 @@ const bpoServices = {
     heading: "Ready to Streamline Your Business Operations?",
     description: "Tell us what you need handled — we'll take it off your plate, deliver it accurately, and free your team to focus on what matters.",
     buttonText: "Get a Free Consultation",
-    buttonLink: "/contact",
+    buttonLink: "/bpo#appointment",
     secondaryButtonText: "Contact Us Today",
-    secondaryButtonLink: "/contact"
+    secondaryButtonLink: "/bpo#appointment"
   }
 };
 

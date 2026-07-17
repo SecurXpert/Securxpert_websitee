@@ -10,13 +10,14 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileExpanded, setMobileExpanded] = useState("");
   const headerRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (pathname === "/Carrers/create") return null;
+  if (pathname === "/careers/create") return null;
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -45,6 +46,7 @@ export default function Header() {
   useEffect(() => {
     setMobileMenuOpen(false);
     setOpenDropdown(null);
+    setMobileExpanded("");
   }, [pathname]);
 
   const cleanPath = pathname ? pathname.toLowerCase().replace(/\/$/, "") : "";
@@ -169,35 +171,35 @@ export default function Header() {
               <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "services" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
                 <Link href="/services/software-development" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Software Development
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/services/it-support" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   IT Support
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/services/cloud-services" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Cloud Services
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/services/bpo-services" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   BPO Services
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/services/ai-chatbots" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   AI Chatbots
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/services/digital-marketing" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Digital Marketing
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/services/ui-ux-design" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   UI/UX Design
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/services/cybersecurity" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Cybersecurity
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
               </div>
             </div>
@@ -241,47 +243,47 @@ export default function Header() {
               <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-56 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "products" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
                 <Link href="/products/lens-light" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Lens & Light Media
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/devtalent" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   DevTalent
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/vishan" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Vishan
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/arogya-narayan" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Arogya Narayan
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/hisphere" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   HiSphere
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/lauratek" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Lauratek
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/lauratek-2-0" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Lauratek 2.0
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/logsphere" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   LogSphere
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/onestep-medi" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Onestep Medi
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/shrava360" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Shrava360
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/products/grabjobz" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   GrabJobz
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
               </div>
             </div>
@@ -341,11 +343,11 @@ export default function Header() {
               <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-48 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "aboutus" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
                 <Link href="/about-us/team" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Our Team
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
                 <Link href="/about-us/founders" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Founders
-                  <svg className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                  
                 </Link>
               </div>
             </div>
@@ -417,26 +419,43 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 lg:hidden bg-white border-b border-slate-200 shadow-xl max-h-[85vh] overflow-y-auto z-[9999]">
-          <div className="px-4 pt-3 pb-6 space-y-2.5">
-            <Link
-              href="/"
-              className={getMobileLinkClass("/")}
-            >
-              Home
-            </Link>
+      {/* Mobile Backdrop */}
+      <div 
+        className={`fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-[40] lg:hidden transition-opacity duration-300 ${mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
 
-            {/* Services with Mobile Sub-options */}
-            <div className="flex flex-col">
+      {/* Mobile Drawer Menu (Right Side) */}
+      <div 
+        className={`fixed top-0 bottom-0 right-0 w-[280px] sm:w-[320px] bg-white shadow-[-10px_0_30px_rgba(0,0,0,0.1)] z-[45] pt-24 pb-6 overflow-y-auto lg:hidden transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
+        <div className="px-5 space-y-3">
+          <Link
+            href="/"
+            className={getMobileLinkClass("/")}
+          >
+            Home
+          </Link>
+
+          {/* Services with Mobile Sub-options */}
+          <div className="flex flex-col">
+            <div className="flex items-center justify-between">
               <Link
                 href="/services"
-                className={getMobileLinkClass("/services")}
+                className={`flex-grow ${getMobileLinkClass("/services")}`}
               >
                 Services
               </Link>
-              <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
+              <button 
+                className="p-2 text-slate-500 hover:text-blue-600 focus:outline-none"
+                onClick={() => setMobileExpanded(mobileExpanded === "services" ? "" : "services")}
+                aria-label="Toggle Services menu"
+              >
+                <svg className={`w-5 h-5 transition-transform duration-200 ${mobileExpanded === "services" ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+            </div>
+            <div className={`overflow-hidden transition-all duration-300 ${mobileExpanded === "services" ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+              <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 mb-2 border-l border-slate-100/80">
                 <Link href="/services/software-development" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Software Development</Link>
                 <Link href="/services/it-support" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">IT Support</Link>
                 <Link href="/services/cloud-services" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Cloud Services</Link>
@@ -447,34 +466,30 @@ export default function Header() {
                 <Link href="/services/cybersecurity" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Cybersecurity</Link>
               </div>
             </div>
+          </div>
 
-            {/* Products with Mobile Sub-options */}
-            <div className="flex flex-col">
+          {/* Products with Mobile Sub-options */}
+          <div className="flex flex-col">
+            <div className="flex items-center justify-between">
               <Link
                 href="/products"
-                className={getMobileLinkClass("/products")}
+                className={`flex-grow ${getMobileLinkClass("/products")}`}
               >
                 Products
               </Link>
-              <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
-                <Link
-                  href="/products/lens-light"
-                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  Lens & Light Media
-                </Link>
-                <Link
-                  href="/products/devtalent"
-                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  DevTalent
-                </Link>
-                <Link
-                  href="/products/vishan"
-                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  Vishan
-                </Link>
+              <button 
+                className="p-2 text-slate-500 hover:text-blue-600 focus:outline-none"
+                onClick={() => setMobileExpanded(mobileExpanded === "products" ? "" : "products")}
+                aria-label="Toggle Products menu"
+              >
+                <svg className={`w-5 h-5 transition-transform duration-200 ${mobileExpanded === "products" ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+            </div>
+            <div className={`overflow-hidden transition-all duration-300 ${mobileExpanded === "products" ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
+              <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 mb-2 border-l border-slate-100/80">
+                <Link href="/products/lens-light" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Lens & Light Media</Link>
+                <Link href="/products/devtalent" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">DevTalent</Link>
+                <Link href="/products/vishan" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Vishan</Link>
                 <Link href="/products/arogya-narayan" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Arogya Narayan</Link>
                 <Link href="/products/hisphere" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">HiSphere</Link>
                 <Link href="/products/lauratek" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Lauratek</Link>
@@ -482,91 +497,88 @@ export default function Header() {
                 <Link href="/products/logsphere" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">LogSphere</Link>
                 <Link href="/products/onestep-medi" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Onestep Medi</Link>
                 <Link href="/products/shrava360" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">shrava360</Link>
-                <Link
-                  href="/products/grabjobz"
-                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  GrabJobz
-                </Link>
+                <Link href="/products/grabjobz" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">GrabJobz</Link>
               </div>
             </div>
+          </div>
 
-            {/* BPO */}
-            <Link
-              href="/bpo"
-              className={getMobileLinkClass("/bpo")}
-            >
-              BPO
-            </Link>
+          {/* BPO */}
+          <Link
+            href="/bpo"
+            className={getMobileLinkClass("/bpo")}
+          >
+            BPO
+          </Link>
 
-            {/* Blogs */}
-            <Link
-              href="/blogs"
-              className={getMobileLinkClass("/blogs")}
-            >
-              Blogs
-            </Link>
+          {/* Blogs */}
+          <Link
+            href="/blogs"
+            className={getMobileLinkClass("/blogs")}
+          >
+            Blogs
+          </Link>
 
-            {/* About Us with Mobile Sub-options */}
-            <div className="flex flex-col">
+          {/* About Us with Mobile Sub-options */}
+          <div className="flex flex-col">
+            <div className="flex items-center justify-between">
               <Link
                 href="/about-us"
-                className={getMobileLinkClass("/about-us")}
+                className={`flex-grow ${getMobileLinkClass("/about-us")}`}
               >
                 About Us
               </Link>
-              <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 border-l border-slate-100/80">
-                <Link
-                  href="/about-us/team"
-                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  Our Team
-                </Link>
-                <Link
-                  href="/about-us/founders"
-                  className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors"
-                >
-                  Founders
-                </Link>
+              <button 
+                className="p-2 text-slate-500 hover:text-blue-600 focus:outline-none"
+                onClick={() => setMobileExpanded(mobileExpanded === "aboutus" ? "" : "aboutus")}
+                aria-label="Toggle About Us menu"
+              >
+                <svg className={`w-5 h-5 transition-transform duration-200 ${mobileExpanded === "aboutus" ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+            </div>
+            <div className={`overflow-hidden transition-all duration-300 ${mobileExpanded === "aboutus" ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
+              <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 mb-2 border-l border-slate-100/80">
+                <Link href="/about-us/team" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Our Team</Link>
+                <Link href="/about-us/founders" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Founders</Link>
               </div>
             </div>
+          </div>
 
-            {/* Careers */}
-            <Link
-              href="/careers"
-              className={getMobileLinkClass("/careers")}
-            >
-              Careers
-            </Link>
+          {/* Careers */}
+          <Link
+            href="/careers"
+            className={getMobileLinkClass("/careers")}
+          >
+            Careers
+          </Link>
 
-            {/* Portfolio */}
-            <Link
-              href="/portfolio"
-              className={getMobileLinkClass("/portfolio")}
-            >
-              Portfolio
-            </Link>
+          {/* Portfolio */}
+          <Link
+            href="/portfolio"
+            className={getMobileLinkClass("/portfolio")}
+          >
+            Portfolio
+          </Link>
 
-            {/* Contact */}
+          {/* Contact */}
+          <Link
+            href="/contact"
+            className={getMobileLinkClass("/contact")}
+          >
+            Contact
+          </Link>
+
+          {/* Book Consultation in Mobile Drawer */}
+          <div className="pt-4 pb-2">
             <Link
               href="/contact"
-              className={getMobileLinkClass("/contact")}
+              className="w-full text-center block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 text-white font-semibold px-4 py-3 rounded-full text-[13px] shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:brightness-110 active:scale-95"
             >
-              Contact
+              Book Consultation
             </Link>
-
-            {/* Book Consultation in Mobile Drawer */}
-            <div className="pt-4 pb-2">
-              <Link
-                href="/contact"
-                className="w-full text-center block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 text-white font-semibold px-4 py-3 rounded-full text-[13px] shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:brightness-110 active:scale-95"
-              >
-                INDIA
-              </Link>
-            </div>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
+

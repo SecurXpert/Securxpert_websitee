@@ -42,7 +42,7 @@ export default function Process() {
 
                 {/* Cards Row Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 w-full">
-                    {steps.map((step, idx) => (
+                    {steps.map((step, idx) => ( 
                         <div 
                             key={idx} 
                             className="bg-[#19092D] rounded-[20px] p-5 sm:p-6 flex flex-col justify-between shadow-xl shadow-slate-100 hover:shadow-2xl hover:shadow-purple-100/50 transition-all duration-300 group"

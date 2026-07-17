@@ -12,7 +12,7 @@ export default function Testimonials() {
       quote: "“Morbi consectetur elementum purus mattis cursus purus metus iaculis sagittis. Vestibulum molestie bibendum turpis luctus sem lacinia quis. Quisque amet velit sit amet dui hendrerit ultricies a id ipsum Mauris sit amet lacinia est”",
       author: "Micle Deno",
       role: "President of Sales",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg" 
     },
     {
       id: 2,
@@ -73,7 +73,7 @@ export default function Testimonials() {
       
       {/* Background Graphic Lines / Accent Image */}
       <img
-        src="/BPO/testimonials.png"
+        src="/bpo/testimonials.png"
         alt="Testimonials Line Grid Vector"
         className="absolute inset-0 w-full h-full object-cover opacity-90 pointer-events-none z-0"
       />

@@ -237,7 +237,7 @@ export default function Hero() {
           <button
             key={idx}
             onClick={() => {
-              if (isTransitioning) return;
+              if (isTransitioning) return; 
               setIsTransitioning(true);
               setDirection(idx > currentIndex ? "next" : "prev");
               setCurrentIndex(idx);

@@ -183,12 +183,12 @@ export default async function ServicePage({ params }) {
           style={{ background: "linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%)" }}
         >
           <img
-            src="/BPO/AboutUs/aboutus2.svg"
+            src="/bpo/about-us/aboutus2.svg"
             alt="Backdrop Radial Rays"
             className="absolute top-[0px] left-[-110px] w-[30%] h-[60%] pointer-events-none select-none z-0"
           />
           <img
-            src="/BPO/FeauturedServices/shape.svg"
+            src="/bpo/FeauturedServices/shape.svg"
             alt="Background Shape"
             className="absolute right-[-14rem] bottom-[-8rem] h-full max-h-[500px] object-contain pointer-events-none z-0 hidden lg:block opacity-90"
           />
