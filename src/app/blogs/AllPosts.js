@@ -110,7 +110,7 @@ export default function AllPosts() {
                     const guestPassword = "VisitorPass123";
 
                     try {
-                        const loginRes = await axios.post(`${API_BASE_URL}/auth/login`, {
+                        const loginRes = await axios.post(`${API_BASE_URL}auth/login`, {
                             email: guestEmail,
                             password: guestPassword
                         });
@@ -122,12 +122,12 @@ export default function AllPosts() {
                     } catch (err) {
                         if (err.response && err.response.status === 401) {
                             try {
-                                await axios.post(`${API_BASE_URL}/auth/register-admin`, {
+                                await axios.post(`${API_BASE_URL}auth/register-admin`, {
                                     username: guestUsername,
                                     email: guestEmail,
                                     password: guestPassword
                                 });
-                                const loginRes2 = await axios.post(`${API_BASE_URL}/auth/login`, {
+                                const loginRes2 = await axios.post(`${API_BASE_URL}auth/login`, {
                                     email: guestEmail,
                                     password: guestPassword
                                 });
@@ -150,12 +150,12 @@ export default function AllPosts() {
 
                 let response;
                 try {
-                    response = await axios.get(`${API_BASE_URL}/blogs/`, { headers: getHeaders(token) });
+                    response = await axios.get(`${API_BASE_URL}blogs/`, { headers: getHeaders(token) });
                 } catch (err) {
                     if (err.response?.status === 401) {
                         console.log("Token expired/invalid, logging in as guest again...");
                         token = await performGuestLogin();
-                        response = await axios.get(`${API_BASE_URL}/blogs/`, { headers: getHeaders(token) });
+                        response = await axios.get(`${API_BASE_URL}blogs/`, { headers: getHeaders(token) });
                     } else {
                         throw err;
                     }
@@ -169,7 +169,7 @@ export default function AllPosts() {
                         .map(async (blog) => {
                             let heroData = {};
                             try {
-                                const heroRes = await axios.get(`${API_BASE_URL}/blogs/${blog.id}/hero`, { headers: getHeaders(token) });
+                                const heroRes = await axios.get(`${API_BASE_URL}blogs/${blog.id}/hero`, { headers: getHeaders(token) });
                                 const resData = heroRes.data || {};
                                 heroData = resData.data || resData;
                             } catch (err) {

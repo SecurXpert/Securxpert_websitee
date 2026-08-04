@@ -40,7 +40,7 @@ export default function ViewBlog({ blogId, onBack }) {
     const fetchBlog = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const res = await fetch(`${API_BASE_URL}/blogs/${blogId}/all`, {
+        const res = await fetch(`${API_BASE_URL}blogs/${blogId}/all`, {
           headers: {
             "ngrok-skip-browser-warning": "true",
             ...(token && { "Authorization": `Bearer ${token}` })
@@ -117,7 +117,7 @@ export default function ViewBlog({ blogId, onBack }) {
 
       <div className="flex-1 overflow-auto p-8">
         <div className="max-w-4xl mx-auto">
-          
+
           <SectionWrapper title="Blog Information" icon={FileText}>
             <div className="grid grid-cols-2 gap-x-6">
               <ReadOnlyField label="Title" value={blogData.title} />
@@ -164,6 +164,7 @@ export default function ViewBlog({ blogId, onBack }) {
                     <h3 className="text-sm font-bold text-blue-700 mb-3">Section {sec.order_index || idx + 1}: {sec.section_title || "Untitled"}</h3>
                     <div className="grid grid-cols-1 gap-4">
                       {sec.section_image_url && <ReadOnlyField label="Image URL" value={sec.section_image_url} />}
+                      {sec.image_position && <ReadOnlyField label="Image Position" value={sec.image_position} />}
                       {sec.image_alt_text && <ReadOnlyField label="Image Alt" value={sec.image_alt_text} />}
                       {sec.image_caption && <ReadOnlyField label="Image Caption" value={sec.image_caption} />}
                       <div className="mt-2">

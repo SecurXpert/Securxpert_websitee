@@ -8,7 +8,7 @@ export default function ContactDashboard() {
   const [contacts, setContacts] = useState([]);
   const [viewItem, setViewItem] = useState(null);
   const [deleteItem, setDeleteItem] = useState(null);
-  
+
   // Search and Pagination
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,7 +17,7 @@ export default function ContactDashboard() {
   const fetchContacts = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(API_BASE_URL + "/contact/contact-us", {
+      const res = await fetch(API_BASE_URL + "contact/contact-us", {
         headers: {
           "accept": "application/json",
           "ngrok-skip-browser-warning": "true",
@@ -44,7 +44,7 @@ export default function ContactDashboard() {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(`${API_BASE_URL}/contact/${deleteItem.id}`, {
+      const res = await fetch(`${API_BASE_URL}contact/contact-us/${deleteItem.id}`, {
         method: "DELETE",
         headers: { ...(token && { "Authorization": `Bearer ${token}` }) }
       });
@@ -81,18 +81,18 @@ export default function ContactDashboard() {
           <h1 className="text-lg font-bold text-slate-800 capitalize">Contact Form Submissions</h1>
           <p className="text-xs text-slate-400">{filteredContacts.length} records found</p>
         </div>
-        
+
         {/* Search Bar */}
         <div className="relative">
-          <input 
-            type="text" 
-            placeholder="Search Name, Email or Purpose..." 
+          <input
+            type="text"
+            placeholder="Search Name, Email or Purpose..."
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
               setCurrentPage(1);
             }}
-            className="pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-xs outline-none focus:border-blue-500 focus:bg-white transition-all w-[260px] text-slate-700" 
+            className="pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-xs outline-none focus:border-blue-500 focus:bg-white transition-all w-[260px] text-slate-700"
           />
           <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
         </div>
@@ -144,7 +144,7 @@ export default function ContactDashboard() {
               </tbody>
             </table>
           </div>
-          
+
           {/* Pagination Controls */}
           {totalPages > 1 && (
             <div className="mt-auto border-t border-slate-200 p-3.5 flex items-center justify-between bg-slate-50/50">
@@ -152,7 +152,7 @@ export default function ContactDashboard() {
                 Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredContacts.length)} of {filteredContacts.length} entries
               </span>
               <div className="flex items-center gap-1.5">
-                <button 
+                <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
                   className="p-1 rounded-md border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
@@ -162,7 +162,7 @@ export default function ContactDashboard() {
                 <span className="text-xs font-semibold text-slate-700 px-1">
                   Page {currentPage} of {totalPages}
                 </span>
-                <button 
+                <button
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
                   className="p-1 rounded-md border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
@@ -180,10 +180,10 @@ export default function ContactDashboard() {
           <div className="space-y-3">
             <div className="grid grid-cols-2 gap-3">
               {[
-                ["Name", viewItem.name], 
-                ["Email", viewItem.email], 
-                ["Phone", (viewItem.country_code || "") + " " + (viewItem.phone_number || "N/A")], 
-                ["Location", viewItem.location || "N/A"], 
+                ["Name", viewItem.name],
+                ["Email", viewItem.email],
+                ["Phone", (viewItem.country_code || "") + " " + (viewItem.phone_number || "N/A")],
+                ["Location", viewItem.location || "N/A"],
                 ["Purpose", viewItem.purpose || "N/A"],
                 ["Date", viewItem.created_at ? new Date(viewItem.created_at).toLocaleString() : "N/A"]
               ].map(([k, v]) => (

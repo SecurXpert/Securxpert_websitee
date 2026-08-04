@@ -24,11 +24,11 @@ export default function BPOPage() {
       <AboutUs />
       <BPOServices />
       <Cta />
-      <WhyChooseUs />
+      <WhyChooseUs /> 
       <CaseStudies />
       <Testimonials />
-      <TeamMembers />
-       <FAQ /> 
+      {/* <TeamMembers /> */}
+      <FAQ /> 
       <Appointment /> 
     </div>
   );

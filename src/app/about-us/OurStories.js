@@ -23,9 +23,8 @@ export default function OurStories() {
           {/* Right Column: Heading & Paragraph text */}
           <div className="w-full lg:w-[46%] flex flex-col justify-center items-start space-y-3">
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-bold text-[#3548BB] leading-[1.12] tracking-tight font-Plus Jakarta Sans">
-              Our Story of<br />
-              Innovation &<br />
-              Digital Growth
+              Our Story of
+              Innovation & Digital Growth
             </h2>
 
             <p className="text-[#50656C] text-base sm:text-lg lg:text-[15px] 2xl:text-[19px] leading-relaxed font-normal max-w-xl">

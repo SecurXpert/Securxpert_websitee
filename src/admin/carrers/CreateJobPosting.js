@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../config";
 import {
@@ -12,11 +12,11 @@ import {
   Calendar,
   Users,
   AlertCircle,
-} from "lucide-react";  
+} from "lucide-react";
 import { LuClock4 } from "react-icons/lu";
 
 import BasicInfoSection from "./BasicInfoSection";
-import HeroSectionBuilder from "./HeroSectionBuilder"; 
+import HeroSectionBuilder from "./HeroSectionBuilder";
 import JobDescriptionSection from "./JobDescriptionSection";
 import RolesResponsibilitiesSection from "./RolesResponsibilitiesSection";
 import RequirementsSection from "./RequirementsSection";
@@ -58,7 +58,7 @@ export default function CreateJobPosting({ job, onSave, onCancel, isReadOnly = f
               localStorage.getItem("token") ||
               "")
             : "";
-        const headers = { 
+        const headers = {
           "Authorization": `Bearer ${token}`,
           "ngrok-skip-browser-warning": "true"
         };
@@ -66,7 +66,7 @@ export default function CreateJobPosting({ job, onSave, onCancel, isReadOnly = f
         // We fetch the basic info to get all fields accurately instead of relying on the dashboard's table mapping
         let basicInfo = job.basicInfo || null;
         try {
-          const resBasic = await axios.get(`${API_BASE_URL}/jobs/${job.id}`, { headers });
+          const resBasic = await axios.get(`${API_BASE_URL}jobs/${job.id}`, { headers });
           if (resBasic.data) {
             const d = resBasic.data;
             basicInfo = {
@@ -91,23 +91,23 @@ export default function CreateJobPosting({ job, onSave, onCancel, isReadOnly = f
         const axiosConfig = { headers, validateStatus: (status) => status < 500 }; // Prevent 404 from throwing a loud console error
 
         let hero = null;
-        const resHero = await axios.get(`${API_BASE_URL}/jobs/${job.id}/hero-section`, axiosConfig);
+        const resHero = await axios.get(`${API_BASE_URL}jobs/${job.id}/hero-section`, axiosConfig);
         if (resHero.status === 200 && resHero.data) hero = resHero.data;
 
         let jobDescription = "";
-        const resDesc = await axios.get(`${API_BASE_URL}/jobs/${job.id}/description`, axiosConfig);
+        const resDesc = await axios.get(`${API_BASE_URL}jobs/${job.id}/description`, axiosConfig);
         if (resDesc.status === 200 && resDesc.data) jobDescription = resDesc.data.job_description || resDesc.data;
 
         let rolesAndResponsibilities = null;
-        const resRoles = await axios.get(`${API_BASE_URL}/jobs/${job.id}/responsibilities`, axiosConfig);
+        const resRoles = await axios.get(`${API_BASE_URL}jobs/${job.id}/responsibilities`, axiosConfig);
         if (resRoles.status === 200 && resRoles.data) rolesAndResponsibilities = resRoles.data;
 
         let requirements = null;
-        const resReq = await axios.get(`${API_BASE_URL}/jobs/${job.id}/requirements`, axiosConfig);
+        const resReq = await axios.get(`${API_BASE_URL}jobs/${job.id}/requirements`, axiosConfig);
         if (resReq.status === 200 && resReq.data) requirements = resReq.data;
 
         let qualificationsData = "";
-        const resQuals = await axios.get(`${API_BASE_URL}/jobs/${job.id}/qualifications`, axiosConfig);
+        const resQuals = await axios.get(`${API_BASE_URL}jobs/${job.id}/qualifications`, axiosConfig);
         if (resQuals.status === 200 && resQuals.data) {
           qualificationsData = resQuals.data.preferred_qualifications || resQuals.data.qualifications || resQuals.data;
         }
@@ -163,7 +163,7 @@ export default function CreateJobPosting({ job, onSave, onCancel, isReadOnly = f
       alert("Please fill and save the 'Job Basic Information' section first to generate a Job ID.");
       return;
     }
-    
+
     try {
       const token =
         typeof window !== "undefined"
@@ -213,7 +213,7 @@ export default function CreateJobPosting({ job, onSave, onCancel, isReadOnly = f
         job_status: status === "Published" ? "Active" : "Draft",
       };
 
-      await axios.patch(`${API_BASE_URL}/jobs/${jobData.id}`, payload, {
+      await axios.patch(`${API_BASE_URL}jobs/${jobData.id}`, payload, {
         headers: {
           "accept": "application/json",
           "Content-Type": "application/json",
@@ -227,13 +227,13 @@ export default function CreateJobPosting({ job, onSave, onCancel, isReadOnly = f
         status: status === "Published" ? "Active" : "Draft",
         updatedAt: new Date().toISOString()
       };
-      
+
       if (status === "Published") {
         alert("Job successfully published!");
       } else {
         alert("Job saved as draft.");
       }
-      
+
       onSave(finalJob);
     } catch (err) {
       alert("Failed to publish job status. Please ensure all required basic info fields are saved.");

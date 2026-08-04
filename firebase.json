@@ -1,75 +1,16 @@
 {
   "hosting": {
-    "public": "out",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
-    "cleanUrls": true,
-    "trailingSlash": true,
-    "redirects": [
+    "rewrites": [
       {
-        "source": "/AboutUs",
-        "destination": "/about-us",
-        "type": 301
-      },
-      {
-        "source": "/AboutUs/:slug*",
-        "destination": "/about-us/:slug*",
-        "type": 301
-      },
-      {
-        "source": "/Carrers",
-        "destination": "/careers",
-        "type": 301
-      },
-      {
-        "source": "/Carrers/:slug*",
-        "destination": "/careers/:slug*",
-        "type": 301
-      },
-      {
-        "source": "/AboutUs/:slug*",
-        "destination": "/about-us/:slug*",
-        "type": 301
-      },
-      {
-        "source": "/Blogs/:slug*", 
-        "destination": "/blogs/:slug*",
-        "type": 301
-      },
-      {
-        "source": "/Blogs",
-        "destination": "/blogs",
-        "type": 301
-      },
-      {
-        "source": "/Bpo",
-        "destination": "/bpo",
-        "type": 301
-      },
-      {
-        "source": "/BPO",
-        "destination": "/bpo",
-        "type": 301
-      },
-      {
-        "source": "/Services/:slug*",
-        "destination": "/services/:slug*",
-        "type": 301
-      },
-      {
-        "source": "/Services",
-        "destination": "/services",
-        "type": 301
-      },
-      {
-        "source": "/Portfolio",
-        "destination": "/portfolio",
-        "type": 301
+        "source": "**",
+        "destination": "/index.html"
       }
     ]
   }
 }
- 

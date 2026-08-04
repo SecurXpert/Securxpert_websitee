@@ -23,7 +23,7 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
   });
 
   const [sections, setSections] = useState([
-    { id: 1, title: "Introduction", blocks: [{ id: 1, type: "text", content: "" }] },
+    { id: 1, title: "Introduction", imagePosition: "full_width", imageUrl: "", imageFile: null, imageAltText: "", imageCaption: "", blocks: [{ id: 1, type: "text", content: "" }] },
   ]);
 
   const hasFetched = React.useRef(false);
@@ -40,10 +40,10 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
           // 1. Fetch Hero Section
           let heroData = null;
           try {
-            const hRes = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
-              headers: { 
+            const hRes = await fetch(`${API_BASE_URL}blogs/${blogId}/hero`, {
+              headers: {
                 "ngrok-skip-browser-warning": "true",
-                ...(token && { "Authorization": `Bearer ${token}` }) 
+                ...(token && { "Authorization": `Bearer ${token}` })
               }
             });
             if (hRes.ok) {
@@ -56,17 +56,17 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
           let sectionsData = [];
           try {
             // The backend provides a /blogs/{blogId}/all endpoint which returns the full blog including its sections!
-            const bRes = await fetch(`${API_BASE_URL}/blogs/${blogId}/all`, {
-              headers: { 
+            const bRes = await fetch(`${API_BASE_URL}blogs/${blogId}/all`, {
+              headers: {
                 "ngrok-skip-browser-warning": "true",
-                ...(token && { "Authorization": `Bearer ${token}` }) 
+                ...(token && { "Authorization": `Bearer ${token}` })
               }
             });
-            
+
             if (bRes.ok) {
               const fullBlog = await bRes.json();
               const blogData = fullBlog.data || fullBlog;
-              
+
               const possibleKeys = ['sections', 'content_sections', 'content'];
               for (const key of possibleKeys) {
                 if (blogData[key] && Array.isArray(blogData[key])) {
@@ -98,6 +98,11 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
               id: Date.now() + idx,
               serverId: sec.id,
               title: sec.section_title || `Section ${idx + 1}`,
+              imagePosition: sec.image_position || "full_width",
+              imageUrl: sec.section_image_url || sec.section_image || "",
+              imageFile: null,
+              imageAltText: sec.image_alt_text || "",
+              imageCaption: sec.image_caption || "",
               blocks: (sec.description || "").split("\n\n").map((text, bidx) => ({
                 id: Date.now() * 2 + bidx,
                 type: "text",
@@ -132,7 +137,7 @@ export default function AdminBlogForm({ onBack, onPublish, editItem }) {
       payload.append("status", "active");
 
       const blogId = form.blogId;
-      const res = await fetch(`${API_BASE_URL}/blogs/${blogId}`, {
+      const res = await fetch(`${API_BASE_URL}blogs/${blogId}`, {
         method: "PATCH",
         headers: {
           "ngrok-skip-browser-warning": "true",

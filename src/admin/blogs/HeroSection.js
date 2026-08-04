@@ -37,7 +37,7 @@ export default function HeroSection({ form, setForm, onSaved }) {
       }
 
       let method = hasHero ? "PATCH" : "POST";
-      let res = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
+      let res = await fetch(`${API_BASE_URL}blogs/${blogId}/hero`, {
         method,
         headers: {
           "ngrok-skip-browser-warning": "true",
@@ -48,7 +48,7 @@ export default function HeroSection({ form, setForm, onSaved }) {
 
       if (res.status === 404 && method === "PATCH") {
         method = "POST";
-        res = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
+        res = await fetch(`${API_BASE_URL}blogs/${blogId}/hero`, {
           method,
           headers: {
             "ngrok-skip-browser-warning": "true",
@@ -88,7 +88,7 @@ export default function HeroSection({ form, setForm, onSaved }) {
     try {
       const token = localStorage.getItem("access_token");
       const blogId = form.blogId;
-      const res = await fetch(`${API_BASE_URL}/blogs/${blogId}/hero`, {
+      const res = await fetch(`${API_BASE_URL}blogs/${blogId}/hero`, {
         method: "DELETE",
         headers: {
           "ngrok-skip-browser-warning": "true",

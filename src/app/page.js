@@ -50,11 +50,11 @@ export default function Home() {
       
       {/* Our Products Slider Section */}
       <OurProducts />
-      
+      <Partners />
       <Industries />
-       <Partners />
+      
       <Whychoose />
-      <OurTeam />
+      {/* <OurTeam />  */}
       <Cta />
     </div>
   );

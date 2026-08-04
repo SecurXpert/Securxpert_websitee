@@ -26,7 +26,7 @@ export default function Appointment() {
     }
 
     try {
-      const res = await fetch(`${API_BASE_URL}/book-appointment/`, {
+      const res = await fetch(`${API_BASE_URL}book-appointment/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

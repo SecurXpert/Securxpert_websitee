@@ -35,28 +35,36 @@ export default function AboutUs() {
               className="absolute top-[-84px] left-[-125px] lg:left-[-60px] xl:left-[-100px] 2xl:left-[-125px] w-[42%] sm:w-[38%] h-auto pointer-events-none z-0"
             />
 
-            {/* Dot Grid backdrop around lower right of collage */} 
+            {/* Dot Grid backdrop around lower right of collage */}
             <img
               src="/bpo/about-us/a3.png"
               alt="Backdrop Dots"
               className="absolute bottom-[2%] right-[4%] w-[20%] h-auto pointer-events-none z-0"
             />
 
-            {/* Main Upper Right Image (a1.jpg) */}
-            <div className="absolute top-[2%] right-[8%] w-[48%] z-10 overflow-hidden rounded-[1px] shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:scale-[1.02] transition-transform duration-500">
+            {/* Main Upper Right Image (bpo 1.jpg) */}
+            <div 
+              className="absolute top-[2%] right-[8%] w-[48%] z-10 overflow-hidden rounded-[1px] shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:scale-[1.02] transition-transform duration-500"
+              style={{ aspectRatio: "330 / 420" }}
+            >
               <img
-                src="/bpo/about-us/a1.jpg"
+                src="/bpo/about-us/bpo 1.jpg"
                 alt="Businesswomen Collaborating"
-                className="w-full h-auto object-cover pointer-events-none"
+                className="w-full h-full object-cover pointer-events-none"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
 
-            {/* Overlapping Lower Left Image (a2.jpg) */}
-            <div className="absolute bottom-[-30px] left-[24%] w-[35%] z-20 overflow-hidden rounded-[2px] border-[7px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.18)] hover:scale-[1.02] transition-transform duration-500">
+            {/* Overlapping Lower Left Image (bpo 2.jpg) */}
+            <div 
+              className="absolute bottom-[-30px] left-[24%] w-[35%] z-20 overflow-hidden rounded-[2px] border-[7px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.18)] hover:scale-[1.02] transition-transform duration-500"
+              style={{ aspectRatio: "220 / 240" }}
+            >
               <img
-                src="/bpo/about-us/a2.jpg"
+                src="/bpo/about-us/bpo 2.jpg"
                 alt="Team Specialists Consulting"
-                className="w-full h-auto object-cover pointer-events-none" 
+                className="w-full h-full object-cover pointer-events-none"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
 
@@ -76,7 +84,7 @@ export default function AboutUs() {
 
             {/* HEADING */}
             <h3 className="text-[#100D35] text-3xl sm:text-4xl lg:text-[32px] xl:text-4xl leading-[1.2] font-bold tracking-[-1px] font-inter mb-4 max-w-xl">
-              A BPO Partner Built on Automation, Not Just Headcount 
+              A BPO Partner Built on Automation, Not Just Headcount
             </h3>
 
             {/* DESCRIPTION */}
@@ -108,13 +116,13 @@ export default function AboutUs() {
                 </div>
                 <span className="text-[#0D121E] text-sm font-semibold group-hover:text-[#3D62EB] transition-colors font-inter">
                   Awards Winning Process Partner
-                </span> 
+                </span>
               </div>
 
             </div>
 
             {/* CTA BUTTON */}
- 
+
 
           </div>
 

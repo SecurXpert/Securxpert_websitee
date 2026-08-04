@@ -8,25 +8,25 @@ export default function Workplace() {
       title: "Company Values",
       description:
         "Trust, learning, honesty, and cooperation sit at the core of how we work.",
-      image: "/careers/workplace/work.1.png",
+      image: "/careers/workplace/company values.jpg",
     },
     {
       title: "Friendly atmosphere",
       description:
         "A positive, respectful environment where people actually want to show up.",
-      image: "/careers/workplace/work.2.png",
+      image: "/careers/workplace/friendly atmosphere.jpg",
     },
     {
       title: "Work-life balance",
       description:
         "A healthy personal life matters as much as the hours you put in.",
-      image: "/careers/workplace/work.3.png",
+      image: "/careers/workplace/worklife balance.jpg",
     },
     {
       title: "Everyday grow",
       description:
         "Real support to keep your skills moving forward, not stagnating in one role.",
-      image: "/careers/workplace/work.4.png",
+      image: "/careers/workplace/everyday-grow.jpg",
     },
   ];
 

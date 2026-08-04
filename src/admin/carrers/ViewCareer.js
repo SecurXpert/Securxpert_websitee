@@ -17,7 +17,7 @@ export default function ViewCareer({ jobId, onBack }) {
           ...(token && { "Authorization": `Bearer ${token}` })
         };
 
-        const res = await axios.get(`${API_BASE_URL}/jobs/${jobId}/complete`, { headers });
+        const res = await axios.get(`${API_BASE_URL}jobs/${jobId}/complete`, { headers });
         const jobData = res.data?.data || res.data;
 
         if (!jobData) {
@@ -73,7 +73,7 @@ export default function ViewCareer({ jobId, onBack }) {
       {/* Header */}
       <header className="bg-white border-b border-slate-200 px-6 sm:px-8 py-5 flex flex-col sm:flex-row sm:items-center justify-between shadow-sm shrink-0 sticky top-0 z-20 gap-4">
         <div className="flex items-center gap-4">
-          <button 
+          <button
             onClick={onBack}
             className="p-2 hover:bg-slate-100 text-slate-500 hover:text-slate-700 rounded-full transition-colors bg-slate-50 border border-slate-200"
           >
@@ -96,7 +96,7 @@ export default function ViewCareer({ jobId, onBack }) {
       {/* Main Scrollable Content */}
       <div className="flex-1 overflow-y-auto p-6 sm:p-10">
         <div className="max-w-4xl mx-auto space-y-8">
-          
+
           {/* Quick Info Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center gap-2">
@@ -161,7 +161,7 @@ export default function ViewCareer({ jobId, onBack }) {
           {requirements && (
             <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-100 shadow-sm">
               <h2 className="text-lg font-bold text-slate-800 mb-4 border-b border-slate-100 pb-3">Requirements</h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Technical Skills */}
                 {requirements.technical_skills && requirements.technical_skills.length > 0 && (
@@ -184,7 +184,7 @@ export default function ViewCareer({ jobId, onBack }) {
                 {requirements.soft_skills && requirements.soft_skills.length > 0 && (
                   <div>
                     <h3 className="font-semibold text-slate-800 mb-3 flex items-center gap-2">
-                       <span className="p-1 bg-slate-100 rounded-md">💬</span> Soft Skills
+                      <span className="p-1 bg-slate-100 rounded-md">💬</span> Soft Skills
                     </h3>
                     <ul className="space-y-2">
                       {requirements.soft_skills.map((req, idx) => (

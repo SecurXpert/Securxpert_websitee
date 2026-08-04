@@ -22,7 +22,7 @@ export default function CareersDashboard() {
   const fetchJobs = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await axios.get(`${API_BASE_URL}/jobs/`, {
+      const res = await axios.get(`${API_BASE_URL}jobs/`, {
         headers: {
           "accept": "application/json",
           "ngrok-skip-browser-warning": "true",
@@ -58,6 +58,14 @@ export default function CareersDashboard() {
       setJobs(formatted.reverse());
     } catch (err) {
       console.warn("Failed to fetch jobs", err);
+      if (err.response?.status === 401) {
+        const token = localStorage.getItem("access_token");
+        if (token && token !== "master-bypass-token") {
+          localStorage.removeItem("access_token");
+          alert("Session expired. Please log in again.");
+          window.location.href = "/admin";
+        }
+      }
     } finally {
       setLoading(false);
     }
@@ -76,7 +84,7 @@ export default function CareersDashboard() {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await axios.delete(`${API_BASE_URL}/jobs/${deleteItem.id}`, {
+      const res = await axios.delete(`${API_BASE_URL}jobs/${deleteItem.id}`, {
         headers: {
           "accept": "application/json",
           ...(token && { "Authorization": `Bearer ${token}` })

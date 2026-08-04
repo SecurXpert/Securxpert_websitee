@@ -8,7 +8,7 @@ export default function BlogsDemoDashboard() {
   const [demos, setDemos] = useState([]);
   const [viewItem, setViewItem] = useState(null);
   const [deleteItem, setDeleteItem] = useState(null);
-  
+
   // Search and Pagination
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,7 +17,7 @@ export default function BlogsDemoDashboard() {
   const fetchDemos = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(API_BASE_URL + "/blogs-demo/", {
+      const res = await fetch(API_BASE_URL + "blogs-demo/", {
         headers: {
           "accept": "application/json",
           "ngrok-skip-browser-warning": "true",
@@ -44,7 +44,7 @@ export default function BlogsDemoDashboard() {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(`${API_BASE_URL}/blogs-demo/${deleteItem.id}`, {
+      const res = await fetch(`${API_BASE_URL}blogs-demo/${deleteItem.id}`, {
         method: "DELETE",
         headers: { ...(token && { "Authorization": `Bearer ${token}` }) }
       });
@@ -81,18 +81,18 @@ export default function BlogsDemoDashboard() {
           <h1 className="text-lg font-bold text-slate-800 capitalize">Blog Demo Requests</h1>
           <p className="text-xs text-slate-400">{filteredDemos.length} records found</p>
         </div>
-        
+
         {/* Search Bar */}
         <div className="relative">
-          <input 
-            type="text" 
-            placeholder="Search Name, Company or Email..." 
+          <input
+            type="text"
+            placeholder="Search Name, Company or Email..."
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
               setCurrentPage(1);
             }}
-            className="pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-xs outline-none focus:border-blue-500 focus:bg-white transition-all w-[260px] text-slate-700" 
+            className="pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-xs outline-none focus:border-blue-500 focus:bg-white transition-all w-[260px] text-slate-700"
           />
           <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
         </div>
@@ -140,7 +140,7 @@ export default function BlogsDemoDashboard() {
               </tbody>
             </table>
           </div>
-          
+
           {/* Pagination Controls */}
           {totalPages > 1 && (
             <div className="mt-auto border-t border-slate-200 p-3.5 flex items-center justify-between bg-slate-50/50">
@@ -148,7 +148,7 @@ export default function BlogsDemoDashboard() {
                 Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredDemos.length)} of {filteredDemos.length} entries
               </span>
               <div className="flex items-center gap-1.5">
-                <button 
+                <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
                   className="p-1 rounded-md border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
@@ -158,7 +158,7 @@ export default function BlogsDemoDashboard() {
                 <span className="text-xs font-semibold text-slate-700 px-1">
                   Page {currentPage} of {totalPages}
                 </span>
-                <button 
+                <button
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
                   className="p-1 rounded-md border border-slate-200 text-slate-600 hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
@@ -176,10 +176,10 @@ export default function BlogsDemoDashboard() {
           <div className="space-y-3">
             <div className="grid grid-cols-2 gap-3">
               {[
-                ["Name", viewItem.full_name], 
-                ["Company", viewItem.company_name], 
-                ["Email", viewItem.work_email], 
-                ["Phone", (viewItem.country_code || "") + " " + (viewItem.phone_number || "N/A")], 
+                ["Name", viewItem.full_name],
+                ["Company", viewItem.company_name],
+                ["Email", viewItem.work_email],
+                ["Phone", (viewItem.country_code || "") + " " + (viewItem.phone_number || "N/A")],
                 ["Date", viewItem.created_at ? new Date(viewItem.created_at).toLocaleString() : "N/A"]
               ].map(([k, v]) => (
                 <div key={k} className="bg-slate-50 p-2.5 rounded-lg">
@@ -188,7 +188,7 @@ export default function BlogsDemoDashboard() {
                 </div>
               ))}
             </div>
-            
+
             <div className="bg-slate-50 p-3 rounded-lg">
               <p className="text-[10px] text-slate-400 uppercase font-bold mb-1.5">Business Need</p>
               <p className="text-xs text-slate-600 leading-relaxed whitespace-pre-wrap">{viewItem.business_need || "N/A"}</p>

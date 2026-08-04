@@ -6,6 +6,7 @@ import Link from "next/link";
 const slugify = (text) => text ? text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : '';
 
 import axios from "axios";
+import { API_BASE_URL } from "@/admin/config";
 
 const categoriesTemplate = [
   { name: "All", count: 0 },
@@ -43,7 +44,7 @@ export default function Positions() {
             const guestPassword = "VisitorPass123";
 
             try {
-              const loginRes = await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/login', {
+              const loginRes = await axios.post(`${API_BASE_URL}auth/login`, {
                 email: guestEmail,
                 password: guestPassword
               }, { headers: { "ngrok-skip-browser-warning": "true" } });
@@ -53,12 +54,12 @@ export default function Positions() {
               }
             } catch (err) {
               if (err.response && err.response.status === 401) {
-                await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/register-admin', {
+                await axios.post(`${API_BASE_URL}auth/register-admin`, {
                   username: guestUsername,
                   email: guestEmail,
                   password: guestPassword
                 }, { headers: { "ngrok-skip-browser-warning": "true" } });
-                const loginRes2 = await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/login', {
+                const loginRes2 = await axios.post(`${API_BASE_URL}auth/login`, {
                   email: guestEmail,
                   password: guestPassword
                 }, { headers: { "ngrok-skip-browser-warning": "true" } });
@@ -73,7 +74,7 @@ export default function Positions() {
           }
         }
 
-        const res = await fetch("https://poise-crouch-plating.ngrok-free.dev/jobs/", {
+        const res = await fetch(`${API_BASE_URL}jobs/`, {
           headers: {
             "Authorization": `Bearer ${token}`,
             "ngrok-skip-browser-warning": "true"
@@ -85,14 +86,14 @@ export default function Positions() {
           const rawList = Array.isArray(data) ? data : (data?.data || []);
           
           const activeJobsRaw = rawList
-            .filter(j => j.job_status?.toLowerCase() === "active" || j.job_status?.toLowerCase() === "published")
+             .filter(j => j.job_status?.toLowerCase() === "active" || j.job_status?.toLowerCase() === "published")
             .sort((a, b) => b.id - a.id);
 
           const activeJobs = await Promise.all(
             activeJobsRaw.map(async (j) => {
               let desc = "Join our team in this exciting role to help build the future of our platform.";
               try {
-                const descRes = await fetch(`https://poise-crouch-plating.ngrok-free.dev/jobs/${j.id}/description`, {
+                const descRes = await fetch(`${API_BASE_URL}jobs/${j.id}/description`, {
                   headers: {
                     "Authorization": `Bearer ${token}`,
                     "ngrok-skip-browser-warning": "true"

@@ -11,7 +11,7 @@ const parseInitialResponsibilities = (data) => {
   } else if (data && data.responsibilities) {
     list = data.responsibilities;
   }
-  
+
   if (!list || list.length === 0) {
     return [{ id: Date.now(), title: "", description: "", dbId: null }];
   }
@@ -73,10 +73,10 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
             "")
           : "";
 
-      const headers = { 
-        "accept": "application/json", 
-        "Content-Type": "application/json", 
-        "Authorization": `Bearer ${token}` 
+      const headers = {
+        "accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       };
 
       // 1. Delete removed responsibilities
@@ -84,7 +84,7 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
         console.log("Deleting removed responsibilities:", deletedRespIds);
         await Promise.all(
           deletedRespIds.map(dbId =>
-            axios.delete(`${API_BASE_URL}/jobs/${jobId}/responsibilities/${dbId}`, { headers })
+            axios.delete(`${API_BASE_URL}jobs/${jobId}/responsibilities/${dbId}`, { headers })
           )
         );
         setDeletedRespIds([]);
@@ -102,7 +102,7 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
           if (r.dbId) {
             console.log(`Updating responsibility ${r.dbId}...`, payload);
             const res = await axios.patch(
-              `${API_BASE_URL}/jobs/${jobId}/responsibilities/${r.dbId}`,
+              `${API_BASE_URL}jobs/${jobId}/responsibilities/${r.dbId}`,
               payload,
               { headers }
             );
@@ -110,7 +110,7 @@ export default function RolesResponsibilitiesSection({ isExpanded, onToggle, ini
           } else {
             console.log("Creating new responsibility...", payload);
             const res = await axios.post(
-              `${API_BASE_URL}/jobs/${jobId}/responsibilities`,
+              `${API_BASE_URL}jobs/${jobId}/responsibilities`,
               payload,
               { headers }
             );

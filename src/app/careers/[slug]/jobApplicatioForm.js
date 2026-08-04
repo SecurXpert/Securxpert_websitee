@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import PhoneInputField from "./PhoneInputField";
+import { API_BASE_URL } from "@/admin/config";
 
 export default function JobApplicationForm() {
   // Application Form State
@@ -54,7 +55,7 @@ export default function JobApplicationForm() {
     payload.append("upload_your_latest_resume", resumeFile);
 
     try {
-      const res = await fetch("https://poise-crouch-plating.ngrok-free.dev/job-applications/", {
+      const res = await fetch(`${API_BASE_URL}job-applications/`, {
         method: "POST",
         body: payload
       });
@@ -113,7 +114,7 @@ export default function JobApplicationForm() {
             <input type="email" name="enter_email" value={formData.enter_email} onChange={handleInputChange} required className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors" />
           </div>
 
-          <PhoneInputField 
+          <PhoneInputField
             value={formData.phone || ""}
             onChange={(phone, meta) => setFormData({ ...formData, phone, countryCode: meta?.country?.dialCode ? `+${meta.country.dialCode}` : "+91" })}
           />
@@ -164,15 +165,15 @@ export default function JobApplicationForm() {
             </div>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={submitStatus === "loading"}
             className="w-full mt-6 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors duration-200 shadow-sm hover:opacity-90 disabled:opacity-50"
             style={{ backgroundColor: "#3243A4" }}
           >
             {submitStatus === "loading" ? "Submitting..." : "Submit Application"}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
           </button>
         </form>

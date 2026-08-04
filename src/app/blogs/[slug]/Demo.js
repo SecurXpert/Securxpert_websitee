@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
+import { API_BASE_URL } from "@/admin/config";
 
 export default function Demo() {
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ export default function Demo() {
     };
 
     try {
-      const res = await fetch("https://poise-crouch-plating.ngrok-free.dev/blogs/blogs-demo", {
+      const res = await fetch(`${API_BASE_URL}blogs-demo/`, {
         method: "POST",
         headers: {
           "accept": "application/json",

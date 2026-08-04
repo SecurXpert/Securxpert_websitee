@@ -36,7 +36,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                     const guestPassword = "VisitorPass123";
 
                     try {
-                        const loginRes = await axios.post(`${API_BASE_URL}/auth/login`, {
+                        const loginRes = await axios.post(`${API_BASE_URL}auth/login`, {
                             email: guestEmail,
                             password: guestPassword
                         });
@@ -48,12 +48,12 @@ export default function BlogPostClient({ slug, staticBlog }) {
                     } catch (err) {
                         if (err.response && err.response.status === 401) {
                             try {
-                                await axios.post(`${API_BASE_URL}/auth/register-admin`, {
+                                await axios.post(`${API_BASE_URL}auth/register-admin`, {
                                     username: guestUsername,
                                     email: guestEmail,
                                     password: guestPassword
                                 });
-                                const loginRes2 = await axios.post(`${API_BASE_URL}/auth/login`, {
+                                const loginRes2 = await axios.post(`${API_BASE_URL}auth/login`, {
                                     email: guestEmail,
                                     password: guestPassword
                                 });
@@ -77,12 +77,12 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 // 1. Fetch all blogs
                 let listRes;
                 try {
-                    listRes = await axios.get(`${API_BASE_URL}/blogs/`, { headers: getHeaders(token) });
+                    listRes = await axios.get(`${API_BASE_URL}blogs/`, { headers: getHeaders(token) });
                 } catch (err) {
                     if (err.response?.status === 401) {
                         console.log("Token expired/invalid, logging in as guest again...");
                         token = await performGuestLogin();
-                        listRes = await axios.get(`${API_BASE_URL}/blogs/`, { headers: getHeaders(token) });
+                        listRes = await axios.get(`${API_BASE_URL}blogs/`, { headers: getHeaders(token) });
                     } else {
                         throw err;
                     }
@@ -102,11 +102,11 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 // 2. Fetch blog details
                 let detailRes;
                 try {
-                    detailRes = await axios.get(`${API_BASE_URL}/blogs/${blogId}`, { headers: getHeaders(token) });
+                    detailRes = await axios.get(`${API_BASE_URL}blogs/${blogId}`, { headers: getHeaders(token) });
                 } catch (err) {
                     if (err.response?.status === 401) {
                         token = await performGuestLogin();
-                        detailRes = await axios.get(`${API_BASE_URL}/blogs/${blogId}`, { headers: getHeaders(token) });
+                        detailRes = await axios.get(`${API_BASE_URL}blogs/${blogId}`, { headers: getHeaders(token) });
                     } else {
                         throw err;
                     }
@@ -115,7 +115,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 // 3. Fetch hero section details
                 let heroData = {};
                 try {
-                    const heroRes = await axios.get(`${API_BASE_URL}/blogs/${blogId}/hero`, { headers: getHeaders(token) });
+                    const heroRes = await axios.get(`${API_BASE_URL}blogs/${blogId}/hero`, { headers: getHeaders(token) });
                     const resData = heroRes.data || {};
                     heroData = resData.data || resData;
                 } catch (heroErr) {
@@ -128,7 +128,7 @@ export default function BlogPostClient({ slug, staticBlog }) {
                 const sectionPromises = [];
                 for (let id = 1; id <= maxScanId; id++) {
                     sectionPromises.push(
-                        axios.get(`${API_BASE_URL}/blogs/sections/${id}`, { headers: getHeaders(token) })
+                        axios.get(`${API_BASE_URL}blogs/sections/${id}`, { headers: getHeaders(token) })
                             .then(res => {
                                 const resData = res.data;
                                 const sec = resData?.data || resData;
@@ -240,11 +240,90 @@ export default function BlogPostClient({ slug, staticBlog }) {
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-white text-slate-800">
-                <div className="flex flex-col items-center gap-4">
-                    <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-                    <p className="text-slate-500 font-medium">Loading blog details...</p>
-                </div>
+            <div className="relative min-h-screen bg-white text-slate-800 pb-20">
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    @keyframes shimmer {
+                        0% { background-position: -200% 0; }
+                        100% { background-position: 200% 0; }
+                    }
+                    .shimmer-bg {
+                        background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+                        background-size: 200% 100%;
+                        animation: shimmer 1.5s infinite linear;
+                    }
+                `}} />
+
+                {/* Blog Hero Section Skeleton */}
+                <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto pt-0 pb-16">
+                    <div className="relative px-6 md:px-20 pt-28 sm:pt-35 pb-20 sm:pb-20 flex flex-col justify-center bg-slate-50/50 border border-slate-100/50 rounded-[24px] overflow-hidden min-h-[450px]">
+                        <div className="relative z-10 w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+                            {/* Left Content Skeleton */}
+                            <div className="flex flex-col items-start w-full">
+                                {/* Back Button Skeleton */}
+                                <div className="w-24 h-10 shimmer-bg rounded-full mb-8 sm:mb-12"></div>
+                                {/* Title Skeleton */}
+                                <div className="w-5/6 h-10 shimmer-bg rounded-lg mb-4"></div>
+                                <div className="w-2/3 h-10 shimmer-bg rounded-lg mb-6"></div>
+                                {/* Description Skeleton */}
+                                <div className="w-full h-4 shimmer-bg rounded mb-3"></div>
+                                <div className="w-11/12 h-4 shimmer-bg rounded mb-12"></div>
+                                {/* Author & Meta Row Skeleton */}
+                                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8 pb-6 border-b border-slate-150 w-full">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-11 h-11 shimmer-bg rounded-full"></div>
+                                        <div className="flex flex-col gap-2">
+                                            <div className="w-24 h-4 shimmer-bg rounded"></div>
+                                            <div className="w-16 h-3 shimmer-bg rounded"></div>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-5 mt-2 sm:mt-0">
+                                        <div className="w-28 h-4 shimmer-bg rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* Right Image Skeleton */}
+                            <div className="w-full h-[290px] lg:h-[380px] shimmer-bg rounded-2xl"></div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Blog Content Layout Skeleton */}
+                <section className="relative w-full max-w-[90%] 2xl:max-w-[1465px] mx-auto pt-2 pb-2">
+                    <div className="flex flex-col lg:flex-row items-start gap-8 xl:gap-12">
+                        {/* LEFT SIDEBAR Skeleton */}
+                        <div className="hidden lg:block w-[260px] xl:w-[300px] shrink-0 sticky top-28 self-start">
+                            <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 space-y-4">
+                                <div className="w-28 h-5 shimmer-bg rounded"></div>
+                                <div className="space-y-3">
+                                    <div className="w-full h-4 shimmer-bg rounded"></div>
+                                    <div className="w-5/6 h-4 shimmer-bg rounded"></div>
+                                    <div className="w-11/12 h-4 shimmer-bg rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* MIDDLE COLUMN: Blog Content Skeleton */}
+                        <div className="flex-1 min-w-0 flex flex-col w-full text-slate-700 bg-white pt-6 border-l-2 border-slate-100 pl-6 md:pl-10 space-y-12">
+                            <div className="space-y-4">
+                                <div className="w-48 h-6 shimmer-bg rounded"></div>
+                                <div className="w-full h-4 shimmer-bg rounded"></div>
+                                <div className="w-full h-4 shimmer-bg rounded"></div>
+                                <div className="w-11/12 h-4 shimmer-bg rounded"></div>
+                            </div>
+                            <div className="space-y-4">
+                                <div className="w-full h-64 shimmer-bg rounded-xl"></div>
+                                <div className="w-36 h-3 shimmer-bg rounded mx-auto"></div>
+                            </div>
+                            <div className="space-y-4">
+                                <div className="w-40 h-6 shimmer-bg rounded"></div>
+                                <div className="w-full h-4 shimmer-bg rounded"></div>
+                                <div className="w-full h-4 shimmer-bg rounded"></div>
+                                <div className="w-10/12 h-4 shimmer-bg rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         );
     }
@@ -314,10 +393,6 @@ export default function BlogPostClient({ slug, staticBlog }) {
                                         <LuCalendar className="w-4 h-4 text-white/70" />
                                         <span>{blog.date}</span>
                                     </div>
-                                    <div className="flex items-center gap-2 text-white/90 text-[13px]">
-                                        <LuClock className="w-4 h-4 text-white/70" />
-                                        <span>{blog.readTime}</span>
-                                    </div>
                                 </div>
                             </div>
 
@@ -363,6 +438,9 @@ export default function BlogPostClient({ slug, staticBlog }) {
                                         : `${API_BASE_URL}${imagePath}`;
                                 }
 
+                                const imgPosition = section.image_position || "full_width";
+                                const showSideLayout = imageUrl && (imgPosition === "left" || imgPosition === "right");
+
                                 return (
                                     <div key={idx} id={`section-${idx}`} className="mb-12 scroll-mt-24">
                                         {section.section_title && (
@@ -371,26 +449,52 @@ export default function BlogPostClient({ slug, staticBlog }) {
                                             </h2>
                                         )}
 
-                                        {imageUrl && (
-                                            <div className="my-8 w-full max-w-4xl mx-auto">
-                                                <img
-                                                    src={imageUrl}
-                                                    alt={section.image_alt_text || section.section_title || "Section Image"}
-                                                    className="w-full h-auto object-cover rounded-xl"
-                                                />
-                                                {section.image_caption && (
-                                                    <p className="text-center text-xs text-slate-400 mt-2">
-                                                        {section.image_caption}
-                                                    </p>
+                                        {showSideLayout ? (
+                                            <div className={`flex flex-col md:flex-row gap-8 items-start ${imgPosition === "right" ? "md:flex-row-reverse" : ""}`}>
+                                                {imageUrl && (
+                                                    <div className="w-full md:w-5/12 shrink-0">
+                                                        <img
+                                                            src={imageUrl}
+                                                            alt={section.image_alt_text || section.section_title || "Section Image"}
+                                                            className="w-full h-auto object-cover rounded-xl"
+                                                        />
+                                                        {section.image_caption && (
+                                                            <p className="text-center text-xs text-slate-400 mt-2">
+                                                                {section.image_caption}
+                                                            </p>
+                                                        )}
+                                                    </div>
+                                                )}
+                                                {section.description && (
+                                                    <div
+                                                        dangerouslySetInnerHTML={{ __html: section.description }}
+                                                        className="prose max-w-none text-[14px] xl:text-[15px] leading-[1.8] text-slate-600 flex-1"
+                                                    />
                                                 )}
                                             </div>
-                                        )}
-
-                                        {section.description && (
-                                            <div
-                                                dangerouslySetInnerHTML={{ __html: section.description }}
-                                                className="prose max-w-none text-[14px] xl:text-[15px] leading-[1.8] text-slate-600 mb-8"
-                                            />
+                                        ) : (
+                                            <>
+                                                {imageUrl && (
+                                                    <div className="my-8 w-full max-w-4xl mx-auto">
+                                                        <img
+                                                            src={imageUrl}
+                                                            alt={section.image_alt_text || section.section_title || "Section Image"}
+                                                            className="w-full h-auto object-cover rounded-xl"
+                                                        />
+                                                        {section.image_caption && (
+                                                            <p className="text-center text-xs text-slate-400 mt-2">
+                                                                {section.image_caption}
+                                                            </p>
+                                                        )}
+                                                    </div>
+                                                )}
+                                                {section.description && (
+                                                    <div
+                                                        dangerouslySetInnerHTML={{ __html: section.description }}
+                                                        className="prose max-w-none text-[14px] xl:text-[15px] leading-[1.8] text-slate-600 mb-8"
+                                                    />
+                                                )}
+                                            </>
                                         )}
                                     </div>
                                 );

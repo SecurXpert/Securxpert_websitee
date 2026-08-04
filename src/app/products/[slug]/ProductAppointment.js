@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { LuChevronLeft, LuChevronRight, LuCheck, LuCalendar, LuClock, LuGlobe, LuUser } from "react-icons/lu";
+import { API_BASE_URL } from "@/admin/config";
 
 export default function ProductAppointment({ product }) {
   const [step, setStep] = useState(1);
@@ -86,7 +87,7 @@ export default function ProductAppointment({ product }) {
         booking_time: formattedTime
       };
 
-      const response = await fetch("https://poise-crouch-plating.ngrok-free.dev/products/create-booking", {
+      const response = await fetch(`${API_BASE_URL}products/create-booking`, {
         method: "POST",
         headers: {
           "accept": "application/json",

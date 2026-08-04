@@ -123,11 +123,11 @@ export default async function ProductDetailPage({ params }) {
 
       {/* Overlapping Mockup Section */}
       <section className="relative w-full max-w-[1350px] mx-auto px-6 md:px-12 lg:px-20 z-20 -mt-32 lg:-mt-48">
-        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[16/7] rounded-2xl sm:rounded-3xl  overflow-hidden flex items-center justify-center border-[4px] border-white">
+        <div className="relative w-full aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden flex items-center justify-center border-[4px] border-white">
           <img 
             src={product.bannerImage || product.image} 
             alt={`${product.title} Dashboard`} 
-            className="w-full h-full object-container transition-transform duration-700 hover:scale-102"
+            className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
           />
         </div>
       </section>

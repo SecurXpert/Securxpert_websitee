@@ -8,7 +8,7 @@ const aiChatbots = {
   heroDesc: " We build custom AI chatbots that handle real conversations, qualify leads, resolve support queries, and automate workflows — so your team spends zero time on repetitive interactions",
   illustration: "/services-media/AI Chatbots Development.png",
   title: "AI & Smart Chatbots",
-  subtitle: "Automation Service",
+  subtitle: "Automation Service", 
   description: "Intelligent AI-driven chatbots and virtual assistants that automate customer service and enhance user engagement.",
   accentColor: "emerald",
   bgClass: "bg-emerald-500/10",

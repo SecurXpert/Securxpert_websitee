@@ -110,7 +110,7 @@ export default function BasicInfoSection({ isExpanded, onToggle, initialData, on
 
       let res;
       if (formData.id) {
-        res = await axios.patch(`${API_BASE_URL}/jobs/${formData.id}`, payload, {
+        res = await axios.patch(`${API_BASE_URL}jobs/${formData.id}`, payload, {
           headers: {
             "accept": "application/json",
             "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export default function BasicInfoSection({ isExpanded, onToggle, initialData, on
           }
         });
       } else {
-        res = await axios.post(API_BASE_URL + "/jobs/", payload, {
+        res = await axios.post(API_BASE_URL + "jobs/", payload, {
           headers: {
             "accept": "application/json",
             "Content-Type": "application/json",

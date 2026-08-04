@@ -1,6 +1,7 @@
 import React from "react";
 import JobDetailClient from "./JobDetailClient";
 import axios from "axios";
+import { API_BASE_URL } from "@/admin/config";
 
 const slugify = (text) => text ? text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : '';
 
@@ -11,7 +12,7 @@ export async function generateStaticParams() {
     const guestEmail = "guest_visitor_securxpert@gmail.com";
     const guestPassword = "VisitorPass123";
     
-    const loginRes = await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/login', {
+    const loginRes = await axios.post(`${API_BASE_URL}auth/login`, {
       email: guestEmail,
       password: guestPassword
     }, { headers: { "ngrok-skip-browser-warning": "true" } });
@@ -19,7 +20,7 @@ export async function generateStaticParams() {
     if (loginRes.status === 200) {
       const token = loginRes.data?.access_token;
       
-      const jobsRes = await axios.get("https://poise-crouch-plating.ngrok-free.dev/jobs/", {
+      const jobsRes = await axios.get(`${API_BASE_URL}jobs/`, {
         headers: { "Authorization": `Bearer ${token}`, "ngrok-skip-browser-warning": "true" }
       });
       

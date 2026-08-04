@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node -e \"const fs = require('fs'); try { if (fs.existsSync('dist')) { fs.rmSync('dist', { recursive: true, force: true }); } } catch (e) {} if (fs.existsSync('out')) { try { fs.cpSync('out', 'dist', { recursive: true }); try { fs.rmSync('out', { recursive: true, force: true }); } catch (e) {} } catch (err) { console.error(err); process.exit(1); } }\"",
     "start": "next start"
   },
   "dependencies": {

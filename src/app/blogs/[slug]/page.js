@@ -8,7 +8,7 @@ export async function generateStaticParams() {
         const guestEmail = "guest_visitor_securxpert@gmail.com";
         const guestPassword = "VisitorPass123";
 
-        const loginRes = await fetch(`${API_BASE_URL}/auth/login`, {
+        const loginRes = await fetch(`${API_BASE_URL}auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
             const token = loginData.access_token;
 
             if (token) {
-                const listRes = await fetch(`${API_BASE_URL}/blogs/`, {
+                const listRes = await fetch(`${API_BASE_URL}blogs/`, {
                     headers: {
                         "Authorization": `Bearer ${token}`,
                         "ngrok-skip-browser-warning": "true"

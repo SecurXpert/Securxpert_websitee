@@ -25,9 +25,9 @@ export default function PortfolioPage() {
       <AboutUs />
       <OurProducts />
       <WhyChooseUs />
-      <Achievements />
+      {/* <Achievements /> */}
       <Process />
-      <OurTeam />
+      {/* <OurTeam /> */}
       <Testimonials /> 
       <Faq />
     </div>

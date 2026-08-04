@@ -37,6 +37,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  env: {
+    ADMIN_SECRET_KEY: process.env.ADMIN_SECRET_KEY,
+    SUPER_ADMIN_SECRET_KEY: process.env.SUPER_ADMIN_SECRET_KEY,
+  },
 };
 
 export default nextConfig;

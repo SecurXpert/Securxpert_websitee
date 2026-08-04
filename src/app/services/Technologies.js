@@ -47,9 +47,9 @@ export default function Technologies() {
         <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl -translate-y-1/2"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10">
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 bg-clip-text text-transparent mb-6">
             Technologies We Master
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -164,9 +164,6 @@ function TechPill({ tech }) {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-shimmer"></div>
         </div>
       </div>
-
-      {/* Glow effect */}
-      <div className={`absolute -inset-1 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-20 blur-xl rounded-2xl transition-opacity duration-300 -z-10`}></div>
     </div>
   );
 }

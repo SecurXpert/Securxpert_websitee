@@ -155,9 +155,6 @@ export default function ProjectGrid() {
 
               {/* Content Container */}
               <div className="pt-6 pb-2 px-1 md:px-2 flex flex-col flex-grow">
-                <p className="text-[#A45BFF] text-xs sm:text-[13px] font-semibold tracking-wide uppercase mb-3">
-                  {project.tags}
-                </p>
                 <h3 className="text-[22px] md:text-[26px] font-bold text-[#111827] mb-3 font-sans tracking-tight">
                   {project.title}
                 </h3>

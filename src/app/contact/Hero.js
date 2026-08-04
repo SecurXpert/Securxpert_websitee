@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
+import { API_BASE_URL } from "@/admin/config";
 
 // High-Performance Butter-Smooth Count-Up Component
 function AnimatedCounter({ target, suffix = "", duration = 1600 }) {
@@ -67,7 +68,7 @@ export default function Hero() {
         urlencoded.append("message", formData.message);
 
         try {
-            const response = await fetch("https://poise-crouch-plating.ngrok-free.dev/contact/contact-us", {
+            const response = await fetch(`${API_BASE_URL}contact/contact-us`, {
                 method: "POST",
                 headers: {
                     "accept": "application/json",
@@ -123,7 +124,7 @@ export default function Hero() {
             <div className="max-w-[1280px] lg:max-w-[1000px] xl:max-w-[1100px] 2xl:max-w-[1280px] mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 pt-8 pb-4 lg:pt-12 lg:pb-8 flex-grow">
 
                 {/* LEFT COLUMN: BRANDING & CONTACT INFO */}
-                <div className="lg:col-span-6 space-y-8 select-none relative"> 
+                <div className="lg:col-span-6 space-y-8 select-none relative">
 
 
 
@@ -286,7 +287,7 @@ export default function Hero() {
 
                                 {/* Row 3: Location & Message */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
-                                    
+
                                     {/* Location */}
                                     <div className="space-y-1 text-left">
                                         <label className="text-[14px] font-bold text-[#5D5D5D] tracking-wide font-sans">Location</label>
@@ -301,16 +302,16 @@ export default function Hero() {
                                     </div>
 
                                     {/* Message */}
-                                    <div className="space-y-2 text-left">
+                                    <div className="space-y-1 text-left">
                                         <label className="text-[14px] font-bold text-[#5D5D5D] tracking-wide font-sans">Message</label>
                                         <textarea
                                             name="message"
-                                            rows={4}
+                                            rows={2}
                                             required
                                             value={formData.message}
                                             onChange={handleInputChange}
                                             placeholder="Enter your message"
-                                            className="w-full rounded-2xl bg-[#F3F4F6] p-4 text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none hover:ring-2 hover:ring-blue-400 hover:bg-white focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all resize-none min-h-[120px] font-sans"
+                                            className="w-full bg-transparent border-b border-slate-200 py-2.5 text-[15px] font-semibold text-slate-900 placeholder-slate-400 focus:outline-none hover:border-blue-600 focus:border-blue-600 transition-all font-sans resize-none min-h-[80px]"
                                         />
                                     </div>
                                 </div>

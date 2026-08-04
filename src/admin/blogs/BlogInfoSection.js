@@ -44,7 +44,7 @@ export default function BlogInfoSection({ form, setForm, onDeleted, onSaved }) {
       payload.append("status", form.status === "in_active" ? "in_active" : (form.status || "active"));
 
       const isEdit = !!form.blogId;
-      const url = isEdit ? `${API_BASE_URL}/blogs/${form.blogId}` : API_BASE_URL + "/blogs/";
+      const url = isEdit ? `${API_BASE_URL}blogs/${form.blogId}` : API_BASE_URL + "blogs/";
       const method = isEdit ? "PATCH" : "POST";
 
       const res = await fetch(url, {
@@ -90,7 +90,7 @@ export default function BlogInfoSection({ form, setForm, onDeleted, onSaved }) {
 
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(`${API_BASE_URL}/blogs/${form.blogId}`, {
+      const res = await fetch(`${API_BASE_URL}blogs/${form.blogId}`, {
         method: "DELETE",
         headers: {
           ...(token && { "Authorization": `Bearer ${token}` })

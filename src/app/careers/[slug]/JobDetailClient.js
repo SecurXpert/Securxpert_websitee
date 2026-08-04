@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { LuChevronLeft, LuArrowRight } from "react-icons/lu";
 import JobApplicationForm from "./jobApplicatioForm";
 import axios from "axios";
+import { API_BASE_URL } from "@/admin/config";
 const slugify = (text) => text ? text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : '';
 
 export default function JobDetailClient({ slug }) {
@@ -23,7 +24,7 @@ export default function JobDetailClient({ slug }) {
             const guestPassword = "VisitorPass123";
 
             try {
-              const loginRes = await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/login', {
+              const loginRes = await axios.post(`${API_BASE_URL}auth/login`, {
                 email: guestEmail,
                 password: guestPassword
               }, { headers: { "ngrok-skip-browser-warning": "true" } });
@@ -31,10 +32,10 @@ export default function JobDetailClient({ slug }) {
               if (token) localStorage.setItem("access_token", token);
             } catch (err) {
               if (err.response && err.response.status === 401) {
-                await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/register-admin', {
+                await axios.post(`${API_BASE_URL}auth/register-admin`, {
                   username: guestUsername, email: guestEmail, password: guestPassword
                 }, { headers: { "ngrok-skip-browser-warning": "true" } });
-                const loginRes2 = await axios.post('https://poise-crouch-plating.ngrok-free.dev/auth/login', {
+                const loginRes2 = await axios.post(`${API_BASE_URL}auth/login`, {
                   email: guestEmail, password: guestPassword
                 }, { headers: { "ngrok-skip-browser-warning": "true" } });
                 token = loginRes2.data?.access_token || "";
@@ -45,15 +46,15 @@ export default function JobDetailClient({ slug }) {
         }
 
         // Fetch all jobs to match the slug
-        const res = await axios.get("https://poise-crouch-plating.ngrok-free.dev/jobs/", {
+        const res = await axios.get(`${API_BASE_URL}jobs/`, {
           headers: { "Authorization": `Bearer ${token}`, "ngrok-skip-browser-warning": "true" }
         });
-        
+
         const rawList = Array.isArray(res.data) ? res.data : (res.data?.data || []);
-        
+
         // Find the matching job by slugified title
         const matchingJobInfo = rawList.find(j => slugify(j.job_title) === slug && (j.job_status?.toLowerCase() === "active" || j.job_status?.toLowerCase() === "published"));
-        
+
         if (!matchingJobInfo) {
           setJobDetails(null);
           setLoading(false);
@@ -61,40 +62,40 @@ export default function JobDetailClient({ slug }) {
         }
 
         const jobId = matchingJobInfo.id;
-        
+
         // Fetch detailed sections
         const headers = { "Authorization": `Bearer ${token}`, "ngrok-skip-browser-warning": "true" };
         const axiosConfig = { headers, validateStatus: (status) => status < 500 };
 
         let heroData = null;
         try {
-          const resHero = await axios.get(`https://poise-crouch-plating.ngrok-free.dev/jobs/${jobId}/hero-section`, axiosConfig);
+          const resHero = await axios.get(`${API_BASE_URL}jobs/${jobId}/hero-section`, axiosConfig);
           if (resHero.status === 200 && resHero.data) heroData = resHero.data;
-        } catch (e) {}
+        } catch (e) { }
 
         let jobDescription = matchingJobInfo.job_description || "";
         try {
-          const resDesc = await axios.get(`https://poise-crouch-plating.ngrok-free.dev/jobs/${jobId}/description`, axiosConfig);
+          const resDesc = await axios.get(`${API_BASE_URL}jobs/${jobId}/description`, axiosConfig);
           if (resDesc.status === 200 && resDesc.data) jobDescription = resDesc.data.job_description || resDesc.data;
-        } catch (e) {}
+        } catch (e) { }
 
         let rolesAndResponsibilities = [];
         try {
-          const resRoles = await axios.get(`https://poise-crouch-plating.ngrok-free.dev/jobs/${jobId}/responsibilities`, axiosConfig);
+          const resRoles = await axios.get(`${API_BASE_URL}jobs/${jobId}/responsibilities`, axiosConfig);
           if (resRoles.status === 200 && resRoles.data && Array.isArray(resRoles.data)) rolesAndResponsibilities = resRoles.data;
-        } catch (e) {}
+        } catch (e) { }
 
         let requirements = null;
         try {
-          const resReq = await axios.get(`https://poise-crouch-plating.ngrok-free.dev/jobs/${jobId}/requirements`, axiosConfig);
+          const resReq = await axios.get(`${API_BASE_URL}jobs/${jobId}/requirements`, axiosConfig);
           if (resReq.status === 200 && resReq.data) requirements = resReq.data;
-        } catch (e) {}
+        } catch (e) { }
 
         let qualifications = "";
         try {
-          const resQuals = await axios.get(`https://poise-crouch-plating.ngrok-free.dev/jobs/${jobId}/qualifications`, axiosConfig);
+          const resQuals = await axios.get(`${API_BASE_URL}jobs/${jobId}/qualifications`, axiosConfig);
           if (resQuals.status === 200 && resQuals.data) qualifications = resQuals.data.preferred_qualifications || resQuals.data;
-        } catch (e) {}
+        } catch (e) { }
 
         let mergedRequirements = null;
         if (requirements || qualifications) {
@@ -123,7 +124,119 @@ export default function JobDetailClient({ slug }) {
   }, [slug]);
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-500">Loading Job Details...</div>;
+    return (
+      <div className="relative min-h-screen bg-slate-50 text-slate-900 pb-20">
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+          }
+          .shimmer-bg {
+            background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+          }
+          .shimmer-bg-dark {
+            background: linear-gradient(90deg, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.08) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+          }
+        `}} />
+
+        {/* Top Blue Section Skeleton */}
+        <section
+          className="relative w-full pt-32 pb-24 lg:pb-32 overflow-hidden"
+          style={{ background: "linear-gradient(180deg, #374FC9 0%, #2C2C88 100%)" }}
+        >
+          <div className="relative max-w-[1530px] mx-auto px-4 md:px-8 lg:px-20 z-10">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              {/* Job Title Skeleton */}
+              <div className="w-2/3 md:w-1/2 h-10 shimmer-bg-dark rounded-lg"></div>
+              {/* Back Button Skeleton */}
+              <div className="w-28 h-12 shimmer-bg-dark rounded-full shrink-0"></div>
+            </div>
+
+            {/* Grid of metadata cards */}
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 max-w-[620px] gap-y-6 gap-x-12">
+              <div className="h-5 w-48 shimmer-bg-dark rounded"></div>
+              <div className="h-5 w-44 shimmer-bg-dark rounded"></div>
+              <div className="h-5 w-40 shimmer-bg-dark rounded"></div>
+              <div className="h-5 w-52 shimmer-bg-dark rounded"></div>
+              <div className="h-5 w-36 shimmer-bg-dark rounded"></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Content Section Skeleton */}
+        <section className="relative w-full max-w-[1530px] mx-auto px-4 md:px-8 lg:px-20 py-16 sm:py-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
+            {/* Left Column - Job Details Skeleton */}
+            <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-10">
+              {/* Job Description Skeleton */}
+              <div className="space-y-4">
+                <div className="w-48 h-8 shimmer-bg rounded"></div>
+                <div className="w-full h-4 shimmer-bg rounded"></div>
+                <div className="w-full h-4 shimmer-bg rounded"></div>
+                <div className="w-5/6 h-4 shimmer-bg rounded"></div>
+                <div className="w-11/12 h-4 shimmer-bg rounded"></div>
+              </div>
+
+              {/* Roles and Responsibilities Skeleton */}
+              <div className="space-y-4">
+                <div className="w-64 h-8 shimmer-bg rounded"></div>
+                <div className="space-y-3 pl-1">
+                  <div className="w-11/12 h-4 shimmer-bg rounded"></div>
+                  <div className="w-5/6 h-4 shimmer-bg rounded"></div>
+                  <div className="w-10/12 h-4 shimmer-bg rounded"></div>
+                  <div className="w-11/12 h-4 shimmer-bg rounded"></div>
+                </div>
+              </div>
+
+              {/* Requirements Skeleton */}
+              <div className="space-y-4">
+                <div className="w-40 h-8 shimmer-bg rounded"></div>
+                <div className="space-y-3">
+                  <div className="w-36 h-5 shimmer-bg rounded"></div>
+                  <div className="space-y-2 pl-4">
+                    <div className="w-5/6 h-4 shimmer-bg rounded"></div>
+                    <div className="w-4/5 h-4 shimmer-bg rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Application Form Skeleton */}
+            <div className="lg:col-span-5 xl:col-span-4">
+              <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm space-y-6">
+                <div className="w-48 h-6 shimmer-bg rounded mb-4"></div>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <div className="w-16 h-3 shimmer-bg rounded"></div>
+                    <div className="w-full h-10 bg-slate-50 border border-slate-100 rounded-lg"></div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="w-16 h-3 shimmer-bg rounded"></div>
+                    <div className="w-full h-10 bg-slate-50 border border-slate-100 rounded-lg"></div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="w-20 h-3 shimmer-bg rounded"></div>
+                    <div className="w-full h-10 bg-slate-50 border border-slate-100 rounded-lg"></div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="w-16 h-3 shimmer-bg rounded"></div>
+                    <div className="w-full h-24 bg-slate-50 border border-slate-100 rounded-lg"></div>
+                  </div>
+                </div>
+                <div className="w-full h-12 shimmer-bg rounded-lg"></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    );
   }
 
   if (!jobDetails) {
@@ -140,25 +253,25 @@ export default function JobDetailClient({ slug }) {
 
   return (
     <main className="relative min-h-screen bg-slate-50 text-slate-900 select-none pt-0">
-      
+
       {/* Top Blue Section */}
-      <section 
+      <section
         className="relative w-full pt-32 pb-24 lg:pb-32 overflow-hidden"
         style={{ background: "linear-gradient(180deg, #374FC9 0%, #2C2C88 100%)" }}
       >
-        <img 
-          src="/careers/positions/design.png" 
-          alt="Decorative Background" 
+        <img
+          src="/careers/positions/design.png"
+          alt="Decorative Background"
           className="absolute right-0 top-1/2 -translate-y-1/2 h-[120%] w-auto object-contain pointer-events-none z-0 translate-x-[10%]"
         />
-        
+
         <div className="relative max-w-[1530px] mx-auto px-4 md:px-8 lg:px-20 z-10">
-          
+
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight text-white font-sans leading-tight">
               {displayTitle}
             </h1>
-            
+
             {hero?.show_back_button !== false && (
               <Link
                 href="/careers"
@@ -207,10 +320,10 @@ export default function JobDetailClient({ slug }) {
       {/* Content Section */}
       <section className="relative w-full max-w-[1530px] mx-auto px-4 md:px-8 lg:px-20 py-16 sm:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          
+
           {/* Left Column - Job Details */}
           <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-8">
-            
+
             {/* Job Description */}
             {description && (
               <div>
@@ -245,7 +358,7 @@ export default function JobDetailClient({ slug }) {
                 <h2 className="text-[28px] sm:text-3xl lg:text-4xl font-normal tracking-tight text-slate-700 mb-4 font-sans">
                   Requirements
                 </h2>
-                
+
                 {requirements.technical_skills && requirements.technical_skills.length > 0 && (
                   <div className="mb-5">
                     <h3 className="font-bold text-slate-800 mb-3">Technical Expertise:</h3>

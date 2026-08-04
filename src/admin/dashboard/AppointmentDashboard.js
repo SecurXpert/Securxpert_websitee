@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Eye, Trash2, Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { API_BASE_URL } from "@/admin/config";
 import { Modal, DeleteConfirm } from "./SharedUI";
 
 export default function AppointmentDashboard() {
@@ -16,7 +17,7 @@ export default function AppointmentDashboard() {
 
   const fetchAppointments = async () => {
     try {
-      const res = await fetch("https://poise-crouch-plating.ngrok-free.dev/products/list-bookings", {
+      const res = await fetch(`${API_BASE_URL}products/list-bookings`, {
         headers: {
           "ngrok-skip-browser-warning": "true",
           "accept": "application/json"

@@ -41,11 +41,11 @@ export default function JobDescriptionSection({ isExpanded, onToggle, initialDat
 
       let res;
       if (hasDescInDb) {
-        res = await axios.patch(`${API_BASE_URL}/jobs/${jobId}/description`, payload, {
+        res = await axios.patch(`${API_BASE_URL}jobs/${jobId}/description`, payload, {
           headers: { "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
         });
       } else {
-        res = await axios.post(`${API_BASE_URL}/jobs/${jobId}/description`, payload, {
+        res = await axios.post(`${API_BASE_URL}jobs/${jobId}/description`, payload, {
           headers: { "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
         });
       }

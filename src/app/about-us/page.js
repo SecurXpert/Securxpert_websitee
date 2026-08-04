@@ -24,7 +24,7 @@ export default function AboutPage() {
       <Vision />
       <OurValues />
       <AboutCta />
-      <OurTeam /> 
+      {/* <OurTeam />  */}
       <OurOffices/>
       <Appointment/>
       <ServicesCta/>

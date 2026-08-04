@@ -173,17 +173,14 @@ export default function OurProjects() {
                             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[18px]">
                                 <img
                                     src={project.image}
-                                    alt={project.title}
+                                    alt={project.title} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    loading="lazy"
+                                    loading="lazy"  
                                 />
                             </div>
 
                             {/* Text Info Below Image */}
-                            <div className="pt-5 pb-1 px-1 text-left">
-                                <span className="text-[8px] sm:text-xs text-gray-600 font-normal tracking-widest uppercase block mb-1">
-                                    {project.tags}
-                                </span>
+                            <div className="pt-5 pb-1 px-1 text-left"> 
                                 <h3 className="text-lg sm:text-lg font-normal text-gray-900 font-sans tracking-tight transition-colors duration-300 group-hover:text-[#2D46D4]">
                                     {project.title}
                                 </h3>

@@ -24,7 +24,7 @@ export default function ServicesHero() {
 
                     {/* Category Pill Button */}
                     <div className="relative z-10 flex justify-center mb-0 pt-2 lg:pt-11 xl:pt-24">
-                        <span className="px-4 py-1 rounded-lg text-base lg:text-lg font-medium tracking-tight text-[#29257B] bg-[#D9D9D9] border border-slate-200 shadow-sm">
+                        <span className="px-4 py-1 rounded-lg text-base lg:text-lg font-medium tracking-tight text-[#29257B] bg-[#D9D9D9] border border-slate-200 shadow-sm transform -translate-y-3 lg:-translate-y-5">
                             Our Services
                         </span>
                     </div>
@@ -36,75 +36,12 @@ export default function ServicesHero() {
                     </h1>
 
                     {/* Description */}
-                    <p className="relative z-10 text-left lg:text-center mt-4 lg:mt-4 text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-relaxed text-[#FFFFFF] max-w-5xl mx-auto px-6 font-normal opacity-90">
+                    <p className="relative z-10 text-left lg:text-center mt-6 lg:mt-4 text-sm sm:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-relaxed text-[#FFFFFF] max-w-5xl mx-auto px-6 font-normal opacity-90">
                         SecurXpert provides end-to-end digital transformation services — software development, AI automation, cloud infrastructure, and cybersecurity — built to help businesses scale securely and efficiently.
                     </p>
 
-                    {/* CTA Button, Avatars, and Subtext - Balanced Columns */}
-                    <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 xl:gap-16 mt-6 lg:mt-8 px-6">
-
-                        {/* Column 1: Try it For Free & Cancel Anytime */}
-                        <div className="flex flex-col items-center justify-center gap-2 w-full sm:w-auto">
-                            <Link href="/contact" className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-2.5 lg:px-8 lg:py-3.5 rounded-full text-[15px] lg:text-base shadow-md transition-all active:scale-95 duration-150 inline-block text-center">
-                                Book a Free Consultation
-                            </Link>
-                            
-                        </div>
-
-                        {/* Column 2: Avatars & Trusted by pros */}
-                        <div className="flex flex-col items-center justify-center gap-2.5">
-                            <div className="flex -space-x-3">
-                                <img
-                                    src="https://randomuser.me/api/portraits/women/44.jpg"
-                                    alt="User"
-                                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                                />
-                                <img
-                                    src="https://randomuser.me/api/portraits/men/32.jpg"
-                                    alt="User"
-                                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                                />
-                                <img
-                                    src="https://randomuser.me/api/portraits/men/52.jpg"
-                                    alt="User"
-                                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                                />
-                                <img
-                                    src="https://randomuser.me/api/portraits/women/65.jpg"
-                                    alt="User"
-                                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                                />
-                                <img
-                                    src="https://randomuser.me/api/portraits/men/82.jpg"
-                                    alt="User"
-                                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                                />
-                                <img
-                                    src="https://randomuser.me/api/portraits/women/68.jpg"
-                                    alt="User"
-                                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                                />
-                                <img
-                                    src="https://randomuser.me/api/portraits/men/85.jpg"
-                                    alt="User"
-                                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                                />
-                                <img
-                                    src="https://randomuser.me/api/portraits/women/90.jpg"
-                                    alt="User"
-                                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                                />
-
-                            </div>
-                            <p className="text-white font-normal text-sm sm:text-base tracking-tight">
-                                Trusted by 500+ businesses worldwide
-                            </p>
-                        </div>
-
-                    </div>
-
                     {/* Dashboard services image grid - Concentric glowing cyan glass layout cropped in the middle */}
-                    <div className="relative z-10 w-screen max-w-[90vw] mt-10 lg:mt-12 overflow-hidden h-[160px] sm:h-[240px] lg:h-[320px] xl:h-[375px] px-0">
+                    <div className="relative z-10 w-screen max-w-[90vw] mt-5 lg:mt-7 overflow-hidden h-[160px] sm:h-[240px] lg:h-[320px] xl:h-[375px] px-0">
                         {/* Outer glassmorphic frame */}
                         <div className="p-2 sm:p-3 lg:p-4 rounded-t-3xl border-t border-x border-white/20 bg-white/10 backdrop-blur-md shadow-2xl h-full overflow-hidden">
 

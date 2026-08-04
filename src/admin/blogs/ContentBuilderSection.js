@@ -8,6 +8,36 @@ let blockIdCounter = 100;
 export default function ContentBuilderSection({ form, sections, setSections, onSaved }) {
   const [saved, setSaved] = useState(false);
 
+  const updateSectionImageFile = (id, file) => {
+    setSections((p) =>
+      p.map((s) => (s.id === id ? { ...s, imageFile: file, imageUrl: "" } : s))
+    );
+  };
+
+  const updateSectionImagePosition = (id, pos) => {
+    setSections((p) =>
+      p.map((s) => (s.id === id ? { ...s, imagePosition: pos } : s))
+    );
+  };
+
+  const updateSectionImageAltText = (id, text) => {
+    setSections((p) =>
+      p.map((s) => (s.id === id ? { ...s, imageAltText: text } : s))
+    );
+  };
+
+  const updateSectionImageCaption = (id, text) => {
+    setSections((p) =>
+      p.map((s) => (s.id === id ? { ...s, imageCaption: text } : s))
+    );
+  };
+
+  const removeSectionImage = (id) => {
+    setSections((p) =>
+      p.map((s) => (s.id === id ? { ...s, imageFile: null, imageUrl: "", imageAltText: "", imageCaption: "" } : s))
+    );
+  };
+
   const handleSave = async () => {
     if (!form?.blogId) {
       alert("Please save the Blog Information first to create the blog!");
@@ -26,20 +56,27 @@ export default function ContentBuilderSection({ form, sections, setSections, onS
         const formData = new FormData();
         formData.append("order_index", i.toString());
         formData.append("section_title", sec.title || "Untitled Section");
-        formData.append("image_alt_text", "");
+        formData.append("image_alt_text", sec.imageAltText || "");
 
         const desc = sec.blocks.map(b => b.content).join("\n\n");
         formData.append("description", desc);
 
-        formData.append("image_caption", "");
-        formData.append("image_position", "full_width");
-        formData.append("section_image", "");
+        formData.append("image_caption", sec.imageCaption || "");
+        formData.append("image_position", sec.imagePosition || "full_width");
+
+        if (sec.imageFile) {
+          formData.append("section_image", sec.imageFile);
+        } else if (sec.imageUrl === "") {
+          formData.append("section_image", "");
+        } else if (!sec.serverId) {
+          formData.append("section_image", "");
+        }
 
         const isEdit = !!sec.serverId;
         const method = isEdit ? "PATCH" : "POST";
         const url = isEdit
-          ? `${API_BASE_URL}/blogs/${blogId}/sections/${sec.serverId}`
-          : `${API_BASE_URL}/blogs/${blogId}/sections`;
+          ? `${API_BASE_URL}blogs/sections/${sec.serverId}`
+          : `${API_BASE_URL}blogs/${blogId}/sections`;
 
         const res = await fetch(url, {
           method,
@@ -88,6 +125,11 @@ export default function ContentBuilderSection({ form, sections, setSections, onS
       {
         id: Date.now(),
         title: "New Section",
+        imagePosition: "full_width",
+        imageUrl: "",
+        imageFile: null,
+        imageAltText: "",
+        imageCaption: "",
         blocks: [{ id: ++blockIdCounter, type: "text", content: "" }],
       },
     ]);
@@ -98,8 +140,7 @@ export default function ContentBuilderSection({ form, sections, setSections, onS
       if (!confirm("Are you sure you want to delete this section from the server?")) return;
       try {
         const token = localStorage.getItem("access_token");
-        const blogId = form?.blogId;
-        const res = await fetch(`${API_BASE_URL}/blogs/${blogId}/sections/${sec.serverId}`, {
+        const res = await fetch(`${API_BASE_URL}blogs/sections/${sec.serverId}`, {
           method: "DELETE",
           headers: {
             ...(token && { "Authorization": `Bearer ${token}` })
@@ -191,6 +232,85 @@ export default function ContentBuilderSection({ form, sections, setSections, onS
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
               </div>
+            </div>
+
+            {/* Optional Image and Position Configuration */}
+            <div className="px-4 py-3 bg-slate-50/50 border-b border-slate-100 flex flex-col gap-3 text-xs font-semibold text-slate-700">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-slate-500">Image:</span>
+                  {sec.imageUrl && (
+                    <div className="flex items-center gap-1.5 bg-slate-100 px-2 py-1 rounded border border-slate-200">
+                      <img
+                        src={sec.imageUrl.startsWith("http") ? sec.imageUrl : `${API_BASE_URL}${sec.imageUrl}`}
+                        alt="Current"
+                        className="w-6 h-6 object-cover rounded"
+                      />
+                      <span className="text-[10px] text-slate-500">Current</span>
+                    </div>
+                  )}
+                  {sec.imageFile && (
+                    <div className="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 px-2 py-1 rounded border border-emerald-100">
+                      <span className="text-[10px] font-bold">New: {sec.imageFile.name}</span>
+                    </div>
+                  )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) updateSectionImageFile(sec.id, file);
+                    }}
+                    className="max-w-[180px] text-[10px] text-slate-500 file:mr-2 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-[10px] file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+                  />
+                  {(sec.imageUrl || sec.imageFile) && (
+                    <button
+                      onClick={() => removeSectionImage(sec.id)}
+                      className="text-red-500 hover:text-red-700 text-[10px] font-bold"
+                    >
+                      Remove Image
+                    </button>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-slate-500">Alignment:</span>
+                  <select
+                    value={sec.imagePosition || "full_width"}
+                    onChange={(e) => updateSectionImagePosition(sec.id, e.target.value)}
+                    className="bg-white border border-slate-200 rounded-lg px-2.5 py-1 text-slate-700 focus:outline-none focus:border-blue-500 font-medium"
+                  >
+                    <option value="left">Left</option>
+                    <option value="full_width">Middle / Full Width</option>
+                    <option value="right">Right</option>
+                  </select>
+                </div>
+              </div>
+
+              {(sec.imageUrl || sec.imageFile) && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-slate-500 text-[10px] uppercase">Image Alt Text</span>
+                    <input
+                      type="text"
+                      placeholder="e.g. Description of image for SEO"
+                      value={sec.imageAltText || ""}
+                      onChange={(e) => updateSectionImageAltText(sec.id, e.target.value)}
+                      className="bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-blue-500 text-xs font-normal"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-slate-500 text-[10px] uppercase">Image Caption</span>
+                    <input
+                      type="text"
+                      placeholder="e.g. Figure 1: Illustration"
+                      value={sec.imageCaption || ""}
+                      onChange={(e) => updateSectionImageCaption(sec.id, e.target.value)}
+                      className="bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-blue-500 text-xs font-normal"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Blocks */}

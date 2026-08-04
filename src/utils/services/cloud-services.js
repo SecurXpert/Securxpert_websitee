@@ -1,4 +1,4 @@
-import { LuCloud, LuDatabase, LuServer, LuSettings } from "react-icons/lu";
+import { LuCloud, LuDatabase, LuServer, LuSettings } from "react-icons/lu"; 
 
 const cloudServices = {
   category: "03 — CLOUD SERVICES",
@@ -14,7 +14,7 @@ const cloudServices = {
   bgClass: "bg-sky-500/10",
   borderClass: "border-sky-500/20",
   textColor: "text-sky-400",
-  buttonBg: "bg-sky-500 hover:bg-sky-400 text-white",
+  buttonBg: "bg-sky-500 hover:bg-sky-400 text-white", 
   capabilities: [
     { title: "Cloud Migration", desc: "Seamless transition of legacy systems to modern cloud architectures", icon: LuCloud },
     { title: "Cloud Storage", desc: "Secure and scalable data storage solutions", icon: LuDatabase },

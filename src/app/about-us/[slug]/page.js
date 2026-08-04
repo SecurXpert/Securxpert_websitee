@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LuChevronLeft } from "react-icons/lu";
+import { FaLinkedin } from "react-icons/fa";
 
 import TeamSection from "./TeamSection";
 
@@ -77,11 +78,23 @@ export default async function AboutUsSubPage({ params }) {
                                 As CTO, she oversees product architecture, software development, infrastructure, cybersecurity, and quality standards, ensuring every solution meets strict benchmarks for performance, reliability, and security.
                             </p>
                         </div>
+
+                        <div className="mt-6">
+                            <a
+                                href="https://www.linkedin.com/in/manasa-sree-94a64114b/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-[#0077B5] hover:bg-[#005E8F] text-white font-semibold px-4 py-2.5 rounded-full text-[14px] shadow-sm transition-all duration-200"
+                            >
+                                <FaLinkedin className="w-4 h-4" />
+                                Connect on LinkedIn
+                            </a>
+                        </div>
                     </div>
 
                     <div className="flex-1 w-full flex justify-center lg:justify-end">
                         <img
-                            src="/about-us/founders1.jpg"
+                            src="/about-us/manasa G"
                             alt="G. Sri Manasa"
                             className="w-full max-h-[550px] rounded-lg shadow-sm object-cover"
                         />
@@ -92,7 +105,7 @@ export default async function AboutUsSubPage({ params }) {
                 <div className="relative max-w-[1200px] mx-auto px-6 md:px-12 z-10 flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-14 mt-20">
                     <div className="flex-1 w-full flex justify-center lg:justify-start">
                         <img
-                            src="/about-us/founders2.jpg"
+                            src="/about-us/praveen G.webp"
                             alt="G. Praveen Kumar"
                             className="w-full max-h-[550px] rounded-lg shadow-sm object-cover"
                         />
@@ -121,6 +134,18 @@ export default async function AboutUsSubPage({ params }) {
                                 He is also deeply involved in strengthening leadership systems and fostering a performance-driven culture to ensure the company grows responsibly and consistently.
                             </p>
                         </div>
+
+                        <div className="mt-6">
+                            <a
+                                href="https://www.linkedin.com/in/praveen-kumar-gannavarapu-3341b6239/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-[#0077B5] hover:bg-[#005E8F] text-white font-semibold px-4 py-2.5 rounded-full text-[14px] shadow-sm transition-all duration-200"
+                            >
+                                <FaLinkedin className="w-4 h-4" />
+                                Connect on LinkedIn
+                            </a>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -128,6 +153,6 @@ export default async function AboutUsSubPage({ params }) {
     }
 
     return (
-        <TeamSection />
+        <TeamSection /> 
     );
 }

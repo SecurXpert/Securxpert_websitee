@@ -1,17 +1,34 @@
 import React from "react";
 import { X } from "lucide-react";
 
-export function Modal({ title, onClose, children }) {
+export function Modal({ title, onClose, children, size = "2xl", headerActions }) {
+  const sizeClasses = {
+    "md": "max-w-md",
+    "lg": "max-w-lg",
+    "xl": "max-w-xl",
+    "2xl": "max-w-2xl",
+    "3xl": "max-w-3xl",
+    "4xl": "max-w-4xl",
+    "5xl": "max-w-5xl",
+    "6xl": "max-w-6xl",
+    "7xl": "max-w-7xl",
+    "full": "max-w-[95vw] h-[95vh]"
+  };
+  const widthClass = sizeClasses[size] || "max-w-2xl";
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-slate-100">
+      <div className={`bg-white rounded-2xl shadow-2xl w-full ${widthClass} max-h-[90vh] flex flex-col overflow-hidden`}>
+        <div className="flex items-center justify-between p-6 border-b border-slate-100 shrink-0">
           <h3 className="text-lg font-bold text-slate-800">{title}</h3>
-          <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
-            <X className="w-5 h-5 text-slate-500" />
-          </button>
+          <div className="flex items-center gap-3">
+            {headerActions}
+            <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+              <X className="w-5 h-5 text-slate-500" />
+            </button>
+          </div>
         </div>
-        <div className="p-6">{children}</div>
+        <div className="p-6 overflow-y-auto flex-1">{children}</div>
       </div>
     </div>
   );

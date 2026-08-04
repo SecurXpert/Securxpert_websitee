@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "website-fa625",
-    "staging": "securxperts-4d511"
+    "default": "securxperts-website-71913",
+    "staging": "securxperts-website-71913"
   },
   "targets": {},
   "etags": {}

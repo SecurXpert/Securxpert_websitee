@@ -18,7 +18,7 @@ export default function BpoAppointmentDashboard() {
   const fetchAppointments = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(`${API_BASE_URL}/book-appointment/`, {
+      const res = await fetch(`${API_BASE_URL}book-appointment/`, {
         headers: {
           "ngrok-skip-browser-warning": "true",
           "accept": "application/json",
@@ -44,7 +44,7 @@ export default function BpoAppointmentDashboard() {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch(`${API_BASE_URL}/book-appointment/${deleteItem.id}`, {
+      const res = await fetch(`${API_BASE_URL}book-appointment/${deleteItem.id}`, {
         method: "DELETE",
         headers: { 
           "ngrok-skip-browser-warning": "true",

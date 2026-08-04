@@ -341,10 +341,10 @@ export default function Header() {
 
               {/* Dropdown Menu - Sleek glassmorphism style */}
               <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-1 w-48 bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-slate-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 ease-out z-50 ${openDropdown === "aboutus" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}>
-                <Link href="/about-us/team" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
+                {/* <Link href="/about-us/team" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Our Team
                   
-                </Link>
+                </Link> */}
                 <Link href="/about-us/founders" className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/50 transition-all duration-150 group/item">
                   Founders
                   
@@ -557,7 +557,7 @@ export default function Header() {
             </div>
             <div className={`overflow-hidden transition-all duration-300 ${mobileExpanded === "aboutus" ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
               <div className="pl-6 pr-2 flex flex-col space-y-1 mt-1 mb-2 border-l border-slate-100/80">
-                <Link href="/about-us/team" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Our Team</Link>
+                {/* <Link href="/about-us/team" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Our Team</Link> */}
                 <Link href="/about-us/founders" className="block py-2 text-[13px] font-semibold text-slate-500 hover:text-blue-600 transition-colors">Founders</Link>
               </div>
             </div>

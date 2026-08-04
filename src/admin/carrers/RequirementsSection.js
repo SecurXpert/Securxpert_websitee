@@ -117,7 +117,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
         console.log("Deleting removed requirements:", deletedSkillIds);
         await Promise.all(
           deletedSkillIds.map(dbId =>
-            axios.delete(`${API_BASE_URL}/jobs/${jobId}/requirements/${dbId}`, {
+            axios.delete(`${API_BASE_URL}jobs/${jobId}/requirements/${dbId}`, {
               headers: {
                 "accept": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -143,7 +143,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
           if (skill.dbId) {
             console.log(`Updating technical skill ${skill.dbId}...`, payload);
             const res = await axios.patch(
-              `${API_BASE_URL}/jobs/${jobId}/requirements/${skill.dbId}`,
+              `${API_BASE_URL}jobs/${jobId}/requirements/${skill.dbId}`,
               payload,
               {
                 headers: {
@@ -157,7 +157,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
           } else {
             console.log("Creating new technical skill...", payload);
             const res = await axios.post(
-              `${API_BASE_URL}/jobs/${jobId}/requirements`,
+              `${API_BASE_URL}jobs/${jobId}/requirements`,
               payload,
               {
                 headers: {
@@ -183,7 +183,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
           if (skill.dbId) {
             console.log(`Updating soft skill ${skill.dbId}...`, payload);
             const res = await axios.patch(
-              `${API_BASE_URL}/jobs/${jobId}/requirements/${skill.dbId}`,
+              `${API_BASE_URL}jobs/${jobId}/requirements/${skill.dbId}`,
               payload,
               {
                 headers: {
@@ -197,7 +197,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
           } else {
             console.log("Creating new soft skill...", payload);
             const res = await axios.post(
-              `${API_BASE_URL}/jobs/${jobId}/requirements`,
+              `${API_BASE_URL}jobs/${jobId}/requirements`,
               payload,
               {
                 headers: {
@@ -275,7 +275,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
       let res;
       if (hasQualsInDb) {
         console.log(`Updating qualifications for job ${jobId}...`, payload);
-        res = await axios.patch(`${API_BASE_URL}/jobs/${jobId}/qualifications`, payload, {
+        res = await axios.patch(`${API_BASE_URL}jobs/${jobId}/qualifications`, payload, {
           headers: {
             "accept": "application/json",
             "Content-Type": "application/json",
@@ -284,7 +284,7 @@ export default function RequirementsSection({ isExpanded, onToggle, initialData,
         });
       } else {
         console.log(`Creating qualifications for job ${jobId}...`, payload);
-        res = await axios.post(`${API_BASE_URL}/jobs/${jobId}/qualifications`, payload, {
+        res = await axios.post(`${API_BASE_URL}jobs/${jobId}/qualifications`, payload, {
           headers: {
             "accept": "application/json",
             "Content-Type": "application/json",
