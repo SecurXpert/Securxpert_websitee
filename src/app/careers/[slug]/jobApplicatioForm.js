@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PhoneInputField from "./PhoneInputField";
 import { API_BASE_URL } from "@/admin/config";
 
-export default function JobApplicationForm() {
+export default function JobApplicationForm({ jobId, jobTitle }) {
   // Application Form State
   const [formData, setFormData] = useState({
     candidate_name: "",
@@ -40,6 +40,48 @@ export default function JobApplicationForm() {
 
     setSubmitStatus("loading");
 
+    let resolvedJobId = jobId;
+
+    // Step 1: Ensure JobTitle exists on the backend and resolve its ID
+    if (jobTitle) {
+      try {
+        const titleRes = await fetch(`${API_BASE_URL}job-applications/job_title`, {
+          method: "POST",
+          headers: {
+            "accept": "application/json",
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "true"
+          },
+          body: JSON.stringify({ job_title: jobTitle })
+        });
+        
+        if (titleRes.ok) {
+          const titleData = await titleRes.json();
+          if (titleData && titleData.id) {
+            resolvedJobId = titleData.id;
+          }
+        } else {
+          const errData = await titleRes.json().catch(() => ({}));
+          if (errData.detail === "Job title already exists.") {
+            const listRes = await fetch(`${API_BASE_URL}job-applications/`, {
+              headers: { "ngrok-skip-browser-warning": "true" }
+            });
+            if (listRes.ok) {
+              const list = await listRes.json();
+              const match = list.find(item => item.job_title && item.job_title.trim().toLowerCase() === jobTitle.trim().toLowerCase());
+              if (match && match.id) {
+                resolvedJobId = match.id;
+              }
+            }
+          } else {
+            console.warn("JobTitle creation returned an unexpected error:", errData);
+          }
+        }
+      } catch (err) {
+        console.warn("Failed to ensure JobTitle existence:", err);
+      }
+    }
+
     const payload = new FormData();
     payload.append("candidate_name", formData.candidate_name);
     payload.append("enter_email", formData.enter_email);
@@ -53,10 +95,17 @@ export default function JobApplicationForm() {
     payload.append("linkedin_profile_url", formData.linkedin_profile_url || "");
     payload.append("technical_proficiency", formData.technical_proficiency || "");
     payload.append("upload_your_latest_resume", resumeFile);
+    if (resolvedJobId) {
+      payload.append("job_id", resolvedJobId);
+    }
 
     try {
       const res = await fetch(`${API_BASE_URL}job-applications/`, {
         method: "POST",
+        headers: {
+          "accept": "application/json",
+          "ngrok-skip-browser-warning": "true"
+        },
         body: payload
       });
 

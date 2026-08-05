@@ -104,7 +104,7 @@ export default function ContactDashboard() {
             <table className="w-full text-xs text-left border-collapse border border-slate-200">
               <thead className="bg-slate-50">
                 <tr>
-                  {["S.No.", "Name", "Email", "Purpose", "Phone", "Location", "Message", "Actions"].map(h => (
+                  {["S.No.", "Name", "Email", "Purpose", "Phone", "Location", "Message"].map(h => (
                     <th key={h} className="py-2 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap border border-slate-200">{h}</th>
                   ))}
                 </tr>
@@ -126,17 +126,11 @@ export default function ContactDashboard() {
                       <td className="py-2 px-3 text-slate-500 whitespace-nowrap border border-slate-200">{(c.country_code || "") + " " + (c.phone_number || "N/A")}</td>
                       <td className="py-2 px-3 text-slate-500 whitespace-nowrap border border-slate-200">{c.location || "N/A"}</td>
                       <td className="py-2 px-3 text-slate-500 max-w-[150px] truncate border border-slate-200">{c.message}</td>
-                      <td className="py-2 px-3 whitespace-nowrap border border-slate-200">
-                        <div className="flex items-center gap-0.5">
-                          <button onClick={() => setViewItem(c)} className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-all cursor-pointer" title="View Details"><Eye className="w-3.5 h-3.5" /></button>
-                          <button onClick={() => setDeleteItem(c)} className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-all cursor-pointer" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
-                        </div>
-                      </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="8" className="py-8 text-center text-slate-500 border border-slate-200">
+                    <td colSpan="7" className="py-8 text-center text-slate-500 border border-slate-200">
                       No contact submissions found.
                     </td>
                   </tr>

@@ -5,7 +5,7 @@ import { API_BASE_URL } from "@/admin/config";
 export async function generateStaticParams() {
     let staticSlugs = [];
     try {
-        const guestEmail = "guest_visitor_securxpert@gmail.com";
+        const guestEmail = "guest_superadmin_securxpert@gmail.com";
         const guestPassword = "VisitorPass123";
 
         const loginRes = await fetch(`${API_BASE_URL}auth/login`, {

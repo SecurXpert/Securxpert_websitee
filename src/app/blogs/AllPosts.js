@@ -105,8 +105,8 @@ export default function AllPosts() {
                 if (token === "undefined" || token === "null") token = "";
 
                 const performGuestLogin = async () => {
-                    const guestEmail = "guest_visitor_securxpert@gmail.com";
-                    const guestUsername = "guest_visitor";
+                    const guestEmail = "guest_superadmin_securxpert@gmail.com";
+                    const guestUsername = "guest_superadmin";
                     const guestPassword = "VisitorPass123";
 
                     try {
@@ -122,10 +122,15 @@ export default function AllPosts() {
                     } catch (err) {
                         if (err.response && err.response.status === 401) {
                             try {
-                                await axios.post(`${API_BASE_URL}auth/register-admin`, {
+                                await axios.post(`${API_BASE_URL}auth/signup`, {
                                     username: guestUsername,
                                     email: guestEmail,
                                     password: guestPassword
+                                }, {
+                                    headers: {
+                                        "ngrok-skip-browser-warning": "true",
+                                        "x-secret-key": "superadmin-4d8e1f6a"
+                                    }
                                 });
                                 const loginRes2 = await axios.post(`${API_BASE_URL}auth/login`, {
                                     email: guestEmail,

@@ -9,7 +9,7 @@ const slugify = (text) => text ? text.toLowerCase().replace(/[^a-z0-9]+/g, '-').
 export async function generateStaticParams() {
   try {
     // Attempt to authenticate and fetch active jobs for static generation
-    const guestEmail = "guest_visitor_securxpert@gmail.com";
+    const guestEmail = "guest_superadmin_securxpert@gmail.com";
     const guestPassword = "VisitorPass123";
     
     const loginRes = await axios.post(`${API_BASE_URL}auth/login`, {

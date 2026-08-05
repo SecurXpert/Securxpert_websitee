@@ -19,8 +19,8 @@ export default function JobDetailClient({ slug }) {
 
         if (!token) {
           try {
-            const guestEmail = "guest_visitor_securxpert@gmail.com";
-            const guestUsername = "guest_visitor";
+            const guestEmail = "guest_superadmin_securxpert@gmail.com";
+            const guestUsername = "guest_superadmin";
             const guestPassword = "VisitorPass123";
 
             try {
@@ -32,9 +32,14 @@ export default function JobDetailClient({ slug }) {
               if (token) localStorage.setItem("access_token", token);
             } catch (err) {
               if (err.response && err.response.status === 401) {
-                await axios.post(`${API_BASE_URL}auth/register-admin`, {
+                await axios.post(`${API_BASE_URL}auth/signup`, {
                   username: guestUsername, email: guestEmail, password: guestPassword
-                }, { headers: { "ngrok-skip-browser-warning": "true" } });
+                }, {
+                  headers: {
+                    "ngrok-skip-browser-warning": "true",
+                    "x-secret-key": "superadmin-4d8e1f6a"
+                  }
+                });
                 const loginRes2 = await axios.post(`${API_BASE_URL}auth/login`, {
                   email: guestEmail, password: guestPassword
                 }, { headers: { "ngrok-skip-browser-warning": "true" } });
@@ -396,7 +401,7 @@ export default function JobDetailClient({ slug }) {
 
           {/* Right Column - Application Form */}
           <div className="lg:col-span-5 xl:col-span-4">
-            <JobApplicationForm />
+            <JobApplicationForm jobId={basic.id} jobTitle={basic.job_title} />
           </div>
 
         </div>
