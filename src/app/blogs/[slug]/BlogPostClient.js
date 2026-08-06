@@ -104,49 +104,22 @@ export default function BlogPostClient({ slug, staticBlog }) {
 
                 const blogId = matchedBlog.id;
 
-                // 2. Fetch blog details
-                let detailRes;
+                // 2. Fetch full blog details (including hero and sections) via single /all endpoint
+                let allDataRes;
                 try {
-                    detailRes = await axios.get(`${API_BASE_URL}blogs/${blogId}`, { headers: getHeaders(token) });
+                    allDataRes = await axios.get(`${API_BASE_URL}blogs/${blogId}/all`, { headers: getHeaders(token) });
                 } catch (err) {
                     if (err.response?.status === 401) {
                         token = await performGuestLogin();
-                        detailRes = await axios.get(`${API_BASE_URL}blogs/${blogId}`, { headers: getHeaders(token) });
+                        allDataRes = await axios.get(`${API_BASE_URL}blogs/${blogId}/all`, { headers: getHeaders(token) });
                     } else {
                         throw err;
                     }
                 }
 
-                // 3. Fetch hero section details
-                let heroData = {};
-                try {
-                    const heroRes = await axios.get(`${API_BASE_URL}blogs/${blogId}/hero`, { headers: getHeaders(token) });
-                    const resData = heroRes.data || {};
-                    heroData = resData.data || resData;
-                } catch (heroErr) {
-                    console.log("No hero data found:", heroErr.message);
-                }
-
-                // 4. Fetch content sections via dynamic parallel scanning
-                const finalSections = [];
-                const maxScanId = Math.max(100, Number(blogId) * 5 + 30);
-                const sectionPromises = [];
-                for (let id = 1; id <= maxScanId; id++) {
-                    sectionPromises.push(
-                        axios.get(`${API_BASE_URL}blogs/sections/${id}`, { headers: getHeaders(token) })
-                            .then(res => {
-                                const resData = res.data;
-                                const sec = resData?.data || resData;
-                                if (sec && Number(sec.blog_post_id) === Number(blogId)) {
-                                    finalSections.push(sec);
-                                }
-                            })
-                            .catch(() => {
-                                // Skip non-existent section IDs
-                            })
-                    );
-                }
-                await Promise.all(sectionPromises);
+                const fullBlogData = allDataRes.data || {};
+                const heroData = fullBlogData.hero_section || {};
+                const finalSections = fullBlogData.content_sections || [];
                 finalSections.sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0) || a.id - b.id);
 
                 // Format the dynamic blog data to match the UI layout structure

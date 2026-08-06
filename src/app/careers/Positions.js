@@ -36,22 +36,30 @@ export default function Positions() {
               "")
             : "";
 
-        // Self-healing automatic guest auth if token is missing
-        if (!token) {
+        const getJobsWithToken = async (tok) => {
+          return fetch(`${API_BASE_URL}jobs/`, {
+            headers: {
+              "Authorization": `Bearer ${tok}`,
+              "ngrok-skip-browser-warning": "true"
+            }
+          });
+        };
+
+        let res = await getJobsWithToken(token);
+        
+        if (res.status === 401 || !token) {
           try {
             const guestEmail = "guest_superadmin_securxpert@gmail.com";
             const guestUsername = "guest_superadmin";
             const guestPassword = "VisitorPass123";
 
+            let newToken = "";
             try {
               const loginRes = await axios.post(`${API_BASE_URL}auth/login`, {
                 email: guestEmail,
                 password: guestPassword
               }, { headers: { "ngrok-skip-browser-warning": "true" } });
-              token = loginRes.data?.access_token || "";
-              if (token) {
-                localStorage.setItem("access_token", token);
-              }
+              newToken = loginRes.data?.access_token || "";
             } catch (err) {
               if (err.response && err.response.status === 401) {
                 await axios.post(`${API_BASE_URL}auth/signup`, {
@@ -68,23 +76,19 @@ export default function Positions() {
                   email: guestEmail,
                   password: guestPassword
                 }, { headers: { "ngrok-skip-browser-warning": "true" } });
-                token = loginRes2.data?.access_token || "";
-                if (token) {
-                  localStorage.setItem("access_token", token);
-                }
+                newToken = loginRes2.data?.access_token || "";
               }
+            }
+
+            if (newToken) {
+              token = newToken;
+              localStorage.setItem("access_token", token);
+              res = await getJobsWithToken(token);
             }
           } catch (e) {
             console.error("Auto guest auth failed:", e);
           }
         }
-
-        const res = await fetch(`${API_BASE_URL}jobs/`, {
-          headers: {
-            "Authorization": `Bearer ${token}`,
-            "ngrok-skip-browser-warning": "true"
-          }
-        });
         
         if (res.ok) {
           const data = await res.json();

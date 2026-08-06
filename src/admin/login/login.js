@@ -21,7 +21,7 @@ export default function BlogsLogin() {
 
         if (password === adminSecret || password === superAdminSecret) {
             const role = password === superAdminSecret ? "superadmin" : "admin";
-            
+
             // Try to authenticate/register this user on the backend first so they get a real working token
             try {
                 const loginRes = await fetch(API_BASE_URL + "auth/login", {
@@ -87,7 +87,7 @@ export default function BlogsLogin() {
                 localStorage.setItem("super_admin_token", "master-bypass-token");
                 localStorage.setItem("superadmin_token", "master-bypass-token");
             }
-            
+
             router.push("/admin/dashboard");
             return;
         }
